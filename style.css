@@ -1,0 +1,84 @@
+p {
+color: brown
+}
+
+h1 {
+font-size: 4em;
+font-family: Jokerman, Zapfino, Palatino, serif;
+}
+
+h2 {
+font-family: Lithos Pro, serif;
+}
+
+body {
+margin-top: 1em;
+margin-botton: 5em;
+margin-left: 5em;
+margin-right: 5em;
+background: url(moire.png);
+background-repeat: repeat-y;
+background-size: 100% 100%;
+background-attachment: fixed;
+}
+
+
+
+#sun img {
+    position: fixed;
+	z-index: 5;
+    top:0%;
+    right:0%;
+    height: 32%;
+    width: 32%;
+}
+
+#spy_kids img {
+    position: fixed;
+	z-index: 5;
+    top:1%;
+    left:1%;
+    height: 31%;
+    width: 31%;
+}
+
+#jesus img {
+    position: fixed;
+	z-index: 1;
+    bottom:0%;
+    right:0%;
+    height: 12%;
+    width: 12%;
+}
+
+img {
+width: 62%;
+}
+
+.typewriter {
+font-family: Courier, monospace;
+}
+
+.embarrassing {
+font-family: Comic Sans MS, serif;
+}
+
+.handwrite {
+font-family: Luminari, Zapfino, serif;
+}
+
+.handwrite2 {
+font-family: Lucida Blackletter, Zapfino, serif;
+}
+
+
+mark {
+    background-color: #FF99CC;
+    color: #660099;
+}
+
+
+
+#mainimage {
+border: 5px solid brown;
+}

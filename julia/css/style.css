@@ -1,0 +1,137 @@
+html, body {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  background-image: url("http://68.media.tumblr.com/e996efbd47d78decb83fef31ba269aa6/tumblr_inline_nsy19o8TQF1rpf997_1280.jpg");
+  background-position: center top;
+  background-size: 100%;
+  margin: 0;
+}
+
+.realistic {
+  color: black;
+  font-family: Georgia, Baskerville, serif;
+  font-size: 29px;
+  position: absolute;
+  top: -300px;
+  left: 0;
+  opacity: 0.25;
+  transform-origin: 39% 600px;
+  max-width: 800px;
+  transform: scale(0.75, 0.75) perspective(2000px) rotateY(8deg) rotateX(31deg);
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.6), 0 0 1px rgba(0, 0, 0, 0.2);
+  text-align: justify;
+  padding-right: 50%;
+}
+
+p {
+  text-indent: 60px;
+  margin: 2px;
+  text-align: justify;
+  padding: 10px;
+}
+
+h1 {
+  padding-top: 80px;
+  text-align: center;
+  font-weight: normal;
+  font-size: 100px;
+  margin: 20px;
+}
+
+.realistic.blur {
+  pointer-events: none;
+}
+
+.realistic.blur-top:nth-child(1) {
+  transform: scale(0.75, 0.75) perspective(2000px) rotateY(8.2deg) rotateX(31.2deg);
+}
+
+.realistic.blur-bottom:nth-child(1) {
+  transform: scale(0.75, 0.75) perspective(2000px) rotateY(7.8deg) rotateX(30.8deg);
+}
+
+.realistic.blur-top:nth-child(2) {
+  transform: scale(0.75, 0.75) perspective(2000px) rotateY(8.4deg) rotateX(31.4deg);
+}
+
+.realistic.blur-bottom:nth-child(2) {
+  transform: scale(0.75, 0.75) perspective(2000px) rotateY(7.6deg) rotateX(30.6deg);
+}
+
+.realistic.blur1 {
+  transform: scale(0.75, 0.75) perspective(2000px) rotateY(8.4deg) rotateX(31.4deg);
+}
+
+.realistic.blur2 {
+  transform: scale(0.75, 0.75) perspective(2000px) rotateY(7.6deg) rotateX(30.6deg);
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(rgba(238, 238, 238, 0.3), rgba(238, 238, 238, 0));
+  z-index: 99;
+  pointer-events: none;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  float: left;
+  padding-left: 50%;
+  padding-top: 30px;
+}
+
+.gallery-item .thumbnail {
+  border: 5px solid #fff;
+  width: 260px;
+  height: 200px;
+}
+
+/* FOOTER NAVIGATION */
+nav {
+  background-color: #FFF;
+}
+
+nav li {
+  display: inline;
+  margin: 0;
+  padding: 0 10px;
+}
+
+nav ul {
+  display: inline;
+}
+
+.contact-btn {
+  float: right;
+}
+
+.contact-btn a {
+  position: relative;
+  cursor: pointer;
+  margin-right: 30px;
+  padding: 8px 18px;
+  border: 1px solid #204156;
+}
+
+.contact-btn a:active {
+  top: 2px;
+}
+
+nav a {
+  height: 60px;
+  line-height: 60px;
+  color: #204156;
+  text-decoration: none;
+}
