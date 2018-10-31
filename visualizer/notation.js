@@ -1,3 +1,8 @@
+//make my own class that wraps vexflow and recieves a note
+//has interface that does vx.addnote
+//
+
+
 document.addEventListener("load", function () { 
 	console.log("something is actually happening");
 	VF = Vex.Flow;

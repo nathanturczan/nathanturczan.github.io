@@ -1,51 +1,20 @@
-
-
-// decipher key up codes
-function showUp(evt) {
-    evt = (evt) ? evt : ((event) ? event : null);
-    if (evt) {
-        var text = "";
-        document.getElementById("upKey").innerHTML = evt.keyCode;
-        if (evt.charCode) {
-            document.getElementById("upChar").innerHTML = evt.charCode;
-        }
-        document.getElementById("upShift").innerHTML = 
-            evt.shiftKey? "true" : "false";
-        document.getElementById("upCtrl").innerHTML = 
-            evt.ctrlKey? "true" : "false";
-        document.getElementById("upAlt").innerHTML = 
-            evt.altKey? "true" : "false";
-        document.getElementById("upMeta").innerHTML = 
-            evt.metaKey? "true" : "false";
-        return false;
-    }
-}
-
 const scales = data["scales"]
 const startingScale = scales["c_diatonic"]
-curr_scale = "c_diatonic";
+var canvas;
+var curr_scale = "c_diatonic";
 var lastclick;
+var lastAutoPChange;
 var autopilotIsRunning = false;
 
-//var rand = myArray[Math.floor(Math.random() * data["scales"].length)];
-//console.log(scales[rand]);
-
-window.onresize = function() {
-  var w = window.innerWidth;
-  var h = window.innerHeight;  
-  canvas.size(w,h);
-  width = w;
-  height = h;
-};
+//p5 has keyReleased()
+//p5 has windowResize() -- check this out later
 
 function drawGradient() {
-  background(0);
-  noStroke();
-  var radius = windowWidth;
-  for (var r = radius; r > 0; --r) {
-    fill(map(r, 0, windowHeight, 255, 0), map(r, 0, windowHeight, 255, 0), map(r, 0, windowHeight, 255, 0));
-    ellipse(windowWidth/2, windowHeight/2, r*0.22, r*0.22);
-  }
+    background(127, 127, 127);
+    fill(255,255,255);
+    rect(0, 0, 450, 200);
+    //this sucks, use an png
+    //or use the css gradient functions
 }
 
 function setup() {
@@ -53,40 +22,42 @@ function setup() {
     canvas = createCanvas(window.innerWidth, window.innerHeight);
     drawGradient();
     pick_scale(curr_scale);
-    frameRate(30);
+    frameRate(30); //there are other ways to do timing, like setInterval()
 }
+
+//abstract the logic in here into separate classes
+//
 
 function mouseClicked() {
     lastclick = frameCount;
     autopilotIsRunning = false;
-    console.log("touch data", touch_data);
+    //console.log("touch data", touch_data);
     var key;
-  for (let i = 0; i < touch_data.length; i++){
-    if (Math.abs(mouseX - touch_data[i].x) < touch_data[i].ssize && Math.abs(mouseY - touch_data[i].y) < touch_data[i].ssize){
-        key = touch_data[i].k;
-        touch_data = [];
-        drawGradient();
-        console.log(key);
+    for (let i = 0; i < touch_data.length; i++){
+        if (Math.abs(mouseX - touch_data[i].x) < touch_data[i].ssize && Math.abs(mouseY - touch_data[i].y) < touch_data[i].ssize){
+            key = touch_data[i].k;
+            touch_data = [];
+            drawGradient();
+            console.log(key);
+        }
     }
-  }
-    
     pick_scale(key);
 }
 
-var lastAutoPChange;
+
 
 function draw() {
-    if ((frameCount - lastclick) >= 500 && autopilotIsRunning == false ) {
-        // generate random key here when autopilot is enabled
-        // var randomKey = ....
-        autopilot();
-        // once autopilot is enabled - we need a boolean to say whether its running
-        autopilotIsRunning = true;
+    // if ((frameCount - lastclick) >= 500 && autopilotIsRunning == false ) {
+    //     // generate random key here when autopilot is enabled
+    //     // var randomKey = ....
+    //     autopilot();
+    //     // once autopilot is enabled - we need a boolean to say whether its running
+    //     autopilotIsRunning = true;
         
-    }
-    else if ((frameCount - lastAutoPChange) >= 250 && autopilotIsRunning == true) {
-        autopilot();
-    }
+    // }
+    // else if ((frameCount - lastAutoPChange) >= 250 && autopilotIsRunning == true) {
+    //     autopilot();
+    // }
 }
 
 function autopilot() {
@@ -105,7 +76,9 @@ function autopilot() {
   pick_scale(r);
 }
 
-num_convert = {49 : 0, 50 : 1, 51 : 2, 52 : 3 , 53 : 4, 54 : 5};
+//make the keys navigate the same journey as the touch
+//maybe just add 49 rather than using a dictionary
+const num_convert = {49 : 0, 50 : 1, 51 : 2, 52 : 3 , 53 : 4, 54 : 5};
 
 function keyPressed()
 {
@@ -114,11 +87,9 @@ function keyPressed()
 
 }
 
-function getRandomIndex(array) {
-  return Math.floor(Math.random() * Math.floor(array.length));
-}
 
 function killswitch(){
+    //clean up this MIDI stuff later, abstract into a few functions
     function on_midi_success(midi) {
         console.log("KILLSWITCH SUCCESSFUL");
         midi.outputs.forEach(function (port, port_id) {
@@ -187,7 +158,7 @@ function pick_scale(key) {
             var superset = scales[key]["chord_subsets"];
             
 
-            var subset = superset[getRandomIndex(superset)];
+            var subset = random(superset);
             console.log(subset);
             console.log(voicings[subset]["root_transposed_to_zero"]);
             
@@ -209,6 +180,8 @@ function pick_scale(key) {
                 port.send([145, scales[key].pitch_classes[5]+72, 127]);
                 port.send([145, scales[key].pitch_classes[6]+72, 127]);
                 port.send([145, scales[key].pitch_classes[0]+84, 127]);
+
+                //.dispatchEvent(scales[key].pitch_classes);
 
                 //port.send([64, 0, 0]);
 
@@ -273,6 +246,8 @@ function polygon(x, y, radius, npoints, sClass) {
   endShape(CLOSE);
 }
 
+
+//delete this later, use p5 native hsv mode
 function hsvToRgb(h, s, v) {
   var r, g, b;
 
@@ -335,9 +310,6 @@ function drawScale(key, x, y, level, ancestors, offset) {
             }
         );
     }
-
-
-
 
     //color scheme by scale class
     polygon(x, y, shape_size, scales[key].adjacent_scales.length, scales[key].scale_class);
