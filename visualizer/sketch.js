@@ -189,10 +189,10 @@ function pick_scale(key) {
 
                 port.send([147, 0, scales[key].video_index]);
                 port.send([148, scales[key].video_index-1, 127]);
-                port.send([149, scales[key].video_index-1, 127]);
+                //port.send([149, scales[key].video_index-1, 127]);
 
-                //port.send([149, 22, 127]);
-                //port.send([149, 47, 127]);
+                port.send([149, 0, 127]);
+                port.send([149, 47, 127]);
 
             }}})
          
