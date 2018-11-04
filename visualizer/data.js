@@ -118,7 +118,7 @@ const data = {
         9,
         11
       ],
-      "scale_class": "acoustic"
+      "scale_class": "acoustic",
     },
     "a_diatonic": {
       "root": 9,

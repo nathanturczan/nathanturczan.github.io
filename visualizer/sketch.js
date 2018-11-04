@@ -11,14 +11,13 @@ var autopilotIsRunning = false;
 
 function drawGradient() {
     background(127, 127, 127);
-    fill(255,255,255);
-    rect(0, 0, 450, 200);
+    
     //this sucks, use an png
     //or use the css gradient functions
 }
 
 function setup() {
-	ellipseMode(RADIUS);
+    ellipseMode(RADIUS);
     canvas = createCanvas(window.innerWidth, window.innerHeight);
     drawGradient();
     pick_scale(curr_scale);
@@ -93,7 +92,7 @@ function killswitch(){
     function on_midi_success(midi) {
         console.log("KILLSWITCH SUCCESSFUL");
         midi.outputs.forEach(function (port, port_id) {
-            if(port.name == "IAC Driver Robot"){
+            if(port.name == "IAC Driver Robot" || port.name == "IAC Driver Robots"){
             for( let i = 0; i < 127; i++ ) {
                 port.send([144, i, 0]);
             }
@@ -124,6 +123,7 @@ function killswitch(){
 }
 
 function pick_scale(key) {
+    render_notation(key);
     index = num_convert[keyCode];
 
     if (index !== undefined && (index) < scales[key].adjacent_scales.length) {
@@ -136,7 +136,7 @@ function pick_scale(key) {
     function on_midi_success(midi) {
         console.log("MIDI connection was successful");
         midi.outputs.forEach(function (port, port_id) {
-            if(port.name == "IAC Driver Robot"){
+            if(port.name == "IAC Driver Robot" || port.name == "IAC Driver Robots" ){
             for( let i = 0; i < 127; i++ ) {
                 port.send([144, i, 0]);
             }
@@ -162,37 +162,47 @@ function pick_scale(key) {
             console.log(subset);
             console.log(voicings[subset]["root_transposed_to_zero"]);
             
-            for(let i = 0; i < 4; i++){
-                port.send([144, 60 + voicings[subset]["root_transposed_to_zero"][i], 127]);
-                port.send([145, scales[key].pitch_classes[0]+24, 127]);
-                port.send([145, scales[key].pitch_classes[0]+36, 127]);
-                port.send([145, scales[key].pitch_classes[0]+48, 127]);
-                port.send([145, scales[key].pitch_classes[4]+48, 127]);
-                port.send([145, scales[key].pitch_classes[0]+60, 127]);
-                port.send([145, scales[key].pitch_classes[2]+60, 127]);
-                port.send([145, scales[key].pitch_classes[4]+60, 127]);
-                port.send([145, scales[key].pitch_classes[6]+60, 127]);
-                port.send([145, scales[key].pitch_classes[0]+72, 127]);
-                port.send([145, scales[key].pitch_classes[1]+72, 127]);
-                port.send([145, scales[key].pitch_classes[2]+72, 127]);
-                port.send([145, scales[key].pitch_classes[3]+72, 127]);
-                port.send([145, scales[key].pitch_classes[4]+72, 127]);
-                port.send([145, scales[key].pitch_classes[5]+72, 127]);
-                port.send([145, scales[key].pitch_classes[6]+72, 127]);
-                port.send([145, scales[key].pitch_classes[0]+84, 127]);
+            for(let i = 0; i < 5; i++){
+                
+                port.send([144, 0, 127]);
+                port.send([144, 47, 127]);
+                //video_indexer
 
-                //.dispatchEvent(scales[key].pitch_classes);
+
+                //port.send([146, scales[key].video_index-1, 127]);
+                //console.log("vidoeindex:", scales[key].video_index-1);
+
+                //bass
+                //port.send([145, scales[key].root+48, 127]);
+
+                //port.send([147, 60 + voicings[subset]["root_transposed_to_zero"][i], 127]);
+                //port.send([145, scales[key].pitch_classes[0]+24, 127]);
+                //port.send([145, scales[key].pitch_classes[0]+36, 127]);
+                //port.send([145, scales[key].pitch_classes[0]+48, 127]);
+                //port.send([145, scales[key].pitch_classes[4]+48, 127]);
+                //port.send([145, scales[key].pitch_classes[0]+60, 127]);
+                //port.send([145, scales[key].pitch_classes[2]+60, 127]);
+                //port.send([145, scales[key].pitch_classes[4]+60, 127]);
+                //port.send([145, scales[key].pitch_classes[6]+60, 127]);
+                //port.send([145, scales[key].pitch_classes[0]+72, 127]);
+                //port.send([145, scales[key].pitch_classes[1]+72, 127]);
+                //port.send([145, scales[key].pitch_classes[2]+72, 127]);
+                //port.send([145, scales[key].pitch_classes[3]+72, 127]);
+                //port.send([145, scales[key].pitch_classes[4]+72, 127]);
+                //port.send([145, scales[key].pitch_classes[5]+72, 127]);
+                //port.send([145, scales[key].pitch_classes[6]+72, 127]);
+                //port.send([145, scales[key].pitch_classes[0]+84, 127]);
 
                 //port.send([64, 0, 0]);
 
-                port.send([146, scales[key].root+48, 127]);
+                
 
-                port.send([147, 0, scales[key].video_index]);
-                port.send([148, scales[key].video_index-1, 127]);
-                //port.send([149, scales[key].video_index-1, 127]);
+                
+                //port.send([148, scales[key].video_index-1, 127]);
+                
 
-                port.send([149, 0, 127]);
-                port.send([149, 47, 127]);
+                //port.send([149, 22, 127]);
+                //port.send([149, 47, 127]);
 
             }}})
          
@@ -315,9 +325,14 @@ function drawScale(key, x, y, level, ancestors, offset) {
     polygon(x, y, shape_size, scales[key].adjacent_scales.length, scales[key].scale_class);
   
     stroke(0);
+    fill(0,0,0);
+    const font_size_1 = 32/level;
+    textSize(font_size_1);
+    text(note_names[scales[key].root], x-(9 / level)-1, y-1);
+    text(scales[key].scale_class, x-(54 / level)-1, y+(33 / level)-1); //print out scale class
     fill(255,255,255);
-    const font_size = 30/level;
-    textSize(font_size);
+    const font_size_2 = 30/level;
+    textSize(font_size_2);
     text(note_names[scales[key].root], x-(9 / level), y);
     //use symbols instead of printing out EVERYTHING
     //text()
@@ -360,4 +375,3 @@ function drawScale(key, x, y, level, ancestors, offset) {
         stroke(hsvToRgb(map(scales[key].root, 11, 0, 0, 1), map(scales[key].root, 0, 11, 0.5, 1), map(level, 0, 4, 1, 0.4)));
     }
 }
-
