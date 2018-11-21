@@ -38,7 +38,7 @@ render_notation = function (key) {
 	renderer.resize(500, 500);
 
 	
-	console.log("is this working?", scales[key].pitch_classes)
+	//console.log("is this working?", scales[key].pitch_classes)
 	// Create an SVG renderer and attach it to the DIV element named "boo".
 	
 
@@ -48,8 +48,7 @@ render_notation = function (key) {
 	context.setFont("Arial", 10, "");
 	
 
-	context.rect(0, 0, 450, 200, { stroke: 'none', fill: 'white' });
-	context.rect(-450, 0, 450, 200, { stroke: 'none', fill: 'white' });
+	//context.rect(0, 0, 450, 200, { stroke: 'none', fill: 'white' });
 	// Create a stave of width 400 at position 10, 40 on the canvas.
 	var stave = new VF.Stave(10, 40, 600);
 	//stave.setStyle({fillStyle: "white", strokeStyle: "white"});
@@ -85,7 +84,7 @@ render_notation = function (key) {
 			var inflection = match_obj[2];
 			var octavation = match_obj[3];
 
-			console.log("base_note_name:", base_note_name, "inflection:", inflection, "octavation:", octavation);
+			//console.log("base_note_name:", base_note_name, "inflection:", inflection, "octavation:", octavation);
 			notes.push(new VF.StaveNote({clef: "treble", keys: [base_note_name + convert_octavation[octavation]], duration: "q" }).
 				addAccidental(0, new VF.Accidental(convert_inflection[inflection])));
 			

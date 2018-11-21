@@ -374,7 +374,7 @@ const data = {
         9,
         11
       ],
-      "scale_class": "harmonic_major"
+      "scale_class": "harmonic major"
     },
     "a_harmonic_minor": {
       "root": 9,
@@ -485,7 +485,7 @@ const data = {
         9,
         11
       ],
-      "scale_class": "harmonic_minor"
+      "scale_class": "harmonic minor"
     },
     "as_acoustic": {
       "root": 10,
@@ -861,7 +861,7 @@ const data = {
         9,
         10
       ],
-      "scale_class": "harmonic_major"
+      "scale_class": "harmonic major"
     },
     "as_harmonic_minor": {
       "root": 10,
@@ -972,7 +972,7 @@ const data = {
         9,
         10
       ],
-      "scale_class": "harmonic_minor"
+      "scale_class": "harmonic minor"
     },
     "b_acoustic": {
       "root": 11,
@@ -1348,7 +1348,7 @@ const data = {
         10,
         11
       ],
-      "scale_class": "harmonic_major"
+      "scale_class": "harmonic major"
     },
     "b_harmonic_minor": {
       "root": 11,
@@ -1459,7 +1459,7 @@ const data = {
         10,
         11
       ],
-      "scale_class": "harmonic_minor"
+      "scale_class": "harmonic minor"
     },
     "c_acoustic": {
       "root": 0,
@@ -1835,7 +1835,7 @@ const data = {
         8,
         11
       ],
-      "scale_class": "harmonic_major"
+      "scale_class": "harmonic major"
     },
     "c_harmonic_minor": {
       "root": 0,
@@ -1946,7 +1946,7 @@ const data = {
         8,
         11
       ],
-      "scale_class": "harmonic_minor"
+      "scale_class": "harmonic minor"
     },
     "cs_acoustic": {
       "root": 1,
@@ -2322,7 +2322,7 @@ const data = {
         8,
         9
       ],
-      "scale_class": "harmonic_major"
+      "scale_class": "harmonic major"
     },
     "cs_harmonic_minor": {
       "root": 1,
@@ -2433,7 +2433,7 @@ const data = {
         8,
         9
       ],
-      "scale_class": "harmonic_minor"
+      "scale_class": "harmonic minor"
     },
     "d_acoustic": {
       "root": 2,
@@ -2809,7 +2809,7 @@ const data = {
         9,
         10
       ],
-      "scale_class": "harmonic_major"
+      "scale_class": "harmonic major"
     },
     "d_harmonic_minor": {
       "root": 2,
@@ -2920,7 +2920,7 @@ const data = {
         9,
         10
       ],
-      "scale_class": "harmonic_minor"
+      "scale_class": "harmonic minor"
     },
     "ds_acoustic": {
       "root": 3,
@@ -3296,7 +3296,7 @@ const data = {
         10,
         11
       ],
-      "scale_class": "harmonic_major"
+      "scale_class": "harmonic major"
     },
     "ds_harmonic_minor": {
       "root": 3,
@@ -3407,7 +3407,7 @@ const data = {
         10,
         11
       ],
-      "scale_class": "harmonic_minor"
+      "scale_class": "harmonic minor"
     },
     "e_acoustic": {
       "root": 4,
@@ -3783,7 +3783,7 @@ const data = {
         9,
         11
       ],
-      "scale_class": "harmonic_major"
+      "scale_class": "harmonic major"
     },
     "e_harmonic_minor": {
       "root": 4,
@@ -3894,7 +3894,7 @@ const data = {
         9,
         11
       ],
-      "scale_class": "harmonic_minor"
+      "scale_class": "harmonic minor"
     },
     "f_acoustic": {
       "root": 5,
@@ -4270,7 +4270,7 @@ const data = {
         9,
         10
       ],
-      "scale_class": "harmonic_major"
+      "scale_class": "harmonic major"
     },
     "f_harmonic_minor": {
       "root": 5,
@@ -4381,7 +4381,7 @@ const data = {
         8,
         10
       ],
-      "scale_class": "harmonic_minor"
+      "scale_class": "harmonic minor"
     },
     "fs_acoustic": {
       "root": 6,
@@ -4757,7 +4757,7 @@ const data = {
         10,
         11
       ],
-      "scale_class": "harmonic_major"
+      "scale_class": "harmonic major"
     },
     "fs_harmonic_minor": {
       "root": 6,
@@ -4868,7 +4868,7 @@ const data = {
         9,
         11
       ],
-      "scale_class": "harmonic_minor"
+      "scale_class": "harmonic minor"
     },
     "g_acoustic": {
       "root": 7,
@@ -5244,7 +5244,7 @@ const data = {
         9,
         11
       ],
-      "scale_class": "harmonic_major"
+      "scale_class": "harmonic major"
     },
     "g_harmonic_minor": {
       "root": 7,
@@ -5355,7 +5355,7 @@ const data = {
         9,
         10
       ],
-      "scale_class": "harmonic_minor"
+      "scale_class": "harmonic minor"
     },
     "gs_acoustic": {
       "root": 8,
@@ -5731,7 +5731,7 @@ const data = {
         8,
         10
       ],
-      "scale_class": "harmonic_major"
+      "scale_class": "harmonic major"
     },
     "gs_harmonic_minor": {
       "root": 8,
@@ -5842,7 +5842,7 @@ const data = {
         10,
         11
       ],
-      "scale_class": "harmonic_minor"
+      "scale_class": "harmonic minor"
     }
   }
 }
