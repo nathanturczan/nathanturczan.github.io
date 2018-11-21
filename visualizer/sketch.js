@@ -1,3 +1,4 @@
+
 const scales = data["scales"]
 const startingScale = scales["c_diatonic"]
 var canvas;
@@ -6,11 +7,13 @@ var lastclick;
 var lastAutoPChange;
 var autopilotIsRunning = false;
 
+
+
 //p5 has keyReleased()
 //p5 has windowResize() -- check this out later
 
 function drawGradient() {
-    background(127, 127, 127);
+    background(233);
     
     //this sucks, use an png
     //or use the css gradient functions
@@ -92,7 +95,7 @@ function killswitch(){
     function on_midi_success(midi) {
         console.log("KILLSWITCH SUCCESSFUL");
         midi.outputs.forEach(function (port, port_id) {
-            if(port.name == "IAC Driver Robot" || port.name == "IAC Driver Robots"){
+            if(port.name == "IAC Driver INTERSTICES"){
             for( let i = 0; i < 127; i++ ) {
                 port.send([144, i, 0]);
             }
@@ -122,6 +125,8 @@ function killswitch(){
 
 }
 
+
+
 function pick_scale(key) {
     render_notation(key);
     index = num_convert[keyCode];
@@ -136,7 +141,7 @@ function pick_scale(key) {
     function on_midi_success(midi) {
         console.log("MIDI connection was successful");
         midi.outputs.forEach(function (port, port_id) {
-            if(port.name == "IAC Driver Robot" || port.name == "IAC Driver Robots" ){
+            if(port.name == "IAC Driver INTERSTICES"){
             for( let i = 0; i < 127; i++ ) {
                 port.send([144, i, 0]);
             }
@@ -160,51 +165,14 @@ function pick_scale(key) {
 
             var subset = random(superset);
             console.log(subset);
-            console.log(voicings[subset]["root_transposed_to_zero"]);
-            
             for(let i = 0; i < 5; i++){
+                new_chord = voicings[subset]["root_transposed_to_zero"][i];
+                port.send([144, 60 + new_chord, 127]);
                 
-                port.send([144, 0, 127]);
-                port.send([144, 47, 127]);
-                //video_indexer
-
-
-                //port.send([146, scales[key].video_index-1, 127]);
-                //console.log("vidoeindex:", scales[key].video_index-1);
-
-                //bass
-                //port.send([145, scales[key].root+48, 127]);
-
-                //port.send([147, 60 + voicings[subset]["root_transposed_to_zero"][i], 127]);
-                //port.send([145, scales[key].pitch_classes[0]+24, 127]);
-                //port.send([145, scales[key].pitch_classes[0]+36, 127]);
-                //port.send([145, scales[key].pitch_classes[0]+48, 127]);
-                //port.send([145, scales[key].pitch_classes[4]+48, 127]);
-                //port.send([145, scales[key].pitch_classes[0]+60, 127]);
-                //port.send([145, scales[key].pitch_classes[2]+60, 127]);
-                //port.send([145, scales[key].pitch_classes[4]+60, 127]);
-                //port.send([145, scales[key].pitch_classes[6]+60, 127]);
-                //port.send([145, scales[key].pitch_classes[0]+72, 127]);
-                //port.send([145, scales[key].pitch_classes[1]+72, 127]);
-                //port.send([145, scales[key].pitch_classes[2]+72, 127]);
-                //port.send([145, scales[key].pitch_classes[3]+72, 127]);
-                //port.send([145, scales[key].pitch_classes[4]+72, 127]);
-                //port.send([145, scales[key].pitch_classes[5]+72, 127]);
-                //port.send([145, scales[key].pitch_classes[6]+72, 127]);
-                //port.send([145, scales[key].pitch_classes[0]+84, 127]);
-
-                //port.send([64, 0, 0]);
-
-                
-
-                
-                //port.send([148, scales[key].video_index-1, 127]);
-                
-
-                //port.send([149, 22, 127]);
-                //port.send([149, 47, 127]);
-
-            }}})
+            }
+            //console.log(voicings[subset]);
+        }
+    })
          
             
     }
@@ -217,6 +185,7 @@ function pick_scale(key) {
 }
 
 function polygon(x, y, radius, npoints, sClass) {
+    noStroke();
   angle = TWO_PI / npoints;
   beginShape();
   for ( let a = 0; a < TWO_PI; a += angle) {
@@ -238,13 +207,13 @@ function polygon(x, y, radius, npoints, sClass) {
             vertex(x-radius, y-radius*0.5);
             vertex(x+radius, y-radius*0.5);
         }
-        if (sClass == "harmonic_major"){
+        if (sClass == "harmonic major"){
             vertex(x+radius, y+radius*0.25);
             vertex(x-radius, y+radius*1.25);
             vertex(x-radius, y-radius*0.25);
             vertex(x+radius, y-radius*1.75);
         }
-        if (sClass == "harmonic_minor"){
+        if (sClass == "harmonic minor"){
             vertex(x+radius, y+radius*1.25);
             vertex(x-radius, y+radius*0.25);
             vertex(x-radius, y-radius*1.75);
@@ -281,7 +250,7 @@ function hsvToRgb(h, s, v) {
 
 
 
-var note_names = ["c", "c#", "d", "e♭", "e", "f", "f#", "g", "g#", "a", "b♭", "b"];
+var note_names = ["C", "D♭", "D", "E♭", "E", "F", "F#", "G", "A♭", "A", "B♭", "B"];
 
 //keep tally of wha's been printed so far
 const nodes_visited = {};
@@ -291,14 +260,17 @@ var touch_data = [];
 //pass angle into recersive function
 function drawScale(key, x, y, level, ancestors, offset) {
     //function drawscale(key, x, y, level, angle)
-    //copy the array so that we dont modify the original with recucursion 
-     ancestors = ancestors.slice();
+    //copy the array so that we dont modify the original with recursion
+    ancestors = ancestors.slice();
     //add it to the ancestors array
     ancestors.push(key);
     
 
-    fill(hsvToRgb(map(scales[key].root, 11, 0, 0, 1), map(scales[key].root, 0, 11, 0.5, 1), map(level, 0, 4, 1, 0.2)));
-    const shape_size = (windowHeight*(0.1111) / level);
+    fill(hsvToRgb(map((scales[key].root*7)%12, 11, 0, 0, 1), 
+        map((scales[key].root*7)%12, 0, 11, 0.1, 0.2), 
+        1));
+
+    const shape_size = (windowHeight*(0.15) / level);
 
     //all of the babie
     let filt_adjacent_scales = scales[key].adjacent_scales;
@@ -327,10 +299,10 @@ function drawScale(key, x, y, level, ancestors, offset) {
     stroke(0);
     fill(0,0,0);
     const font_size_1 = 32/level;
-    textSize(font_size_1);
-    text(note_names[scales[key].root], x-(9 / level)-1, y-1);
-    text(scales[key].scale_class, x-(54 / level)-1, y+(33 / level)-1); //print out scale class
-    fill(255,255,255);
+    //textSize(font_size_1);
+    //text(note_names[scales[key].root], x-(9 / level)-1, y-1);
+    //text(scales[key].scale_class, x-(54 / level)-1, y+(33 / level)-1); //print out scale class
+    fill(80,80,80);
     const font_size_2 = 30/level;
     textSize(font_size_2);
     text(note_names[scales[key].root], x-(9 / level), y);
@@ -344,6 +316,7 @@ function drawScale(key, x, y, level, ancestors, offset) {
     }
 
     for( let i = 0; i < filt_adjacent_scales.length; i++ ) {
+
 
         var angle;
         let divisor = pow(2, level);
@@ -363,15 +336,15 @@ function drawScale(key, x, y, level, ancestors, offset) {
         if (level > 1 ){
             // angle = angle + theta;
         }
-        let newX = x + sin(angle+TWO_PI) * ((windowWidth*0.25) / level ) ;
-        let newY = y + cos(angle+TWO_PI) * ((windowHeight*0.25) / level ) ;
+        let newX = x + sin(angle+TWO_PI) * ((windowWidth*0.27) / level ) ;
+        let newY = y + cos(angle+TWO_PI) * ((windowHeight*0.27) / level ) ;
         //rotate(cos(TWO_PI/adjacent_scales.length));
+
+        
 
         drawScale(filt_adjacent_scales[i], newX, newY, level + 1, ancestors, angle);
 
 
-        stroke(hsvToRgb(map(scales[key].root, 11, 0, 0, 1), map(scales[key].root, 0, 11, 0.5, 1), map(level, 0, 4, 1, 0.4)));
-        line(x, y, newX, newY);
-        stroke(hsvToRgb(map(scales[key].root, 11, 0, 0, 1), map(scales[key].root, 0, 11, 0.5, 1), map(level, 0, 4, 1, 0.4)));
+        
     }
 }
