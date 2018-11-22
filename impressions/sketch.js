@@ -3,13 +3,13 @@ var img;
 function preload()
 {
   // load image
-  img = loadImage("glad.jpg");
+  img = loadImage("assets/01.jpg");
 }
  
 function setup() 
 {
   // set canvas size
-  createCanvas(400, 250); 
+  fullscreen(); 
 }
  
 function draw() 
