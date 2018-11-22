@@ -1,16 +1,241 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>Network Impressions</title>
-    <meta name="viewport" width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {box-sizing: border-box}
+body {font-family: Verdana, sans-serif; margin:0}
+.mySlides {display: none}
+img {vertical-align: middle;}
 
-    <style> body {padding: 0; margin: 0;} </style>
-    <script language="javascript" type="text/javascript" src="libraries/p5.js"></script>
-    <script language="javascript" src="libraries/p5.dom.js"></script>
-    <script language="javascript" src="libraries/p5.sound.js"></script>
-    <script language="javascript" type="text/javascript" src="sketch.js"></script>
-  </head>
-  <body>
-  </body>
-</html>
+/* Slideshow container */
+.slideshow-container {
+  max-width: 100%;
+  position: relative;
+  margin: auto;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+  color: 255;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: 255;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+
+
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .prev, .next,.text {font-size: 11px}
+}
+</style>
+</head>
+<body>
+
+<div class="slideshow-container">
+
+<div class="mySlides fade">
+  <div class="numbertext">1 / 16</div>
+  <img src="assets/01.jpg" style="width:100%">
+  <div class="text">C diatonic</div>
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">2 / 16</div>
+  <img src="assets/02.jpg" style="width:100%">
+  <div class="text">F diatonic</div>
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">3 / 16</div>
+  <img src="assets/03.jpg" style="width:100%">
+  <div class="text">B♭ acoustic</div>
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">4 / 16</div>
+  <img src="assets/04.jpg" style="width:100%">
+  <div class="text">C harmonic major</div>
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">5 / 16</div>
+  <img src="assets/05.jpg" style="width:100%">
+  <div class="text">C harmonic minor</div>
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">6 / 16</div>
+  <img src="assets/06.jpg" style="width:100%">
+  <div class="text">F acoustic</div>
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">7 / 16</div>
+  <img src="assets/07.jpg" style="width:100%">
+  <div class="text">G harmonic major</div>
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">8 / 16</div>
+  <img src="assets/08.jpg" style="width:100%">
+  <div class="text">G diatonic</div>
+</div>
+<div class="mySlides fade">
+  <div class="numbertext">9 / 16</div>
+  <img src="assets/09.jpg" style="width:100%">
+  <div class="text">E harmonic minor</div>
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">10 / 3</div>
+  <img src="assets/10.jpg" style="width:100%">
+  <div class="text">A acoustic</div>
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">11 / 16</div>
+  <img src="assets/11.jpg" style="width:100%">
+  <div class="text">D diatonic</div>
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">12 / 16</div>
+  <img src="assets/12.jpg" style="width:100%">
+  <div class="text">G acoustic</div>
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">13 / 16</div>
+  <img src="assets/13.jpg" style="width:100%">
+  <div class="text">D harmonic minor</div>
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">14 / 16</div>
+  <img src="assets/14.jpg" style="width:100%">
+  <div class="text">D harmonic major</div>
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">15 / 16</div>
+  <img src="assets/15.jpg" style="width:100%">
+  <div class="text">B harmonic minor</div>
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">16 / 16</div>
+  <img src="assets/16.jpg" style="width:100%">
+  <div class="text">E acoustic</div>
+</div>
+
+
+<input type="text" id="forward">
+
+<br>
+
+
+<script>
+num_convert = {
+  1 : 48, 
+  2 : 53, 
+  3 : 46, 
+  4 : 48, 
+  5 : 48, 
+  6 : 53, 
+  7 : 43, 
+  8 : 43, 
+  9 : 52, 
+  10 : 45, 
+  11 : 50, 
+  12 : 43, 
+  13 : 50, 
+  14 : 50, 
+  15 : 47, 
+  16 : 52};
+
+var slideIndex = 1;
+showSlides(slideIndex);
+
+document.getElementById("forward").onkeypress = function() {plusSlides(1)};
+
+function plusSlides(n) {
+    showSlides(slideIndex += n);
+    function on_midi_success(midi) {
+        
+        midi.outputs.forEach(function (port, port_id) {
+            if(port.name == "IAC Driver INTERSTICES"){
+              console.log("MIDI connection was successful");
+              for( let i = 0; i < 127; i++ ) {
+                port.send([145, i, 0]);
+              }
+              port.send([145, num_convert[slideIndex], 127]);
+              console.log(slideIndex, num_convert[slideIndex]);
+          }
+      })       
+    }
+    function on_midi_failure(error_code) {
+        console.error("Could not connect to MIDI: error code " + error_code);
+    }
+    navigator.requestMIDIAccess().then(on_midi_success, on_midi_failure);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  if (n > slides.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";  
+  }
+
+  slides[slideIndex-1].style.display = "block";  
+}
+</script>
+
+</body>
+</html> 
