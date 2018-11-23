@@ -165,7 +165,7 @@ function pick_scale(key) {
 
             var subset = random(superset);
             console.log(subset);
-            for(let i = 0; i < 5; i++){
+            for(let i = 0; i < voicings[subset]["root_transposed_to_zero"].length; i++){
                 new_chord = voicings[subset]["root_transposed_to_zero"][i];
                 port.send([144, 60 + new_chord, 127]);
                 
