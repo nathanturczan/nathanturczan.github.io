@@ -75,6 +75,12 @@ img {vertical-align: middle;}
 <div class="slideshow-container">
 
 <div class="mySlides fade">
+  <div class="numbertext">0 / 16</div>
+  <img src="assets/00.jpg" style="width:100%">
+  <div class="text">get ready!</div>
+</div>
+
+<div class="mySlides fade">
   <div class="numbertext">1 / 16</div>
   <img src="assets/01.jpg" style="width:100%">
   <div class="text">C diatonic</div>
@@ -177,6 +183,7 @@ img {vertical-align: middle;}
 
 <script>
 num_convert = {
+  0 : 0,
   1 : 48, 
   2 : 53, 
   3 : 46, 
@@ -227,8 +234,8 @@ function currentSlide(n) {
 function showSlides(n) {
   var i;
   var slides = document.getElementsByClassName("mySlides");
-  if (n > slides.length) {slideIndex = 1}    
-  if (n < 1) {slideIndex = slides.length}
+  if (n > slides.length) {slideIndex = 0}    
+  if (n < 0) {slideIndex = slides.length}
   for (i = 0; i < slides.length; i++) {
       slides[i].style.display = "none";  
   }
