@@ -214,10 +214,16 @@ function plusSlides(n) {
             if(port.name == "IAC Driver INTERSTICES"){
               console.log("MIDI connection was successful");
               for( let i = 0; i < 127; i++ ) {
+                port.send([144, i, 0]);
+              }
+              port.send([144, num_convert[slideIndex-1], 127]);
+              console.log(slideIndex, num_convert[slideIndex]);
+
+              for( let i = 0; i < 127; i++ ) {
                 port.send([145, i, 0]);
               }
-              port.send([145, num_convert[slideIndex], 127]);
-              console.log(slideIndex, num_convert[slideIndex]);
+              port.send([145, slideIndex-1, 127]);
+              console.log(slideIndex-1);
           }
       })       
     }
