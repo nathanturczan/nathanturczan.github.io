@@ -40,7 +40,6 @@ function mouseClicked() {
             key = touch_data[i].k;
             touch_data = [];
             drawGradient();
-            console.log(key);
         }
     }
     pick_scale(key);
@@ -89,43 +88,104 @@ function keyPressed()
 
 }
 
+var midi;
+function on_midi_success(arg_midi) {
+    console.log("MIDI connection was successful");
+    midi = arg_midi;
+}
+
+
+function on_midi_failure(error_code) {
+    console.error("Could not connect to MIDI: error code " + error_code);
+}
+
+navigator.requestMIDIAccess().then(on_midi_success, on_midi_failure);
+
 
 function killswitch(){
     //clean up this MIDI stuff later, abstract into a few functions
-    function on_midi_success(midi) {
-        console.log("KILLSWITCH SUCCESSFUL");
-        midi.outputs.forEach(function (port, port_id) {
-            if(port.name == "IAC Driver INTERSTICES"){
-            for( let i = 0; i < 127; i++ ) {
-                port.send([144, i, 0]);
-            }
-            for( let i = 0; i < 127; i++ ) {
-                port.send([145, i, 0]);
-            }
-            for( let i = 0; i < 127; i++ ) {
-                port.send([146, i, 0]);
-            }
-            for( let i = 0; i < 127; i++ ) {
-                port.send([147, i, 0]);
-            }
-            for( let i = 0; i < 127; i++ ) {
-                port.send([148, i, 0]);
-            }
-            for( let i = 0; i < 127; i++ ) {
-                port.send([149, i, 0]);
+    console.log("KILLSWITCH SUCCESSFUL");
+    if (!midi) {
+        return;
+    }
+    midi.outputs.forEach(function (port, port_id) {
+        if (port.name !== "IAC Driver INTERSTICES"){
+            return;
+        }
+        for( let i = 0; i < 127; i++ ) {
+            port.send([144, i, 0]);
+        }
+    });
+}
+
+// function takes chord A and chord br
+// returns true or false whether or not transition is OK
+
+function mod(a,b){
+    return((a%b)+b)%b;
+}
+
+var jazz_filtering_enabled = true;
+
+function randomize_jazz_filter() {
+    jazz_filtering_enabled = Math.random() > 0.5;
+}
+
+function is_valid_jazz_chord_progression(current_chord, next_chord){
+    if (!jazz_filtering_enabled){
+        return true
+    }
+
+    var root_interval =  Math.abs(mod((voicings[next_chord]["root"]-voicings[current_chord]["root"]+6), 12)-6);
+    
+    return root_interval === 0 || root_interval === 5;
+
+    var current_position = metadata[voicings[current_chord].chord_type].position;
+    var next_position = metadata[voicings[next_chord].chord_type].position;
+
+    if (root_interval <= 2) {
+        // root movements by whole-steps, half-steps or unison
+        return current_position === next_position;
+    }
+    if (root_interval === 3 || root_interval === 4) {
+        // root movements by minor thirds/ sixths, major thirds / sixths
+        return true;
+    }
+    if (root_interval === 5) {
+        // root movements by fourths or fifths
+        return current_position !== next_position;
+    }
+    if (root_interval === 6) {
+        // root movement by tritones, not allowed!!
+        return false;
+    }
+}
+
+var voice_leading_threshold = 6;
+function score_smooth_voice_leading(current_chord, next_chord){
+    var current_pitches = voicings[current_chord]["root_transposed_to_zero"];
+    var next_pitches = voicings[next_chord]["root_transposed_to_zero"];
+
+    var fitness_score = 0;
+    current_pitches.forEach(function(pitch, index) {
+        for(let interval = -2; interval <= 2; interval++){
+            if (next_pitches.indexOf(pitch + interval) !== -1) {
+                if (interval === 0) {
+                    fitness_score += 0.5;
+                } else {
+                    fitness_score += 1;
+                }
+                if (Math.max.apply(null, current_pitches) === pitch) {
+                    fitness_score += 2;
+                }
+                return;
             }
         }
     })
-}
-    function on_midi_failure(error_code) {
-        console.error("Could not connect to MIDI: error code " + error_code);
-    }
-
-    navigator.requestMIDIAccess().then(on_midi_success, on_midi_failure);
-
+    return fitness_score;
 }
 
-
+var last_chord_name = 'c_13#9-110';
 
 function pick_scale(key) {
     render_notation(key);
@@ -138,50 +198,57 @@ function pick_scale(key) {
     
     drawScale(key, windowWidth / 2, windowHeight / 2, 1, [], -1);
 
-    function on_midi_success(midi) {
-        console.log("MIDI connection was successful");
-        midi.outputs.forEach(function (port, port_id) {
-            if(port.name == "IAC Driver INTERSTICES"){
-            for( let i = 0; i < 127; i++ ) {
-                port.send([144, i, 0]);
-            }
-            for( let i = 0; i < 127; i++ ) {
-                port.send([145, i, 0]);
-            }
-            for( let i = 0; i < 127; i++ ) {
-                port.send([146, i, 0]);
-            }
-            for( let i = 0; i < 127; i++ ) {
-                port.send([147, i, 0]);
-            }
-            for( let i = 0; i < 127; i++ ) {
-                port.send([148, i, 0]);
-            }
-            for( let i = 0; i < 127; i++ ) {
-                port.send([149, i, 0]);
-            }
-            var superset = scales[key]["chord_subsets"];
-            
+    if (!midi) {
+        return;
+    }
 
-            var subset = random(superset);
-            console.log(subset);
-            for(let i = 0; i < voicings[subset]["root_transposed_to_zero"].length; i++){
-                new_chord = voicings[subset]["root_transposed_to_zero"][i];
-                port.send([144, 60 + new_chord, 127]);
-                
-            }
-            //console.log(voicings[subset]);
+    midi.outputs.forEach(function (port, port_id) {
+        if(port.name !== "IAC Driver INTERSTICES"){
+            return; // guard clause
         }
-    })
-         
+        for( let i = 0; i < 127; i++ ) {
+            port.send([144, i, 0]);
+        }
+        // uncomment this to disable scale network!
+
+        //var chord_candidates = Object.keys(voicings);
+        var chord_candidates = scales[key]["chord_subsets"];
+        var before_chord_candidates_count = chord_candidates.length;
+
+        // filter chord candidates JAZZ STYLE
+        chord_candidates = chord_candidates.filter(function(candidate){
+            return is_valid_jazz_chord_progression(last_chord_name, candidate);
+        });
+
+        chord_candidates = chord_candidates.sort(function (a, b) {
+            var score_a = score_smooth_voice_leading(last_chord_name, a);
+            var score_b = score_smooth_voice_leading(last_chord_name, b);
+            if (score_a === score_b) {
+                return 0;
+            } else if (score_a < score_b) {
+                return -1;
+            } else if (score_a > score_b) {
+                return 1;
+            }
+        });
+
+        var after_chord_candidates = chord_candidates.length;
+        // console.log("before:", before_chord_candidates_count, "after:", after_chord_candidates);
+        // console.log(chord_candidates)
+        var current_chord_name = random(chord_candidates.slice(2));
+        console.log("score:", score_smooth_voice_leading(last_chord_name, current_chord_name));
+        var current_chord = voicings[current_chord_name];
+        last_chord_name = current_chord_name;
+
+        console.log(current_chord_name);
+        for(let i = 0; i < current_chord["root_transposed_to_zero"].length; i++){
+            random_chord_notes = current_chord["root_transposed_to_zero"][i];
+            port.send([144, Math.min(60 + random_chord_notes, 127), 127]);
             
-    }
+        }
+        console.log(current_chord["root_transposed_to_zero"]);
 
-    function on_midi_failure(error_code) {
-        console.error("Could not connect to MIDI: error code " + error_code);
-    }
-
-    navigator.requestMIDIAccess().then(on_midi_success, on_midi_failure);
+    });
 }
 
 function polygon(x, y, radius, npoints, sClass) {
