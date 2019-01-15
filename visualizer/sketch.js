@@ -200,6 +200,8 @@ var slice_size = 1;
 
 var last_chord_name = 'b_13#9-110';
 
+var note_names = ["C", "D♭", "D", "E♭", "E", "F", "F#", "G", "A♭", "A", "B♭", "B"];
+
 function pick_scale(key) {
     render_notation(key);
     index = num_convert[keyCode];
@@ -266,7 +268,21 @@ function pick_scale(key) {
         var current_chord = voicings[current_chord_name];
         last_chord_name = current_chord_name;
         port.send([145, current_chord["root"]+48, 127]);
-        console.log(current_chord_name);
+        var newStr = current_chord["chord_type"].replace('_', '');
+        newStr = newStr.replace(/-.*$/,"");
+        //var newStr = current_chord["chord_type"].replace('-\?(.*)', '');
+        document.getElementById("chord_name").innerHTML = note_names[current_chord["root"]]+" "+newStr;
+        document.getElementById("chord_name").style.fontSize='25px';
+
+        
+        // supersets_array = []
+        // for(let i = 0; i < current_chord["scale_supersets"].length; i++){
+        //     superset_root = scales[current_chord["scale_supersets"][i]].root;
+        //     superset_scale_class = scales[current_chord["scale_supersets"][i]].scale_class;
+        //     supersets.push(superset_root+" "+superset_scale_class);
+        // }
+        document.getElementById('supersets').innerHTML = current_chord["scale_supersets"].join('<br>');
+
         for(let i = 0; i < current_chord["root_transposed_to_zero"].length; i++){
             random_chord_notes = current_chord["root_transposed_to_zero"][i];
             port.send([144, Math.min(60 + random_chord_notes, 127), 127]);
@@ -340,10 +356,6 @@ function hsvToRgb(h, s, v) {
 
   return [ r * 255, g * 255, b * 255 ];
 }
-
-
-
-var note_names = ["C", "D♭", "D", "E♭", "E", "F", "F#", "G", "A♭", "A", "B♭", "B"];
 
 //keep tally of wha's been printed so far
 const nodes_visited = {};
