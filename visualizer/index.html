@@ -11,7 +11,7 @@
     
     <script language="javascript" type="text/javascript" src="libraries/p5.js"></script>
     <script language="javascript" src="libraries/p5.dom.js"></script>
-    <script language="javascript" src="libraries/p5.sound.js"></script>
+    <!-- <script language="javascript" src="libraries/p5.sound.js"></script> -->
 
     <script language="javascript" type="text/javascript" src="vexflow-debug.js"></script>
     <script language="javascript" type="text/javascript" src="videoSwitchIndex.js"></script>
@@ -38,21 +38,22 @@ body {margin:0;}
   text-decoration: none;
   display: inline-block;
   font-size: 1;
+  width: 100%;
 }
 
 .navbar {
   overflow: hidden;
-  background-color: #333;
+  background-color: #efefef;
   position: fixed;
   bottom: 0;
-  width: 100%;
-  height: 4%;
+  width: 18%;
+  height: 40%;
 }
 
 .navbar a {
   float: right;
   display: block;
-  color: #f2f2f2;
+  color: #efefef;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
@@ -70,6 +71,40 @@ body {margin:0;}
 }
 
 
+.slidecontainer {
+  width: 100%;
+}
+
+.VLslider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 25px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.VLslider:hover {
+  opacity: 1;
+}
+
+.VLslider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  background: #4CAF50;
+  cursor: pointer;
+}
+
+.VLslider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background: #4CAF50;
+  cursor: pointer;
+}
 
 
 </style>
@@ -78,7 +113,50 @@ body {margin:0;}
   	<div id="boo"></div>
     <p align="center">
     <div class="navbar">
-      <button class="button" onclick="killswitch()">off</button>
+      <p>ALLOWABLE ROOT MOVEMENT BETWEEN CHORDS</p>
+<label class="switch">
+    <input type="checkbox" checked class="root-movement" id="root0">
+    <span>Unison</span>
+</label>
+<br />
+<label class="switch">
+    <input type="checkbox" checked class="root-movement" id="root1">
+    <span>m2, M7</span>
+</label>
+<br />
+<label class="switch">
+    <input type="checkbox" checked class="root-movement" id="root2">
+    <span>M2, m7</span>
+</label>
+<br />
+<label class="switch">
+    <input type="checkbox" checked class="root-movement" id="root3">
+    <span>m3, M6</span>
+</label>
+<br />
+<label class="switch">
+    <input type="checkbox" checked class="root-movement" id="root4">
+    <span>M3, m6</span>
+</label>
+<br />
+<label class="switch">
+    <input type="checkbox" checked class="root-movement" id="root5">
+    <span>P4, P5</span>
+</label>
+<br />
+<label class="switch">
+    <input type="checkbox" checked class="root-movement" id="root6">
+    <span>Tritone</span>
+</label>
+<br />
+<p>VOICE LEADING SMOOTHNESS</p>
+  <input type="range" min="0" max="100" value="100" class="VLslider" id="vlsmoothness">
+  <br />
+      <button class="button" onclick="killswitch()">kill MIDI</button>
     </div>
+    
+
+
+
   </body>
 </html>

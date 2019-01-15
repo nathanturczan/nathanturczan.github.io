@@ -42,6 +42,9 @@ function mouseClicked() {
             drawGradient();
         }
     }
+    if (key === undefined) {
+        return;
+    }
     pick_scale(key);
 }
 
@@ -115,6 +118,9 @@ function killswitch(){
         for( let i = 0; i < 127; i++ ) {
             port.send([144, i, 0]);
         }
+        for( let i = 0; i < 127; i++ ) {
+            port.send([145, i, 0]);
+        }
     });
 }
 
@@ -131,14 +137,17 @@ function randomize_jazz_filter() {
     jazz_filtering_enabled = Math.random() > 0.5;
 }
 
+var allowed_root_intervals = [true, true, true, true, true, true, true];
 function is_valid_jazz_chord_progression(current_chord, next_chord){
     if (!jazz_filtering_enabled){
         return true
     }
 
     var root_interval =  Math.abs(mod((voicings[next_chord]["root"]-voicings[current_chord]["root"]+6), 12)-6);
-    
-    return root_interval === 0 || root_interval === 5;
+
+    if (!allowed_root_intervals[root_interval]) {
+        return false;
+    }
 
     var current_position = metadata[voicings[current_chord].chord_type].position;
     var next_position = metadata[voicings[next_chord].chord_type].position;
@@ -157,11 +166,11 @@ function is_valid_jazz_chord_progression(current_chord, next_chord){
     }
     if (root_interval === 6) {
         // root movement by tritones, not allowed!!
-        return false;
+        return true;
     }
 }
 
-var voice_leading_threshold = 6;
+var voice_leading_threshold = 9;
 function score_smooth_voice_leading(current_chord, next_chord){
     var current_pitches = voicings[current_chord]["root_transposed_to_zero"];
     var next_pitches = voicings[next_chord]["root_transposed_to_zero"];
@@ -171,7 +180,7 @@ function score_smooth_voice_leading(current_chord, next_chord){
         for(let interval = -2; interval <= 2; interval++){
             if (next_pitches.indexOf(pitch + interval) !== -1) {
                 if (interval === 0) {
-                    fitness_score += 0.5;
+                    fitness_score += 2;
                 } else {
                     fitness_score += 1;
                 }
@@ -185,7 +194,11 @@ function score_smooth_voice_leading(current_chord, next_chord){
     return fitness_score;
 }
 
-var last_chord_name = 'c_13#9-110';
+var voice_leading_smoothness = 100;
+
+var slice_size = 1;
+
+var last_chord_name = 'b_13#9-110';
 
 function pick_scale(key) {
     render_notation(key);
@@ -208,6 +221,9 @@ function pick_scale(key) {
         }
         for( let i = 0; i < 127; i++ ) {
             port.send([144, i, 0]);
+        }
+        for( let i = 0; i < 127; i++ ) {
+            port.send([145, i, 0]);
         }
         // uncomment this to disable scale network!
 
@@ -235,18 +251,28 @@ function pick_scale(key) {
         var after_chord_candidates = chord_candidates.length;
         // console.log("before:", before_chord_candidates_count, "after:", after_chord_candidates);
         // console.log(chord_candidates)
-        var current_chord_name = random(chord_candidates.slice(2));
+
+        slice_size = Math.floor(chord_candidates.length - chord_candidates.length*(voice_leading_smoothness/100));
+        if (slice_size === 0){
+            slice_size = 1;
+        }
+        var current_chord_name;
+        if (slice_size >= chord_candidates.length) {
+            current_chord_name = random(chord_candidates);
+        } else {
+            current_chord_name = random(chord_candidates.slice(slice_size));
+        }
         console.log("score:", score_smooth_voice_leading(last_chord_name, current_chord_name));
         var current_chord = voicings[current_chord_name];
         last_chord_name = current_chord_name;
-
+        port.send([145, current_chord["root"]+48, 127]);
         console.log(current_chord_name);
         for(let i = 0; i < current_chord["root_transposed_to_zero"].length; i++){
             random_chord_notes = current_chord["root_transposed_to_zero"][i];
             port.send([144, Math.min(60 + random_chord_notes, 127), 127]);
             
         }
-        console.log(current_chord["root_transposed_to_zero"]);
+        //console.log(current_chord["root_transposed_to_zero"]);
 
     });
 }
@@ -415,3 +441,34 @@ function drawScale(key, x, y, level, ancestors, offset) {
         
     }
 }
+
+window.addEventListener("load", function(){
+        console.log("hey");
+    document.getElementById("root0").addEventListener("change", function(){
+        allowed_root_intervals[0] = document.getElementById("root0").checked;
+    });
+    document.getElementById("root1").addEventListener("change", function(){
+        allowed_root_intervals[1] = document.getElementById("root1").checked;
+    });
+    document.getElementById("root2").addEventListener("change", function(){
+        allowed_root_intervals[2] = document.getElementById("root2").checked;
+    });
+    document.getElementById("root3").addEventListener("change", function(){
+        allowed_root_intervals[3] = document.getElementById("root3").checked;
+    });
+    document.getElementById("root4").addEventListener("change", function(){
+        allowed_root_intervals[4] = document.getElementById("root4").checked;
+    });
+    document.getElementById("root5").addEventListener("change", function(){
+        allowed_root_intervals[5] = document.getElementById("root5").checked;
+    });
+    document.getElementById("root6").addEventListener("change", function(){
+        allowed_root_intervals[6] = document.getElementById("root6").checked;
+    });
+    document.getElementById("vlsmoothness").addEventListener("change", function(){
+        voice_leading_smoothness = parseInt(document.getElementById("vlsmoothness").value, 10);
+
+    })
+}, false);
+
+
