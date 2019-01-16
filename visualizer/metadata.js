@@ -179,7 +179,7 @@ const metadata =
            "notes": [48, 52, 58, 67],
            "position": 2,
            "quality": "dominant_seventh"},
- "_7-alt.-91": {"alteration": "TRUE",
+ "_7 alt.-91": {"alteration": "TRUE",
                 "inversion": 1,
                 "notes": [52, 58, 63, 68, 73],
                 "position": 1,

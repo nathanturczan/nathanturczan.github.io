@@ -1048,8 +1048,8 @@ const voicings =
     ],
     "root": 9
   },
-  "a_7-alt.-91": {
-    "chord_type": "_7-alt.-91",
+  "a_7 alt.-91": {
+    "chord_type": "_7 alt.-91",
     "original_voicing": [
       61,
       67,
@@ -4449,8 +4449,8 @@ const voicings =
     ],
     "root": 10
   },
-  "as_7-alt.-91": {
-    "chord_type": "_7-alt.-91",
+  "as_7 alt.-91": {
+    "chord_type": "_7 alt.-91",
     "original_voicing": [
       62,
       68,
@@ -7850,8 +7850,8 @@ const voicings =
     ],
     "root": 11
   },
-  "b_7-alt.-91": {
-    "chord_type": "_7-alt.-91",
+  "b_7 alt.-91": {
+    "chord_type": "_7 alt.-91",
     "original_voicing": [
       63,
       69,
@@ -11251,8 +11251,8 @@ const voicings =
     ],
     "root": 0
   },
-  "c_7-alt.-91": {
-    "chord_type": "_7-alt.-91",
+  "c_7 alt.-91": {
+    "chord_type": "_7 alt.-91",
     "original_voicing": [
       52,
       58,
@@ -14652,8 +14652,8 @@ const voicings =
     ],
     "root": 1
   },
-  "cs_7-alt.-91": {
-    "chord_type": "_7-alt.-91",
+  "cs_7 alt.-91": {
+    "chord_type": "_7 alt.-91",
     "original_voicing": [
       53,
       59,
@@ -18053,8 +18053,8 @@ const voicings =
     ],
     "root": 2
   },
-  "d_7-alt.-91": {
-    "chord_type": "_7-alt.-91",
+  "d_7 alt.-91": {
+    "chord_type": "_7 alt.-91",
     "original_voicing": [
       54,
       60,
@@ -21454,8 +21454,8 @@ const voicings =
     ],
     "root": 3
   },
-  "ds_7-alt.-91": {
-    "chord_type": "_7-alt.-91",
+  "ds_7 alt.-91": {
+    "chord_type": "_7 alt.-91",
     "original_voicing": [
       55,
       61,
@@ -24855,8 +24855,8 @@ const voicings =
     ],
     "root": 4
   },
-  "e_7-alt.-91": {
-    "chord_type": "_7-alt.-91",
+  "e_7 alt.-91": {
+    "chord_type": "_7 alt.-91",
     "original_voicing": [
       56,
       62,
@@ -28256,8 +28256,8 @@ const voicings =
     ],
     "root": 5
   },
-  "f_7-alt.-91": {
-    "chord_type": "_7-alt.-91",
+  "f_7 alt.-91": {
+    "chord_type": "_7 alt.-91",
     "original_voicing": [
       57,
       63,
@@ -31657,8 +31657,8 @@ const voicings =
     ],
     "root": 6
   },
-  "fs_7-alt.-91": {
-    "chord_type": "_7-alt.-91",
+  "fs_7 alt.-91": {
+    "chord_type": "_7 alt.-91",
     "original_voicing": [
       58,
       64,
@@ -35058,8 +35058,8 @@ const voicings =
     ],
     "root": 7
   },
-  "g_7-alt.-91": {
-    "chord_type": "_7-alt.-91",
+  "g_7 alt.-91": {
+    "chord_type": "_7 alt.-91",
     "original_voicing": [
       59,
       65,
@@ -38459,8 +38459,8 @@ const voicings =
     ],
     "root": 8
   },
-  "gs_7-alt.-91": {
-    "chord_type": "_7-alt.-91",
+  "gs_7 alt.-91": {
+    "chord_type": "_7 alt.-91",
     "original_voicing": [
       60,
       66,
