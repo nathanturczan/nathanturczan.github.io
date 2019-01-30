@@ -213,12 +213,12 @@ function pick_scale(key) {
     
     drawScale(key, windowWidth / 2, windowHeight / 2, 1, [], -1);
 
-    if (!midi) {
-        return;
-    }
+
 
     midi.outputs.forEach(function (port, port_id) {
-
+        if(port.name !== "IAC Driver INTERSTICES"){
+            return; // guard clause
+        }
         for( let i = 0; i < 127; i++ ) {
             port.send([144, i, 0]);
         }
