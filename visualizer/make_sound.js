@@ -5,13 +5,25 @@ document.querySelector('#sound_on_off_button').addEventListener('click', () => {
 })
 
 //a 4 voice Synth
-var polySynth = new Tone.PolySynth(4, Tone.Synth).toMaster();
+var polySynth = new Tone.PolySynth(6, Tone.Synth).toMaster();
+
 //play a chord
-polySynth.triggerAttackRelease(["C4", "E4", "G4", "B4"], "2n");
+
+polySynth.set({
+
+	"envelope" : {
+		
+		"attack" : 0.1,
+		"decay" : 0.5,
+		"release" : 0.0001,
+		"releaseCurve"  : "linear"
+	}
+});
 
 
 
 render_sound = function (note){
-	polySynth.triggerAttackRelease(Tone.Midi(note).toFrequency(), "1n");
+	//polySynth.triggerRelease(Tone.Midi(note).toFrequency() );
+	polySynth.triggerAttack(Tone.Midi(note).toFrequency() );
 
 }
