@@ -203,6 +203,7 @@ var last_chord_name = 'b_13#9-110';
 var note_names = ["C", "D♭", "D", "E♭", "E", "F", "F#", "G", "A♭", "A", "B♭", "B"];
 
 function pick_scale(key) {
+
     render_notation(key);
     index = num_convert[keyCode];
 
@@ -278,6 +279,7 @@ function pick_scale(key) {
         for(let i = 0; i < current_chord["root_transposed_to_zero"].length; i++){
             random_chord_notes = current_chord["root_transposed_to_zero"][i];
             port.send([144, Math.min(60 + random_chord_notes, 127), 127]);
+            render_sound(60 + random_chord_notes);
         }
         //console.log(current_chord["root_transposed_to_zero"]);
 

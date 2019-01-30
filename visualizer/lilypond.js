@@ -3,7 +3,7 @@ const lilypond_spellings = {
     "as_acoustic": "bf c' d' e' f' g' af'",
     "b_acoustic": "b cs' ds' es' fs' gs' a'",
     "c_acoustic": "c d e fs g a bf",
-    "cs_acoustic": "cs ds es fss gs as b",
+    "cs_acoustic": "df ef f g af bf cf'",
     "d_acoustic": "d e fs gs a b c'", 
     "ds_acoustic": "ef f g a bf c' df'",
     "e_acoustic": "e fs gs as b cs' d'",
