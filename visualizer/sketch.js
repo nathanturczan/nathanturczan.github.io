@@ -213,67 +213,75 @@ function pick_scale(key) {
     
     drawScale(key, windowWidth / 2, windowHeight / 2, 1, [], -1);
 
+    
 
+    //var chord_candidates = Object.keys(voicings);
+    var chord_candidates = scales[key]["chord_subsets"];
+    var before_chord_candidates_count = chord_candidates.length;
+    // filter chord candidates JAZZ STYLE
+    chord_candidates = chord_candidates.filter(function(candidate){
+        return is_valid_jazz_chord_progression(last_chord_name, candidate);
+    });
 
-        // uncomment this to disable scale network!
-
-        //var chord_candidates = Object.keys(voicings);
-        var chord_candidates = scales[key]["chord_subsets"];
-        var before_chord_candidates_count = chord_candidates.length;
-
-        // filter chord candidates JAZZ STYLE
-        chord_candidates = chord_candidates.filter(function(candidate){
-            return is_valid_jazz_chord_progression(last_chord_name, candidate);
-        });
-
-        chord_candidates = chord_candidates.sort(function (a, b) {
-            var score_a = score_smooth_voice_leading(last_chord_name, a);
-            var score_b = score_smooth_voice_leading(last_chord_name, b);
-            if (score_a === score_b) {
-                return 0;
-            } else if (score_a < score_b) {
-                return -1;
-            } else if (score_a > score_b) {
-                return 1;
-            }
-        });
-
-        var after_chord_candidates = chord_candidates.length;
-        // console.log("before:", before_chord_candidates_count, "after:", after_chord_candidates);
-        // console.log(chord_candidates)
-
-        slice_size = Math.floor(chord_candidates.length - chord_candidates.length*(voice_leading_smoothness/100));
-        if (slice_size === 0){
-            slice_size = 1;
+    chord_candidates = chord_candidates.sort(function (a, b) {
+        var score_a = score_smooth_voice_leading(last_chord_name, a);
+        var score_b = score_smooth_voice_leading(last_chord_name, b);
+        if (score_a === score_b) {
+            return 0;
+        } else if (score_a < score_b) {
+            return -1;
+        } else if (score_a > score_b) {
+            return 1;
         }
-        var current_chord_name;
-        if (slice_size >= chord_candidates.length) {
-            current_chord_name = random(chord_candidates);
-        } else {
-            current_chord_name = random(chord_candidates.slice(slice_size));
+    });
+
+    var after_chord_candidates = chord_candidates.length;
+    // console.log("before:", before_chord_candidates_count, "after:", after_chord_candidates);
+    // console.log(chord_candidates)
+
+    slice_size = Math.floor(chord_candidates.length - chord_candidates.length*(voice_leading_smoothness/100));
+    if (slice_size === 0){
+        slice_size = 1;
+    }
+    var current_chord_name;
+    if (slice_size >= chord_candidates.length) {
+        current_chord_name = random(chord_candidates);
+    } else {
+        current_chord_name = random(chord_candidates.slice(slice_size));
+    }
+    console.log("score:", score_smooth_voice_leading(last_chord_name, current_chord_name));
+    var current_chord = voicings[current_chord_name];
+    last_chord_name = current_chord_name;
+    
+    var newStr = current_chord["chord_type"].replace('_', '');
+    newStr = newStr.replace(/-.*$/,"");
+    //var newStr = current_chord["chord_type"].replace('-\?(.*)', '');
+    document.getElementById("chord_name").innerHTML = note_names[current_chord["root"]]+" "+newStr;
+    document.getElementById("chord_name").style.fontSize='25px';
+
+    document.getElementById('supersets').innerHTML = current_chord["scale_supersets"].join('<br>');
+
+    if (!midi) {
+        return;
+    }
+
+    midi.outputs.forEach(function (port, port_id) {
+        port.name == "IAC Driver INTERSTICES";
+        for( let i = 0; i < 127; i++ ) {
+            port.send([144, i, 0]);
         }
-        console.log("score:", score_smooth_voice_leading(last_chord_name, current_chord_name));
-        var current_chord = voicings[current_chord_name];
-        last_chord_name = current_chord_name;
-
-        var newStr = current_chord["chord_type"].replace('_', '');
-        newStr = newStr.replace(/-.*$/,"");
-        //var newStr = current_chord["chord_type"].replace('-\?(.*)', '');
-        document.getElementById("chord_name").innerHTML = note_names[current_chord["root"]]+" "+newStr;
-        document.getElementById("chord_name").style.fontSize='25px';
-
+        for( let i = 0; i < 127; i++ ) {
+            port.send([145, i, 0]);
+        }
         
-        // supersets_array = []
-        // for(let i = 0; i < current_chord["scale_supersets"].length; i++){
-        //     superset_root = scales[current_chord["scale_supersets"][i]].root;
-        //     superset_scale_class = scales[current_chord["scale_supersets"][i]].scale_class;
-        //     supersets.push(superset_root+" "+superset_scale_class);
-        // }
-        document.getElementById('supersets').innerHTML = current_chord["scale_supersets"].join('<br>');
-
+        port.send([145, current_chord["root"]+48, 127]);
+        for(let i = 0; i < current_chord["root_transposed_to_zero"].length; i++){
+            random_chord_notes = current_chord["root_transposed_to_zero"][i];
+            port.send([144, Math.min(60 + random_chord_notes, 127), 127]);
+        }
         //console.log(current_chord["root_transposed_to_zero"]);
 
-
+    });
 }
 
 function polygon(x, y, radius, npoints, sClass) {
@@ -465,5 +473,3 @@ window.addEventListener("load", function(){
 
     })
 }, false);
-
-
