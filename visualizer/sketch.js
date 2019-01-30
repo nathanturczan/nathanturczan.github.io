@@ -216,9 +216,8 @@ function pick_scale(key) {
 
 
     midi.outputs.forEach(function (port, port_id) {
-        if(port.name !== "IAC Driver INTERSTICES"){
-            return; // guard clause
-        }
+        port.name == "IAC Driver INTERSTICES";
+
         for( let i = 0; i < 127; i++ ) {
             port.send([144, i, 0]);
         }
