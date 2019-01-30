@@ -215,15 +215,6 @@ function pick_scale(key) {
 
 
 
-    midi.outputs.forEach(function (port, port_id) {
-        port.name == "IAC Driver INTERSTICES";
-
-        for( let i = 0; i < 127; i++ ) {
-            port.send([144, i, 0]);
-        }
-        for( let i = 0; i < 127; i++ ) {
-            port.send([145, i, 0]);
-        }
         // uncomment this to disable scale network!
 
         //var chord_candidates = Object.keys(voicings);
@@ -264,7 +255,7 @@ function pick_scale(key) {
         console.log("score:", score_smooth_voice_leading(last_chord_name, current_chord_name));
         var current_chord = voicings[current_chord_name];
         last_chord_name = current_chord_name;
-        port.send([145, current_chord["root"]+48, 127]);
+
         var newStr = current_chord["chord_type"].replace('_', '');
         newStr = newStr.replace(/-.*$/,"");
         //var newStr = current_chord["chord_type"].replace('-\?(.*)', '');
@@ -280,14 +271,9 @@ function pick_scale(key) {
         // }
         document.getElementById('supersets').innerHTML = current_chord["scale_supersets"].join('<br>');
 
-        for(let i = 0; i < current_chord["root_transposed_to_zero"].length; i++){
-            random_chord_notes = current_chord["root_transposed_to_zero"][i];
-            port.send([144, Math.min(60 + random_chord_notes, 127), 127]);
-            
-        }
         //console.log(current_chord["root_transposed_to_zero"]);
 
-    });
+
 }
 
 function polygon(x, y, radius, npoints, sClass) {
