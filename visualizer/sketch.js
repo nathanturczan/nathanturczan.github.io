@@ -270,6 +270,7 @@ function pick_scale(key) {
         port.name == "IAC Driver INTERSTICES";
         for( let i = 0; i < 127; i++ ) {
             port.send([144, i, 0]);
+            render_sound(0);
         }
         for( let i = 0; i < 127; i++ ) {
             port.send([145, i, 0]);
