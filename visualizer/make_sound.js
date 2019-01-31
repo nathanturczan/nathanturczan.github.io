@@ -14,14 +14,37 @@ gain.toMaster();
 //play a chord
 
 polySynth.set({
+	//"octaves"  : 1.5,
+
+	"harmonicity" : 3,
+	"modulationIndex" : 10,
+
+	"oscillator" : {
+				"type" : "fatsawtooth",
+				"count" : 3,
+				"spread" : 30
+			},
 
 	"envelope" : {
 		
 		"attack" : 0.1,
 		"decay" : 0.5,
 		"release" : 0.0001,
+		"attackCurve" : "exponential",
 		"releaseCurve"  : "linear"
-	}
+	},
+
+	"modulation"  : {
+		"type"  : "square"
+	}  ,
+	"modulationEnvelope"  : {
+		"attack"  : 0.5 ,
+		"decay"  : 0 ,
+		"sustain"  : 1 ,
+		"release"  : 0.5
+	}, 
+	
+
 });
 
 
