@@ -5,7 +5,11 @@ document.querySelector('#sound_on_off_button').addEventListener('click', () => {
 })
 
 //a 4 voice Synth
-var polySynth = new Tone.PolySynth(6, Tone.Synth).toMaster();
+var polySynth = new Tone.PolySynth(7, Tone.Synth);
+var gain  = new Tone.Gain(0.1);
+polySynth.connect(gain);
+gain.toMaster();
+
 
 //play a chord
 
@@ -22,8 +26,9 @@ polySynth.set({
 
 
 
-render_sound = function (note){
+render_sound = function (note, voices){
 	//polySynth.triggerRelease(Tone.Midi(note).toFrequency() );
+
 	polySynth.triggerAttack(Tone.Midi(note).toFrequency() );
 
 }
