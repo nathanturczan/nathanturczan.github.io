@@ -281,8 +281,8 @@ function pick_scale(key) {
         for(let i = 0; i < current_chord["root_transposed_to_zero"].length; i++){
             random_chord_notes = current_chord["root_transposed_to_zero"][i];
             port.send([144, Math.min(60 + random_chord_notes, 127), 127]);
-            render_sound(60 + random_chord_notes);
-            render_sound(current_chord["root"]+60);
+            render_sound(48 + random_chord_notes);
+            render_sound(current_chord["root"]+48);
         }
         //console.log(current_chord["root_transposed_to_zero"]);
 
