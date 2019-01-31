@@ -117,6 +117,7 @@ function killswitch(){
         }
         for( let i = 0; i < 127; i++ ) {
             port.send([144, i, 0]);
+            render_sound(0);
         }
         for( let i = 0; i < 127; i++ ) {
             port.send([145, i, 0]);
@@ -281,6 +282,7 @@ function pick_scale(key) {
             random_chord_notes = current_chord["root_transposed_to_zero"][i];
             port.send([144, Math.min(60 + random_chord_notes, 127), 127]);
             render_sound(60 + random_chord_notes);
+            render_sound(current_chord["root"]+60);
         }
         //console.log(current_chord["root_transposed_to_zero"]);
 
