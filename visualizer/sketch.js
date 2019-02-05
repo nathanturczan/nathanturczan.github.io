@@ -117,7 +117,6 @@ function killswitch(){
         }
         for( let i = 0; i < 127; i++ ) {
             port.send([144, i, 0]);
-            render_sound(0);
         }
         for( let i = 0; i < 127; i++ ) {
             port.send([145, i, 0]);
@@ -263,15 +262,23 @@ function pick_scale(key) {
 
     document.getElementById('supersets').innerHTML = current_chord["scale_supersets"].join('<br>');
 
+
+
+    for(let i = 0; i < current_chord["root_transposed_to_zero"].length; i++){
+            random_chord_notes = current_chord["root_transposed_to_zero"][i];
+            render_sound(48 + random_chord_notes);
+            render_sound(current_chord["root"]+48);
+    }
+
     if (!midi) {
         return;
     }
 
     midi.outputs.forEach(function (port, port_id) {
+
         port.name == "IAC Driver INTERSTICES";
         for( let i = 0; i < 127; i++ ) {
             port.send([144, i, 0]);
-            render_sound(0);
         }
         for( let i = 0; i < 127; i++ ) {
             port.send([145, i, 0]);
@@ -287,6 +294,9 @@ function pick_scale(key) {
         //console.log(current_chord["root_transposed_to_zero"]);
 
     });
+
+
+    
 }
 
 function polygon(x, y, radius, npoints, sClass) {
