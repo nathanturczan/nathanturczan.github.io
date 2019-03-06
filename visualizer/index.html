@@ -33,6 +33,24 @@ body {margin:0;}
 
 html{overflow:hidden;}
 
+$(".plus").click(function(){
+ $(this).toggleClass("minus")  ; 
+})
+
+.plus{
+    background-image: "sound_off.png";
+    width:100px;
+    height:100px;
+    background-repeat:no-repeat;
+}
+
+.plus.minus{
+    background-image: "sound_on.png";
+    width:100px;
+    height:100px;
+    background-repeat:no-repeat;
+}
+
 #sound_on_off_button {
   z-index: 100;
   position: fixed;
@@ -225,7 +243,7 @@ div:after {
   
   <body>
 
-    <button id="sound_on_off_button"> sound on </button>
+    <button id="sound_on_off_button"> <img src="sound_off.png" width="48" height="48"> </button>
 
   	<div id="boo"></div>
     <div class="menu">
