@@ -7,8 +7,6 @@ var lastclick;
 var lastAutoPChange;
 var autopilotIsRunning = false;
 
-
-
 //p5 has keyReleased()
 //p5 has windowResize() -- check this out later
 
@@ -27,8 +25,20 @@ function setup() {
     frameRate(30); //there are other ways to do timing, like setInterval()
 }
 
-//abstract the logic in here into separate classes
-//
+document.addEventListener('click', (evt) => {
+	if ( evt.target && evt.target.className === "scale-superset-btn") {
+		lastclick = frameCount;
+    	autopilotIsRunning = false;
+    	//console.log("touch data", touch_data);
+
+	    touch_data = [];
+	    drawGradient();
+		const key = evt.target.innerHTML
+		console.log(key)
+		pick_scale(key)
+	}
+
+})
 
 function mouseClicked() {
     lastclick = frameCount;
@@ -260,7 +270,11 @@ function pick_scale(key) {
     document.getElementById("chord_name").innerHTML = note_names[current_chord["root"]]+" "+newStr;
     document.getElementById("chord_name").style.fontSize='25px';
 
-    document.getElementById('supersets').innerHTML = current_chord["scale_supersets"].join('<br>');
+    //document.getElementById('supersets').innerHTML = current_chord["scale_supersets"].join('<br>');
+    document.getElementById('supersets').innerHTML = current_chord["scale_supersets"].map((scale) => `
+    	<a href="javascript:;" class='scale-superset-btn'>${scale}</a>
+   `).join('');
+
 
     render_bass(current_chord["root"]+36);
     
