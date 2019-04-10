@@ -77,7 +77,7 @@ img {vertical-align: middle;}
 <div class="mySlides fade">
   <div class="numbertext">0 / 16</div>
   <img src="assets/00.jpg" style="width:100%">
-  <div class="text" font-size: 30px; ><3 chordas</div>
+  <div class="text" ><3 chordas</div>
 </div>
 
 <div class="mySlides fade">
@@ -236,7 +236,7 @@ function plusSlides(n) {
               port.send([144, slideIndex-1, 127]);
               console.log(slideIndex, slideIndex-1);
 
-              for( let i = 0; i < 73; i++ ) {
+              for( let i = 0; i < 127; i++ ) {
                 port.send([145, i, 0]);
               }
               
