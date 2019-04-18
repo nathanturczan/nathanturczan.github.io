@@ -68,7 +68,7 @@ SoundCloud</A></th>
 </table></td>
 
 <td><table border=9 frame=box cellpadding=10 bgcolor=#4CF87B><th><A HREF="scale_netw/index.html">
-Tymoczko Scale Network: <br> 7-Note Pressing Scales</A></th>
+Old 80's Version <br> Network</A></th>
 </table></td>
 
 <td><table border=9 frame=box cellpadding=10 bgcolor=#aad450><th><A href="pizza_ladder/index.html">
@@ -105,8 +105,8 @@ Modules of<br>that Good Noise</A></th>
 Durations of Notes<br>& Rhythms</A></th>
 </table></td><td>
 
-<table border=9 frame=box cellpadding=10 bgcolor=#ff0084><th><A HREF="midi/miditest.html">
-Vibrational<br>Frequencies</A></th>
+<table border=9 frame=box cellpadding=10 bgcolor=#ff0084><th><A HREF="midi/index.html">
+Updated<br>Scale<br>Navigator</A></th>
 </table></td>
 
 </tr>
@@ -124,7 +124,7 @@ instruments<br>of the "sound"<br>music</A></th>
 
 <TD>
 <table border=9 frame=box cellpadding=10 bgcolor=#fb8f3d><th><A HREF="visualizer/index.html">
-scale_netw<br>MIDI output:<br>chord subsets</A></th>
+deprecated<br>INTERSTICES<br>midi driver</A></th>
 </table></td>
 
 </tr>
