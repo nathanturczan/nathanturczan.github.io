@@ -315,7 +315,12 @@ function pick_scale(key) {
             for( let i = 0; i < 127; i++ ) {
                 port.send([145, i, 0]);
             }
-            
+
+            for( let i = 0; i < 127; i++ ) {
+                port.send([146, i, 0]);
+            }
+            port.send([146, scales[key].video_index-1, 127]); 
+            console.log("video index:", scales[key].video_index-1);   
             port.send([145, current_chord["root"]+48, 127]);
             for(let i = 0; i < current_chord["root_transposed_to_zero"].length; i++){
                 random_chord_notes = current_chord["root_transposed_to_zero"][i];
