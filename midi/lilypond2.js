@@ -29,7 +29,7 @@ const lilypond_spellings_modal = {
     "as_harmonic_major": "c d ef f gf a bf",
     "b_harmonic_major": "cs ds e fs g as b",
     "c_harmonic_major": "c d e f g af b",
-    "cs_harmonic_major": "c df ef f gf af bbb",
+    "cs_harmonic_major": "c df ef f gf af bff",
     "d_harmonic_major": "cs d e fs g a bf",
     "ds_harmonic_major": "cf d ef f g af bf",
     "e_harmonic_major": "c ds e fs gs a b",
