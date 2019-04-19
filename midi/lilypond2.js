@@ -42,7 +42,7 @@ const lilypond_spellings_modal = {
     "as_harmonic_minor": "c df ef f gf a bf",
     "b_harmonic_minor": "cs d e fs g as b",
     "c_harmonic_minor": "c d ef f g af b",
-    "cs_harmonic_minor": "c df ef ff gf af gf",
+    "cs_harmonic_minor": "c df ef ff gf af bf",
     "d_harmonic_minor": "cs d e f g a bf",
     "ds_harmonic_minor": "cf d ef f gf af bf",
     "e_harmonic_minor": "c ds e fs g a b",
