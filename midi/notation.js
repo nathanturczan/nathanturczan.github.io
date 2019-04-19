@@ -84,9 +84,14 @@ render_notation = function (key) {
 			var inflection = match_obj[2];
 			var octavation = match_obj[3];
 
-			//console.log("base_note_name:", base_note_name, "inflection:", inflection, "octavation:", octavation);
-			notes.push(new VF.StaveNote({clef: "treble", keys: [base_note_name + convert_octavation[octavation]], duration: "q" }).
+			if (inflection == ""){
+				notes.push(new VF.StaveNote({clef: "treble", keys: [base_note_name + convert_octavation[octavation]], duration: "q" }))
+			}
+			else {
+				notes.push(new VF.StaveNote({clef: "treble", keys: [base_note_name + convert_octavation[octavation]], duration: "q" }).
 				addAccidental(0, new VF.Accidental(convert_inflection[inflection])));
+			}
+			
 			
 
 		});
