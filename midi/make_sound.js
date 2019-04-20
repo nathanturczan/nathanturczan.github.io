@@ -131,7 +131,7 @@
 
 	render_sound = function (note, length){
 		ChordLength = length;
-		console.log("chordlength:", ChordLength);
+		//console.log("chordlength:", ChordLength);
 		polySynth.triggerRelease(Tone.Midi(note).toFrequency() );
 		polySynth.triggerAttack(Tone.Midi(note).toFrequency() );
 
