@@ -94,7 +94,7 @@ function autopilot() {
   var r = random(scale_names);
 
 
-  console.log("autoscale", r, scales[r]);
+  //console.log("autoscale", r, scales[r]);
 
   pick_scale(r);
 }
@@ -276,7 +276,7 @@ function pick_scale(key) {
     } else {
         current_chord_name = random(chord_candidates.slice(slice_size));
     }
-    console.log("score:", score_smooth_voice_leading(last_chord_name, current_chord_name));
+    //console.log("score:", score_smooth_voice_leading(last_chord_name, current_chord_name));
     var current_chord = voicings[current_chord_name];
     last_chord_name = current_chord_name;
     
@@ -498,7 +498,7 @@ function drawScale(key, x, y, level, ancestors, offset) {
 }
 
 window.addEventListener("load", function(){
-        console.log("hey");
+        //console.log("hey");
     document.getElementById("root0").addEventListener("change", function(){
         allowed_root_intervals[0] = document.getElementById("root0").checked;
     });
