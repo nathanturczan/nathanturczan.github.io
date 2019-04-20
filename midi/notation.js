@@ -101,7 +101,7 @@ render_notation = function (key) {
 	}
 	var notes = render_lilypond_to_vexflow(lilypond_spellings_modal[key]);
 	
-	console.log("Solfège:", solfege[key])
+	console.log("Solfège:", solfege[key]);
 
 	// Connect it to the rendering context and draw!
 	stave.setContext(context).draw();
