@@ -64,6 +64,7 @@ function mouseClicked() {
     if (key === undefined) {
         return;
     }
+    ga('send', 'event', "scale_change", key);
     pick_scale(key);
 }
 
