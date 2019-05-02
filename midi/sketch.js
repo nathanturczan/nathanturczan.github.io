@@ -43,7 +43,7 @@ document.addEventListener('click', (evt) => {
 	    touch_data = [];
 	    drawGradient();
 		const key = evt.target.innerHTML
-		console.log(key)
+		ga('send', 'event', 'scale_change', window.userID+"-"+key);
 		pick_scale(key)
 	}
 
@@ -64,7 +64,7 @@ function mouseClicked() {
     if (key === undefined) {
         return;
     }
-    ga('send', 'event', 'scale_change', key, window.userID);
+    ga('send', 'event', 'scale_change', window.userID+"-"+key);
     pick_scale(key);
 }
 
