@@ -316,10 +316,10 @@ function pick_scale(key) {
             for( let i = 0; i < 127; i++ ) {
                 port.send([145, i, 0]);
             }
-
             for( let i = 0; i < 127; i++ ) {
                 port.send([146, i, 0]);
             }
+	    port.send([148, 0, current_chord["root"]]);
             port.send([147, 0, scales[key].video_index-1]); //send MIDI cc for touchdesigner indexing
             port.send([146, scales[key].video_index-1, 127]); 
             console.log("video index:", scales[key].video_index-1);   
