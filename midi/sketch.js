@@ -14,7 +14,7 @@ var selectedMidi;
 //p5 has windowResize() -- check this out later
 
 function drawGradient() {
-    background(233);
+    background(255);
     
     //this sucks, use an png
     //or use the css gradient functions
