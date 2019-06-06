@@ -416,7 +416,7 @@ function drawScale(key, x, y, level, ancestors, offset) {
     
 
     fill(hsvToRgb(map((scales[key].root*7)%12, 11, 0, 0, 1), 
-        map((scales[key].root*7)%12, 0, 11, 0.1, 0.2), 
+        map((scales[key].root*7)%12, 0, 11, 0.1, 0.5), 
         1));
 
     const shape_size = (windowHeight*(0.15) / level);
