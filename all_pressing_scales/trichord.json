@@ -1,0 +1,16 @@
+{
+  "trichords": {
+    "3-1": {
+      "prime_form": [0, 1, 2],
+      "interval_vector": [2,1,0,0,0,0],
+      "transpositional_symmetry": [1,1],
+      "adjacent_trichord": []
+    },
+    "3-2": {
+      "prime_form": [0, 1, 3],
+      "interval_vector": [1,1,1,0,0,0],
+      "transpositional_symmetry": [1,0]
+    }
+
+  }
+}
