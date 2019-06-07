@@ -70,7 +70,7 @@ function mod(a,b){
 var note_names = ["C", "D♭", "D", "E♭", "E", "F", "F#", "G", "A♭", "A", "B♭", "B"];
 
 function pick_scale(key) {
-
+    render_notation(key);
     index = num_convert[keyCode];
 
     if (index !== undefined && (index) < scales[key].adjacent_scales.length) {
@@ -86,17 +86,48 @@ function polygon(x, y, radius, npoints, sClass) {
   angle = TWO_PI / npoints;
   beginShape();
   for ( let a = 0; a < TWO_PI; a += angle) {
-    if (npoints == 6) {
-        let sx = x + cos(a+(TWO_PI/12)) * radius;
-        let sy = y + sin(a+(TWO_PI/12)) * radius;
-        vertex(sx, sy);
-    }
-    
-
-    if (npoints == 12) {
+    if (npoints == 12 ) {
         let sx = x + cos(a+(TWO_PI/24)) * radius;
         let sy = y + sin(a+(TWO_PI/24)) * radius;
         vertex(sx, sy);
+    }
+
+    if (npoints == 6 ) {
+        if (sClass == "diatonic"){
+            let sx = x + cos(a+(TWO_PI/12)) * radius;
+            let sy = y + sin(a+(TWO_PI/12)) * radius;
+            vertex(sx, sy);
+        }
+        if (sClass == "acoustic"){
+            vertex(x+radius, y+radius*0.5);
+            vertex(x-radius, y+radius*0.5);
+            vertex(x-radius, y-radius*0.5);
+            vertex(x+radius, y-radius*0.5);
+        }
+        if (sClass == "whole_tone"){
+            vertex(x-radius*0.5, y-radius);
+            vertex(x+radius*0.5, y-radius);
+            vertex(x+radius*0.5, y+radius);
+            vertex(x-radius*0.5, y+radius);
+        }
+        if (sClass == "hexatonic"){
+            vertex(x+radius*0.65, y+radius);
+            vertex(x+radius*0.65, y-radius);
+            vertex(x-radius, y+radius*0.01);
+        }
+        if (sClass == "harmonic_major"){
+            vertex(x+radius, y+radius*0.25);
+            vertex(x-radius, y+radius*1.25);
+            vertex(x-radius, y-radius*0.25);
+            vertex(x+radius, y-radius*1.75);
+        }
+        if (sClass == "harmonic_minor"){
+            vertex(x+radius, y+radius*1.25);
+            vertex(x-radius, y+radius*0.25);
+            vertex(x-radius, y-radius*1.75);
+            vertex(x+radius, y-radius*0.25);
+        }
+        
     }
   }
   endShape(CLOSE);
@@ -138,10 +169,18 @@ function drawScale(key, x, y, level, ancestors, offset) {
     //add it to the ancestors array
     ancestors.push(key);
     
-
-    fill(hsvToRgb(map((scales[key].root*7)%12, 11, 0, 0, 1), 
+    if (scales[key].scale_class ==  "whole_tone"){
+        fill(map(scales[key].root%2, 0, 1, 200, 150));
+    } else if (scales[key].scale_class ==  "octatonic"){
+        fill(map(scales[key].root%3, 0, 2, 200, 133));
+    } else if (scales[key].scale_class ==  "hexatonic"){
+        fill(map(scales[key].root%4, 0, 3, 200, 100));
+    } else{
+        fill(hsvToRgb(map((scales[key].root*7)%12, 11, 0, 0, 1), 
         map((scales[key].root*7)%12, 0, 11, 0.1, 0.5), 
         1));
+    }
+    
 
     const shape_size = (windowHeight*(0.15) / level);
 
@@ -221,32 +260,3 @@ function drawScale(key, x, y, level, ancestors, offset) {
         
     }
 }
-
-window.addEventListener("load", function(){
-        console.log("hey");
-    document.getElementById("root0").addEventListener("change", function(){
-        allowed_root_intervals[0] = document.getElementById("root0").checked;
-    });
-    document.getElementById("root1").addEventListener("change", function(){
-        allowed_root_intervals[1] = document.getElementById("root1").checked;
-    });
-    document.getElementById("root2").addEventListener("change", function(){
-        allowed_root_intervals[2] = document.getElementById("root2").checked;
-    });
-    document.getElementById("root3").addEventListener("change", function(){
-        allowed_root_intervals[3] = document.getElementById("root3").checked;
-    });
-    document.getElementById("root4").addEventListener("change", function(){
-        allowed_root_intervals[4] = document.getElementById("root4").checked;
-    });
-    document.getElementById("root5").addEventListener("change", function(){
-        allowed_root_intervals[5] = document.getElementById("root5").checked;
-    });
-    document.getElementById("root6").addEventListener("change", function(){
-        allowed_root_intervals[6] = document.getElementById("root6").checked;
-    });
-    document.getElementById("vlsmoothness").addEventListener("change", function(){
-        voice_leading_smoothness = parseInt(document.getElementById("vlsmoothness").value, 10);
-
-    })
-}, false);

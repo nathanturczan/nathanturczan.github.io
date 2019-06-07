@@ -1,9 +1,3 @@
-
-//make my own class that wraps vexflow and recieves a note
-//has interface that does vx.addnote
-//
-
-
 var render_notation;
 const vex_notes = ["c/4", "c#/4", "d/4", "eb/4", "e/4", "f/4", "f#/4", "g/4", "g#/4", "a/4", "bb/4", "b/4"];
 const accidentals = 	{"c/4": "n", 
@@ -84,24 +78,37 @@ render_notation = function (key) {
 			var inflection = match_obj[2];
 			var octavation = match_obj[3];
 
-			//console.log("base_note_name:", base_note_name, "inflection:", inflection, "octavation:", octavation);
-			notes.push(new VF.StaveNote({clef: "treble", keys: [base_note_name + convert_octavation[octavation]], duration: "q" }).
+			if (inflection == ""){
+				notes.push(new VF.StaveNote({clef: "treble", keys: [base_note_name + convert_octavation[octavation]], duration: "q" }))
+			}
+			else {
+				notes.push(new VF.StaveNote({clef: "treble", keys: [base_note_name + convert_octavation[octavation]], duration: "q" }).
 				addAccidental(0, new VF.Accidental(convert_inflection[inflection])));
+			}
+			
 			
 
 		});
 		return notes;
+		
 
 
 	}
 	var notes = render_lilypond_to_vexflow(lilypond_spellings[key]);
-
+	
 	// Connect it to the rendering context and draw!
 	stave.setContext(context).draw();
 
 	
 	// Create a voice in 4/4 and add above notes
-	var voice = new VF.Voice({num_beats: 7,  beat_value: 4});
+	if (notes.length == 7){
+		var voice = new VF.Voice({num_beats: 7,  beat_value: 4});
+	} else if (notes.length == 6){
+		var voice = new VF.Voice({num_beats: 6,  beat_value: 4});
+	} else if (notes.length == 8){
+		var voice = new VF.Voice({num_beats: 8,  beat_value: 4});
+	}
+	
 	voice.addTickables(notes);
 
 	// Format and justify the notes to 400 pixels.
@@ -113,6 +120,3 @@ render_notation = function (key) {
 
 
 	}
-
-
-

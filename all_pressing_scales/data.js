@@ -1153,7 +1153,7 @@ const data = {
             "scale_class": "hexatonic"
         },
         "hexatonic_4": {
-            "root": 2,
+            "root": 3,
             "adjacent_scales": [
                 "c_harmonic_major",
                 "e_harmonic_major",
