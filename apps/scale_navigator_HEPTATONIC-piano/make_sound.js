@@ -51,15 +51,16 @@ var sampler = new Tone.PolySynth(ChordLength, Tone.Sampler, {
 			"102" : "Fs7.[mp3|ogg]",
 			"105" : "A7.[mp3|ogg]",
 			"108" : "C8.[mp3|ogg]"
-		}, {
+		}, 
+		{
 			"baseUrl" : "https://tonejs.github.io/examples/audio/salamander/"
+			'release' : 1,
+			'onload' : function(){
+			//callback after all the samples are loaded
 		}).toMaster();
 
 	sampler.set({
 		"attack" : 0.0,
-		"release": 1.6,
-		"onload"  : Tone.noOp,
- 		"baseUrl" : "./piano/",
 		"curve"  : "linear"
 	});
 
