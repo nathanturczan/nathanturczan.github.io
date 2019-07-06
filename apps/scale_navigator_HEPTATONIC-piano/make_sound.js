@@ -1,18 +1,26 @@
+if (Tone.context.state !== "running"){
+	Tone.context.resume();
+}
 
-	if (Tone.context.state !== "running"){
-		Tone.context.resume();
-	}
+var button = document.querySelector('#sound_on_off_button');
 
-	//attach a click listener to a play button
-	document.querySelector('#sound_on_off_button').addEventListener('click', () => {
-		console.log("sound is now ON")
-		Tone.start()
-	})
+var muted = true;
 
+button.addEventListener("click", function(){
+  	if(muted){
+   		Tone.start()
+		Tone.Master.mute=false;
+   		button.innerHTML = "pause";
+  	} else {
+   		Tone.Master.mute=true;
+   		button.innerHTML = "play";
+ 	}
+ 	muted = !muted;
+});
 
+var ChordLength = 4;
 
-
-var sampler = new Tone.Sampler({
+var sampler = new Tone.PolySynth(ChordLength, Tone.Sampler, {
 			"21" : "A0.[mp3|ogg]",
 			"24" : "C1.[mp3|ogg]",
 			"27" : "Ds1.[mp3|ogg]",
@@ -45,12 +53,13 @@ var sampler = new Tone.Sampler({
 			"108" : "C8.[mp3|ogg]"
 		}, {
 			"baseUrl" : "https://tonejs.github.io/examples/audio/salamander/"
-		});
+		}).toMaster();
 
 	sampler.set({
 		"attack" : 0.0,
 		"release": 1.6,
-		"onload": Tone.noOp ,
+		"onload"  : Tone.noOp,
+ 		"baseUrl" : "./piano/",
 		"curve"  : "linear"
 	});
 
@@ -60,9 +69,11 @@ var sampler = new Tone.Sampler({
 
 
 
-	render_sound = function (note){
-		sampler.triggerRelease(Tone.Midi(note).toFrequency() );
-		sampler.triggerAttack(Tone.Midi(note).toFrequency() );
+	render_sound = function (note, length){
+		ChordLength = length;
+		console.log("chordlength:", ChordLength);
+		sampler.triggerRelease(Tone.Midi(note).toString() );
+		sampler.triggerAttack(Tone.Midi(note).toString() );
 
 
 
@@ -74,4 +85,3 @@ var sampler = new Tone.Sampler({
 		
 
 	}
-
