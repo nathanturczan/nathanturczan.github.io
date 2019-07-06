@@ -48,8 +48,9 @@ var sampler = new Tone.Sampler({
 	sampler.set({
 		"attack" : 0.0,
 		"release": 1.6,
-		"onload"  : Tone.noOp,
- 		"baseUrl" : "./piano/",
+		"onload": function() { 
+			console.log('loaded'); 
+		}
 		"curve"  : "linear"
 	});
 
