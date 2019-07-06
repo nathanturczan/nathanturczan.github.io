@@ -57,6 +57,7 @@ var sampler = new Tone.PolySynth(ChordLength, Tone.Sampler, {
 			'release' : 1,
 			'onload' : function(){
 			//callback after all the samples are loaded
+			}
 		}).toMaster();
 
 	sampler.set({
