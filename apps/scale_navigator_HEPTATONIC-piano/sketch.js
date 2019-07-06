@@ -6,18 +6,27 @@ var curr_scale = "c_diatonic";
 var lastclick;
 var lastAutoPChange;
 var autopilotIsRunning = false;
+var selectedMidi;
+
+
 
 //p5 has keyReleased()
 //p5 has windowResize() -- check this out later
 
 function drawGradient() {
-    background(233);
+    background(255);
     
     //this sucks, use an png
     //or use the css gradient functions
 }
 
 function setup() {
+
+    document.getElementById("output_port_selector").addEventListener("change", function(evt) {
+        selectedMidi = evt.target.value;
+        console.log(selectedMidi);
+    })
+
     ellipseMode(RADIUS);
     canvas = createCanvas(window.innerWidth, window.innerHeight);
     drawGradient();
@@ -34,7 +43,7 @@ document.addEventListener('click', (evt) => {
 	    touch_data = [];
 	    drawGradient();
 		const key = evt.target.innerHTML
-		console.log(key)
+		ga('send', 'event', 'scale_change', window.userID+"-"+key);
 		pick_scale(key)
 	}
 
@@ -55,6 +64,7 @@ function mouseClicked() {
     if (key === undefined) {
         return;
     }
+    ga('send', 'event', 'scale_change', window.userID+"-"+key);
     pick_scale(key);
 }
 
@@ -85,7 +95,7 @@ function autopilot() {
   var r = random(scale_names);
 
 
-  console.log("autoscale", r, scales[r]);
+  //console.log("autoscale", r, scales[r]);
 
   pick_scale(r);
 }
@@ -105,6 +115,13 @@ var midi;
 function on_midi_success(arg_midi) {
     console.log("MIDI connection was successful");
     midi = arg_midi;
+
+    const outputs = arg_midi.outputs;
+    for (let output of outputs.values()){
+        var opt = document.createElement("option");
+        opt.text = output.name;
+        document.getElementById("output_port_selector").add(opt);
+    }
 }
 
 
@@ -260,7 +277,7 @@ function pick_scale(key) {
     } else {
         current_chord_name = random(chord_candidates.slice(slice_size));
     }
-    console.log("score:", score_smooth_voice_leading(last_chord_name, current_chord_name));
+    //console.log("score:", score_smooth_voice_leading(last_chord_name, current_chord_name));
     var current_chord = voicings[current_chord_name];
     last_chord_name = current_chord_name;
     
@@ -276,6 +293,7 @@ function pick_scale(key) {
    `).join('');
 
 
+    render_bass(current_chord["root"]+36);
     
 
     for(let i = 0; i < current_chord["root_transposed_to_zero"].length; i++){
@@ -290,19 +308,25 @@ function pick_scale(key) {
     }
 
     midi.outputs.forEach(function (port, port_id) {
+        if (port.name == selectedMidi ) {
 
-        port.name == "IAC Driver INTERSTICES";
-        for( let i = 0; i < 127; i++ ) {
-            port.send([144, i, 0]);
-        }
-        for( let i = 0; i < 127; i++ ) {
-            port.send([145, i, 0]);
-        }
-        
-        port.send([145, current_chord["root"]+48, 127]);
-        for(let i = 0; i < current_chord["root_transposed_to_zero"].length; i++){
-            random_chord_notes = current_chord["root_transposed_to_zero"][i];
-            port.send([144, Math.min(60 + random_chord_notes, 127), 127]);
+            for( let i = 0; i < 127; i++ ) {
+                port.send([144, i, 0]);
+            }
+            for( let i = 0; i < 127; i++ ) {
+                port.send([145, i, 0]);
+            }
+
+            for( let i = 0; i < 127; i++ ) {
+                port.send([146, i, 0]);
+            }
+            port.send([146, scales[key].video_index-1, 127]); 
+            console.log("video index:", scales[key].video_index-1);   
+            port.send([145, current_chord["root"]+48, 127]);
+            for(let i = 0; i < current_chord["root_transposed_to_zero"].length; i++){
+                random_chord_notes = current_chord["root_transposed_to_zero"][i];
+                port.send([144, Math.min(60 + random_chord_notes, 127), 127]);
+            }
             
         }
         //console.log(current_chord["root_transposed_to_zero"]);
@@ -392,7 +416,7 @@ function drawScale(key, x, y, level, ancestors, offset) {
     
 
     fill(hsvToRgb(map((scales[key].root*7)%12, 11, 0, 0, 1), 
-        map((scales[key].root*7)%12, 0, 11, 0.1, 0.2), 
+        map((scales[key].root*7)%12, 0, 11, 0.1, 0.5), 
         1));
 
     const shape_size = (windowHeight*(0.15) / level);
@@ -475,7 +499,7 @@ function drawScale(key, x, y, level, ancestors, offset) {
 }
 
 window.addEventListener("load", function(){
-        console.log("hey");
+        //console.log("hey");
     document.getElementById("root0").addEventListener("change", function(){
         allowed_root_intervals[0] = document.getElementById("root0").checked;
     });
