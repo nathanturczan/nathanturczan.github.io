@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en" >
+  <head>
+    
+    
+    <!-- Google Analytics -->
+     <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+       })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-139431988-1', 'auto');
+     ga('send', 'pageview');
+    </script>
+    <!-- End Google Analytics -->
+    
+    <script>
+      window.userID = Math.floor(Math.random()*100000)
+      </script>
+    
+    <meta charset="UTF-8">
+    <title>Scale Navigator</title>
+    <meta name="viewport" width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0>
+    <style> body {padding: 0; margin: 0;} </style>
+
+    <!-- use jquery for websockets
+    websockets io goes here -->
+    
+    <script language="javascript" type="text/javascript" src="libraries/p5.js"></script>
+    <script language="javascript" src="libraries/p5.dom.js"></script>
+    <!-- <script language="javascript" src="libraries/p5.sound.js"></script> -->
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/13.6.3/Tone.min.js"></script>
+    <script language="javascript" type="text/javascript" src="vexflow-debug.js"></script>
+    <script language="javascript" type="text/javascript" src="videoSwitchIndex.js"></script>
+    <script language="javascript" type="text/javascript" src="data.js"></script>
+    <script language="javascript" type="text/javascript" src="lilypond.js"></script>
+    <script language="javascript" type="text/javascript" src="lilypond2.js"></script>
+    <script language="javascript" type="text/javascript" src="metadata.js"></script>
+    <script language="javascript" type="text/javascript" src="voicings.js"></script>
+    <script language="javascript" type="text/javascript" src="notation.js"></script>
+    <script language="javascript" type="text/javascript" src="sketch.js"></script>
+
+
+
+    <!--<script src="miditest.js"></script>-->
+    <style>
+body {margin:0;}
+
+html{overflow:hidden;}
+
+#sound_on_off_button {
+  z-index: 100;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 100px;
+  height: 100px;
+}
+
+#output_port_selector {
+  z-index: 100;
+  position: fixed;
+  bottom: 0;
+  right: 50%;
+  width: 100px;
+  height: 100px;
+}
+
+.button {
+  background-color: red;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  position: absolute;
+  right: 0px;
+  font-size: 1;
+  font-family: "Helvetica", sans-serif;
+  width: 100%;
+}
+
+.menu {
+  overflow: hidden;
+  background-color: #efefef;
+  position: absolute;
+  right: 0px;
+  font-family: "Helvetica", sans-serif;
+  width: 18%;
+  height: 40%;
+}
+
+#supersets a {
+  display: block;
+  font-family: "Helvetica", sans-serif;
+}
+
+.navbar {
+  overflow: hidden;
+  background-color: #efefef;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  font-family: "Helvetica", sans-serif;
+  width: 18%;
+  height: 40%;
+}
+
+.navbar a {
+  float: right;
+  display: block;
+  color: #efefef;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-family: "Helvetica", sans-serif;
+  font-size: 17px;
+}
+
+.navbar a:hover {
+  background: #ddd;
+  color: black;
+}
+
+#boo {
+  position: fixed;
+  top: 0;
+}
+
+
+.slidecontainer {
+  width: 100%;
+}
+
+.VLslider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 25px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.VLslider:hover {
+  opacity: 1;
+}
+
+.VLslider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  background: #4CAF50;
+  cursor: pointer;
+}
+
+.VLslider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background: #4CAF50;
+  cursor: pointer;
+}
+
+supersets {
+  font-family: "Helvetica", sans-serif;
+  white-space: pre
+}
+
+.speaker {
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  display: inline-block;
+
+  span {
+    display: block;
+    width: 8px;
+    height: 8px;
+    background: #000000;
+    margin: 11px 0 0 2px;
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-color: transparent #000000 transparent transparent;
+      border-width: 10px 14px 10px 15px;
+      left: -13px;
+      top: 5px;
+    }
+
+    &:before {
+      transform: rotate(45deg);
+      border-radius: 0 50px 0 0;
+      content: '';
+      position: absolute;
+      width: 5px;
+      height: 5px;
+      border-style: double;
+      border-color: #000000;
+      border-width: 7px 7px 0 0;
+      left: 18px;
+      top: 9px;
+      transition: all 0.2s ease-out;
+    }
+  }
+
+div:after {
+    position:absolute;
+    bottom:0;
+    right:0;
+    content: '\d7';
+    font-size: 50px; 
+    color: #000000;
+    line-height: 100px;
+    text-align: center;
+}
+  
+  &.mute {
+    span:before {
+      transform: scale(.001) translate(-30px, 0) rotate(36deg);
+      opacity: 0;
+      
+    }
+  }
+}
+
+
+
+
+</style>
+  </head>
+  
+  <body>
+
+    <button id="sound_on_off_button"> <img src="sound_on.png" width="48" height="48"> </button>
+
+  	<div id="boo"></div>
+    <div class="menu">
+      <p id="chord_name" align="center"></p>
+      <br />
+      <p>SCALAR SUPERSETS</p>
+      <div id="supersets"></div>
+    </div>
+    <div class="navbar">
+      <p>ALLOWABLE ROOT MOVEMENT BETWEEN CHORDS</p>
+<label class="switch">
+    <input type="checkbox" checked class="root-movement" id="root0">
+    <span>Unison</span>
+</label>
+<br />
+<label class="switch">
+    <input type="checkbox" checked class="root-movement" id="root1">
+    <span>m2, M7</span>
+</label>
+<br />
+<label class="switch">
+    <input type="checkbox" checked class="root-movement" id="root2">
+    <span>M2, m7</span>
+</label>
+<br />
+<label class="switch">
+    <input type="checkbox" checked class="root-movement" id="root3">
+    <span>m3, M6</span>
+</label>
+<br />
+<label class="switch">
+    <input type="checkbox" checked class="root-movement" id="root4">
+    <span>M3, m6</span>
+</label>
+<br />
+<label class="switch">
+    <input type="checkbox" checked class="root-movement" id="root5">
+    <span>P4, P5</span>
+</label>
+<br />
+<label class="switch">
+    <input type="checkbox" checked class="root-movement" id="root6">
+    <span>Tritone</span>
+</label>
+<br />
+<p>VOICE LEADING SMOOTHNESS</p>
+  <input type="range" min="0" max="100" value="100" class="VLslider" id="vlsmoothness">
+  <br />
+      <button class="button" onclick="killswitch()">kill MIDI</button>
+    </div>
+
+ <select id='output_port_selector'>
+ </select>
+  
+  <span></span>
+</a>
+
+<script language="javascript" type="text/javascript" src="make_sound.js"></script>
+  </body>
+</html>
