@@ -50,7 +50,7 @@ var sampler = new Tone.Sampler({
 		"release": 1.6,
 		"onload": function() { 
 			console.log('loaded'); 
-		}
+		},
 		"curve"  : "linear"
 	});
 
