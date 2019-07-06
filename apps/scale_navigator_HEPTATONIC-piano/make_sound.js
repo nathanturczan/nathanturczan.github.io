@@ -53,7 +53,7 @@ var sampler = new Tone.PolySynth(ChordLength, Tone.Sampler, {
 			"108" : "C8.[mp3|ogg]"
 		}, 
 		{
-			"baseUrl" : "https://tonejs.github.io/examples/audio/salamander/"
+			"baseUrl" : "https://tonejs.github.io/examples/audio/salamander/",
 			'release' : 1,
 			'onload' : function(){
 			//callback after all the samples are loaded
