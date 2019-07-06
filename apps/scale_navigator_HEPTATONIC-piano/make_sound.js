@@ -10,6 +10,8 @@
 	})
 
 
+
+
 var sampler = new Tone.Sampler({
 			"A0" : "A0.[mp3|ogg]",
 			"C1" : "C1.[mp3|ogg]",
@@ -43,14 +45,12 @@ var sampler = new Tone.Sampler({
 			"C8" : "C8.[mp3|ogg]"
 		}, {
 			"baseUrl" : "https://tonejs.github.io/examples/audio/salamander/"
-		}).toMaster();
+		});
 
 	sampler.set({
 		"attack" : 0.0,
 		"release": 1.6,
-		"onload": function() { 
-			console.log('loaded'); 
-		},
+		"onload": Tone.noOp ,
 		"curve"  : "linear"
 	});
 
@@ -60,9 +60,7 @@ var sampler = new Tone.Sampler({
 
 
 
-	render_sound = function (note, length){
-		ChordLength = length;
-		console.log("chordlength:", ChordLength);
+	render_sound = function (note){
 		sampler.triggerRelease(Tone.Midi(note).toFrequency() );
 		sampler.triggerAttack(Tone.Midi(note).toFrequency() );
 
