@@ -66,7 +66,7 @@ var rhythms = [1, 2];
 
 function draw() {
 	var check_box = document.getElementById("autopilot_checkbox");
-    if ((frameCount - lastclick) >= 50 && autopilotIsRunning == false && check_box.checked == true) {
+    if ((frameCount - lastclick) >= 300 && autopilotIsRunning == false && check_box.checked == true) {
 
         autopilot(touch_data[0].k);
         // once autopilot is enabled - we need a boolean to say whether its running
