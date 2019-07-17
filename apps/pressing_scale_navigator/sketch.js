@@ -7,16 +7,14 @@ var lastclick;
 var lastAutoPChange;
 var autopilotIsRunning = false;
 
+//make the keys navigate the same journey as the touch
+//maybe just add 49 rather than using a dictionary
+const num_convert = {49 : 0, 50 : 1, 51 : 2, 52 : 3 , 53 : 4, 54 : 5};
 
-
-//p5 has keyReleased()
-//p5 has windowResize() -- check this out later
 
 function drawGradient() {
     background(255);
-    
-    //this sucks, use an png
-    //or use the css gradient functions
+
 }
 
 function setup() {
@@ -48,15 +46,37 @@ function mouseClicked() {
     pick_scale(key);
 }
 
+function autopilot(key) {
+    autopilotIsRunning = true;
+    lastAutoPChange = frameCount;
+    touch_data = [];
+    drawGradient();
+	//console.log("autopilot Is Running", key);
+	// for random adjacent
+ 	// keep track of last scale name
+ 	// get random adjacent from last scale name
+ 	// instead of random scale - get random adjacent from last randomKey
+    var r = random(scales[key].adjacent_scales);
+    var random_scale = [r];
+    pick_scale(random(random_scale));
+}
+
+var rhythms = [1, 2];
 
 
+function draw() {
+	var check_box = document.getElementById("autopilot_checkbox");
+    if ((frameCount - lastclick) >= 50 && autopilotIsRunning == false && check_box.checked == true) {
 
-//make the keys navigate the same journey as the touch
-//maybe just add 49 rather than using a dictionary
-const num_convert = {49 : 0, 50 : 1, 51 : 2, 52 : 3 , 53 : 4, 54 : 5};
-
-
-
+        autopilot(touch_data[0].k);
+        // once autopilot is enabled - we need a boolean to say whether its running
+        autopilotIsRunning = true;
+        
+    }
+    else if ((frameCount - lastAutoPChange) >= 600*random(rhythms) && autopilotIsRunning == true && check_box.checked == true) {
+        autopilot(touch_data[0].k);
+    }
+}
 
 // function takes chord A and chord br
 // returns true or false whether or not transition is OK
@@ -64,8 +84,6 @@ const num_convert = {49 : 0, 50 : 1, 51 : 2, 52 : 3 , 53 : 4, 54 : 5};
 function mod(a,b){
     return((a%b)+b)%b;
 }
-
-
 
 var note_names = ["C", "D♭", "D", "E♭", "E", "F", "F#", "G", "A♭", "A", "B♭", "B"];
 
