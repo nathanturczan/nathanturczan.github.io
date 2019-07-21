@@ -2,6 +2,7 @@ const data = {
     "scales": {
         "a_acoustic": {
             "root": 9,
+            "video_index": 1,
             "adjacent_scales": [
                 "d_diatonic",
                 "e_diatonic",
@@ -23,6 +24,7 @@ const data = {
         },
         "a_diatonic": {
             "root": 9,
+            "video_index": 2,
             "adjacent_scales": [
                 "d_diatonic",
                 "e_diatonic",
@@ -44,6 +46,7 @@ const data = {
         },
         "a_harmonic_major": {
             "root": 9,
+            "video_index": 3,
             "adjacent_scales": [
                 "a_diatonic",
                 "g_acoustic",
@@ -65,6 +68,7 @@ const data = {
         },
         "a_harmonic_minor": {
             "root": 9,
+            "video_index": 4,
             "adjacent_scales": [
                 "c_diatonic",
                 "d_acoustic",
@@ -86,6 +90,7 @@ const data = {
         },
         "as_acoustic": {
             "root": 10,
+            "video_index": 5,
             "adjacent_scales": [
                 "ds_diatonic",
                 "f_diatonic",
@@ -107,6 +112,7 @@ const data = {
         },
         "as_diatonic": {
             "root": 10,
+            "video_index": 6,
             "adjacent_scales": [
                 "ds_diatonic",
                 "f_diatonic",
@@ -128,6 +134,7 @@ const data = {
         },
         "as_harmonic_major": {
             "root": 10,
+            "video_index": 7,
             "adjacent_scales": [
                 "as_diatonic",
                 "gs_acoustic",
@@ -149,6 +156,7 @@ const data = {
         },
         "as_harmonic_minor": {
             "root": 10,
+            "video_index": 8,
             "adjacent_scales": [
                 "cs_diatonic",
                 "ds_acoustic",
@@ -170,6 +178,7 @@ const data = {
         },
         "b_acoustic": {
             "root": 11,
+            "video_index": 9,
             "adjacent_scales": [
                 "e_diatonic",
                 "fs_diatonic",
@@ -191,6 +200,7 @@ const data = {
         },
         "b_diatonic": {
             "root": 11,
+            "video_index": 10,
             "adjacent_scales": [
                 "e_diatonic",
                 "fs_diatonic",
@@ -212,6 +222,7 @@ const data = {
         },
         "b_harmonic_major": {
             "root": 11,
+            "video_index": 11,
             "adjacent_scales": [
                 "b_diatonic",
                 "a_acoustic",
@@ -233,6 +244,7 @@ const data = {
         },
         "b_harmonic_minor": {
             "root": 11,
+            "video_index": 12,
             "adjacent_scales": [
                 "d_diatonic",
                 "e_acoustic",
@@ -254,6 +266,7 @@ const data = {
         },
         "c_acoustic": {
             "root": 0,
+            "video_index": 13,
             "adjacent_scales": [
                 "f_diatonic",
                 "g_diatonic",
@@ -275,6 +288,7 @@ const data = {
         },
         "c_diatonic": {
             "root": 0,
+            "video_index": 14,
             "adjacent_scales": [
                 "f_diatonic",
                 "g_diatonic",
@@ -296,6 +310,7 @@ const data = {
         },
         "c_harmonic_major": {
             "root": 0,
+            "video_index": 15,
             "adjacent_scales": [
                 "c_diatonic",
                 "as_acoustic",
@@ -317,6 +332,7 @@ const data = {
         },
         "c_harmonic_minor": {
             "root": 0,
+            "video_index": 16,
             "adjacent_scales": [
                 "ds_diatonic",
                 "f_acoustic",
@@ -338,6 +354,7 @@ const data = {
         },
         "cs_acoustic": {
             "root": 1,
+            "video_index": 17,
             "adjacent_scales": [
                 "fs_diatonic",
                 "gs_diatonic",
@@ -359,6 +376,7 @@ const data = {
         },
         "cs_diatonic": {
             "root": 1,
+            "video_index": 18,
             "adjacent_scales": [
                 "fs_diatonic",
                 "gs_diatonic",
@@ -380,6 +398,7 @@ const data = {
         },
         "cs_harmonic_major": {
             "root": 1,
+            "video_index": 19,
             "adjacent_scales": [
                 "cs_diatonic",
                 "b_acoustic",
@@ -401,6 +420,7 @@ const data = {
         },
         "cs_harmonic_minor": {
             "root": 1,
+            "video_index": 20,
             "adjacent_scales": [
                 "e_diatonic",
                 "fs_acoustic",
@@ -422,6 +442,7 @@ const data = {
         },
         "d_acoustic": {
             "root": 2,
+            "video_index": 21,
             "adjacent_scales": [
                 "g_diatonic",
                 "a_diatonic",
@@ -443,6 +464,7 @@ const data = {
         },
         "d_diatonic": {
             "root": 2,
+            "video_index": 22,
             "adjacent_scales": [
                 "g_diatonic",
                 "a_diatonic",
@@ -464,6 +486,7 @@ const data = {
         },
         "d_harmonic_major": {
             "root": 2,
+            "video_index": 23,
             "adjacent_scales": [
                 "d_diatonic",
                 "c_acoustic",
@@ -485,6 +508,7 @@ const data = {
         },
         "d_harmonic_minor": {
             "root": 2,
+            "video_index": 24,
             "adjacent_scales": [
                 "f_diatonic",
                 "g_acoustic",
@@ -506,6 +530,7 @@ const data = {
         },
         "ds_acoustic": {
             "root": 3,
+            "video_index": 25,
             "adjacent_scales": [
                 "gs_diatonic",
                 "as_diatonic",
@@ -527,6 +552,7 @@ const data = {
         },
         "ds_diatonic": {
             "root": 3,
+            "video_index": 26,
             "adjacent_scales": [
                 "gs_diatonic",
                 "as_diatonic",
@@ -548,6 +574,7 @@ const data = {
         },
         "ds_harmonic_major": {
             "root": 3,
+            "video_index": 27,
             "adjacent_scales": [
                 "ds_diatonic",
                 "cs_acoustic",
@@ -569,6 +596,7 @@ const data = {
         },
         "ds_harmonic_minor": {
             "root": 3,
+            "video_index": 28,
             "adjacent_scales": [
                 "fs_diatonic",
                 "gs_acoustic",
@@ -590,6 +618,7 @@ const data = {
         },
         "e_acoustic": {
             "root": 4,
+            "video_index": 29,
             "adjacent_scales": [
                 "a_diatonic",
                 "b_diatonic",
@@ -611,6 +640,7 @@ const data = {
         },
         "e_diatonic": {
             "root": 4,
+            "video_index": 30,
             "adjacent_scales": [
                 "a_diatonic",
                 "b_diatonic",
@@ -632,6 +662,7 @@ const data = {
         },
         "e_harmonic_major": {
             "root": 4,
+            "video_index": 31,
             "adjacent_scales": [
                 "e_diatonic",
                 "d_acoustic",
@@ -653,6 +684,7 @@ const data = {
         },
         "e_harmonic_minor": {
             "root": 4,
+            "video_index": 32,
             "adjacent_scales": [
                 "g_diatonic",
                 "a_acoustic",
@@ -674,6 +706,7 @@ const data = {
         },
         "f_acoustic": {
             "root": 5,
+            "video_index": 33,
             "adjacent_scales": [
                 "c_diatonic",
                 "as_diatonic",
@@ -695,6 +728,7 @@ const data = {
         },
         "f_diatonic": {
             "root": 5,
+            "video_index": 34,
             "adjacent_scales": [
                 "c_diatonic",
                 "as_diatonic",
@@ -716,6 +750,7 @@ const data = {
         },
         "f_harmonic_major": {
             "root": 5,
+            "video_index": 35,
             "adjacent_scales": [
                 "f_diatonic",
                 "ds_acoustic",
@@ -737,6 +772,7 @@ const data = {
         },
         "f_harmonic_minor": {
             "root": 5,
+            "video_index": 36,
             "adjacent_scales": [
                 "gs_diatonic",
                 "as_acoustic",
@@ -758,6 +794,7 @@ const data = {
         },
         "fs_acoustic": {
             "root": 6,
+            "video_index": 37,
             "adjacent_scales": [
                 "cs_diatonic",
                 "b_diatonic",
@@ -779,6 +816,7 @@ const data = {
         },
         "fs_diatonic": {
             "root": 6,
+            "video_index": 38,
             "adjacent_scales": [
                 "cs_diatonic",
                 "b_diatonic",
@@ -800,6 +838,7 @@ const data = {
         },
         "fs_harmonic_major": {
             "root": 6,
+            "video_index": 39,
             "adjacent_scales": [
                 "fs_diatonic",
                 "e_acoustic",
@@ -821,6 +860,7 @@ const data = {
         },
         "fs_harmonic_minor": {
             "root": 6,
+            "video_index": 40,
             "adjacent_scales": [
                 "a_diatonic",
                 "b_acoustic",
@@ -842,6 +882,7 @@ const data = {
         },
         "g_acoustic": {
             "root": 7,
+            "video_index": 41,
             "adjacent_scales": [
                 "c_diatonic",
                 "d_diatonic",
@@ -863,6 +904,7 @@ const data = {
         },
         "g_diatonic": {
             "root": 7,
+            "video_index": 42,
             "adjacent_scales": [
                 "c_diatonic",
                 "d_diatonic",
@@ -884,6 +926,7 @@ const data = {
         },
         "g_harmonic_major": {
             "root": 7,
+            "video_index": 43,
             "adjacent_scales": [
                 "g_diatonic",
                 "f_acoustic",
@@ -905,6 +948,7 @@ const data = {
         },
         "g_harmonic_minor": {
             "root": 7,
+            "video_index": 44,
             "adjacent_scales": [
                 "as_diatonic",
                 "c_acoustic",
@@ -926,6 +970,7 @@ const data = {
         },
         "gs_acoustic": {
             "root": 8,
+            "video_index": 45,
             "adjacent_scales": [
                 "cs_diatonic",
                 "ds_diatonic",
@@ -947,6 +992,7 @@ const data = {
         },
         "gs_diatonic": {
             "root": 8,
+            "video_index": 46,
             "adjacent_scales": [
                 "cs_diatonic",
                 "ds_diatonic",
@@ -968,6 +1014,7 @@ const data = {
         },
         "gs_harmonic_major": {
             "root": 8,
+            "video_index": 47,
             "adjacent_scales": [
                 "gs_diatonic",
                 "fs_acoustic",
@@ -989,6 +1036,7 @@ const data = {
         },
         "gs_harmonic_minor": {
             "root": 8,
+            "video_index": 48,
             "adjacent_scales": [
                 "b_diatonic",
                 "cs_acoustic",
@@ -1010,6 +1058,7 @@ const data = {
         },
         "octatonic_1": {
             "root": 0,
+            "video_index": 49,
             "adjacent_scales": [
                 "c_acoustic",
                 "ds_acoustic",
@@ -1038,6 +1087,7 @@ const data = {
         },
         "octatonic_2": {
             "root": 1,
+            "video_index": 50,
             "adjacent_scales": [
                 "cs_acoustic",
                 "e_acoustic",
@@ -1066,6 +1116,7 @@ const data = {
         },
         "octatonic_3": {
             "root": 2,
+            "video_index": 51,
             "adjacent_scales": [
                 "d_acoustic",
                 "f_acoustic",
@@ -1094,6 +1145,7 @@ const data = {
         },
         "hexatonic_1": {
             "root": 0,
+            "video_index": 52,
             "adjacent_scales": [
                 "cs_harmonic_major",
                 "f_harmonic_major",
@@ -1114,6 +1166,7 @@ const data = {
         },
         "hexatonic_2": {
             "root": 1,
+            "video_index": 53,
             "adjacent_scales": [
                 "d_harmonic_major",
                 "fs_harmonic_major",
@@ -1134,6 +1187,7 @@ const data = {
         },
         "hexatonic_3": {
             "root": 2,
+            "video_index": 54,
             "adjacent_scales": [
                 "ds_harmonic_major",
                 "g_harmonic_major",
@@ -1154,6 +1208,7 @@ const data = {
         },
         "hexatonic_4": {
             "root": 3,
+            "video_index": 55,
             "adjacent_scales": [
                 "c_harmonic_major",
                 "e_harmonic_major",
@@ -1174,6 +1229,7 @@ const data = {
         },
         "whole_tone_1": {
             "root": 0,
+            "video_index": 56,
             "adjacent_scales": [
                 "c_acoustic",
                 "d_acoustic",
@@ -1194,6 +1250,7 @@ const data = {
         },
         "whole_tone_2": {
             "root": 1,
+            "video_index": 57,
             "adjacent_scales": [
                 "cs_acoustic",
                 "ds_acoustic",
@@ -1214,53 +1271,3 @@ const data = {
         }
     }
 }
-
-
-const scale_names = ["a_acoustic"
-, "a_diatonic"
-, "a_harmonic_major"
-, "a_harmonic_minor"
-, "as_acoustic"
-, "as_diatonic"
-, "as_harmonic_major"
-, "as_harmonic_minor"
-, "b_acoustic"
-, "b_diatonic"
-, "b_harmonic_major"
-, "b_harmonic_minor"
-, "c_acoustic"
-, "c_diatonic"
-, "c_harmonic_major"
-, "c_harmonic_minor"
-, "cs_acoustic"
-, "cs_diatonic"
-, "cs_harmonic_major"
-, "cs_harmonic_minor"
-, "d_acoustic"
-, "d_diatonic"
-, "d_harmonic_major"
-, "d_harmonic_minor"
-, "ds_acoustic"
-, "ds_diatonic"
-, "ds_harmonic_major"
-, "ds_harmonic_minor"
-, "e_acoustic"
-, "e_diatonic"
-, "e_harmonic_major"
-, "e_harmonic_minor"
-, "f_acoustic"
-, "f_diatonic"
-, "f_harmonic_major"
-, "f_harmonic_minor"
-, "fs_acoustic"
-, "fs_diatonic"
-, "fs_harmonic_major"
-, "fs_harmonic_minor"
-, "g_acoustic"
-, "g_diatonic"
-, "g_harmonic_major"
-, "g_harmonic_minor"
-, "gs_acoustic"
-, "gs_diatonic"
-, "gs_harmonic_major"
-, "gs_harmonic_minor"]
