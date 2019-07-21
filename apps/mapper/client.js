@@ -38,7 +38,7 @@ function map_chan1_0to47(){
             console.log("map it now!");
             //send range for mapping
             port.send([146, 0, 127]);
-            port.send([146, 47, 127]);
+            port.send([146, 56, 127]);
 
             sleep(3000);
             console.log("mapping off");
