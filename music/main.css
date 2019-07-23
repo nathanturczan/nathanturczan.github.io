@@ -72,6 +72,18 @@ section:after {
   height: 30px; /* Used in this example to enable scrolling */
 }
 
+.video_scoring {
+  text-align: center;
+}
+
+.tracks {
+  text-align: center;
+}
+
+.performance {
+  text-align: center;
+}
+
 /* Style the footer */
 footer {
   background-color: #331C87;
