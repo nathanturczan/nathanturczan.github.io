@@ -29,8 +29,17 @@ html{overflow:hidden;}
 }
 
 input[type=checkbox] {
+    z-index: 100;
     transform: scale(3);
-    top: 0;
+}
+
+#output_port_selector {
+  z-index: 100;
+  position: fixed;
+  top: 10%;
+  right: 0;
+  width: 200px;
+  height: 50px;
 }
 
 }
@@ -42,5 +51,7 @@ input[type=checkbox] {
     <form align="right" >
       <input type="checkbox" id="autopilot_checkbox"  onclick="draw()"> <font size="10">autopilot<br>
     </form>
+    <select id='output_port_selector'>
+    </select>
   </body>
 </html>

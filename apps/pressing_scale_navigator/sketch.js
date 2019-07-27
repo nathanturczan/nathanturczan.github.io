@@ -4,6 +4,7 @@ const startingScale = scales["c_diatonic"]
 var canvas;
 var curr_scale = "c_diatonic";
 var lastclick;
+var selectedMidi;
 var lastAutoPChange;
 var autopilotIsRunning = false;
 
@@ -18,6 +19,12 @@ function drawGradient() {
 }
 
 function setup() {
+
+    document.getElementById("output_port_selector").addEventListener("change", function(evt) {
+        selectedMidi = evt.target.value;
+        console.log(selectedMidi);
+    })
+
     ellipseMode(RADIUS);
     canvas = createCanvas(window.innerWidth, window.innerHeight);
     drawGradient();
@@ -45,6 +52,26 @@ function mouseClicked() {
     }
     pick_scale(key);
 }
+
+var midi;
+function on_midi_success(arg_midi) {
+    console.log("MIDI connection was successful");
+    midi = arg_midi;
+
+    const outputs = arg_midi.outputs;
+    for (let output of outputs.values()){
+        var opt = document.createElement("option");
+        opt.text = output.name;
+        document.getElementById("output_port_selector").add(opt);
+    }
+}
+
+
+function on_midi_failure(error_code) {
+    console.error("Could not connect to MIDI: error code " + error_code);
+}
+
+navigator.requestMIDIAccess().then(on_midi_success, on_midi_failure);
 
 function autopilot(key) {
     autopilotIsRunning = true;
@@ -97,6 +124,19 @@ function pick_scale(key) {
     }
     
     drawScale(key, windowWidth / 2, windowHeight / 2, 1, [], -1);
+
+    if (!midi) {
+        return;
+    }
+
+    midi.outputs.forEach(function (port, port_id) {
+        if (port.name == selectedMidi ) {
+            for( let i = 0; i < 127; i++ ) {
+                port.send([146, i, 0]);
+            }
+            port.send([146, scales[key].video_index-1, 127]); 
+        }
+    });
 }
 
 function polygon(x, y, radius, npoints, sClass) {
