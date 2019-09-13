@@ -61,5 +61,5 @@ const lilypond_spellings = {
     "hexatonic_1": "c df e f gs a",
     "hexatonic_2": "cs d f gf a as",
     "hexatonic_3": "d ef fs g as b",
-    "hexatonic_4": "c ds e g as b"
+    "hexatonic_4": "c ds e g gs b"
 }
