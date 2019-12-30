@@ -254,6 +254,7 @@ function pick_scale(key) {
     chord_candidates = chord_candidates.sort(function (a, b) {
         var score_a = score_smooth_voice_leading(last_chord_name, a);
         var score_b = score_smooth_voice_leading(last_chord_name, b);
+
         if (score_a === score_b) {
             return 0;
         } else if (score_a < score_b) {
@@ -261,11 +262,12 @@ function pick_scale(key) {
         } else if (score_a > score_b) {
             return 1;
         }
+
     });
 
     var after_chord_candidates = chord_candidates.length;
-    // console.log("before:", before_chord_candidates_count, "after:", after_chord_candidates);
-    // console.log(chord_candidates)
+    //console.log("before:", before_chord_candidates_count, "after:", after_chord_candidates);
+    //console.log(chord_candidates)
 
     slice_size = Math.floor(chord_candidates.length - chord_candidates.length*(voice_leading_smoothness/100));
     if (slice_size === 0){
@@ -277,7 +279,7 @@ function pick_scale(key) {
     } else {
         current_chord_name = random(chord_candidates.slice(slice_size));
     }
-    //console.log("score:", score_smooth_voice_leading(last_chord_name, current_chord_name));
+    //console.log(last_chord_name, current_chord_name, score_smooth_voice_leading(last_chord_name, current_chord_name));
     var current_chord = voicings[current_chord_name];
     last_chord_name = current_chord_name;
     
@@ -320,12 +322,25 @@ function pick_scale(key) {
             for( let i = 0; i < 127; i++ ) {
                 port.send([146, i, 0]);
             }
-            port.send([146, scales[key].video_index-1, 127]); 
-            console.log("video index:", scales[key].video_index-1);   
-            port.send([145, current_chord["root"]+48, 127]);
-            for(let i = 0; i < current_chord["root_transposed_to_zero"].length; i++){
-                random_chord_notes = current_chord["root_transposed_to_zero"][i];
-                port.send([144, Math.min(60 + random_chord_notes, 127), 127]);
+
+            for( let i = 0; i < 127; i++ ) {
+                port.send([147, i, 0]);
+            }
+			port.send([146, scales[key].video_index-1, 127]); 
+            console.log("video index:", scales[key].video_index-1); 
+
+            port.send([147, current_chord["root"]+48, 127]);
+
+            for(let i = 0; i < 4; i++){
+            	bottom_chord_notes = current_chord["root_transposed_to_zero"].slice(0,4);
+                bottom_chord_notes = bottom_chord_notes[i];
+                port.send([144, bottom_chord_notes+48, 127]);
+            }
+
+            for(let i = 0; i < 4; i++){
+            	top_chord_notes = current_chord["root_transposed_to_zero"].slice(-4);
+                top_chord_notes = top_chord_notes[i];
+                port.send([145, top_chord_notes+48, 127]);
             }
             
         }
