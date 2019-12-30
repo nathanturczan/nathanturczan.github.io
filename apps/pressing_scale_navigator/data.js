@@ -20,6 +20,7 @@ const data = {
                 9,
                 11
             ],
+            "chords": [" A", " B", " Em", " F#m"],
             "scale_class": "acoustic"
         },
         "a_diatonic": {
@@ -42,6 +43,7 @@ const data = {
                 9,
                 11
             ],
+            "chords": [" A", " Bm", " C#m", " D", " E", " F#m"],
             "scale_class": "diatonic"
         },
         "a_harmonic_major": {
@@ -64,6 +66,7 @@ const data = {
                 9,
                 11
             ],
+            "chords": [" A", " C#m", " C#", " Dm", " E"],
             "scale_class": "harmonic_major"
         },
         "a_harmonic_minor": {
@@ -86,6 +89,7 @@ const data = {
                 9,
                 11
             ],
+            "chords": [" Am", " Dm", " E", " Fm", " F"],
             "scale_class": "harmonic_minor"
         },
         "as_acoustic": {
@@ -108,6 +112,7 @@ const data = {
                 8,
                 10
             ],
+            "chords": [" B♭", " C", " Fm", " Gm"],
             "scale_class": "acoustic"
         },
         "as_diatonic": {
@@ -130,6 +135,7 @@ const data = {
                 9,
                 10
             ],
+            "chords": [" B♭", " Cm", " Dm", " E♭", " F", " Gm"],
             "scale_class": "diatonic"
         },
         "as_harmonic_major": {
@@ -152,6 +158,7 @@ const data = {
                 9,
                 10
             ],
+            "chords": [" B♭", " Dm", " D", " E♭m", " F"],
             "scale_class": "harmonic_major"
         },
         "as_harmonic_minor": {
@@ -174,6 +181,7 @@ const data = {
                 9,
                 10
             ],
+            "chords": [" B♭m", " E♭m", " F", " G♭m", " G♭"],
             "scale_class": "harmonic_minor"
         },
         "b_acoustic": {
@@ -196,6 +204,7 @@ const data = {
                 9,
                 11
             ],
+            "chords": [" B", " C#", " F#m", " G#m"],
             "scale_class": "acoustic"
         },
         "b_diatonic": {
@@ -218,6 +227,7 @@ const data = {
                 10,
                 11
             ],
+            "chords": [" B", " C#m", " D#m", " E", " F#", " G#m"],
             "scale_class": "diatonic"
         },
         "b_harmonic_major": {
@@ -240,6 +250,7 @@ const data = {
                 10,
                 11
             ],
+            "chords": [" B", " D#m", " D#", " Em", " F#"],
             "scale_class": "harmonic_major"
         },
         "b_harmonic_minor": {
@@ -262,6 +273,7 @@ const data = {
                 10,
                 11
             ],
+            "chords": [" Bm", " Em", " F#", " Gm", " G"],
             "scale_class": "harmonic_minor"
         },
         "c_acoustic": {
@@ -284,6 +296,7 @@ const data = {
                 9,
                 10
             ],
+            "chords": [" C", " D", " Gm", " Am"],
             "scale_class": "acoustic"
         },
         "c_diatonic": {
@@ -306,6 +319,7 @@ const data = {
                 9,
                 11
             ],
+            "chords": [" C", " Dm", " Em", " F", " G", " Am"],
             "scale_class": "diatonic"
         },
         "c_harmonic_major": {
@@ -328,6 +342,7 @@ const data = {
                 8,
                 11
             ],
+            "chords": [" C", " Em", " E", " Fm", " G"],
             "scale_class": "harmonic_major"
         },
         "c_harmonic_minor": {
@@ -350,6 +365,7 @@ const data = {
                 8,
                 11
             ],
+            "chords": [" Cm", " Fm", " G", " A♭m", " A♭"],
             "scale_class": "harmonic_minor"
         },
         "cs_acoustic": {
@@ -372,6 +388,7 @@ const data = {
                 10,
                 11
             ],
+            "chords": [" D♭", " E♭", " A♭m", " B♭m"],
             "scale_class": "acoustic"
         },
         "cs_diatonic": {
@@ -394,6 +411,7 @@ const data = {
                 8,
                 10
             ],
+            "chords": [" D♭", " E♭m", " Fm", " G♭", " A♭", " B♭m"],
             "scale_class": "diatonic"
         },
         "cs_harmonic_major": {
@@ -416,6 +434,7 @@ const data = {
                 8,
                 9
             ],
+            "chords": [" D♭", " Fm", " F", " G♭m", " A♭"],
             "scale_class": "harmonic_major"
         },
         "cs_harmonic_minor": {
@@ -438,6 +457,7 @@ const data = {
                 8,
                 9
             ],
+            "chords": [" D♭m", " G♭m", " A♭", " Am", " A"],
             "scale_class": "harmonic_minor"
         },
         "d_acoustic": {
@@ -460,6 +480,7 @@ const data = {
                 9,
                 11
             ],
+            "chords": [" D", " E", " Am", " Bm"],
             "scale_class": "acoustic"
         },
         "d_diatonic": {
@@ -482,6 +503,7 @@ const data = {
                 9,
                 11
             ],
+            "chords": [" D", " Em", " F#m", " G", " A", " Bm"],
             "scale_class": "diatonic"
         },
         "d_harmonic_major": {
@@ -504,6 +526,7 @@ const data = {
                 9,
                 10
             ],
+            "chords": [" D", " F#m", " F#", " Gm", " A"],
             "scale_class": "harmonic_major"
         },
         "d_harmonic_minor": {
@@ -526,6 +549,7 @@ const data = {
                 9,
                 10
             ],
+            "chords": [" Dm", " Gm", " A", " B♭m", " B♭"],
             "scale_class": "harmonic_minor"
         },
         "ds_acoustic": {
@@ -548,6 +572,7 @@ const data = {
                 9,
                 10
             ],
+            "chords": [" E♭", " F", " B♭m", " Cm"],
             "scale_class": "acoustic"
         },
         "ds_diatonic": {
@@ -570,6 +595,7 @@ const data = {
                 8,
                 10
             ],
+            "chords": [" E♭", " Fm", " Gm", " A♭", " B♭", " Cm"],
             "scale_class": "diatonic"
         },
         "ds_harmonic_major": {
@@ -592,6 +618,7 @@ const data = {
                 10,
                 11
             ],
+            "chords": [" E♭", " Gm", " G", " A♭m", " B♭"],
             "scale_class": "harmonic_major"
         },
         "ds_harmonic_minor": {
@@ -614,6 +641,7 @@ const data = {
                 10,
                 11
             ],
+            "chords": [" E♭m", " A♭m", " B♭", " Bm", " B"],
             "scale_class": "harmonic_minor"
         },
         "e_acoustic": {
@@ -636,6 +664,7 @@ const data = {
                 10,
                 11
             ],
+            "chords": [" E", " F#", " Bm", " C#m"],
             "scale_class": "acoustic"
         },
         "e_diatonic": {
@@ -658,6 +687,7 @@ const data = {
                 9,
                 11
             ],
+            "chords": [" E", " F#m", " G#m", " A", " B", " C#m"],
             "scale_class": "diatonic"
         },
         "e_harmonic_major": {
@@ -680,6 +710,7 @@ const data = {
                 9,
                 11
             ],
+            "chords": [" E", " G#m", " G", " Am", " B"],
             "scale_class": "harmonic_major"
         },
         "e_harmonic_minor": {
@@ -702,6 +733,7 @@ const data = {
                 9,
                 11
             ],
+            "chords": [" Em", " Am", " B", " Cm", " C"],
             "scale_class": "harmonic_minor"
         },
         "f_acoustic": {
@@ -724,6 +756,7 @@ const data = {
                 9,
                 11
             ],
+            "chords": [" F", " G", " Cm", " Dm"],
             "scale_class": "acoustic"
         },
         "f_diatonic": {
@@ -746,6 +779,7 @@ const data = {
                 9,
                 10
             ],
+            "chords": [" F", " Gm", " Am", " B♭", " C", " Dm"],
             "scale_class": "diatonic"
         },
         "f_harmonic_major": {
@@ -768,6 +802,7 @@ const data = {
                 9,
                 10
             ],
+            "chords": [" F", " Am", " A", " B♭m", " C"],
             "scale_class": "harmonic_major"
         },
         "f_harmonic_minor": {
@@ -790,6 +825,7 @@ const data = {
                 8,
                 10
             ],
+            "chords": [" Fm", " B♭m", " C", " D♭m", " D♭"],
             "scale_class": "harmonic_minor"
         },
         "fs_acoustic": {
@@ -812,6 +848,7 @@ const data = {
                 8,
                 10
             ],
+            "chords": [" F#", " G#", " C#m", " D#m"],
             "scale_class": "acoustic"
         },
         "fs_diatonic": {
@@ -834,6 +871,7 @@ const data = {
                 10,
                 11
             ],
+            "chords": [" F#", " G#m", " A#m", " B", " C#", " D#m"],
             "scale_class": "diatonic"
         },
         "fs_harmonic_major": {
@@ -856,6 +894,7 @@ const data = {
                 10,
                 11
             ],
+            "chords": [" F#", " B♭m", " B♭", " Bm", " C#"],
             "scale_class": "harmonic_major"
         },
         "fs_harmonic_minor": {
@@ -878,6 +917,7 @@ const data = {
                 9,
                 11
             ],
+            "chords": [" F#m", " Bm", " C#", " Dm", " D"],
             "scale_class": "harmonic_minor"
         },
         "g_acoustic": {
@@ -900,6 +940,7 @@ const data = {
                 9,
                 11
             ],
+            "chords": [" G", " A", " Dm", " Em"],
             "scale_class": "acoustic"
         },
         "g_diatonic": {
@@ -922,6 +963,7 @@ const data = {
                 9,
                 11
             ],
+            "chords": [" G", " Am", " Bm", " C", " D", " Em"],
             "scale_class": "diatonic"
         },
         "g_harmonic_major": {
@@ -944,6 +986,7 @@ const data = {
                 9,
                 11
             ],
+            "chords": [" G", " Bm", " B", " Cm", " D"],
             "scale_class": "harmonic_major"
         },
         "g_harmonic_minor": {
@@ -966,6 +1009,7 @@ const data = {
                 9,
                 10
             ],
+            "chords": [" Gm", " Cm", " D", " E♭m", " E♭"],
             "scale_class": "harmonic_minor"
         },
         "gs_acoustic": {
@@ -988,6 +1032,7 @@ const data = {
                 8,
                 10
             ],
+            "chords": [" A♭", " B♭", " E♭m", " Fm"],
             "scale_class": "acoustic"
         },
         "gs_diatonic": {
@@ -1010,6 +1055,7 @@ const data = {
                 8,
                 10
             ],
+            "chords": [" A♭", " B♭m", " Cm", " D♭", " E♭", " Fm"],
             "scale_class": "diatonic"
         },
         "gs_harmonic_major": {
@@ -1032,6 +1078,7 @@ const data = {
                 8,
                 10
             ],
+            "chords": [" A♭", " Cm", " C", " D♭m", " E♭"],
             "scale_class": "harmonic_major"
         },
         "gs_harmonic_minor": {
@@ -1054,6 +1101,7 @@ const data = {
                 10,
                 11
             ],
+            "chords": [" A♭m", " D♭m", " E♭", " Em", " E"],
             "scale_class": "harmonic_minor"
         },
         "octatonic_1": {
@@ -1083,6 +1131,7 @@ const data = {
                 9,
                 10
             ],
+            "chords": [" Cm", " C", " E♭m", " E♭", " F#m", " F#", " Am", "A"],
             "scale_class": "octatonic"
         },
         "octatonic_2": {
@@ -1112,6 +1161,7 @@ const data = {
                 10,
                 11
             ],
+            "chords": [" C#m", " C#", " Em", " E", " Gm", " G", " B♭m", " B♭"],
             "scale_class": "octatonic"
         },
         "octatonic_3": {
@@ -1141,6 +1191,7 @@ const data = {
                 9,
                 11
             ],
+            "chords": [" Dm", " D", " Fm", " F", " A♭m", " A♭", " Bm", " B"],
             "scale_class": "octatonic"
         },
         "hexatonic_1": {
@@ -1162,6 +1213,7 @@ const data = {
                 8,
                 9
             ],
+            "chords": [" C#m", " C#", " Fm", " F", " Am", " A"],
             "scale_class": "hexatonic"
         },
         "hexatonic_2": {
@@ -1183,6 +1235,7 @@ const data = {
                 9,
                 10
             ],
+            "chords": [" Dm", " D", " F#m", " F#", " B♭m", " B♭"],
             "scale_class": "hexatonic"
         },
         "hexatonic_3": {
@@ -1204,6 +1257,7 @@ const data = {
                 10,
                 11
             ],
+            "chords": [" E♭m", " E♭", " Gm", " G", " Bm", " B"],
             "scale_class": "hexatonic"
         },
         "hexatonic_4": {
@@ -1225,6 +1279,7 @@ const data = {
                 8,
                 11
             ],
+            "chords": [" Em", " E", " A♭m", " A♭", " Cm", " C"],
             "scale_class": "hexatonic"
         },
         "whole_tone_1": {
@@ -1246,6 +1301,7 @@ const data = {
                 8,
                 10
             ],
+            "chords": [],
             "scale_class": "whole_tone"
         },
         "whole_tone_2": {
@@ -1267,6 +1323,7 @@ const data = {
                 9,
                 11
             ],
+            "chords": [],
             "scale_class": "whole_tone"
         }
     }

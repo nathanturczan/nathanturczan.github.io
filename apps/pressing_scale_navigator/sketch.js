@@ -115,6 +115,7 @@ function mod(a,b){
 var note_names = ["C", "D♭", "D", "E♭", "E", "F", "F#", "G", "A♭", "A", "B♭", "B"];
 
 function pick_scale(key) {
+    console.log(key);
     render_notation(key);
     index = num_convert[keyCode];
 
@@ -137,6 +138,12 @@ function pick_scale(key) {
             port.send([146, scales[key].video_index-1, 127]); 
         }
     });
+
+    document.getElementById("chords1").innerHTML = scales[key].chords;
+    document.getElementById("chords1").style.fontSize='30px';
+
+    document.getElementById("chords2").innerHTML = scales[detuned[key]].chords;
+    document.getElementById("chords2").style.fontSize='30px';
 }
 
 function polygon(x, y, radius, npoints, sClass) {
