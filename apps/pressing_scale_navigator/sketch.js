@@ -53,12 +53,12 @@ function mouseClicked() {
     pick_scale(key);
 }
 
-var midi;
-function on_midi_success(arg_midi) {
+var midi = null;  // global MIDIAccess object
+function on_midi_success(midiAccess) {
     console.log("MIDI connection was successful");
-    midi = arg_midi;
+    midi = midiAccess;
 
-    const outputs = arg_midi.outputs;
+    const outputs = midiAccess.outputs;
     for (let output of outputs.values()){
         var opt = document.createElement("option");
         opt.text = output.name;
@@ -71,7 +71,7 @@ function on_midi_failure(error_code) {
     console.error("Could not connect to MIDI: error code " + error_code);
 }
 
-navigator.requestMIDIAccess().then(on_midi_success, on_midi_failure);
+navigator.requestMIDIAccess( { sysex: true } ).then(on_midi_success, on_midi_failure);
 
 function autopilot(key) {
     autopilotIsRunning = true;
@@ -325,3 +325,4 @@ function drawScale(key, x, y, level, ancestors, offset) {
         
     }
 }
+
