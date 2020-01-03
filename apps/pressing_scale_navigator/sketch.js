@@ -88,7 +88,6 @@ function mod(a,b){
 }
 
 var note_names = ["C", "D♭", "D", "E♭", "E", "F", "F#", "G", "A♭", "A", "B♭", "B"];
-//var detuned = []
 
 function pick_scale(key) {
     console.log(key);
@@ -106,7 +105,7 @@ function pick_scale(key) {
     document.getElementById("chords1").innerHTML = scales[key].chords;
     document.getElementById("chords1").style.fontSize='30px';
 
-    //document.getElementById("chords2").innerHTML = scales[detuned[key]].chords;
+    document.getElementById("chords2").innerHTML = scales[detuned[key]].chords;
     document.getElementById("chords2").style.fontSize='30px';
 }
 

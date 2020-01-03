@@ -63,3 +63,70 @@ const lilypond_spellings = {
     "hexatonic_3": "d ef fs g as b",
     "hexatonic_4": "c ds e g gs b"
 }
+
+const detuned = {
+        "a_acoustic": "as_acoustic",
+    "as_acoustic": "b_acoustic",
+    "b_acoustic": "c_acoustic",
+    "c_acoustic": "cs_acoustic",
+    "cs_acoustic": "d_acoustic",
+    "d_acoustic": "ds_acoustic", 
+    "ds_acoustic": "e_acoustic",
+    "e_acoustic": "f_acoustic",
+    "f_acoustic": "fs_acoustic",
+    "fs_acoustic": "g_acoustic",
+    "g_acoustic": "gs_acoustic",
+    "gs_acoustic": "a_acoustic",
+
+    "a_diatonic": "as_diatonic", 
+    "as_diatonic": "b_diatonic",
+    "b_diatonic": "c_diatonic",
+    "c_diatonic": "cs_diatonic",
+    "cs_diatonic": "d_diatonic",
+    "d_diatonic": "ds_diatonic",
+    "ds_diatonic": "e_diatonic",
+    "e_diatonic": "f_diatonic",
+    "f_diatonic": "fs_diatonic",
+    "fs_diatonic": "g_diatonic",
+    "g_diatonic": "gs_diatonic",
+    "gs_diatonic": "a_diatonic",
+
+    "a_harmonic_major": "as_harmonic_major",
+    "as_harmonic_major": "b_harmonic_major",
+    "b_harmonic_major": "c_harmonic_major",
+    "c_harmonic_major": "cs_harmonic_major",
+    "cs_harmonic_major": "d_harmonic_major",
+    "d_harmonic_major": "ds_harmonic_major",
+    "ds_harmonic_major": "e_harmonic_major",
+    "e_harmonic_major": "f_harmonic_major",
+    "f_harmonic_major": "fs_harmonic_major",
+    "fs_harmonic_major": "g_harmonic_major",
+    "g_harmonic_major": "gs_harmonic_major",
+    "gs_harmonic_major": "a_harmonic_major",
+
+    "a_harmonic_minor": "as_harmonic_minor",
+    "as_harmonic_minor": "b_harmonic_minor",
+    "b_harmonic_minor": "c_harmonic_minor",
+    "c_harmonic_minor": "cs_harmonic_minor",
+    "cs_harmonic_minor": "d_harmonic_minor",
+    "d_harmonic_minor": "ds_harmonic_minor",
+    "ds_harmonic_minor": "e_harmonic_minor",
+    "e_harmonic_minor": "f_harmonic_minor",
+    "f_harmonic_minor": "fs_harmonic_minor",
+    "fs_harmonic_minor": "g_harmonic_minor",
+    "g_harmonic_minor": "gs_harmonic_minor",
+    "gs_harmonic_minor": "a_harmonic_minor",
+
+    "whole_tone_1": "whole_tone_2",
+    "whole_tone_2": "whole_tone_1",
+
+    "octatonic_1": "octatonic_2",
+    "octatonic_2": "octatonic_3",
+    "octatonic_3": "octatonic_1",
+
+    "hexatonic_1": "hexatonic_2",
+    "hexatonic_2": "hexatonic_3",
+    "hexatonic_3": "hexatonic_4",
+    "hexatonic_4": "hexatonic_1"
+
+}
