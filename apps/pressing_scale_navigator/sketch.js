@@ -4,7 +4,6 @@ const startingScale = scales["c_diatonic"]
 var canvas;
 var curr_scale = "c_diatonic";
 var lastclick;
-var selectedMidi;
 var lastAutoPChange;
 var autopilotIsRunning = false;
 
@@ -19,11 +18,6 @@ function drawGradient() {
 }
 
 function setup() {
-
-    document.getElementById("output_port_selector").addEventListener("change", function(evt) {
-        selectedMidi = evt.target.value;
-        console.log(selectedMidi);
-    })
 
     ellipseMode(RADIUS);
     canvas = createCanvas(window.innerWidth, window.innerHeight);
@@ -53,25 +47,6 @@ function mouseClicked() {
     pick_scale(key);
 }
 
-var midi = null;  // global MIDIAccess object
-function on_midi_success(midiAccess) {
-    console.log("MIDI connection was successful");
-    midi = midiAccess;
-
-    const outputs = midiAccess.outputs;
-    for (let output of outputs.values()){
-        var opt = document.createElement("option");
-        opt.text = output.name;
-        document.getElementById("output_port_selector").add(opt);
-    }
-}
-
-
-function on_midi_failure(error_code) {
-    console.error("Could not connect to MIDI: error code " + error_code);
-}
-
-navigator.requestMIDIAccess( { sysex: true } ).then(on_midi_success, on_midi_failure);
 
 function autopilot(key) {
     autopilotIsRunning = true;
@@ -113,6 +88,7 @@ function mod(a,b){
 }
 
 var note_names = ["C", "D♭", "D", "E♭", "E", "F", "F#", "G", "A♭", "A", "B♭", "B"];
+//var detuned = []
 
 function pick_scale(key) {
     console.log(key);
@@ -126,23 +102,11 @@ function pick_scale(key) {
     
     drawScale(key, windowWidth / 2, windowHeight / 2, 1, [], -1);
 
-    if (!midi) {
-        return;
-    }
-
-    midi.outputs.forEach(function (port, port_id) {
-        if (port.name == selectedMidi ) {
-            for( let i = 0; i < 127; i++ ) {
-                port.send([146, i, 0]);
-            }
-            port.send([146, scales[key].video_index-1, 127]); 
-        }
-    });
 
     document.getElementById("chords1").innerHTML = scales[key].chords;
     document.getElementById("chords1").style.fontSize='30px';
 
-    document.getElementById("chords2").innerHTML = scales[detuned[key]].chords;
+    //document.getElementById("chords2").innerHTML = scales[detuned[key]].chords;
     document.getElementById("chords2").style.fontSize='30px';
 }
 
