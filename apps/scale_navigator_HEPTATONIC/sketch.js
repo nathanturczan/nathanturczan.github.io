@@ -6,9 +6,6 @@ var curr_scale = "c_diatonic";
 var lastclick;
 var lastAutoPChange;
 var autopilotIsRunning = false;
-var selectedMidi;
-
-
 
 //p5 has keyReleased()
 //p5 has windowResize() -- check this out later
@@ -22,10 +19,6 @@ function drawGradient() {
 
 function setup() {
 
-    document.getElementById("output_port_selector").addEventListener("change", function(evt) {
-        selectedMidi = evt.target.value;
-        console.log(selectedMidi);
-    })
 
     ellipseMode(RADIUS);
     canvas = createCanvas(window.innerWidth, window.innerHeight);
@@ -109,46 +102,6 @@ function keyPressed()
     //drawGradient();
     //pick_scale(curr_scale);
 
-}
-
-var midi = null;  // global MIDIAccess object
-function on_midi_success(midiAccess) {
-    console.log("MIDI connection was successful");
-    midi = midiAccess;
-
-    const outputs = midiAccess.outputs;
-    for (let output of outputs.values()){
-        var opt = document.createElement("option");
-        opt.text = output.name;
-        document.getElementById("output_port_selector").add(opt);
-    }
-}
-
-
-function on_midi_failure(error_code) {
-    console.error("Could not connect to MIDI: error code " + error_code);
-}
-
-navigator.requestMIDIAccess( { sysex: true } ).then(on_midi_success, on_midi_failure);
-
-
-function killswitch(){
-    //clean up this MIDI stuff later, abstract into a few functions
-    console.log("KILLSWITCH SUCCESSFUL");
-    if (!midi) {
-        return;
-    }
-    midi.outputs.forEach(function (port, port_id) {
-        if (port.name !== "IAC Driver INTERSTICES"){
-            return;
-        }
-        for( let i = 0; i < 127; i++ ) {
-            port.send([144, i, 0]);
-        }
-        for( let i = 0; i < 127; i++ ) {
-            port.send([145, i, 0]);
-        }
-    });
 }
 
 // function takes chord A and chord br
@@ -303,53 +256,7 @@ function pick_scale(key) {
             render_sound(48 + random_chord_notes, current_chord["root_transposed_to_zero"].length);
             
             
-    }
-
-    if (!midi) {
-        return;
-    }
-
-    midi.outputs.forEach(function (port, port_id) {
-        if (port.name == selectedMidi ) {
-
-            for( let i = 0; i < 127; i++ ) {
-                port.send([144, i, 0]);
-            }
-            for( let i = 0; i < 127; i++ ) {
-                port.send([145, i, 0]);
-            }
-
-            for( let i = 0; i < 127; i++ ) {
-                port.send([146, i, 0]);
-            }
-
-            for( let i = 0; i < 127; i++ ) {
-                port.send([147, i, 0]);
-            }
-			port.send([146, scales[key].video_index-1, 127]); 
-            console.log("video index:", scales[key].video_index-1); 
-
-            port.send([147, current_chord["root"]+48, 127]);
-
-            for(let i = 0; i < 4; i++){
-            	bottom_chord_notes = current_chord["root_transposed_to_zero"].slice(0,4);
-                bottom_chord_notes = bottom_chord_notes[i];
-                port.send([144, bottom_chord_notes+48, 127]);
-            }
-
-            for(let i = 0; i < 4; i++){
-            	top_chord_notes = current_chord["root_transposed_to_zero"].slice(-4);
-                top_chord_notes = top_chord_notes[i];
-                port.send([145, top_chord_notes+48, 127]);
-            }
-            
-        }
-        //console.log(current_chord["root_transposed_to_zero"]);
-
-    });
-
-
-    
+    }    
 }
 
 function polygon(x, y, radius, npoints, sClass) {
