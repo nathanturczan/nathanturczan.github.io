@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>portfolio | Scale Navigator</title>
+  <meta charset="utf-8"/>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="main.css">
+</head>
+<body>
+
+
+  
+  <header>
+  <div>
+    <h1><b>NATHAN TURCZAN</b></h1>
+    <nav class="nav">
+      <p>explanation</p>
+    </nav>
+ </div>
+</header>
+
+<div class="main">
+<h1>The Scale Navigator</h1>
+
+<p>The Scale Navigator is a graphical interface implementation of some of the ideas I found in Dmitri Tymoczko’s fantastic paper Scale Networks and Debussy.</p>
+
+<p>Tymoczko describes a few different configurations of scale network, but I chose to limit the scope of this particular iteration of the Scale Navigator to just include the 7-note "Pressing" scales: Diatonic, Acoustic, Harmonic Major and Harmonic Minor. Scales are connected if one can be transformed to the other by altering one note by a single semitone. E.g. C Diatonic has six notes in common with G Diatonic, differing by only the semitone between the F and the F♯, respectively. Tymoczko calls this relationship “maximally intersecting voice leading.” Diatonic scales have 6 neighbors, and the other three scale classes all have four.</p>
+
+<p>The Scale Navigator is an interactive visualization of this network: the selected scale is in the center of the interface, radially surrounded by adjacent neighbor scales. Clicking on an adjacent scale (or scalar superset) selects a new scale.</p>
+
+<p>Each scale in the Scale Navigator is represented by a clickable polygonal-shaped node. The scale’s number of adjacent neighbors determines the number of sides its shape has (hexagon = Diatonic because they have 6 locally adjacent neighbors, etc). The root of each scale determines its node’s color (I mapped the color wheel to the 12 chromatic notes arranged in fifths).</p>
+
+<p>For fun, I added a chordal element to the interface: the Scale Navigator’s chord generator draws from a lexicon of jazz chord voicings catalogued in Bill Boyd’s Jazz Chord Progressions. To generate a new chord, the user clicks on the currently selected scale, one of its adjacent scale neighbors, or one of a list of “scalar supersets” found in the upper right of the interface. The chord generated will be a subset of the scale clicked. Go ahead and play with some of the settings on the lower left corner of the screen to get different chordal results!</p>
+
+<p>Future iterations of this project will include not only all Scales of Limited Transposition, but all possible combinations of the equally-tempered 12 notes (Ian Ring has a fantastic write-up found here).</p>
+
+<p>My experience at CalArts culminated with my thesis “The Scale Navigator: A Synesthetic Interface for Manipulating Harmony in Composition, Performance and Installation” where I discuss the design and implementation of my \href{http://www.nathanturczan.com/apps/scale_navigator_HEPTATONIC/}{{\color{blue} Scale Navigator}} software, a multi-modal web app for navigating complex procedurally generated harmony. I later presented this research at the \href{https://mtiid.calarts.edu/wp-content/uploads/2019/07/Turczan_NIME2019_scalenav.pdf}{{\color{blue} New Interfaces for Musical Expression conference}} in June of 2019. </p>
+
+<p>Dmitri Tymoczko [8] describes a system of interconnected
+seven-note scales inclusive of all twelve transpositions of the
+Diatonic, Acoustic, Harmonic Major, and Harmonic Minor
+scale classes. These forty-eight distinct scales are organized
+as nodes of a scale network graph—for the purposes of this
+paper, the “scale network” (Figure 1)—where two scales are
+connected if one can be transformed to the other by altering
+one note by a single semitone. As an example, C Diatonic
+has six notes in common with G Diatonic, di↵ering by only
+the semi-tone between the F and the F], respectively. Diatonic scales have six neighbors, and the other three scale
+classes all have four. This relationship is called “maximally
+intersecting voice leading” [8].
+Much like the circle of fifths, the described scale network
+is a geometric visualization of scalar relationships. The circle of fifths is in fact one possible Diatonic-only pathway
+through the scale network, though the structure also contains connections to Acoustic, Harmonic Major and Harmonic Minor. These “synthetic scales” di↵er from the Diatonic scale class by only one note; they are still highly
+triadic and familiar.
+Tymoczko’s scale network is a framework for diverse approaches to harmony. It can be used to analyze and create
+tonal works because it encompasses the circle of fifths. If
+one ignores harmonic functionality, one can use the scale
+network to find connections to scales that would be impossible to modulate to under the restrictions of tonality. If
+one dispenses with triads, the scale network can be used in
+conjunction with diatonic set technique or pandiatonicism
+to find exciting new chordal possibilities.</p>
+
+</div>
+
+</body>
+
+    </html>
+
+
+
+
+

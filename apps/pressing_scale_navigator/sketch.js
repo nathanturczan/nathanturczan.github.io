@@ -102,11 +102,11 @@ function pick_scale(key) {
     drawScale(key, windowWidth / 2, windowHeight / 2, 1, [], -1);
 
 
-    document.getElementById("chords1").innerHTML = scales[key].chords;
+    document.getElementById("chords1").innerHTML = "chords to play:"+"<br>"+scales[key].chords;
     document.getElementById("chords1").style.fontSize='30px';
 
-    document.getElementById("chords2").innerHTML = scales[detuned[key]].chords;
-    document.getElementById("chords2").style.fontSize='30px';
+    // document.getElementById("chords2").innerHTML = scales[detuned[key]].chords;
+    // document.getElementById("chords2").style.fontSize='30px';
 }
 
 function polygon(x, y, radius, npoints, sClass) {

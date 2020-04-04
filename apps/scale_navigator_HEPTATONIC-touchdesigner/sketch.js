@@ -1,4 +1,3 @@
-
 const scales = data["scales"]
 const startingScale = scales["c_diatonic"]
 var canvas;
@@ -35,17 +34,17 @@ function setup() {
 }
 
 document.addEventListener('click', (evt) => {
-	if ( evt.target && evt.target.className === "scale-superset-btn") {
-		lastclick = frameCount;
-    	autopilotIsRunning = false;
-    	//console.log("touch data", touch_data);
+    if ( evt.target && evt.target.className === "scale-superset-btn") {
+        lastclick = frameCount;
+        autopilotIsRunning = false;
+        //console.log("touch data", touch_data);
 
-	    touch_data = [];
-	    drawGradient();
-		const key = evt.target.innerHTML
-		ga('send', 'event', 'scale_change', window.userID+"-"+key);
-		pick_scale(key)
-	}
+        touch_data = [];
+        drawGradient();
+        const key = evt.target.innerHTML
+        ga('send', 'event', 'scale_change', window.userID+"-"+key);
+        pick_scale(key)
+    }
 
 })
 
@@ -289,7 +288,7 @@ function pick_scale(key) {
 
     //document.getElementById('supersets').innerHTML = current_chord["scale_supersets"].join('<br>');
     document.getElementById('supersets').innerHTML = current_chord["scale_supersets"].map((scale) => `
-    	<a href="javascript:;" class='scale-superset-btn'>${scale}</a>
+        <a href="javascript:;" class='scale-superset-btn'>${scale}</a>
    `).join('');
 
 
@@ -319,8 +318,8 @@ function pick_scale(key) {
             for( let i = 0; i < 127; i++ ) {
                 port.send([146, i, 0]);
             }
-	    //console.log(hsvToRgb((scales[key].root*7)%12));
-	    console.log((scales[key].root*7)%12);
+        //console.log(hsvToRgb((scales[key].root*7)%12));
+        console.log((scales[key].root*7)%12);
             port.send([148, 0, (scales[key].root*7)%12]); //send MIDI cc root color
             port.send([147, 0, scales[key].video_index-1]); //send MIDI cc for touchdesigner indexing
             port.send([146, scales[key].video_index-1, 127]); 
