@@ -54,6 +54,8 @@ div.imageInner {
   overflow: hidden;
 }
 
+
+
 header {
   overflow: hidden;
   background-color:white;
@@ -65,6 +67,8 @@ header {
   top: 0; /* Position the navbar at the top of the page */
 }
 
+header .row,
+
 header h1 {
   font-weight: 1000;
   letter-spacing: 7px;
@@ -72,7 +76,7 @@ header h1 {
 }
 
 header nav {
-  width: 100%;
+  width: 80%;
   display: flex;
   justify-content: flex-end;
   background-color:lightblue;
@@ -98,6 +102,7 @@ nav ul {
   list-style-type: none;
   padding: 0;
 }
+
 
 article {
   word-wrap: break-word;
