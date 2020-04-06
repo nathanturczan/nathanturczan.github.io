@@ -1,90 +1,104 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <title>portfolio | INTERSTICES // Heptagrams</title>
-  <meta charset="utf-8"/>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-  <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,700' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" type="text/css" href="main.css">
+    <title>portfolio | INTERSTICES // Heptagrams</title>
+    <meta charset="utf-8" />
+    <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="main.css">
 </head>
+
 <body>
 
+    <header>
+        <div>
+            <h1><b>NATHAN TURCZAN</b></h1>
+            <nav class="nav">
+                <p>explanation</p>
+            </nav>
+        </div>
+    </header>
 
-  
-  <header>
-  <div>
-    <h1><b>NATHAN TURCZAN</b></h1>
-    <nav class="nav">
-      <p>explanation</p>
-    </nav>
- </div>
-</header>
+    <div class="main">
 
-<div class="main">
+        <h1>Networked Music with the Scale Navigator</h1>
 
-<h1>Two Ensemble Performances Employing the Scale Navigator</h1>
-
-<h2>INTERSTICES</h2>
-
-<p>INTERSTICES is an improvisational piece of networked music composed for the CalArts
-Machine Orchestra that premiered December 6th, 2018. Inspired by Terry Reilly’s In
-C, the piece is based around the idea of synchronizing a large ensemble of improvisers
-over changing scales as controlled by a conductor.</p>
+        <p>I wanted to use the Scale Navigator </p>
 
 
-<p>INTERSTICES makes use of the SNLPN to stay in harmonic sync, with a player directing modulation on a global scale using the Scale Navigator in its Conductor capacity.
-Other members of the ensemble—playing acoustic instruments or performing with Ableton Live—are updated of scale changes via the Client component, whose screen
-score transforms to describe the current selected scale for the acoustic players to sight
-read and interpret.1
-If the player is performing with an Ableton session, the Client
-also sends an index number identifying the current scale to a “Scale Rack” object, controlling every MIDI track within the session and filtering out notes that are foreign to
-the current scale. The form of the piece is determined by an animated scrolling score
-that plays on a projector screen (Figure 5.2). This score also contained indications for
-rehearsal number, tempo, dynamics, density, color, and other miscellaneous expressive
-instructions.</p>
+        <div class="imageRight">
+            <div class="imageInner">
+                <img src="BlockDiagram1.png" alt="network diagram" style="width:400px;height:auto;" />
+            </div>
+            Figure 2: network diagram
+        </div>
 
-<div class="iframe-container">
-      <iframe width="480" height="720" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/299987971&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+        <p>For an electro-acoustic orchestra or laptop ensemble to perform the kind of post-tonal diatonic music described above, there needs to be a system in place for harmonic synchronization of players over a Local and/or Wide Area Network. The system must also feature a way to deliver realtime scores to sight-reading instrumentalists. In this context, the realtime score is “any notation, either traditional or graphic, which is created or transformed during an actual musical performance” [4]. </p>
 
-<p>INTERSTICES is an improvisational piece of networked
-music composed for the CalArts Machine Orchestra that
-premiered December 6th, 2018. Inspired by Terry Reilly’s
-In C, the piece is based around the idea of a large ensemble
-improvising within a single scale, with the added capacity
-for a conductor to globally change the scale.
-INTERSTICES makes use of the SNLPN to stay in harmonic sync, with a player directing modulation on a global
-scale using the Scale Navigator in its Conductor capacity.
-Other members of the ensemble—playing acoustic instruments or performing with a Ableton Live—are updated of
-scale changes via the Client component, whose screen score
-transforms to describe the current selected scale for the
-acoustic players to sight read and interpret.6 If the player
-is performing with an Ableton session, the Client also sends
-an index number identifying the current scale to a “Scale
-Rack” object, controlling every MIDI track within the session and filtering out notes that are foreign to the current
-scale. The form of the piece is determined by an animated
-scrolling score that plays on a projector screen.</p>
+        
 
-<p>The piece is an electro-acoustic improvisational chorale for the Chordas vocal ensemble
-(SATB), live electronics, and interactive score that premiered December 1st 2018 at
-CalArts. It begins in C Diatonic, with each of the four singers responsible for improvising
-melody using only two notes of the scale. The author used the Scale Navigator to
-determine the next fifteen measures that comprise the form of the piece.</p>
+        <div class="imageLeft">
+            <div class="imageInner">
+                <img src="client.png" alt="network diagram" style="width:400px;height:auto;" />
+            </div>
+            Figure 2: client
+        </div>
 
-<p>The author created a transformative screen score to cue singers and assist them with each
-modulation.1 This screen score is controlled by a conductor, who presses a “Next Measure” button that highlights the current measure and triggers electronic and recorded
-sounds in a concurrently running Ableton session.
-The author re-titled the piece Heptagrams after changing the harmonic structure of the
-piece.</p>
+        <p>The Conductor component, Client component, and Server component make up the Scale Navigator Live Performance Network (SNLPN). This network infrastructure is hierarchical and unidirectional in the traditional Western conductor-musician configuration (Figure 3): the Conductor module sends messages to the Server (scale and chord information) which automatically pushes this data to a Client page (Figure 4), open in the performers’ browser windows and displaying notation describing the current scale as selected by the Conductor. The Client page is intended for use by both sight-readers and electronic improvisers, and therefore has a button for mapping various streams of incoming control data to parameters in Ableton Live (or similar DAW). The SNLPN was built with open-source web-standard technologies: Javascript, HTML5, CSS3, Node.js, Web Sockets, P5.js, VexFlow, and Tone.js.</p>
 
-<h2>Heptagrams</h2>
+        <h2>INTERSTICES</h2>
 
-</div>
+        <p>INTERSTICES is an improvisational piece of networked music composed for the CalArts Machine Orchestra that premiered December 6th, 2018. Inspired by Terry Reilly’s In C, the piece is based around the idea of synchronizing a large ensemble of improvisers over changing scales as controlled by a conductor.</p>
+
+        
+
+        
+
+        
+
+        <p>INTERSTICES makes use of the SNLPN to stay in harmonic sync, with a player directing modulation on a global scale using the Scale Navigator in its Conductor capacity. Other members of the ensemble—playing acoustic instruments or performing with Ableton Live—are updated of scale changes via the Client component, whose screen score transforms to describe the current selected scale for the acoustic players to sight read and interpret.1 If the player is performing with an Ableton session, the Client also sends an index number identifying the current scale to a “Scale Rack” object, controlling every MIDI track within the session and filtering out notes that are foreign to the current scale. The form of the piece is determined by an animated scrolling score that plays on a projector screen (Figure 5.2). This score also contained indications for rehearsal number, tempo, dynamics, density, color, and other miscellaneous expressive instructions.
+        </p>
+
+        
+
+
+        <p>INTERSTICES is an improvisational piece of networked music composed for the CalArts Machine Orchestra that premiered December 6th, 2018. Inspired by Terry Reilly’s In C, the piece is based around the idea of a large ensemble improvising within a single scale, with the added capacity for a conductor to globally change the scale. INTERSTICES makes use of the SNLPN to stay in harmonic sync, with a player directing modulation on a global scale using the Scale Navigator in its Conductor capacity. Other members of the ensemble—playing acoustic instruments or performing with a Ableton Live—are updated of scale changes via the Client component, whose screen score transforms to describe the current selected scale for the acoustic players to sight read and interpret.6 If the player is performing with an Ableton session, the Client also sends an index number identifying the current scale to a “Scale Rack” object, controlling every MIDI track within the session and filtering out notes that are foreign to the current scale. The form of the piece is determined by an animated scrolling score that plays on a projector screen.</p>
+
+        <p>The piece is an electro-acoustic improvisational chorale for the Chordas vocal ensemble (SATB), live electronics, and interactive score that premiered December 1st 2018 at CalArts. It begins in C Diatonic, with each of the four singers responsible for improvising melody using only two notes of the scale. The author used the Scale Navigator to determine the next fifteen measures that comprise the form of the piece.</p>
+
+        <div class="imageCenter">
+            <div class="iframe-container">
+                <iframe src="https://www.youtube.com/embed/videoseries?list=PLYHX9YKIkvEPjf6CprUQEipGd4pfFyW65" style="width:100%;height:100%;" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>
+            Figure 1: Modal Intersections Documentation - YouTube Playlist
+        </div>
+
+        <p>The author created a transformative screen score to cue singers and assist them with each modulation.1 This screen score is controlled by a conductor, who presses a “Next Measure” button that highlights the current measure and triggers electronic and recorded sounds in a concurrently running Ableton session. The author re-titled the piece Heptagrams after changing the harmonic structure of the piece.
+        </p>
+
+        <h2>Heptagrams</h2>
+
+
+        <div class="imageCenter">
+            <div class="iframe-container">
+                <iframe src="https://www.youtube.com/embed/OYUY48aMve0" style="width:100%;height:100%;" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>
+            Figure 1: Modal Intersections Documentation - YouTube Playlist
+        </div>
+
+
+        <p>Heptagrams is a semi-improvisational piece for four singers, a conductor, and a MIDI-controlled player piano. The singers are assisted in their improvisation by a real time score, defined by Jason Freeman as “any notation, either traditional or graphic, which is created or transformed during an actual musical performance." The conductor triggers transformations in the score, indicating to the singers when to modulate to a new seven-note mode and triggering arpeggiations in the player piano. Heptagrams features sixteen of these modes, all with G as their root, ranging from church modes (Aeolian and Lydian) to equally-tempered versions of Carnatic rāgam (Mela Natakapriya).</p>
+
+
+        <div class="imageCenter">
+            <div class="iframe-container">
+              <iframe scrolling="no"  style="width:100%;height:100%;" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/597702201&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+            </div>
+        </div>
+
+
+    </div>
 
 </body>
 
-    </html>
-
-
-
-
-
+</html>
