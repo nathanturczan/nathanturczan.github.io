@@ -60,16 +60,140 @@
         <p>Boyd's algorithm leaves us with a list of allowable next-chord candidates. <a href="https://nathan.ho.name/">Nathan Ho</a> created a voice-leading algorithm to ranks this list of candidates according to a fitness function describing the smoothness of voice leading from current chord to next chord. Chords are given a higher fitness score if the next chord has many notes in common with the current chord, or if the next chord has many notes that are stepwise to the notes of the current chord. A slider in the bottom left corner of the screen dictates which candidates get selected: when the slider is all the way to the right at 100%, only the highest ranked chords are chosen. At 0%, the chord generator picks at random from the list of chord candidates regardless of their ranking.</p>
 
         <div class="imageLeft">
-        <div class="iframe-container">
-            <iframe src="https://www.youtube.com/embed/videoseries?list=PLYHX9YKIkvEPMI7DerWQg9k7WK6Uj9caE" style="width:100%;height:100%;" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            <div class="iframe-container">
+                <iframe src="https://www.youtube.com/embed/videoseries?list=PLYHX9YKIkvEPMI7DerWQg9k7WK6Uj9caE" style="width:100%;height:100%;" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>
+            Figure 4: Scale Navigator Documentation - YouTube Playlist
         </div>
-        Figure 4: Scale Navigator Documentation - YouTube Playlist
-      </div>
 
         <p>It was important that the Scale Navigator should actually play these chords aloud, and so I used <a href="https://tonejs.github.io/">Tone.js</a> to design the synthesizer patch that the user hears when interacting with the interface in the browser &mdash; the button in the lower right corner of the interface turns this sound on and off. The Scale Navigator also takes advantage of the <a href="https://www.w3.org/TR/webmidi/">WebMIDI API</a> to send MIDI control data out to Ableton Live and TouchDesigner for audiovisual performances &mdash; choose from among your computer's MIDI drivers from the drop down menu in the bottom-center of the interface. Refer to Figure 4 for a YouTube playlist of music improvised using the Scale Navigator and routed to various digital instruments, synthesizers, and Yamaha DisKlaviers.</p>
 
         <p>At every point in the process of designing the Scale Navigator, I was lucky to have help from my advisors <a href="https://colinhonigman.com/">Colin Honigman</a> and <a href="https://dexterjshepherd.com/">Dexter Shepherd</a>, who were a constant source of design advice and support. In addition to teaching me computer science fundamentals, these two also contributed to this project by use-testing the Scale Navigator in its different iterations and helping to generate the dataset that describes the scale network.</p>
 
+        <h2>End-to-End Design Process</h2>
+        <h3>User Problem</h3>
+        <h3>Solution</h3>
+
+        <div class="imageCenter">
+            <div class="iframe-container">
+                <img src="process/acoustic_sub1.png" alt="network diagram" style="width:100%;height:auto;" />
+            </div>
+            design
+        </div>
+
+        <div class="imageCenter">
+            <div class="iframe-container">
+                <img src="process/acoustic_sub2.png" alt="network diagram" style="width:100%;height:auto;" />
+            </div>
+            design
+        </div>
+
+        <div class="imageCenter">
+            <div class="iframe-container">
+                <img src="process/circle_5.png" alt="network diagram" style="width:100%;height:auto;" />
+            </div>
+            design
+        </div>
+
+        <div class="imageCenter">
+            <div class="iframe-container">
+                <img src="process/circle.png" alt="network diagram" style="width:100%;height:auto;" />
+            </div>
+            design
+        </div>
+
+        <div class="imageCenter">
+            <div class="iframe-container">
+                <img src="process/debussy_analysis.png" alt="network diagram" style="width:100%;height:auto;" />
+            </div>
+            design
+        </div>
+
+        <div class="imageCenter">
+            <div class="iframe-container">
+                <img src="process/early_stage.png" alt="network diagram" style="width:100%;height:auto;" />
+            </div>
+            design
+        </div>
+
+        <div class="imageCenter">
+            <div class="iframe-container">
+                <img src="process/final_worklow.jpg" alt="network diagram" style="width:100%;height:auto;" />
+            </div>
+            design
+        </div>
+
+        <div class="imageCenter">
+            <div class="iframe-container">
+                <img src="process/interactive_orchestra.jpg" alt="network diagram" style="width:100%;height:auto;" />
+            </div>
+            design
+        </div>
+
+        <div class="imageCenter">
+            <div class="iframe-container">
+                <img src="process/network.jpg" alt="network diagram" style="width:100%;height:auto;" />
+            </div>
+            design
+        </div>
+
+        <div class="imageCenter">
+            <div class="iframe-container">
+                <img src="process/networklabels.png" alt="network diagram" style="width:100%;height:auto;" />
+            </div>
+            design
+        </div>
+
+        <div class="imageCenter">
+            <div class="iframe-container">
+                <img src="process/oct0.png" alt="network diagram" style="width:100%;height:auto;" />
+            </div>
+            design
+        </div>
+
+        <div class="imageCenter">
+            <div class="iframe-container">
+                <img src="process/oct0.png" alt="network diagram" style="width:100%;height:auto;" />
+            </div>
+            design
+        </div>
+
+        <div class="imageCenter">
+            <div class="iframe-container">
+                <img src="process/oct1.png" alt="network diagram" style="width:100%;height:auto;" />
+            </div>
+            design
+        </div>
+
+        <div class="imageCenter">
+            <div class="iframe-container">
+                <img src="process/oct2.png" alt="network diagram" style="width:100%;height:auto;" />
+            </div>
+            design
+        </div>
+
+        <div class="imageCenter">
+            <div class="iframe-container">
+                <img src="process/pressing_circle.png" alt="network diagram" style="width:100%;height:auto;" />
+            </div>
+            design
+        </div>
+
+        <div class="imageCenter">
+            <div class="iframe-container">
+                <img src="process/seven_note_intersects.png" alt="network diagram" style="width:100%;height:auto;" />
+            </div>
+            design
+        </div>
+
+        <div class="imageCenter">
+            <div class="iframe-container">
+                <img src="process/seven_note_lattice.png" alt="network diagram" style="width:100%;height:auto;" />
+            </div>
+            design
+        </div>
+
+        <h2>Further Reading</h2>
         <p>The Scale Navigator was the subject of my graduate thesis at California Institute of the Arts: <a href="https://mtiid.calarts.edu/wp-content/uploads/2020/03/Turczan_MFA_Thesis.pdf">“The Scale Navigator: A Synesthetic Interface for Manipulating Harmony in Composition, Performance and Installation”</a> describes not only the Scale Navigator's design, but also its use as a music compositional assistive tool, a performance tool, and as an interface for interacting with multimedia installations. I later presented this work at the <a href="https://www.nime.org/proceedings/2019/nime2019_paper020.pdf">New Interfaces for Musical Expression conference</a> in June of 2019. </p>
 
         <p>&mdash; Nathan Turczan, April 2020</p>
