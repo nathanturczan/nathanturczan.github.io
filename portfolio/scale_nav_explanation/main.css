@@ -12,13 +12,13 @@ div.imageRight {
   padding: 3px;
   font-size: 94%;
   margin: 0 0 5px 15px;
-  text-align: left;
+
 }
 
 div.imageCenter {
   border: 1px solid #c8ccd1;
   padding: 3px;
-  float: left;
+  float: center;
   background-color: #f8f9fa;
   font-size: 94%;
   text-align: center;
@@ -27,7 +27,7 @@ div.imageCenter {
   padding: 3px;
   font-size: 94%;
   margin: 0 0 5px 0 ;
-  text-align: left;
+
 }
 
 div.imageLeft {
@@ -42,7 +42,7 @@ div.imageLeft {
   padding: 3px;
   font-size: 94%;
   margin: 0 15px 5px 0 ;
-  text-align: left;
+
 }
 
 div.imageInner {
@@ -158,7 +158,6 @@ footer {
   position: absolute;
   top:0;
   left: 0;
-  width: 100%;
   height: 100%;
 }
 
