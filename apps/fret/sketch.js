@@ -102,7 +102,7 @@ function pick_scale(key) {
         curr_scale = key;
     }
     
-    drawScale(key, windowWidth / 2, windowHeight / 3, 1, [], -1);
+    drawScale(key, windowWidth / 2, windowHeight / 3.5, 1, [], -1);
     document.getElementById("chords1").innerHTML = scales[key].chords;
     document.getElementById("chords1").style.fontSize='30px';
 
@@ -277,7 +277,7 @@ function drawScale(key, x, y, level, ancestors, offset) {
             // angle = angle + theta;
         }
         let newX = x + sin(angle+TWO_PI) * ((windowWidth*0.27) / level ) ;
-        let newY = y + cos(angle+TWO_PI) * ((windowHeight*0.27) / level ) ;
+        let newY = y + cos(angle+TWO_PI) * ((windowHeight*0.22) / level ) ;
         //rotate(cos(TWO_PI/adjacent_scales.length));
 
         
