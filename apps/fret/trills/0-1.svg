@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" baseProfile="full" width="254" height="66">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" baseProfile="full" width="218" height="66">
 
-  <circle id="key-b" cx="10" cy="30" r="8" fill="white" stroke="black"/>
+  <circle id="key-b" cx="10" cy="30" r="8" fill="red" stroke="black"/>
   <circle id="key-a" cx="50" cy="30" r="10" fill="white" stroke="black"/>
   <circle id="key-g" cx="80" cy="30" r="10" fill="white" stroke="black"/>
   <circle id="key-f" cx="130" cy="30" r="10" fill="white" stroke="black"/>
@@ -16,14 +16,10 @@
 
   <path id="key-trill-1" d="M 142 48 L 148 48 C 152 35, 138 35, 142 48" fill="white" stroke="black"/>
 
-  <path id="key-trill-2" d="M 172 48 L 178 48 C 182 35, 168 35, 172 48" fill="red" stroke="black"/>
+  <path id="key-trill-2" d="M 172 48 L 178 48 C 182 35, 168 35, 172 48" fill="white" stroke="black"/>
 
   <path id="key-eflat" d="M 205 30 C 208 36, 192 45, 205 48 C 222 45, 212 36, 210 30 C 209 26, 206 26, 205 30" fill="black" stroke="black"/>
 
-  <path id="key-b-roller" d="M 220 28 L 240 28 L 240 32 L 220 32 Z" fill="white" stroke="black"/>
-  <path id="key-c-roller" d="M 220 34 L 240 34 L 240 38 L 220 38 Z" fill="white" stroke="black"/>
-  <path id="key-csharp" d="M 220 40 L 240 40 C 240 54, 220 54, 220 40" fill="white" stroke="black"/>
 
-  <path id="key-gizmo" d="M 248 28 C 242 40, 245 42, 248 43 C 251 42, 254 40, 248 28" fill="white" stroke="black"/>
 
 </svg>

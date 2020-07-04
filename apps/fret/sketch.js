@@ -1,8 +1,8 @@
 
 const scales = data["scales"]
-const startingScale = scales["c_diatonic"]
+const startingScale = scales["d_diatonic"]
 var canvas;
-var curr_scale = "c_diatonic";
+var curr_scale = "d_diatonic";
 var lastclick;
 
 var lastAutoPChange;
@@ -94,6 +94,7 @@ var note_names = ["C", "D♭", "D", "E♭", "E", "F", "F#", "G", "A♭", "A", "B
 
 function pick_scale(key) {
     console.log(key);
+    displayFluteDiagrams(scales[key].pitch_classes);
     showNotes(scales[key].pitch_classes);
     index = num_convert[keyCode];
 
@@ -102,7 +103,7 @@ function pick_scale(key) {
         curr_scale = key;
     }
     
-    drawScale(key, windowWidth / 2, windowHeight / 3.5, 1, [], -1);
+    drawScale(key, windowWidth / 9, windowHeight / 3.5, 1, [], -1);
     document.getElementById("chords1").innerHTML = scales[key].chords;
     document.getElementById("chords1").style.fontSize='30px';
 
@@ -210,7 +211,7 @@ function drawScale(key, x, y, level, ancestors, offset) {
     }
     
 
-    const shape_size = (windowHeight*(0.15) / level);
+    const shape_size = (windowHeight*(0.09) / level);
 
     //all of the babie
     let filt_adjacent_scales = scales[key].adjacent_scales;
@@ -238,12 +239,12 @@ function drawScale(key, x, y, level, ancestors, offset) {
   
     stroke(0);
     fill(0,0,0);
-    const font_size_1 = 32/level;
+    const font_size_1 = 22/level;
     //textSize(font_size_1);
     //text(note_names[scales[key].root], x-(9 / level)-1, y-1);
     //text(scales[key].scale_class, x-(54 / level)-1, y+(33 / level)-1); //print out scale class
     fill(80,80,80);
-    const font_size_2 = 30/level;
+    const font_size_2 = 20/level;
     textSize(font_size_2);
     text(note_names[scales[key].root], x-(9 / level), y);
     //use symbols instead of printing out EVERYTHING
@@ -276,8 +277,8 @@ function drawScale(key, x, y, level, ancestors, offset) {
         if (level > 1 ){
             // angle = angle + theta;
         }
-        let newX = x + sin(angle+TWO_PI) * ((windowWidth*0.27) / level ) ;
-        let newY = y + cos(angle+TWO_PI) * ((windowHeight*0.22) / level ) ;
+        let newX = x + sin(angle+TWO_PI) * ((windowWidth*0.09) / level ) ;
+        let newY = y + cos(angle+TWO_PI) * ((windowHeight*0.12) / level ) ;
         //rotate(cos(TWO_PI/adjacent_scales.length));
 
         
