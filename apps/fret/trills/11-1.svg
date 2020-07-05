@@ -1,5 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" baseProfile="full" width="218" height="66">
-
+  
+  
   <circle id="key-b" cx="10" cy="30" r="8" fill="red" stroke="black"/>
   <circle id="key-a" cx="50" cy="30" r="10" fill="white" stroke="black"/>
   <circle id="key-g" cx="80" cy="30" r="10" fill="white" stroke="black"/>

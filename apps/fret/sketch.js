@@ -94,8 +94,10 @@ var note_names = ["C", "D♭", "D", "E♭", "E", "F", "F#", "G", "A♭", "A", "B
 
 function pick_scale(key) {
     console.log(key);
+    render_notation(key);
     displayFluteDiagrams(scales[key].pitch_classes);
-    showNotes(scales[key].pitch_classes);
+    showGuitarNotes(scales[key].pitch_classes);
+    showMandolinNotes(scales[key].pitch_classes);
     index = num_convert[keyCode];
 
     if (index !== undefined && (index) < scales[key].adjacent_scales.length) {
@@ -103,7 +105,7 @@ function pick_scale(key) {
         curr_scale = key;
     }
     
-    drawScale(key, windowWidth / 9, windowHeight / 3.5, 1, [], -1);
+    drawScale(key, windowWidth / 6, windowHeight / 2, 1, [], -1);
     document.getElementById("chords1").innerHTML = scales[key].chords;
     document.getElementById("chords1").style.fontSize='30px';
 
@@ -277,8 +279,8 @@ function drawScale(key, x, y, level, ancestors, offset) {
         if (level > 1 ){
             // angle = angle + theta;
         }
-        let newX = x + sin(angle+TWO_PI) * ((windowWidth*0.09) / level ) ;
-        let newY = y + cos(angle+TWO_PI) * ((windowHeight*0.12) / level ) ;
+        let newX = x + sin(angle+TWO_PI) * ((windowWidth*0.14) / level ) ;
+        let newY = y + cos(angle+TWO_PI) * ((windowHeight*0.17) / level ) ;
         //rotate(cos(TWO_PI/adjacent_scales.length));
 
         
