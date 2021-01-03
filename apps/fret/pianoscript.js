@@ -58,7 +58,7 @@ function showPianoNotes(pianonotes) {
 
 for( let i = 0; i < 12; i++ ) {
     let key = document.querySelector(`[data-note="${keys[i]}"]`);
-    console.log(key)
+    //console.log(key)
     // key.classList.remove(".white-active");
     // key.classList.remove(".black-active");
     // console.log(key.classlist);
@@ -75,7 +75,7 @@ for( let i = 0; i < 12; i++ ) {
   
   for( let i = 0; i < pianonotes.length; i++ ) {
     let key = document.querySelector(`[data-note="${keys[pianonotes[i]]}"]`);
-    console.log(key)
+    //console.log(key)
     // key.classList.remove(".white-active");
     // key.classList.remove(".black-active");
     // console.log(key.classlist);
