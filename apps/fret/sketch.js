@@ -95,6 +95,7 @@ var note_names = ["C", "D♭", "D", "E♭", "E", "F", "F#", "G", "A♭", "A", "B
 function pick_scale(key) {
     console.log(key);
     render_notation(key);
+    
     showPianoNotes(scales[key].pitch_classes);
     displayFluteDiagrams(scales[key].pitch_classes);
     showGuitarNotes(scales[key].pitch_classes);
