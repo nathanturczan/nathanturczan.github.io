@@ -13,7 +13,6 @@ const accidentals = 	{"c/4": "n",
 					"bb/4": "b", 
 					"b/4": "n"};
 
-					//find a way to delete previous notation printouts
 	
 VF = Vex.Flow;
 

@@ -24,16 +24,14 @@ form {
 
 }
 
+
 #notation {
   position: fixed;
   top: 0;
 }
 
 
-#chords1 {
-    position: absolute;
-    top: 0;
-}
+
 
 table {
   position: absolute;
@@ -309,6 +307,12 @@ table, td {
 }
 .mandolin-neck .mando-notes .mask.mando-e {
   bottom: 137px;
+}
+
+#chords1 {
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 
