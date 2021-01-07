@@ -1,0 +1,134 @@
+.grid {
+  display: flex;
+
+  font-family: arial, sans-serif;
+}
+
+.navigation {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly; 
+  width: 33%;
+  height: 100vh;
+
+  min-height: 500px;
+
+
+}
+.instrument_area {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-content: space-evenly; 
+  text-align: center;
+  width: 67%;
+  height: 100vh;
+
+}
+
+#title_container{
+  justify-content: center;
+  text-align: center;
+  font-size: 50px;
+
+}
+
+.scalenav_container{
+  height: 66vh;
+  z-index:2;
+
+
+}
+
+#autopilot_container{
+  text-align: center;
+
+
+}
+
+#scale_navigator {
+    
+
+}
+
+.selectbox_container{
+
+
+}
+
+.guitar_container{
+  background: pink;
+
+
+}
+
+.piano_container{
+
+
+  justify-content: center;
+  text-align: center;
+
+}
+
+.flute_container{
+
+
+  justify-content: center;
+  text-align: center;
+
+}
+
+.notation_container{
+
+
+  justify-content: center;
+  text-align: center;
+
+}
+
+.chordstoplay_container{
+
+
+  white-space: nowrap;
+  justify-content: center;
+  text-align: center;
+
+}
+
+.mandolin_container{
+  position: relative;
+
+  justify-content: center;
+  text-align: center;
+
+}
+
+
+
+select {
+        height:20px;
+}
+
+form {
+
+  transform: scale(2);
+}
+
+
+
+@media screen and (max-width: 600px){
+  
+  .grid {
+    flex-direction: column;  
+  }
+  
+  .navigation {
+    width: auto;
+    max-height: 200px;
+  }
+  
+  .instrument_area {
+    background: #aa0000;
+  }
+  
+}

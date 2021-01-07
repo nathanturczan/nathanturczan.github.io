@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en" >
+   <head>
+      <meta charset="UTF-8">
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+      <link rel="stylesheet" href="./style.css">
+      <link rel="stylesheet" href="./guitarstyle.css">
+      <link rel="stylesheet" href="./mandolinstyle.css">
+      <link rel="stylesheet" href="./pianostyle.css">
+      <link rel="stylesheet" href="./flutestyle.css">
+      <script language="javascript" type="text/javascript" src="libraries/p5.js"></script>
+      <script language="javascript" src="libraries/p5.dom.js"></script>
+      <script language="javascript" type="text/javascript" src="data.js"></script>
+      <script language="javascript" type="text/javascript" src="vexflow-debug.js"></script>
+      <script language="javascript" type="text/javascript" src="lilypond.js"></script>
+      <script language="javascript" type="text/javascript" src="notation.js"></script>
+      <script language="javascript" type="text/javascript" src="sketch.js"></script>
+
+      <script  src="./pianoscript.js"></script>
+      
+      <script  src="./flutescript.js"></script>
+      
+   </head>
+   <body>
+      <html>
+  <div class="grid">
+    <div class="navigation">
+      <div id="title_container">
+         scale navigator
+      </div>  
+      <div class="scalenav_container">
+
+         <div id="scale_navigator">
+         </div>
+      </div>  
+      <div id="autopilot_container">
+         <form>
+            <input type="checkbox" id="autopilot_checkbox" >autopilot</input>
+         </form>
+      </div>  
+    </div>
+    <div class="instrument_area">
+      <div style='display:none;' id="notation_container">
+         <div id="notation"></div>
+      </div>
+      <div style='display:none;' id="chordstoplay_container">
+         <!-- <h1>triads:</h1> -->
+         <span id="chords1">...</span>
+      </div>
+      <div style='display:none;' id="flute_container">
+         <table>
+            <tbody>
+               <tr>
+                  <td><img src="trills/2-4.svg" title="d-e" style="max-height:100%; max-width:100%"></td>
+                  <td><img src="trills/3-5.svg" title="ef-f" style="max-height:100%; max-width:100%"></td>
+                  <td><img src="trills/4-6.svg" title="e-fs" style="max-height:100%; max-width:100%"></td>
+                  
+               </tr>
+               <tr>
+                  
+                  <td><img src="trills/5-6.svg" title="f-gf" style="max-height:100%; max-width:100%"></td>
+                  <td><img src="trills/6-8.svg" title="fs-gs" style="max-height:100%; max-width:100%"></td>
+                  <td><img src="trills/8-9.svg" title="gs-a" style="max-height:100%; max-width:100%"></td>
+                  <td><img src="trills/8-10.svg" title="af-bf" style="max-height:100%; max-width:100%"></td>
+               </tr>
+               <tr>
+                  <td><img src="trills/9-10.svg" title="a-bf" style="max-height:100%; max-width:100%"></td>
+                  <td><img src="trills/10-11.svg" title="as-b" style="max-height:100%; max-width:100%"></td>
+                  <td><img src="trills/10-0.svg" title="bf-c" style="max-height:100%; max-width:100%"></td>
+                  <!-- <td><img src="trills/11-1.svg" title="b-cs"></td> -->
+               </tr>
+               <tr>
+                  <td><img src="trills/0-1.svg" title="c-df" style="max-height:100%; max-width:100%"></td>
+                  <td><img src="trills/0-2.svg" title="c-d" style="max-height:100%; max-width:100%"></td>
+                  <td><img src="trills/1-2.svg" title="cs-d" style="max-height:100%; max-width:100%"></td>
+                  <td><img src="trills/1-3.svg" title="df-ef" style="max-height:100%; max-width:100%"></td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+      <div style='display:none;' id="piano_container">
+         <div class="piano">
+            <div data-note="C" class="key white">
+              <span class="key-value"></span>
+            </div>
+            <div data-note="Db" class="key black"></div>
+            <div data-note="D" class="key white"></div>
+            <div data-note="Eb" class="key black"></div>
+            <div data-note="E" class="key white"></div>
+            <div data-note="F" class="key white"></div>
+            <div data-note="Gb" class="key black"></div>
+            <div data-note="G" class="key white"></div>
+            <div data-note="Ab" class="key black"></div>
+            <div data-note="A" class="key white"></div>
+            <div data-note="Bb" class="key black"></div>
+            <div data-note="B" class="key white"></div>
+         </div>
+      </div>
+
+      <div style='display:none;' id="mandolin_container">
+         <div class="mandolin-neck">
+            <div class="mando-fret first"></div>
+            <div class="mando-fret"></div>
+            <div class="mando-fret"></div>
+            <div class="mando-fret"></div>
+            <div class="mando-fret"></div>
+            <div class="mando-fret"></div>
+            <div class="mando-fret"></div>
+            <div class="mando-fret"></div>
+            <div class="mando-fret"></div>
+            <div class="mando-fret"></div>
+            <div class="mando-fret"></div>
+            <div class="mando-fret"></div>
+            <ul class="mando-dots">
+               <li>3</li>
+               <li>5</li>
+               <li>7</li>
+               <li>9</li>
+            </ul>
+            <ul class="mando-strings">
+               <li></li>
+               <li></li>
+               <li></li>
+               <li></li>
+            </ul>
+            <ul class="mando-open-notes">
+               <li class="mando-e">E</li>
+               <li class="mando-a">A</li>
+               <li class="mando-d">D</li>
+               <li class="mando-g">G</li>
+            </ul>
+            <div class="mando-notes">
+               <div class="mask mando-e">
+                  <ul></ul>
+               </div>
+               <div class="mask mando-a">
+                  <ul></ul>
+               </div>
+               <div class="mask mando-d">
+                  <ul></ul>
+               </div>
+               <div class="mask mando-g">
+                  <ul></ul>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <div id="selectbox_container">
+         <label for="purpose">add an instrument:</label>
+         <select id='purpose'>
+            <option value="0">mandolin</option>
+            <option value="1">guitar</option>
+            <option value="2">flute</option>
+            <option value="3">piano</option>
+            <option value="4">treble staff</option>
+            <option value="5">chords to play</option>
+         </select>
+      </div>
+    </div>
+
+  </div>
+</html>
+
+<!-- scritps -->
+      
+      <script  src="./guitarscript.js"></script>
+      <script  src="./mandolinscript.js"></script>
+   </body>
+</html>
