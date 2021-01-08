@@ -14,7 +14,8 @@ function HideFluteSVG(svg_name) {
 }
 
 function displayFluteDiagrams(scaleNotes) {
-    var allImages = document.querySelectorAll('img');
+    var allImages = document.querySelectorAll('.flute_svg');
+    //console.log(allImages);
     allImages[0].src = 'trills/2-4.svg';
     allImages[1].src = 'trills/3-5.svg';
     allImages[2].src = 'trills/4-6.svg';

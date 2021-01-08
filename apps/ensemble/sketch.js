@@ -17,6 +17,9 @@ $(document).ready(function(){
       if ( this.value == '0') {
         $("#mandolin_container").show();
       }
+      else if ( this.value == '1') {
+        $("#guitar_container").show();
+      }
       else if ( this.value == '2') {
         $("#flute_container").show();
       }
@@ -27,7 +30,11 @@ $(document).ready(function(){
         $("#notation_container").show();
       }
       else if ( this.value == '5') {
-        $("#chordstoplay_container").show();
+        $("#chordstext_container").show();
+      }
+
+      else if ( this.value == '6') {
+        $("#chordcircle_container").show();
       }
 
     });
@@ -154,8 +161,9 @@ function pick_scale(key) {
     
     showPianoNotes(scales[key].pitch_classes);
     displayFluteDiagrams(scales[key].pitch_classes);
-    //showGuitarNotes(scales[key].pitch_classes);
-    showMandolinNotes(scales[key].pitch_classes);
+    showGuitarNotes(scales[key].pitch_classes);
+    //showChordCircleNotes(scales[key].pitch_classes);
+    showCircleChords(scales[key].chords);
     index = num_convert[keyCode];
 
     if (index !== undefined && (index) < scales[key].adjacent_scales.length) {
@@ -306,10 +314,10 @@ function drawScale(key, x, y, level, ancestors, offset) {
     fill(80,80,80);
     const font_size_2 = 30/level;
     textSize(font_size_2);
-    text(note_names[scales[key].root], x-(9 / level), y);
-    //use symbols instead of printing out EVERYTHING
-    //text()
-    text(scales[key].scale_class, x-(54 / level), y+(33 / level)); //print out scale class
+    text(note_names[scales[key].root], x-(8 / level), y);
+    textAlign(CENTER);
+    var scale_class = scales[key].scale_class.replace("_", "\n");
+    text(scale_class, x-(9 / level), y+(33 / level)); //print out scale class
     fill(0);
 
     if ( level > 1) {

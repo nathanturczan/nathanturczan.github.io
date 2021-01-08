@@ -57,13 +57,14 @@
 }
 
 .guitar_container{
-  background: pink;
 
-
+  justify-content: center;
+  text-align: center;
 }
 
-.piano_container{
 
+
+.piano_container{
 
   justify-content: center;
   text-align: center;
@@ -72,7 +73,6 @@
 
 .flute_container{
 
-
   justify-content: center;
   text-align: center;
 
@@ -80,14 +80,12 @@
 
 .notation_container{
 
-
   justify-content: center;
   text-align: center;
 
 }
 
-.chordstoplay_container{
-
+.chordstext_container{
 
   white-space: nowrap;
   justify-content: center;
@@ -95,8 +93,19 @@
 
 }
 
+.chordcircle_container{
+  position:relative
+  justify-content: center;
+  text-align: center;
+}
+
+#circle24{
+  left:0; top:0; width:100%; height:50%;
+  justify-content: center;
+
+}
+
 .mandolin_container{
-  position: relative;
 
   justify-content: center;
   text-align: center;
@@ -124,7 +133,29 @@ form {
   
   .navigation {
     width: auto;
-    max-height: 200px;
+    height: 33vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; 
+
+  }
+
+  #title_container{
+    justify-content: center;
+    text-align: center;
+    font-size: 50px;
+  }
+
+  .scalenav_container{
+    justify-content: center;
+    height: 30vh;
+    z-index:2;
+  }
+
+  #autopilot_container{
+    text-align: center;
+    padding-top: 1vh;
   }
   
   .instrument_area {

@@ -1,11 +1,10 @@
 
 .mandolin-neck {
+
+  width: auto;
   position: relative;
-  margin-bottom: 270px;
-  right: 0px;
-  bottom: 10px;
-  margin-left: -450px;
-  width: 881px;
+  justify-content: center;
+
   height: 155px;
   background: 000000;
   box-shadow: inset -1px 0px 11px 0px rgba(0, 0, 0, 0.75);
@@ -24,23 +23,24 @@
   color: #fa990f;
 }
 .mandolin-neck .mando-fret {
+
   float: left;
   width: 3px;
   height: 155px;
   background: #d7d6d6;
-  margin-left: 75px;
+  margin-left: 5.25vw;
   border-right: 2px solid #686868;
 }
 .mandolin-neck .mando-fret.first {
-  position: relative;
-  width: 50px;
+  position: absolute;
+  width: 5vw;
   left: -52px;
   top: 0;
   margin-left: 0;
   background: #211f1d;
 }
 .mandolin-neck .mando-dots {
-  position: relative;
+  position: absolute;
   width: 642px;
   height: 20px;
   top: 44%;
@@ -58,7 +58,7 @@
   color: #fff;
 }
 .mandolin-neck .mando-strings {
-  position: relative;
+  position: absolute;
   left: 0;
   top: 10px;
   width: 881px;
@@ -84,7 +84,7 @@
 }
 
 .mandolin-neck .mando-notes {
-  position: relative;
+  position: absolute;
   left: -89px;
   top: -7px;
   width: 960px;
@@ -92,7 +92,7 @@
   overflow-x: hidden;
 }
 .mandolin-neck .mando-notes .mask {
-  position: relative;
+  position: absolute;
   right: -189px;
   bottom: 0;
   width: 1184px;
@@ -106,7 +106,7 @@
   float: left;
   width: 30px;
   height: 30px;
-  margin-right: 50px;
+  margin-right: 5.25vw;
   background: #c334eb;
   color: #fff;
   border-radius: 50%;
