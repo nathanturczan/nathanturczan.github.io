@@ -1,4 +1,7 @@
 
+
+
+
 const scales = data["scales"]
 const startingScale = scales["d_diatonic"]
 var canvas;
@@ -62,6 +65,32 @@ const no_fly_list = [];
 no_fly_list.unshift(curr_scale);
 
 function mouseClicked() {
+    
+
+    lastclick = frameCount;
+    autopilotIsRunning = false;
+    //console.log("touch data", touch_data);
+    var key;
+    for (let i = 0; i < touch_data.length; i++){
+        if (Math.abs(mouseX - touch_data[i].x) < touch_data[i].ssize && Math.abs(mouseY - touch_data[i].y) < touch_data[i].ssize){
+            key = touch_data[i].k;
+            touch_data = [];
+            drawGradient();
+        }
+    }
+    if (key === undefined) {
+        return;
+    }
+    pick_scale(key);
+    no_fly_list.unshift(key);
+    
+    if (no_fly_list.length>6){
+        no_fly_list.pop();
+    }
+    //console.log('the no fly list:', no_fly_list, no_fly_list.length);
+}
+
+function touchend() {
     
 
     lastclick = frameCount;

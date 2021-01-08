@@ -11,14 +11,14 @@ function showCircleChords(chords) {
 
 
     for (var i = 0; i < offChords.length; i++) {
-        console.log('off chords',offChords[i]+"_chord");
+
         for (var j = document.getElementsByClassName(offChords[i]+"_chord").length - 1; j >= 0; --j) {
           document.getElementsByClassName(offChords[i]+"_chord")[j].setAttribute('opacity', 0.0);
         }
     }
 
     for (var i = 0; i < chords.length; i++) {
-
+        console.log('this chord is in this scale',chords[i]+"_chord");
         for (var j = document.getElementsByClassName(chords[i]+"_chord").length - 1; j >= 0; --j) {
           document.getElementsByClassName(chords[i]+"_chord")[j].setAttribute('opacity', 1.0);
         }
