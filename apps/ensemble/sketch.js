@@ -99,7 +99,6 @@ const no_fly_list = [];
 no_fly_list.unshift(curr_scale);
 
 function mouseClicked() {
-    
 
     lastclick = frameCount;
     autopilotIsRunning = false;
@@ -124,7 +123,7 @@ function mouseClicked() {
     //console.log('the no fly list:', no_fly_list, no_fly_list.length);
 }
 
-function touchend() {
+function touchEnded() {
     
 
     lastclick = frameCount;
