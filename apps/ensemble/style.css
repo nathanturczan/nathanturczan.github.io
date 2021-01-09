@@ -127,7 +127,7 @@ form {
 
 
 
-@media handheld and (max-width: 600px){
+@media all and (orientation:portrait){
   
   .grid {
     flex-direction: column;  

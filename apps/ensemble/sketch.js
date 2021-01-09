@@ -123,6 +123,8 @@ function mouseClicked() {
     //console.log('the no fly list:', no_fly_list, no_fly_list.length);
 }
 
+console.log("how wide?",$(window).width());
+
 function touchEnded() {
     
 
