@@ -45,15 +45,3 @@
 .piano .white-active {
   background: teal;
 }
-
-
-
-@media screen and (max-width: 720px) {
-  .piano {
-    transform: rotate(90deg);
-  }
-
-  p {
-    display: none;
-  }
-}

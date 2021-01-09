@@ -44,6 +44,31 @@
     </div>
     <div class="instrument_area">
 
+      <div id="selectbox_container">
+         <form action="" method="post">
+            <select id='purpose'>
+               <option value="" disabled selected>select interface</option>
+               <optgroup label="fretted intstrument tablature">
+                  <option value="0">mandolin</option>
+                  <option value="1">guitar</option>
+               </optgroup>
+               <optgroup label="aerophone tablature">
+                  <option value="2">flute</option>
+               </optgroup>
+               <optgroup label="keyboard tablature">
+                  <option value="3">piano</option>
+               </optgroup>
+               <optgroup label="staff notation">
+                  <option value="4">treble staff</option>
+               </optgroup>
+               <optgroup label="chords">
+                  <option value="5">triads</option>
+                  <option value="6">circle of major and minor triads</option>
+               </optgroup>
+            </select>
+         </form>
+      </div>
+
       <div style='display:none;' id="guitar_container" width=100%>
 
          <svg xmlns="http://www.w3.org/2000/svg" version="1.1" baseProfile="full" width="980" height="400">
@@ -573,19 +598,6 @@
             </g>
             </svg>
 
-      </div>
-
-      <div id="selectbox_container">
-         <label for="purpose">add an instrument:</label>
-         <select id='purpose'>
-            <option value="0">mandolin</option>
-            <option value="1">guitar</option>
-            <option value="2">flute</option>
-            <option value="3">piano</option>
-            <option value="4">treble staff</option>
-            <option value="5">chords</option>
-            <option value="6">circle of major and minor chords</option>
-         </select>
       </div>
     </div>
 

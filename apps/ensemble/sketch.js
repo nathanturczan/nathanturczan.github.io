@@ -1,41 +1,3 @@
-//Detect mobile platform
-
-var isMobile = {
-    Android: function() {
-        return navigator.userAgent.match(/Android/i);
-    },
-    BlackBerry: function() {
-        return navigator.userAgent.match(/BlackBerry/i);
-    },
-    iOS: function() {
-        return navigator.userAgent.match(/iPhone|iPad|iPod/i);
-    },
-    Opera: function() {
-        return navigator.userAgent.match(/Opera Mini/i);
-    },
-    Windows: function() {
-        return navigator.userAgent.match(/IEMobile/i);
-    },
-    any: function() {
-        return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
-    }
-};
-
-if ( isMobile.any() ) {
-
-    if (window.innerHeight > window.innerWidth) {
-       console.log("Orientation is in portrait");
-       }
-    else {
-       console.log("Orientation is in landscape");
-         }
-    }
-else {
-   console.log("Mobile platform not detected.");
-};
-
-
-
 const scales = data["scales"]
 const startingScale = scales["d_diatonic"]
 var canvas;
@@ -98,60 +60,60 @@ function setup() {
 const no_fly_list = [];
 no_fly_list.unshift(curr_scale);
 
-function mouseClicked() {
-
-    lastclick = frameCount;
-    autopilotIsRunning = false;
-    //console.log("touch data", touch_data);
-    var key;
-    for (let i = 0; i < touch_data.length; i++){
-        if (Math.abs(mouseX - touch_data[i].x) < touch_data[i].ssize && Math.abs(mouseY - touch_data[i].y) < touch_data[i].ssize){
-            key = touch_data[i].k;
-            touch_data = [];
-            drawGradient();
+ if ("ontouchstart" in document.documentElement)
+    {
+        console.log("your device is a touch screen device.");
+        function touchEnded() {
+            lastclick = frameCount;
+            autopilotIsRunning = false;
+            //console.log("touch data", touch_data);
+            var key;
+            for (let i = 0; i < touch_data.length; i++){
+                if (Math.abs(mouseX - touch_data[i].x) < touch_data[i].ssize && Math.abs(mouseY - touch_data[i].y) < touch_data[i].ssize){
+                    key = touch_data[i].k;
+                    touch_data = [];
+                    drawGradient();
+                }
+            }
+            if (key === undefined) {
+                return;
+            }
+            pick_scale(key);
+            no_fly_list.unshift(key);
+            
+            if (no_fly_list.length>6){
+                no_fly_list.pop();
+            }
         }
     }
-    if (key === undefined) {
-        return;
-    }
-    pick_scale(key);
-    no_fly_list.unshift(key);
-    
-    if (no_fly_list.length>6){
-        no_fly_list.pop();
-    }
-    //console.log('the no fly list:', no_fly_list, no_fly_list.length);
-}
+    else
+    {
+         console.log("your device is NOT a touch device");
+         function mouseClicked() {
 
-console.log("how wide?",$(window).width());
-
-function touchEnded() {
-    
-
-    lastclick = frameCount;
-    autopilotIsRunning = false;
-    //console.log("touch data", touch_data);
-    var key;
-    for (let i = 0; i < touch_data.length; i++){
-        if (Math.abs(mouseX - touch_data[i].x) < touch_data[i].ssize && Math.abs(mouseY - touch_data[i].y) < touch_data[i].ssize){
-            key = touch_data[i].k;
-            touch_data = [];
-            drawGradient();
+            lastclick = frameCount;
+            autopilotIsRunning = false;
+            //console.log("touch data", touch_data);
+            var key;
+            for (let i = 0; i < touch_data.length; i++){
+                if (Math.abs(mouseX - touch_data[i].x) < touch_data[i].ssize && Math.abs(mouseY - touch_data[i].y) < touch_data[i].ssize){
+                    key = touch_data[i].k;
+                    touch_data = [];
+                    drawGradient();
+                }
+            }
+            if (key === undefined) {
+                return;
+            }
+            pick_scale(key);
+            no_fly_list.unshift(key);
+            
+            if (no_fly_list.length>6){
+                no_fly_list.pop();
+            }
+            //console.log('the no fly list:', no_fly_list, no_fly_list.length);
         }
     }
-    if (key === undefined) {
-        return;
-    }
-    pick_scale(key);
-    no_fly_list.unshift(key);
-    
-    if (no_fly_list.length>6){
-        no_fly_list.pop();
-    }
-    //console.log('the no fly list:', no_fly_list, no_fly_list.length);
-}
-
-
 
 function autopilot(key) {
     autopilotIsRunning = true;
