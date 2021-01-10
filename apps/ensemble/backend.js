@@ -12,6 +12,8 @@ const firebaseConfig = {
   measurementId: "G-HFEMXL76TP"
 };
 
+const functions = require('firebase-functions');
+
 let rooms = [];
 let db;
 let room = null;
