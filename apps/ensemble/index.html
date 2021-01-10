@@ -10,6 +10,7 @@
       <link rel="stylesheet" href="./pianostyle.css">
       <link rel="stylesheet" href="./flutestyle.css">
 
+      <script src="backend.js"></script>
       <script language="javascript" type="text/javascript" src="libraries/p5.js"></script>
       <script language="javascript" src="libraries/p5.dom.js"></script>
       <script language="javascript" type="text/javascript" src="data.js"></script>
@@ -40,6 +41,21 @@
          <form>
             <input type="checkbox" id="autopilot_checkbox" style="transform: scale(2);"> autopilot</input>
          </form>
+      </div>
+      <div id="chatroom_container">
+         <input type="checkbox" id="host-select" value="false">am host</input>
+         <form id="room-creation-form">
+            <input id="room-name-input" placeholer="room" />
+            <button type="submit">create</button>
+         </form>
+
+         <form id="room-select-form">
+            <select id="available-rooms">
+              <option disabled selected>Joinable rooms</option>
+            </select>
+            <button type="submit">join</button>
+         </form>
+         <p id="value"></p>
       </div>  
     </div>
     <div class="instrument_area">
