@@ -37,6 +37,7 @@
 .scalenav_container{
   height: 66vh;
   z-index:2;
+  width:100%;
 
 
 }
@@ -58,6 +59,7 @@
 }
 
 .guitar_container{
+  width: 100%;
 
   justify-content: center;
   text-align: center;
@@ -69,10 +71,12 @@
 
   justify-content: center;
   text-align: center;
+  width: 100%;
 
 }
 
 .flute_container{
+  width: 100%;
 
   justify-content: center;
   text-align: center;
@@ -83,10 +87,12 @@
 
   justify-content: center;
   text-align: center;
+  width: 100%;
 
 }
 
 .chordstext_container{
+  width: 100%;
 
   white-space: nowrap;
   justify-content: center;
@@ -97,6 +103,7 @@
 .chordcircle_container{
   justify-content: right;
   max-height: 300px;
+  width: 100%;
 }
 
 #circle24{
@@ -108,6 +115,7 @@
 }
 
 .mandolin_container{
+  width:100%;
 
   justify-content: center;
   text-align: center;
@@ -134,7 +142,7 @@ form {
   }
   
   .navigation {
-    width: auto;
+    width: 100vw;
     height: 33vh;
 
     display: flex;
@@ -161,8 +169,7 @@ form {
   }
   
   .instrument_area {
-    background: #aa0000;
-    width: 100%;
+    width: 100vw;
     height: auto;
   }
   
