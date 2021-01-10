@@ -4,6 +4,8 @@
   font-family: arial, sans-serif;
 }
 
+* { border: 1px solid red; }
+
 .navigation {
   display: flex;
   flex-direction: column;
@@ -18,8 +20,7 @@
 .instrument_area {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  justify-content: space-evenly; 
+  justify-content: flex-start;
   text-align: center;
   width: 67%;
   height: 100vh;
@@ -43,6 +44,7 @@
 }
 
 #autopilot_container{
+
   text-align: center;
 
 
@@ -54,7 +56,6 @@
 }
 
 .selectbox_container{
-
 
 }
 
@@ -130,7 +131,8 @@ select {
 
 form {
 
-  transform: scale(2);
+  width:100%;
+
 }
 
 
@@ -164,11 +166,14 @@ form {
   }
 
   #autopilot_container{
+    
     text-align: center;
     padding-top: 1vh;
   }
   
   .instrument_area {
+    justify-content: flex-start;
+
     width: 100vw;
     height: auto;
   }
