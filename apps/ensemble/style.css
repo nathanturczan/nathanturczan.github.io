@@ -1,23 +1,29 @@
 .grid {
   display: flex;
-
   font-family: arial, sans-serif;
 }
 
-* { border: 1px solid red; }
+/** { border: 1px solid red; }*/
+
+.xButton {
+  top:0px;
+  right:0px;
+  position:absolute;
+  font-size: 20pt;
+}
 
 .navigation {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly; 
+  justify-content: flex-start; 
   width: 33%;
   height: 100vh;
-
   min-height: 500px;
 
 
 }
 .instrument_area {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -25,6 +31,7 @@
   width: 67%;
   height: 100vh;
   max-height: 100vh;
+
 
 }
 
@@ -44,7 +51,7 @@
 }
 
 #autopilot_container{
-
+  z-index:3;
   text-align: center;
 
 
@@ -55,28 +62,12 @@
 
 }
 
-.selectbox_container{
+#selectbox_container{
+  padding-top:2%;
 
 }
 
-.guitar_container{
-  width: 100%;
-
-  justify-content: center;
-  text-align: center;
-}
-
-
-
-.piano_container{
-
-  justify-content: center;
-  text-align: center;
-  width: 100%;
-
-}
-
-.flute_container{
+#guitar_container{
   width: 100%;
 
   justify-content: center;
@@ -84,7 +75,10 @@
 
 }
 
-.notation_container{
+
+
+#piano_container{
+  padding-top:5%;
 
   justify-content: center;
   text-align: center;
@@ -92,25 +86,44 @@
 
 }
 
-.chordstext_container{
+#flute_container{
+  width: 100%;
+  padding-top:5%;
+  justify-content: center;
+  text-align: center;
+
+}
+
+#notation_container{
+
   width: 100%;
 
+
+}
+
+#notation{}
+
+#chordstext_container{
+
+  width: 100%;
+  position: relative;
   white-space: nowrap;
   justify-content: center;
   text-align: center;
+  padding-top: 5%;' 
 
 }
 
-.chordcircle_container{
-  justify-content: right;
-  max-height: 300px;
-  width: 100%;
+#chordcircle_container{
+
+/*  max-height: 300px;
+  width: 100%;*/
 }
 
 #circle24{
-  right:0;
-  width:100%; 
-  max-height: 300px;
+  padding-top: 5%;
+  width:66%;
+  height:66%; 
   justify-content: center;
 
 }
@@ -150,7 +163,7 @@ form {
     display: flex;
     flex-direction: column;
     justify-content: flex-start; 
-    padding-bottom: 5px;
+    padding-bottom: 10px;
 
   }
 
@@ -173,7 +186,8 @@ form {
   }
   
   .instrument_area {
-    padding-top: 5px;
+    position: relative;
+    padding-top: 10px;
     justify-content: flex-start;
 
     width: 100vw;

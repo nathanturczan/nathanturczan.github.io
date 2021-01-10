@@ -31,7 +31,6 @@ $(document).ready(function(){
       else if ( this.value == '5') {
         $("#chordstext_container").show();
       }
-
       else if ( this.value == '6') {
         $("#chordcircle_container").show();
       }
