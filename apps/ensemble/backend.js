@@ -1,4 +1,3 @@
-import "./styles.css";
 import firebase from "firebase";
 
 const firebaseConfig = {
