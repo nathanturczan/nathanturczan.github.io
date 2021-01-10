@@ -150,6 +150,7 @@ form {
     display: flex;
     flex-direction: column;
     justify-content: flex-start; 
+    padding-bottom: 1px;
 
   }
 
@@ -172,6 +173,7 @@ form {
   }
   
   .instrument_area {
+    padding-top: 1px;
     justify-content: flex-start;
 
     width: 100vw;
