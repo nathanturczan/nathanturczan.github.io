@@ -62,27 +62,31 @@ no_fly_list.unshift(curr_scale);
 
  if ("ontouchstart" in document.documentElement)
     {
-        console.log("your device is a touch screen device.");
+        console.log("your device IS a touch screen device.");
+
         function touchEnded() {
-            lastclick = frameCount;
-            autopilotIsRunning = false;
-            //console.log("touch data", touch_data);
-            var key;
-            for (let i = 0; i < touch_data.length; i++){
-                if (Math.abs(mouseX - touch_data[i].x) < touch_data[i].ssize && Math.abs(mouseY - touch_data[i].y) < touch_data[i].ssize){
-                    key = touch_data[i].k;
-                    touch_data = [];
-                    drawGradient();
+            if(event.type!='mouseup')
+            {
+                lastclick = frameCount;
+                autopilotIsRunning = false;
+                //console.log("touch data", touch_data);
+                var key;
+                for (let i = 0; i < touch_data.length; i++){
+                    if (Math.abs(mouseX - touch_data[i].x) < touch_data[i].ssize && Math.abs(mouseY - touch_data[i].y) < touch_data[i].ssize){
+                        key = touch_data[i].k;
+                        touch_data = [];
+                        drawGradient();
+                    }
                 }
-            }
-            if (key === undefined) {
-                return;
-            }
-            pick_scale(key);
-            no_fly_list.unshift(key);
-            
-            if (no_fly_list.length>6){
-                no_fly_list.pop();
+                if (key === undefined) {
+                    return;
+                }
+                pick_scale(key);
+                no_fly_list.unshift(key);
+                
+                if (no_fly_list.length>6){
+                    no_fly_list.pop();
+                }
             }
         }
     }
@@ -90,6 +94,7 @@ no_fly_list.unshift(curr_scale);
     {
          console.log("your device is NOT a touch device");
          function mouseClicked() {
+
 
             lastclick = frameCount;
             autopilotIsRunning = false;
