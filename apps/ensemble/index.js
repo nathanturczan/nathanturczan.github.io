@@ -1,17 +1,20 @@
-import firebase from "firebase";
+import firebase from "firebase/app";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyBiTTX24mBjypGdel2ARBx0UUvFQEaRDf4",
-  authDomain: "scale-navigator-ensemble.firebaseapp.com",
-  databaseURL: "https://scale-navigator-ensemble-default-rtdb.firebaseio.com",
-  projectId: "scale-navigator-ensemble",
-  storageBucket: "scale-navigator-ensemble.appspot.com",
-  messagingSenderId: "156837833740",
-  appId: "1:156837833740:web:fb2ba47ae0ba8c8b8b9229",
-  measurementId: "G-HFEMXL76TP"
-};
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  var firebaseConfig = {
+    apiKey: "AIzaSyBiTTX24mBjypGdel2ARBx0UUvFQEaRDf4",
+    authDomain: "scale-navigator-ensemble.firebaseapp.com",
+    databaseURL: "https://scale-navigator-ensemble-default-rtdb.firebaseio.com",
+    projectId: "scale-navigator-ensemble",
+    storageBucket: "scale-navigator-ensemble.appspot.com",
+    messagingSenderId: "156837833740",
+    appId: "1:156837833740:web:ce00fcf2297f899f8b9229",
+    measurementId: "G-5G2C3541ZY"
+  };
+  // Initialize Firebase
+  firebase.analytics();
 
-const functions = require('firebase-functions');
 
 let rooms = [];
 let db;

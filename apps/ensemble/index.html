@@ -2,6 +2,13 @@
 <html lang="en" >
    <head>
       <meta charset="UTF-8">
+      <!-- The core Firebase JS SDK is always required and must be listed first -->
+      <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-app.js"></script>
+      <script src="index.js" type="module" ></script>
+
+      <!-- TODO: Add SDKs for Firebase products that you want to use
+           https://firebase.google.com/docs/web/setup#available-libraries -->
+      <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-analytics.js"></script>
       <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
       <link rel="stylesheet" href="./style.css">
@@ -43,7 +50,7 @@
             <input type="checkbox" id="autopilot_checkbox" style="transform: scale(2);"> autopilot</input>
          </form>
       </div>
-      <div id="chatroom_container">
+<!--       <div id="chatroom_container">
          <input type="checkbox" id="host-select" value="false">am host</input>
          <form id="room-creation-form">
             <input id="room-name-input" placeholer="room" />
@@ -57,7 +64,7 @@
             <button type="submit">join</button>
          </form>
          <p id="value"></p>
-      </div>  
+      </div>   -->
     </div>
     <div class="instrument_area">
 
@@ -398,6 +405,7 @@
             <circle class="E♭" cx="815.0" cy="60" fill="rgb(179,71,227)" r="20" />
             <text class="E♭" dy="0.3em" fill="rgb(255,255,255)" font-size="20" font-weight="bold" style="text-anchor:middle" x="815.0" y="60">E♭</text>
 
+            <circle cx="45.0" cy="60" fill="rgb(255,255,255)"  r="20" stroke="rgb(0,0,0)" stroke-width="3" />
             <circle class="E" cx="45.0" cy="60" fill="rgb(179,71,227)"  r="20" stroke="rgb(0,0,0)" stroke-width="3" />
             <text dy="0.3em" fill="rgb(0,0,0)" font-size="20" font-weight="bold" style="text-anchor:middle" x="45.0" y="60">E</text>
 
@@ -434,6 +442,7 @@
             <circle class="A♭" cx="815.0" cy="110" fill="rgb(179,71,227)" r="20" />
             <text class="A♭" dy="0.3em" fill="rgb(255,255,255)" font-size="20" font-weight="bold" style="text-anchor:middle" x="815.0" y="110">A♭</text>
 
+            <circle cx="45.0" cy="110" fill="rgb(255,255,255)"  r="20" stroke="rgb(0,0,0)" stroke-width="3" />
             <circle class="A" cx="45.0" cy="110" fill="rgb(179,71,227)"  r="20" stroke="rgb(0,0,0)" stroke-width="3" />
             <text dy="0.3em" fill="rgb(0,0,0)" font-size="20" font-weight="bold" style="text-anchor:middle" x="45.0" y="110">A</text>
 
@@ -446,6 +455,7 @@
             <circle class="C#" cx="815.0" cy="160" fill="rgb(179,71,227)" r="20" />
             <text class="C#" dy="0.3em" fill="rgb(255,255,255)" font-size="20" font-weight="bold" style="text-anchor:middle" x="815.0" y="160">C#</text>
 
+            <circle cx="45.0" cy="160" fill="rgb(255,255,255)"  r="20" stroke="rgb(0,0,0)" stroke-width="3"  />
             <circle class="D" cx="45.0" cy="160" fill="rgb(179,71,227)"  r="20" stroke="rgb(0,0,0)" stroke-width="3"  />
             <text dy="0.3em" fill="rgb(0,0,0)" font-size="20" font-weight="bold" style="text-anchor:middle" x="45.0" y="160">D</text>
 
@@ -482,6 +492,7 @@
             <circle class="F#" cx="815.0" cy="210" fill="rgb(179,71,227)" r="20" />
             <text class="F#" dy="0.3em" fill="rgb(255,255,255)" font-size="20" font-weight="bold" style="text-anchor:middle" x="815.0" y="210">F#</text>
 
+            <circle cx="45.0" cy="210" fill="rgb(255,255,255)"  r="20" stroke="rgb(0,0,0)" stroke-width="3" />
             <circle class="G" cx="45.0" cy="210" fill="rgb(179,71,227)"  r="20" stroke="rgb(0,0,0)" stroke-width="3" />
             <text dy="0.3em" fill="rgb(0,0,0)" font-size="20" font-weight="bold" style="text-anchor:middle" x="45.0" y="210">G</text>
 
@@ -624,8 +635,7 @@
 </html>
 
 <!-- scritps -->
-      <script src="https://www.gstatic.com/firebasejs/7.8.1/firebase-app.js"></script>
-      <script src="backend.js" type="module" ></script>
+      
       
    </body>
 </html>
