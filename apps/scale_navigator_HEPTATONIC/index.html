@@ -90,7 +90,7 @@ html{overflow:hidden;}
   right: 0px;
   font-family: "Helvetica", sans-serif;
   width: 18%;
-  height: 40%;
+
 }
 
 #supersets a {
@@ -101,29 +101,15 @@ html{overflow:hidden;}
 .navbar {
   overflow: hidden;
   background-color: #efefef;
-  position: fixed;
+  position: absolute;
   bottom: 0;
   left: 0;
   font-family: "Helvetica", sans-serif;
   width: 18%;
-  height: 40%;
+
 }
 
-.navbar a {
-  float: right;
-  display: block;
-  color: #efefef;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-family: "Helvetica", sans-serif;
-  font-size: 17px;
-}
 
-.navbar a:hover {
-  background: #ddd;
-  color: black;
-}
 
 #boo {
   position: fixed;
@@ -253,49 +239,48 @@ div:after {
     </div>
     <div class="navbar">
       <p>ALLOWABLE ROOT MOVEMENT BETWEEN CHORDS</p>
-<label class="switch">
-    <input type="checkbox" checked class="root-movement" id="root0">
-    <span>Unison</span>
-</label>
-<br />
-<label class="switch">
-    <input type="checkbox" checked class="root-movement" id="root1">
-    <span>m2, M7</span>
-</label>
-<br />
-<label class="switch">
-    <input type="checkbox" checked class="root-movement" id="root2">
-    <span>M2, m7</span>
-</label>
-<br />
-<label class="switch">
-    <input type="checkbox" checked class="root-movement" id="root3">
-    <span>m3, M6</span>
-</label>
-<br />
-<label class="switch">
-    <input type="checkbox" checked class="root-movement" id="root4">
-    <span>M3, m6</span>
-</label>
-<br />
-<label class="switch">
-    <input type="checkbox" checked class="root-movement" id="root5">
-    <span>P4, P5</span>
-</label>
-<br />
-<label class="switch">
-    <input type="checkbox" checked class="root-movement" id="root6">
-    <span>Tritone</span>
-</label>
-<br />
-<p>VOICE LEADING SMOOTHNESS</p>
-  <input type="range" min="0" max="100" value="100" class="VLslider" id="vlsmoothness">
-  <br />
-      <button class="button" onclick="killswitch()">kill MIDI</button>
+      <label class="switch">
+          <input type="checkbox" checked class="root-movement" id="root0">
+          <span>Unison</span>
+      </label>
+      <br />
+      <label class="switch">
+          <input type="checkbox" checked class="root-movement" id="root1">
+          <span>m2, M7</span>
+      </label>
+      <br />
+      <label class="switch">
+          <input type="checkbox" checked class="root-movement" id="root2">
+          <span>M2, m7</span>
+      </label>
+      <br />
+      <label class="switch">
+          <input type="checkbox" checked class="root-movement" id="root3">
+          <span>m3, M6</span>
+      </label>
+      <br />
+      <label class="switch">
+          <input type="checkbox" checked class="root-movement" id="root4">
+          <span>M3, m6</span>
+      </label>
+      <br />
+      <label class="switch">
+          <input type="checkbox" checked class="root-movement" id="root5">
+          <span>P4, P5</span>
+      </label>
+      <br />
+      <label class="switch">
+          <input type="checkbox" checked class="root-movement" id="root6">
+          <span>Tritone</span>
+      </label>
+      <br />
+      <p>VOICE LEADING SMOOTHNESS</p>
+        <input type="range" min="0" max="100" value="100" class="VLslider" id="vlsmoothness">
+        <br />
+            
     </div>
 
- <select id='output_port_selector'>
- </select>
+
   
   <span></span>
 </a>

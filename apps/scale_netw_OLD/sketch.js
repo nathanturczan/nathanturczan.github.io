@@ -212,7 +212,7 @@ function drawScale(key, x, y, level, ancestors, offset) {
     text(scales[key].scale_class, x-(54 / level), y+(33 / level)); //print out scale class
     fill(0);
 
-    if ( level > 4) {
+    if ( level > 1) {
         return 
     }
 

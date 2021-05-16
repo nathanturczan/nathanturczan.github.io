@@ -341,7 +341,11 @@ function drawScale(key, x, y, level, ancestors, offset) {
         map((scales[key].root*7)%12, 0, 11, 0.1, 0.5), 
         1));
 
-    const shape_size = (windowHeight*(0.15) / level);
+    if (window.innerHeight > window.innerWidth){
+        var shape_size = (windowHeight*(0.10) / level);
+    } else {
+        var shape_size = (windowHeight*(0.15) / level);
+    }
 
     //all of the babie
     let filt_adjacent_scales = scales[key].adjacent_scales;
@@ -408,7 +412,15 @@ function drawScale(key, x, y, level, ancestors, offset) {
             // angle = angle + theta;
         }
         let newX = x + sin(angle+TWO_PI) * ((windowWidth*0.27) / level ) ;
-        let newY = y + cos(angle+TWO_PI) * ((windowHeight*0.27) / level ) ;
+
+
+        if (window.innerHeight > window.innerWidth){
+            var newY = y + cos(angle+TWO_PI) * ((windowHeight*0.20) / level ) ;
+        } else {
+            var newY = y + cos(angle+TWO_PI) * ((windowHeight*0.27) / level ) ;
+        }
+
+        
         //rotate(cos(TWO_PI/adjacent_scales.length));
 
         
