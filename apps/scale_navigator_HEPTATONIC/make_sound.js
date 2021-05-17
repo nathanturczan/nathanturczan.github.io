@@ -12,6 +12,7 @@
 	var button = document.querySelector('#sound_on_off_button');
 
 	var muted = true;
+	Tone.Master.mute=true;
 
 	button.addEventListener("click", function(){
   		if(muted){
