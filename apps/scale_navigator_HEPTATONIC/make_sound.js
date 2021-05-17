@@ -17,10 +17,10 @@
   		if(muted){
     		Tone.start()
 			Tone.Master.mute=false;
-    		button.innerHTML = "pause";
+    		button.innerHTML = "MUTE sound";
   		} else {
     		Tone.Master.mute=true;
-    		button.innerHTML = "play";
+    		button.innerHTML = "UNMUTE sound";
  		}
  		muted = !muted;
 	});
