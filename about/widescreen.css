@@ -82,6 +82,8 @@ button:active {
 }
 
 footer {
+  color:white;
+  font-size: 60px;
   position: absolute;
   bottom: 0;
   width: 100%;

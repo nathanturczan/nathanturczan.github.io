@@ -82,15 +82,8 @@ button {
 }
 
 footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  z-index: 3000;
-  height: 84px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  flex-direction: row;
+  display:none;
+
 }
 
 .footer_option {
