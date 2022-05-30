@@ -35,7 +35,7 @@ a {
 .sub-heading {
     font-size: 48px;
     text-align: center;
-/*    font-family: "Glow Better Script";*/
+    font-family: "Glow Better Script";
 
 }
 
@@ -91,7 +91,7 @@ td.image {
     width: 320px;
 
     background-repeat: no-repeat;
-    background-image: url("assets/youtube-play-button.png");
+    
 
 }
 
