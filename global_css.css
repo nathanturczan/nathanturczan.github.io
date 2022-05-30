@@ -23,6 +23,14 @@ a {
     url("../assets/Glow Better Script.otf") format("truetype");
 }
 
+@font-face {
+  font-family: "Mulish";
+  font-style: normal;
+  font-weight: normal;
+  src: local("../assets/Mulish-Regular.ttf"),
+    url("../assets/Mulish-Regular.ttf") format("truetype");
+}
+
 
 .sub-heading {
     
