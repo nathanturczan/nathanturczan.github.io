@@ -1,0 +1,82 @@
+body {
+     font-family: "Mulish";
+}
+
+#background {
+    margin-top: 60vh;
+    margin-left: 12px;
+    margin-right: 12px;
+    width: 98%;
+    height: 2400px;
+    background-image: linear-gradient(#f1ecfc, #ecfbfc);
+    z-index: -1000;
+    position: absolute;
+}
+
+
+#header {
+    /*background-color: rgba(255, 0, 0, 0.4);*/
+    position: absolute;
+
+    top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  
+    z-index: 4;
+    width: 100%;
+    padding: 2vw;
+
+    display: flex;
+    justify-content: center;
+
+
+}
+
+#content {}
+
+.header_text {
+/*	font-family:sans-serif;*/
+	color: gray;
+	font-size: 48px;
+    z-index: 4;
+
+    padding: 96px 0;
+    padding-left: 36px;
+}
+
+.header_image {
+
+    background-color: #fff;
+    background-position: 50%;
+    background-size: cover;
+    border-radius: 8px;
+    height: 550px;
+    /*margin-left: -32px;*/
+}
+
+#project_wrapper {
+	position: absolute;
+	margin-left: 24vw;
+
+	margin-top: 60vh;
+}
+
+.project {
+	width: 66vw;
+	height: 400px;
+	background-color: rgba(156, 120, 255, 0.03);
+	margin: 32px;
+	display:flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	border-radius: 20px;
+
+
+}
+
+.project_text {
+	display:flex;
+	flex-direction: column; 
+	margin: 24px;
+}
+

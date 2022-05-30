@@ -1,122 +1,95 @@
 
-
-header {
-  overflow: hidden;
-  background-color:white;
-  font-family: Arial;
-
-  transform: rotate(-0.9deg);
-  text-align: center;
-
-  top: 0; /* Position the navbar at the top of the page */
+table.portfolio {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
 }
 
-header .row,
+table.portfolio tr {}
 
-header h1 {
-  font-weight: 1000;
-  letter-spacing: 7px;
+td.image {
+    height: 250px;
+    width: 320px;
+    background-repeat: no-repeat;
 
 }
 
-header nav {
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-  background-color:lightblue;
-}
+td.desc {
 
-header p {
-  padding: 0 20px;
-  margin: 0;
-  letter-spacing: 0px;
-}
-
-/* Create two columns/boxes that floats next to each other */
-nav {
-  float: left;
-  width: 34%;
-  justify-content: flex-end;
-  padding: 10px;
+    padding-top: 0.5em;
+    padding-bottom: 0.75em;
+    vertical-align: top;
+    width: 25em;
 
 }
 
-/* Style the list inside the menu */
-nav ul {
-  list-style-type: none;
-  padding: 0;
+td.odd,
+td.odd p,
+td.odd h3 {
+    padding-left: 0;
+    margin-left: 0;
+    /*text-align:right;*/
 }
 
-article {
-  word-wrap: break-word;
-  text-align: justify;
-  text-justify: inter-word;
-  float: left;
-  padding: 20px;
-  width: 66%;
-  background-color: #f1f1f1;
-
+td.even,
+td.even p,
+td.even h3 {
+    padding-right: 0.25em;
+    padding-left: 0.25em;
+    margin-right: 0.25em;
 }
 
-/* Clear floats after the columns */
-section:after {
-  content: "";
-  display: table;
-  clear: both;
-
+table.portfolio td.desc p.desc {
+    font-size: 16px;
 }
 
-.main {
-  padding: 16px;
-  margin-top: 110px;
-  height: 30px; /* Used in this example to enable scrolling */
+table.portfolio td.desc p.desc {
+    letter-spacing: 0.1px;
+    line-height: 1.3em;
 }
 
-.video_scoring {
-  text-align: center;
+table.portfolio h3 {
+    font-size: 20px;
+    letter-spacing: 1px;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
-.tracks {
-  text-align: center;
+table.portfolio p.date {
+    font-size: 13px;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
-.performance {
-  text-align: center;
+table.portfolio tr.spacer {
+    height: 2em;
 }
 
-/* Style the footer */
-footer {
-  background-color: #331C87;
-  margin:0;
-  padding:20px;
-  width:100%;
-  bottom: 0;
-  float:right;
-  overflow:auto;
-  text-align: center;
-  color: white;
+
+
+
+.iframe-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    height: 0;
 }
 
-.iframe-container{
-  position: relative;
-  width: 100%;
-  padding-bottom: 56.25%; 
-  height: 0;
-}
-
-.iframe-container iframe{
-  position: absolute;
-  top:0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+.iframe-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
 /* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
 @media (max-width: 600px) {
-  nav, article {
-    width: 100%;
-    height: auto;
-  }
-}
 
+    nav,
+    article {
+        width: 100%;
+        height: auto;
+    }
+}

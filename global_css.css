@@ -1,0 +1,72 @@
+body {
+     font-family: "Mulish";
+     background-color: FloralWhite;
+}
+
+a {
+  color: CadetBlue;
+}
+
+.social {
+    width:36px;
+    height:36px;
+    padding-left: 6px;
+    padding-right: 6px;
+
+}
+
+@font-face {
+  font-family: "Glow Better Script";
+  font-style: normal;
+  font-weight: normal;
+  src: local("../assets/Glow Better Script"),
+    url("../assets/Glow Better Script.otf") format("truetype");
+}
+
+
+.sub-heading {
+    
+    font-size: 48px;
+
+    text-align: center;
+
+    font-family: "Glow Better Script";
+
+}
+
+
+#navigation {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /*background-color: red;*/
+    width: 20vw;
+    height: 100%;
+    text-align: right;
+    padding: 16px;
+    z-index: 8;
+}
+
+.nav_option {
+
+    list-style: none;
+    margin-top: 16px;
+    font-size: 32px;
+/*    font-family: "Luminari", fantasy, serif;*/
+}
+
+.nav_link {
+    color: black !important;
+    text-decoration: none !important;
+
+}
+
+#selected{
+    color: CadetBlue !important;
+}
+
+.nav_link:hover {
+    font-style: italic;
+    
+}

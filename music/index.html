@@ -1,37 +1,66 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <title>Nathan Turczan | MUSIC</title>
-  <meta charset="utf-8"/>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-  <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,700' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" type="text/css" href="main.css">
+    <title>Nathan Turczan | MUSIC</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="../global_css.css">
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <script src="scores_data.js"></script>
+    <script src="performances_data.js"></script>
+    <script src="tracks_data.js"></script>
 </head>
+
 <body>
-
-
-  
-  <header class="container">
+    <!--   <header class="container">
   <div class="row">
     <h1 class="col-sm-8"><b>NATHAN TURCZAN</b></h1>
     <nav class="nav">
-      <p><a href="#video_scoring">video scoring</a></p>
-      <p><a href="#tracks">tracks</a></p>
-      <p><a href="#performance">performance</a></p>
+      <p><a href="#scores">scores</a></p>
+      <p><a href="#performance">performances</a></p>
+      <p><a href="#tracks">selected tracks</a></p>
+      
     </nav>
  </div>
-</header>
+</header> -->
+    <div id="navigation">
+        <ul>
+            <li class="nav_option"><a href="../index.html" class="nav_link">Home</a></li>
+            <li class="nav_option"><a href="../about/index.html" class="nav_link">About</a></li>
+            <li class="nav_option"><a href="index.html" class="nav_link" class="nav_link" id="selected">Music</a></li>
+            <li class="nav_option"><a href="../sound_design/index.html" class="nav_link">Sound Design</a></li>
+            <li class="nav_option"><a href="../product_design/index.html" class="nav_link">Product Design</a></li>
+            <li class="nav_option"><a href="../installation/index.html" class="nav_link">Installation</a></li>
+            <li class="nav_option"><a href="https://calartswebclass.vercel.app/" class="nav_link">Teaching</a></li>
+            <li class="nav_option"><a href="../experiments/index.html" class="nav_link">Experiments</a></li>
+        </ul>
+    </div>
 
 
-	
-<a id="video_scoring">video scoring</a>
-	
-<section>
+
+    <div id="project_wrapper">
+        <div class="sub-heading"><a href="#scores" style="text-decoration:none;">scores</a> </div>
+        <table class="portfolio">
+            <script type="text/javascript">
+            document.write(scores_html());
+            </script>
+        </table>
+        <div class="sub-heading"><a id="performance" href="#performances" style="text-decoration:none;">performances</a> </div>
+        <table class="portfolio">
+            <script type="text/javascript">
+            document.write(performances_html());
+            </script>
+        </table>
+        
+    </div>
+    <!-- <section>
   <nav>
     <div class="iframe-container">
-	    <iframe src="https://player.vimeo.com/video/200293623" width="480" height="270" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+      <iframe src="https://player.vimeo.com/video/200293623" width="480" height="270" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
 <p><a href="https://vimeo.com/200293623">Walking Backwards</a> from <a href="https://vimeo.com/turczan">Lachlan Turczan</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
-	  </div>
+    </div>
   </nav>
   
   <article>
@@ -40,13 +69,13 @@
 
   </article>
 </section>
-	
+  
 <section>
   <nav>
     <div class="iframe-container">
       <iframe src="https://player.vimeo.com/video/245069362" width="480" height="720" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
 <p><a href="https://vimeo.com/245069362">a perfect mess</a> from <a href="https://vimeo.com/turczan">Lachlan Turczan</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
-	  </div>
+    </div>
   </nav>
   
   <article>
@@ -55,13 +84,13 @@
 
   </article>
 </section>
-	
+  
 <section>
   <nav>
     <div class="iframe-container">
       <iframe src="https://player.vimeo.com/video/68821283" width="480" height="720" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
 <p><a href="https://vimeo.com/68821283">Fluorescent Sunset</a> from <a href="https://vimeo.com/turczan">Lachlan Turczan</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
-	  </div>
+    </div>
   </nav>
   
   <article>
@@ -72,7 +101,6 @@ Music by Nathan Turczan</p>
   </article>
 </section>
 
-<a id="tracks">tracks</a>
 
 <section>
   <nav>
@@ -87,11 +115,11 @@ Music by Nathan Turczan</p>
 
   </article>
 </section>
-	
+  
 <section>
   <nav>
     <div class="iframe-container">
-	<iframe width="480" height="720" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/535101942&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+  <iframe width="480" height="720" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/535101942&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
 </div>
   </nav>
   
@@ -115,7 +143,7 @@ Music by Nathan Turczan</p>
 
   </article>
 </section>
-	
+  
 <section>
   <nav>
     <div class="iframe-container">
@@ -134,7 +162,7 @@ Music by Nathan Turczan</p>
   <nav>
     <div class="iframe-container">
       <iframe width="480" height="720" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/299987971&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
-	  </div>
+    </div>
   </nav>
   
   <article>
@@ -150,21 +178,19 @@ Music by Nathan Turczan</p>
 
   </article>
 </section>
-	
-<a id="performance">performance</a>
-	
+  
 <section>
   <nav>
-  	<div class="iframe-container">
-		<iframe width="480" height="270"  src="https://www.youtube.com/embed/XJohtj7R0Nk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-	</div>
+    <div class="iframe-container">
+    <iframe width="480" height="270"  src="https://www.youtube.com/embed/XJohtj7R0Nk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
   </nav>
   
   <article>
     <h1>Music for Sitting in the Wet Grass (2018)</h1>
     <p>Music for Sitting in the Wet Grass (2018) is an improvised work for disklavier and prepared player piano composed by Nathan Turczan, conceived by Madeline Falcone, McLean Macionis and Turczan, and performed by Macionis and Turczan at the October 2018 CalArts Machines and Strings concert Part I. Inspired by the spacey, measured chords of Tyshawn Sorey's "Permutations for Solo Piano," Turczan creates a flat sonic landscape in which chords are repeated (or not) in bell-like tollings, focusing on small one-note changes in a meditative study of piano resonance.</p>
 
-	<p>Conceptually derived from Turczan's exploration of  scale networks (as described by Dmitri Tymoczko), the music navigates a web of forty-eight seven-note musical scales and their intersections. </p>
+  <p>Conceptually derived from Turczan's exploration of  scale networks (as described by Dmitri Tymoczko), the music navigates a web of forty-eight seven-note musical scales and their intersections. </p>
 
   </article>
 </section>
@@ -188,14 +214,7 @@ Music by Nathan Turczan</p>
 <footer>
 
 </footer>
-
-
-
+ -->
 </body>
 
-    </html>
-
-
-
-
-
+</html>
