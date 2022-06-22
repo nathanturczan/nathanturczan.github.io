@@ -3,6 +3,14 @@ function getScoresData()
 {
     return [
     {
+        "title": "SOULS",
+        "img": "souls.svg",
+        "date": "2022",
+        "format": "Sia / David OReilly NFT project",
+        "url": "https://twitter.com/souls_galaxy/status/1537551174051586048",
+        "desc": "unique ambient music for each <a href=\"https://soulsgalaxy.io/\">interactive SOUL</a>"
+    },
+    {
         "title": "Wave Space",
         "img": "wavespace.jpg",
         "date": "2022",
@@ -14,8 +22,8 @@ function getScoresData()
         "title": "Solve Podcast",
         "img": "solve.jpg",
         "date": "2020",
-        "format": "podcast score",
-        "url": "https://www.iheart.com/podcast/1119-solve-53761293/",
+        "format": "synthwave podcast score",
+        "url": "https://youtu.be/wgaNT3A_pQA",
         "desc": "listen to all of season 2 on <a href=\"https://www.iheart.com/podcast/1119-solve-53761293/\">iHeartRadio</a>"
     },
     {
