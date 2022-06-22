@@ -7,8 +7,8 @@ function getScoresData()
         "img": "souls.svg",
         "date": "2022",
         "format": "Sia / David OReilly NFT project",
-        "url": "https://twitter.com/souls_galaxy/status/1537551174051586048",
-        "desc": "unique ambient music for each <a href=\"https://soulsgalaxy.io/\">interactive SOUL</a>"
+        "url": "https://soulsgalaxy.io/",
+        "desc": "unique ambient music for each <a href=\"https://twitter.com/souls_galaxy/status/1537551174051586048\">interactive SOUL</a>"
     },
     {
         "title": "Wave Space",
