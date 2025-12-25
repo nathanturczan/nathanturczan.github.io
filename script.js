@@ -6,7 +6,7 @@ window.__strokeOption = "3";
 
 // Stub Redux-style functions for Navigator
 var navigatorState = navigatorState || {
-    scale: 'a_diatonic',
+    scale: 'c_diatonic',
     main_polygon: null
 };
 
@@ -165,6 +165,18 @@ projectItems.forEach(item => {
         // Clean up timer if removed early
         layer.addEventListener('DOMNodeRemoved', () => clearTimeout(t), { once: true });
     });
+});
+
+// Click on blank space to clear photo stack
+document.addEventListener('click', (e) => {
+    // Don't clear if clicking on a photo layer, project item, or corner button
+    if (e.target.closest('.photo-layer') || 
+        e.target.closest('.project-item') || 
+        e.target.closest('.corner-btn')) {
+        return;
+    }
+    const layers = photoStack.querySelectorAll('.photo-layer');
+    layers.forEach(layer => layer.remove());
 });
 
 // Audio toggle
