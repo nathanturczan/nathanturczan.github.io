@@ -64,7 +64,10 @@ class Polygon {
             var angle = this.p5.TWO_PI / this.points_count;
             var fontcolor;
             this.p5.strokeJoin(this.p5.ROUND);
-            this.p5.strokeWeight(Math.pow(this.radius, 0.5))
+            // No stroke on polygons
+            this.p5.noStroke();
+
+
             this.p5.beginShape();
 
             // set the color
@@ -85,7 +88,7 @@ class Polygon {
             } else {
                 fontcolor = Helper.hsvToRgb(
                     this.p5.map((this.data.root * 7) % 12, 11, 0, 0, 1),
-                    this.p5.map((this.data.root * 7) % 12, 0, 11, 0.1, 0.5),
+                    this.p5.map((this.data.root * 7) % 12, 0, 11, 0.1, 1),
                     1
                 );
             }
@@ -93,7 +96,7 @@ class Polygon {
             // add in the opacity
             fontcolor.push(255 * this.opacity);
             this.p5.fill(fontcolor);
-            this.p5.stroke(0); // Black border
+            
             this.p5.textFont("Mulish")
 
             // draw the polygon

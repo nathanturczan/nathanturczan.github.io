@@ -2,7 +2,7 @@
 // Browser-compatible version
 
 // --- Module state (must be resettable) ---
-let scale = "c_diatonic";
+let scale = "a_diatonic";
 let main_polygon;
 let preview_polygons = [];
 let hover_polygons = [];
