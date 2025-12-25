@@ -1,36 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nathan Turczan: Portfolio '22</title>
-    <link rel="stylesheet" href="global_css.css">
+    <title>Nathan Turczan</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
+    <script src="ScaleData.js"></script>
+    <script src="Helper.js"></script>
+    <script src="Polygon.js"></script>
+    <script src="Navigator.js"></script>
 </head>
-
 <body>
-    <!-- <div id="background"></div> -->
-    <div id="header">
-        <img class="header_image" src="assets/nt_portrait.png">
-        <p class="header_text">
-            <strong style="color:black;">Nathan Turczan</strong><br>
-            designs interactive <br> audio experiences
-        </p>
-    </div>
+    <main>
+        <div class="column left-column">
+            <div class="intro">
 
-    <div id="navigation">
-        <ul>
-            <li class="nav_option"><a href="index.html" class="nav_link" id="selected">Home</a></li>
-            <li class="nav_option"><a href="about/index.html" class="nav_link">About</a></li>
-            <li class="nav_option"><a href="music/index.html" class="nav_link">Music</a></li>
-            <li class="nav_option"><a href="sound_design/index.html" class="nav_link">Sound Design</a></li>
-            <li class="nav_option"><a href="product_design/index.html" class="nav_link">Product Design</a></li>
-            <li class="nav_option"><a href="installation/index.html" class="nav_link">Installation</a></li>
-            <li class="nav_option"><a href="https://calartswebclass.vercel.app/" class="nav_link">Teaching</a></li>
-            <li class="nav_option"><a href="experiments/index.html" class="nav_link">Experiments</a></li>
-        </ul>
-    </div>
+                <button
+                    id="audio-toggle"
+                    data-tooltip="listen"
+                    class="audio-toggle is-off"
+                    type="button"
+                    aria-label="Toggle audio"
+
+                >
+                    <svg class="audio-icon" viewBox="0 0 744.09 1052.4" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                        <defs>
+                            <linearGradient id="linearGradient3062" y2="333.89" gradientUnits="userSpaceOnUse"
+                                x2="490.53" gradientTransform="matrix(-2.0779 0 0 -2.0779 1113.6 1333.7)"
+                                y1="489.14" x1="382.34">
+                                <stop style="stop-color:#000000;stop-opacity:.82639" offset="0"/>
+                                <stop style="stop-color:#000000" offset="1"/>
+                            </linearGradient>
+                        </defs>
+
+                        <g transform="matrix(-1 0 0 -1 669.57 1049.9)">
+                            <path
+                                style="stroke-linejoin:round;fill-rule:evenodd;stroke:#000000;stroke-linecap:round;stroke-width:5.9241;fill:url(#linearGradient3062)"
+                                d="m326.09 223.84c-26.945 0.30383-53.516 9.6369-76.656 23.562-34.633 18.379-71.629 47.097-72.875 89.906-0.84896 68.928-2.0988 134.26-2.2246 197.3-0.0684 34.285 0.19552 67.896 1.0371 101.04 0.71813 61.747 1.2222 123.5 1.4375 185.25 0.36593 12.973 21.473 16.135 26.438 4.6562 14.32-21.136 21.703-46.746 40.156-65 21.135-27.835 48.151-50.895 69.094-79.062 15.157-19.681 26.545-42.15 36.062-65.344 11.587-31.757 6.5491-67.411-5.8125-98.5-11.861-19.893-22.966-1.3151-19.072 12.118 4.1143 42.042-18.613 104.69-44.428 131.13-16.772 14.701-35.806 47.091-61.375 35.938-16.885-10.637-9.5264-32.115-11.344-48.688-0.3713-37.723-1.0624-80.647-0.84375-113.19 0.21869-32.541 1.4447-57.469 2.3125-108.38 2.3903-17.098 7.7188-34.867 26.875-28.812 39.201 14.915 85.221 10.405 121.62-10.344 37.084-16.471 67.22-55.32 65-97.031-0.69789-35.974-35.165-60.27-68.469-63.688-8.9535-2.0687-17.956-2.9763-26.938-2.875z"
+                                transform="matrix(-1 0 0 -1 595.49 1051.9)"
+                            />
+                        </g>
+
+                        <!-- slash = audio OFF -->
+                        <line
+                            class="audio-slash"
+                            x1="110" y1="170"
+                            x2="634" y2="882"
+                            stroke="#000"
+                            stroke-width="40"
+                            stroke-linecap="round"
+                        />
+                    </svg>
+                </button>
+
+                <p class="greeting">Nathan Turczan</p>
+                <p class="bio">
+                    Composer, music designer, product manager and developer building software tools
+                    for exploring and performing music
+                </p>
+            </div>
+
+            <footer>
+                <a href="/cdn-cgi/l/email-protection#a8cbc7c6dcc9cbdce8c6c9dcc0c9c6dcdddacbd2c9c686cbc7c5" class="footer-link">Email</a>
+                <a href="https://twitter.com/nathanturczan" class="footer-link">CV</a>
+                <a href="/about" class="footer-link">About</a>
+            </footer>
+        </div>
+
+        <div class="column middle-column">
+            <div class="photo-stack">
+                <div id="navigator-canvas"></div>
+            </div>
+        </div>
+
+        <div class="column right-column">
+            <div class="works-header">Selected Works:</div>
+            <div class="project-list">
+                
+                <a href="/product_design/scale-navigator.html" class="project-item">
+                    <span class="number">1</span>
+                    <span class="title">Scale Navigator Dashboard</span>
+                    <span class="category">Software</span>
+                </a>
+
+                <a href="/product_design/notes-chords-scales.html" class="project-item">
+                    <span class="number">2</span>
+                    <span class="title">(((Notes)Chords)Scales)))</span>
+                    <span class="category">Software</span>
+                </a>
+
+                <a href="/installation/lydia.html" class="project-item">
+                    <span class="number">3</span>
+                    <span class="title">Scale Navigator Particle System</span>
+                    <span class="category">Software</span>
+                </a>
+
+                <a href="/music/to-a-wild-rose.html" class="project-item">
+                    <span class="number">4</span>
+                    <span class="title">Scale Navigator Ensemble Jammer</span>
+                    <span class="category">Software</span>
+                </a>
+
+                <a href="/installation/lydia.html" class="project-item">
+                    <span class="number">5</span>
+                    <span class="title">Scale Navigator MIDI VST</span>
+                    <span class="category">JUCE plugin</span>
+                </a>
+
+                <a href="/installation/modal-intersections.html" class="project-item">
+                    <span class="number">6</span>
+                    <span class="title">Modal Intersections</span>
+                    <span class="category">Installation</span>
+                </a>
+
+                <a href="/sound_design/souls.html" class="project-item">
+                    <span class="number">7</span>
+                    <span class="title">SOULS</span>
+                    <span class="category">Music Design</span>
+                </a>
+
+                <a href="/experiments/pandiatonic-autoharp.html" class="project-item">
+                    <span class="number">8</span>
+                    <span class="title">Pandiatonic Autoharp</span>
+                    <span class="category">Instrument</span>
+                </a>
+
+
+                <a href="/archive.html" class="project-item archive">
+                    <span class="number">*</span>
+                    <span class="title">Archive of selected works since 2015</span>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
 </body>
-
 </html>
