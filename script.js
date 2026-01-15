@@ -84,12 +84,28 @@ const projectImageMap = {
     'Airboat': 'airboat.jpg',
     'Scale Navigator Dashboard': 'scalenavigatordashboard.png',
     '(((Notes)Chords)Scales)))': 'noteschordsscales.png',
-    'To A Wild Rose': 'wildrose.jpg',
+    'To A Wild Rose...': 'wildrose.jpg',
     'Lydia': 'lydianairs.jpg',
     'Modal Intersections': 'MI-2.gif',
-    'SOULS': 'souls.svg',
-    'Pandiatonic Autoharp': 'autoharp.jpg'
+    'SOULS': 'sia_souls.jpg',
+    'Pandiatonic Autoharp': 'autoharp.jpg',
+    'PitchSnap': [
+        'pitchsnap/pitchsnap-1.png',
+        'pitchsnap/pitchsnap-2.png',
+        'pitchsnap/pitchsnap-3.png'
+    ],
+    'SNaPS': 'snaps-thumb.webp'
 };
+
+// Helper to get filename (handles arrays for random selection)
+function getProjectImage(title) {
+    const entry = projectImageMap[title];
+    if (!entry) return null;
+    if (Array.isArray(entry)) {
+        return entry[Math.floor(Math.random() * entry.length)];
+    }
+    return entry;
+}
 
 let layerCount = 1;
 
@@ -117,7 +133,7 @@ projectItems.forEach(item => {
         
         const titleEl = this.querySelector('.title');
         const title = (titleEl ? titleEl.textContent : '').trim();
-        const filename = projectImageMap[title];
+        const filename = getProjectImage(title);
         if (!filename) return;
 
         const href = this.getAttribute('href');

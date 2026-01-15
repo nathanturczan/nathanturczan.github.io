@@ -25,8 +25,8 @@
         <svg class="explainer-icon icon-closed" viewBox="33 15 195 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
             <path fill="currentColor" d="M80.312759,47.800789 C124.028900,68.312317 174.298431,61.156937 207.048370,29.882111 C210.047546,27.018024 212.740448,23.811523 215.393936,20.613323 C217.955826,17.525532 220.792007,16.093487 224.434204,18.568216 C227.620270,20.733040 227.994324,24.524956 224.783615,28.116316 C218.923782,34.670872 212.668442,40.871830 206.183914,47.631180 C208.905731,51.121250 212.009415,55.169605 215.189453,59.157059 C217.774490,62.398468 218.745392,65.680473 215.259995,68.824890 C212.318542,71.478569 208.798080,70.554382 205.549118,66.462761 C202.246964,62.304176 198.997757,58.103569 195.884506,54.124767 C188.412476,57.701954 181.255722,61.128204 173.896469,64.651398 C175.478836,69.501404 177.122528,74.365532 178.648819,79.266220 C180.183517,84.193863 178.853760,87.702682 174.950134,88.586861 C170.313797,89.637009 168.322647,86.677689 167.092560,82.848152 C165.522873,77.961372 163.940659,73.078621 162.352341,68.158516 C153.930191,69.345825 145.759491,70.497681 137.017838,71.730026 C137.017838,76.818939 137.053665,82.097649 137.007416,87.375641 C136.964142,92.312248 134.877274,94.933914 131.071350,94.986778 C127.244904,95.039940 125.054626,92.418724 124.996071,87.517288 C124.932892,82.228882 124.981773,76.939125 124.981773,71.729202 C116.350830,70.508995 108.178421,69.353622 99.666901,68.150299 C98.055397,73.145020 96.486046,78.198921 94.790077,83.209976 C93.227020,87.828323 90.189827,89.812508 86.704292,88.452820 C82.294655,86.732643 82.028328,83.306152 83.301147,79.384407 C84.889854,74.489349 86.494370,69.599419 88.107643,64.659592 C80.830650,61.167385 73.681038,57.736305 66.125343,54.110355 C62.964325,58.150108 59.634834,62.477432 56.225319,66.740761 C53.230274,70.485825 49.759323,71.255577 46.816498,68.949059 C43.866577,66.636978 43.808685,63.209515 46.780582,59.290051 C49.796944,55.311954 52.906063,51.404190 54.896919,48.848824 C49.520649,42.642136 44.275734,36.670601 39.126198,30.617910 C34.291874,24.935707 33.846745,21.396935 37.436066,18.626263 C40.849689,15.991217 43.420238,17.035059 48.334396,22.883175 C57.135662,33.357162 67.904564,41.333714 80.312759,47.800789z"/>
         </svg>
-        <!-- Open eye - viewBox cropped to content -->
-        <svg class="explainer-icon icon-open" viewBox="33 17 195 102" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+        <!-- Open eye - viewBox adjusted to match closed eye aspect ratio -->
+        <svg class="explainer-icon icon-open" viewBox="6 17 249 102" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
             <!-- Outer eye shape (black) -->
             <path fill="currentColor" d="M106.187836,114.854446 C79.361931,109.264679 56.891407,96.897865 39.170147,76.349289 C33.590378,69.879303 33.517384,68.251587 39.070995,61.850151 C58.052193,39.971241 82.046753,26.894096 110.573364,22.609875 C145.549530,17.357038 177.855087,24.264225 206.212097,46.065636 C212.628708,50.998848 218.273163,57.037216 223.782089,63.019039 C228.369141,67.999878 228.162430,70.000069 223.834076,75.147095 C205.655304,96.764183 182.429276,109.742973 154.808441,114.981827 C138.759964,118.025749 122.671768,117.846367 106.187836,114.854446z"/>
             <!-- Iris donut (white ring - the hole reveals black iris ring underneath) -->
@@ -73,15 +73,14 @@
 
                 <p class="greeting">Nathan Turczan</p>
                 <p class="bio">
-                    Composer, music designer, product manager and developer building software tools
-                    for exploring and performing music
+                    Composer, product designer, and developer building tools for exploring and performing music
                 </p>
             </div>
 
             <footer>
-                <a href="/cdn-cgi/l/email-protection#a8cbc7c6dcc9cbdce8c6c9dcc0c9c6dcdddacbd2c9c686cbc7c5" class="footer-link">Email</a>
-                <a href="https://twitter.com/nathanturczan" class="footer-link">CV</a>
-                <a href="/about" class="footer-link">About</a>
+                <a href="mailto:nathanturczan@gmail.com" class="footer-link">Email</a>
+                <a href="cv.pdf" class="footer-link">CV</a>
+                <a href="about/index.html" class="footer-link">About</a>
             </footer>
         </div>
 
@@ -94,57 +93,56 @@
         <div class="column right-column">
             <div class="works-header">Selected Works:</div>
             <div class="project-list">
-                
-                <a href="/product_design/scale-navigator.html" class="project-item">
+
+                <a href="projects/scale-navigator-dashboard.html" class="project-item">
                     <span class="number">1</span>
                     <span class="title">Scale Navigator Dashboard</span>
                     <span class="category">Software</span>
                 </a>
 
-                <a href="/product_design/notes-chords-scales.html" class="project-item">
+                <a href="projects/pitchsnap.html" class="project-item">
                     <span class="number">2</span>
-                    <span class="title">(((Notes)Chords)Scales)))</span>
-                    <span class="category">Software</span>
+                    <span class="title">PitchSnap</span>
+                    <span class="category">MIDI Plugin</span>
                 </a>
 
-                <a href="/installation/lydia.html" class="project-item">
+                <a href="projects/snaps.html" class="project-item">
                     <span class="number">3</span>
-                    <span class="title">Scale Navigator Particle System</span>
-                    <span class="category">Software</span>
+                    <span class="title">SNaPS</span>
+                    <span class="category">SuperCollider</span>
                 </a>
 
-                <a href="/music/to-a-wild-rose.html" class="project-item">
+                <a href="projects/souls.html" class="project-item">
                     <span class="number">4</span>
-                    <span class="title">Scale Navigator Ensemble Jammer</span>
-                    <span class="category">Software</span>
-                </a>
-
-                <a href="/installation/lydia.html" class="project-item">
-                    <span class="number">5</span>
-                    <span class="title">Scale Navigator MIDI VST</span>
-                    <span class="category">JUCE plugin</span>
-                </a>
-
-                <a href="/installation/modal-intersections.html" class="project-item">
-                    <span class="number">6</span>
-                    <span class="title">Modal Intersections</span>
-                    <span class="category">Installation</span>
-                </a>
-
-                <a href="/sound_design/souls.html" class="project-item">
-                    <span class="number">7</span>
                     <span class="title">SOULS</span>
                     <span class="category">Music Design</span>
                 </a>
 
-                <a href="/experiments/pandiatonic-autoharp.html" class="project-item">
+                <a href="projects/wild-rose.html" class="project-item">
+                    <span class="number">5</span>
+                    <span class="title">To A Wild Rose...</span>
+                    <span class="category">Album</span>
+                </a>
+
+                <a href="projects/airboat.html" class="project-item">
+                    <span class="number">6</span>
+                    <span class="title">Airboat</span>
+                    <span class="category">Film Score</span>
+                </a>
+
+                <a href="projects/modal-intersections.html" class="project-item">
+                    <span class="number">7</span>
+                    <span class="title">Modal Intersections</span>
+                    <span class="category">Installation</span>
+                </a>
+
+                <a href="projects/pandiatonic-autoharp.html" class="project-item">
                     <span class="number">8</span>
                     <span class="title">Pandiatonic Autoharp</span>
                     <span class="category">Instrument</span>
                 </a>
 
-
-                <a href="/archive.html" class="project-item archive">
+                <a href="projects/archive.html" class="project-item archive">
                     <span class="number">*</span>
                     <span class="title">Archive of selected works since 2015</span>
                 </a>

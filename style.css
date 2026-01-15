@@ -203,7 +203,6 @@ footer {
 /* Fixed corner buttons */
 .corner-btn {
     position: fixed;
-    top: 40px;
     z-index: 9999;
     background: transparent;
     border: 0;
@@ -223,11 +222,16 @@ footer {
     outline: none;
 }
 
+/* Audio toggle: offset for slash overhang (~6px top, ~12px left) */
+/* Target: main body 40px from edges */
 .audio-toggle {
-    left: 30px;
+    top: 34px;
+    left: 28px;
 }
 
+/* Explainer: bounding box matches visual, so direct 40px */
 .explainer-toggle {
+    top: 40px;
     right: 40px;
 }
 
@@ -295,16 +299,15 @@ footer {
         gap: 15px;
     }
 
-    .corner-btn {
-        top: 20px;
-    }
-
+    /* Mobile: 24px target margin from main body */
     .audio-toggle {
-        left: 20px;
+        top: 18px;  /* 24px - 6px slash overhang */
+        left: 12px; /* 24px - 12px slash overhang */
     }
 
     .explainer-toggle {
-        right: 20px;
+        top: 24px;
+        right: 24px;
     }
 
     .greeting {
@@ -365,7 +368,7 @@ footer {
         background-repeat: no-repeat;
     }
 
-    .project-item[href*="scale-navigator"]::after {
+    .project-item[href*="scale-navigator-dashboard"]::after {
         background-image: url('images/scalenavigatordashboard.png');
     }
 
@@ -373,12 +376,16 @@ footer {
         background-image: url('images/noteschordsscales.png');
     }
 
-    .project-item[href*="lydia"]::after {
+    .project-item[href*="particle-system"]::after {
         background-image: url('images/lydianairs.jpg');
     }
 
-    .project-item[href*="wild-rose"]::after {
+    .project-item[href*="ensemble-jammer"]::after {
         background-image: url('images/wildrose.jpg');
+    }
+
+    .project-item[href*="midi-vst"]::after {
+        background-image: url('images/scalenavigatormidivst.png');
     }
 
     .project-item[href*="modal-intersections"]::after {

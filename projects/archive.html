@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archive - Nathan Turczan</title>
+    <link rel="stylesheet" href="project.css">
+    <style>
+        .archive-section {
+            padding: 0 40px 60px;
+        }
+
+        .archive-section-title {
+            font-size: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.01em;
+            margin-bottom: 24px;
+            padding-bottom: 8px;
+            border-bottom: 1px dashed var(--text-color);
+        }
+
+        .archive-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .archive-item {
+            text-decoration: none;
+            color: var(--text-color);
+            transition: opacity 0.2s ease;
+        }
+
+        .archive-item:hover {
+            opacity: 0.6;
+        }
+
+        .archive-item-image {
+            width: 100%;
+            aspect-ratio: 16/10;
+            object-fit: cover;
+            margin-bottom: 12px;
+        }
+
+        .archive-item-title {
+            font-size: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.01em;
+            margin-bottom: 4px;
+        }
+
+        .archive-item-description {
+            font-size: 14px;
+            line-height: 1.4;
+            margin-bottom: 8px;
+            opacity: 0.8;
+        }
+
+        .archive-item-meta {
+            font-size: 15px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.01em;
+        }
+
+        /* Text-only list items (no image) */
+        .archive-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .archive-list-item {
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+        }
+
+        .archive-list-item:first-child {
+            border-top: 1px solid rgba(0, 0, 0, 0.15);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .archive-list-item {
+                border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            }
+
+            .archive-list-item:first-child {
+                border-top: 1px solid rgba(255, 255, 255, 0.15);
+            }
+        }
+
+        .archive-list-item a {
+            text-decoration: none;
+            color: var(--text-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 20px;
+            transition: opacity 0.2s ease;
+        }
+
+        .archive-list-item a:hover {
+            opacity: 0.6;
+        }
+
+        .archive-list-title {
+            font-size: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.01em;
+        }
+
+        .archive-list-meta {
+            font-size: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.01em;
+            opacity: 0.6;
+            white-space: nowrap;
+        }
+
+        @media (max-width: 768px) {
+            .archive-section {
+                padding: 0 24px 40px;
+            }
+
+            .archive-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .archive-list-item a {
+                flex-direction: column;
+                gap: 4px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="project-page">
+        <header class="project-header">
+            <a href="../index.html" class="back-link">Back</a>
+
+            <div class="project-info">
+                <h1 class="project-title">Archive</h1>
+                <div class="divider-line"></div>
+                <p class="project-tagline">Selected works since 2015</p>
+            </div>
+
+            <div class="project-meta">
+            </div>
+        </header>
+
+        <div class="project-content">
+
+            <!-- SOFTWARE -->
+            <div class="archive-section">
+                <h2 class="archive-section-title">Software</h2>
+                <div class="archive-grid">
+                    <a href="ensemble-jammer.html" class="archive-item">
+                        <img src="../images/ensemblejammer/ensemblejammer-7.png" alt="Scale Navigator Ensemble Jammer" class="archive-item-image">
+                        <div class="archive-item-title">Scale Navigator Ensemble Jammer</div>
+                        <div class="archive-item-description">Networked ensemble instruments synchronized via Firebase. Multiple players share harmonic state in real-time.</div>
+                        <div class="archive-item-meta">2024</div>
+                    </a>
+                    <a href="https://maxforlive.com/library/device/10817/scale-awareness" target="_blank" class="archive-item">
+                        <img src="../images/scale-awareness-bridge.png" alt="Scale Navigator Scale Awareness Bridge M4L Device" class="archive-item-image">
+                        <div class="archive-item-title">Scale Navigator Scale Awareness Bridge M4L Device</div>
+                        <div class="archive-item-description">Max for Live device. Push 2 integration.</div>
+                        <div class="archive-item-meta">2024</div>
+                    </a>
+                    <a href="notes-chords-scales.html" class="archive-item">
+                        <img src="../images/noteschordsscales.png" alt="(((Notes)Chords)Scales)))" class="archive-item-image">
+                        <div class="archive-item-title">(((Notes)Chords)Scales)))</div>
+                        <div class="archive-item-description">Real-time harmonic inference from MIDI input. Uses Boyd chord-ranking algorithm.</div>
+                        <div class="archive-item-meta">2023</div>
+                    </a>
+                    <a href="https://github.com/nathanturczan/Modulation" target="_blank" class="archive-item">
+                        <img src="../images/noteschordsscales.png" alt="Progression Concatenator" class="archive-item-image">
+                        <div class="archive-item-title">Progression Concatenator</div>
+                        <div class="archive-item-description">Enter two progressions. Get seamless transition via pivot chord. Used to chain Max Reger modulations.</div>
+                        <div class="archive-item-meta">2023</div>
+                    </a>
+                    <a href="https://github.com/nathanturczan/risset" target="_blank" class="archive-item">
+                        <img src="../images/risset.png" alt="Risset Rhythm MIDI Generator" class="archive-item-image">
+                        <div class="archive-item-title">Risset Rhythm MIDI Generator</div>
+                        <div class="archive-item-description">MIDI generator for Risset rhythms — the rhythmic equivalent of Shepard tones. Creates seamless endless acceleration or deceleration. Supports any polyrhythmic ratio.</div>
+                        <div class="archive-item-meta">2020</div>
+                    </a>
+                    <a href="https://youtu.be/OYUY48aMve0" target="_blank" class="archive-item">
+                        <img src="../images/heptagrams.png" alt="Heptagrams" class="archive-item-image">
+                        <div class="archive-item-title">Heptagrams</div>
+                        <div class="archive-item-description">Semi-improvisational piece for four singers, conductor, and MIDI-controlled player piano. Real-time score with sixteen seven-note modes from church modes to Carnatic rāgam.</div>
+                        <div class="archive-item-meta">2019</div>
+                    </a>
+                    <a href="#" class="archive-item">
+                        <img src="../images/huron.png" alt="Average SATB Voiceleading M4L Device" class="archive-item-image">
+                        <div class="archive-item-title">Average SATB Voiceleading M4L Device</div>
+                        <div class="archive-item-description">Max for Live MIDI effect. Transforms single notes into 4-voice chords using Huron's musicological research on Bach and Haydn.</div>
+                        <div class="archive-item-meta">2023</div>
+                    </a>
+                    <a href="https://apps.apple.com/us/app/wave-of-wellness-futurecare/id6463807085" target="_blank" class="archive-item">
+                        <img src="../images/futurecare.png" alt="Wave of Wellness FutureCare" class="archive-item-image">
+                        <div class="archive-item-title">Wave of Wellness FutureCare</div>
+                        <div class="archive-item-description">Agetech / smarthome app. Product Manager.</div>
+                        <div class="archive-item-meta">2023</div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- MUSIC -->
+            <div class="archive-section">
+                <h2 class="archive-section-title">Music</h2>
+                <div class="archive-grid">
+                    <a href="https://www.youtube.com/watch?v=RCVcmv9UxCY" target="_blank" class="archive-item">
+                        <img src="../images/bluegrass-thumb.jpg" alt="Bluegrass Abstraction" class="archive-item-image">
+                        <div class="archive-item-title">Bluegrass Abstraction</div>
+                        <div class="archive-item-description">NPR Tiny Desk submission.</div>
+                        <div class="archive-item-meta">2022</div>
+                    </a>
+                    <a href="https://www.youtube.com/watch?v=LoQhZsI7aCo" target="_blank" class="archive-item">
+                        <img src="../images/headwound.jpg" alt="Head Wound" class="archive-item-image">
+                        <div class="archive-item-title">Head Wound</div>
+                        <div class="archive-item-description">Film score.</div>
+                        <div class="archive-item-meta">2021</div>
+                    </a>
+                    <a href="https://nathanturczan.bandcamp.com/album/samplerate-counterpoint" target="_blank" class="archive-item">
+                        <img src="../images/samplerate.jpg" alt="Samplerate Counterpoint" class="archive-item-image">
+                        <div class="archive-item-title">Samplerate Counterpoint</div>
+                        <div class="archive-item-description">Album. Contrapuntal sample rate modulation.</div>
+                        <div class="archive-item-meta">2021</div>
+                    </a>
+                    <a href="#" class="archive-item">
+                        <img src="../images/wavespace.jpg" alt="Wavespace" class="archive-item-image">
+                        <div class="archive-item-title">Wavespace</div>
+                        <div class="archive-item-description">Music for Lachlan Turczan's immersive water-light installation. Featured at Milan Design Week 2023.</div>
+                        <div class="archive-item-meta">2023</div>
+                    </a>
+                    <a href="https://www.youtube.com/watch?v=wgaNT3A_pQA" target="_blank" class="archive-item">
+                        <img src="../images/solve.jpg" alt="Solve Podcast" class="archive-item-image">
+                        <div class="archive-item-title">Solve Podcast</div>
+                        <div class="archive-item-description">Original music for iHeartRadio scripted true crime podcast.</div>
+                        <div class="archive-item-meta">2021</div>
+                    </a>
+                    <a href="#" class="archive-item">
+                        <img src="../images/scales.jpg" alt="How Do You Make Music from Scales?" class="archive-item-image">
+                        <div class="archive-item-title">How Do You Make Music from Scales?</div>
+                        <div class="archive-item-description">Demonstration of Scale Navigator via musical composition for Chinese flute.</div>
+                        <div class="archive-item-meta">2020</div>
+                    </a>
+                    <a href="#" class="archive-item">
+                        <img src="../images/adoration.png" alt="Adoration of the Flowers" class="archive-item-image">
+                        <div class="archive-item-title">Adoration of the Flowers</div>
+                        <div class="archive-item-description">Plunderphonics collage scoring Lachlan Turczan's bee video. Transposed into B major.</div>
+                        <div class="archive-item-meta">2019</div>
+                    </a>
+                    <a href="#" class="archive-item">
+                        <img src="../images/ants.jpg" alt="An Opera for Ants" class="archive-item-image">
+                        <div class="archive-item-title">An Opera for Ants</div>
+                        <div class="archive-item-description">Plunderphonics collage scoring another Lachlan Turczan video.</div>
+                        <div class="archive-item-meta">2018</div>
+                    </a>
+                    <a href="#" class="archive-item">
+                        <img src="../images/grains.jpeg" alt="Grains" class="archive-item-image">
+                        <div class="archive-item-title">Grains</div>
+                        <div class="archive-item-description">Sonifying slices of mulberry wood.</div>
+                        <div class="archive-item-meta">2018</div>
+                    </a>
+                    <a href="#" class="archive-item">
+                        <img src="../images/skincare.jpg" alt="Unsettling Approach to Skincare" class="archive-item-image">
+                        <div class="archive-item-title">Unsettling Approach to Skincare</div>
+                        <div class="archive-item-description">Horror film score.</div>
+                        <div class="archive-item-meta">2017</div>
+                    </a>
+                    <a href="#" class="archive-item">
+                        <img src="../images/cactus.jpg" alt="Cactus Zoetrope" class="archive-item-image">
+                        <div class="archive-item-title">Cactus Zoetrope</div>
+                        <div class="archive-item-description"></div>
+                        <div class="archive-item-meta">2016</div>
+                    </a>
+                    <a href="https://www.youtube.com/watch?v=tdMWUQM44qE&list=PLYHX9YKIkvENrrkunkYNA04xjmXFV9FIL" target="_blank" class="archive-item">
+                        <img src="../images/justman-thumb.jpg" alt="Loyal to the Group of Seventeen's Story: The Just Man" class="archive-item-image">
+                        <div class="archive-item-title">Loyal to the Group of Seventeen's Story: The Just Man</div>
+                        <div class="archive-item-description">Scoring the story within a story from Gene Wolfe's Book of the New Sun: The Citadel of the Autarch.</div>
+                        <div class="archive-item-meta">2018</div>
+                    </a>
+                    <a href="https://www.youtube.com/watch?v=UAL8Y-xfvy0" target="_blank" class="archive-item">
+                        <img src="../images/granddad-thumb.png" alt="Happy Birthday Granddad" class="archive-item-image">
+                        <div class="archive-item-title">Happy Birthday Granddad</div>
+                        <div class="archive-item-description">Original song written and performed with my brothers for our grandfather's 90th birthday.</div>
+                        <div class="archive-item-meta">2017</div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- SOUND DESIGN -->
+            <div class="archive-section">
+                <h2 class="archive-section-title">Sound Design</h2>
+                <div class="archive-grid">
+                    <a href="https://vimeo.com/523939087" target="_blank" class="archive-item">
+                        <img src="../images/revery.png" alt="Interactive Podcast" class="archive-item-image">
+                        <div class="archive-item-title">Interactive Podcast</div>
+                        <div class="archive-item-description">Revery Media / Amazon Alexa. Procedural audio for interactive storytelling.</div>
+                        <div class="archive-item-meta">2021</div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- PERFORMANCES -->
+            <div class="archive-section">
+                <h2 class="archive-section-title">Performances</h2>
+                <ul class="archive-list">
+                    <li class="archive-list-item">
+                        <a href="#">
+                            <span class="archive-list-title">CalArts CEAIT Festival</span>
+                            <span class="archive-list-meta">2019</span>
+                        </a>
+                    </li>
+                    <li class="archive-list-item">
+                        <a href="#">
+                            <span class="archive-list-title">REDCAT Gallery</span>
+                            <span class="archive-list-meta">2019</span>
+                        </a>
+                    </li>
+                    <li class="archive-list-item">
+                        <a href="#">
+                            <span class="archive-list-title">CalArts Expo</span>
+                            <span class="archive-list-meta">2018</span>
+                        </a>
+                    </li>
+                    <li class="archive-list-item">
+                        <a href="#">
+                            <span class="archive-list-title">Wild Beast Music Pavilion</span>
+                            <span class="archive-list-meta">2018</span>
+                        </a>
+                    </li>
+                    <li class="archive-list-item">
+                        <a href="#">
+                            <span class="archive-list-title">CalArts Gala</span>
+                            <span class="archive-list-meta">2022</span>
+                        </a>
+                    </li>
+                    <li class="archive-list-item">
+                        <a href="https://newclassic.la/2018/10/15/isaura-string-quartet-on-machines-and-strings/" target="_blank">
+                            <span class="archive-list-title">Machines and Strings at REDCAT</span>
+                            <span class="archive-list-meta">2018</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- INSTALLATIONS -->
+            <div class="archive-section">
+                <h2 class="archive-section-title">Installations</h2>
+                <div class="archive-grid">
+                    <a href="https://youtu.be/cziHnAYbMNQ" target="_blank" class="archive-item">
+                        <img src="../images/thought_loops.jpg" alt="Thought Loops" class="archive-item-image">
+                        <div class="archive-item-title">Thought Loops</div>
+                        <div class="archive-item-description">Interactive audiovisual installation. Camera-based motion tracking.</div>
+                        <div class="archive-item-meta">2019</div>
+                    </a>
+                    <a href="https://youtu.be/nVsIZkeTRhY" target="_blank" class="archive-item">
+                        <img src="../images/windowlace.jpg" alt="Window Lace" class="archive-item-image">
+                        <div class="archive-item-title">Window Lace</div>
+                        <div class="archive-item-description">CalArts MTIID showcase. Processing and p5.js sketches displayed on TVs in mall storefront windows.</div>
+                        <div class="archive-item-meta">2018</div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- TEACHING -->
+            <div class="archive-section">
+                <h2 class="archive-section-title">Teaching</h2>
+                <ul class="archive-list">
+                    <li class="archive-list-item">
+                        <a href="#">
+                            <span class="archive-list-title">Media and Web Development</span>
+                            <span class="archive-list-meta">CalArts, 2021</span>
+                        </a>
+                    </li>
+                    <li class="archive-list-item">
+                        <a href="#">
+                            <span class="archive-list-title">Private Voice Instruction</span>
+                            <span class="archive-list-meta">2015–2020</span>
+                        </a>
+                    </li>
+                    <li class="archive-list-item">
+                        <a href="#">
+                            <span class="archive-list-title">Musical Theater Teacher</span>
+                            <span class="archive-list-meta">San Francisco, 2014–2017</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- RESEARCH & WRITING -->
+            <div class="archive-section">
+                <h2 class="archive-section-title">Research & Writing</h2>
+                <div class="archive-grid">
+                    <a href="https://mtiid.calarts.edu/wp-content/uploads/2020/03/Turczan_MFA_Thesis.pdf" target="_blank" class="archive-item">
+                        <img src="../images/scales.jpg" alt="MFA Thesis" class="archive-item-image">
+                        <div class="archive-item-title">MFA Thesis: The Scale Navigator</div>
+                        <div class="archive-item-description">Exploring modal space through interactive software design.</div>
+                        <div class="archive-item-meta">2020 - CalArts</div>
+                    </a>
+                    <a href="https://www.nime.org/proceedings/2019/nime2019_paper020.pdf" target="_blank" class="archive-item">
+                        <img src="../images/INTERSTICES.jpg" alt="NIME Paper" class="archive-item-image">
+                        <div class="archive-item-title">NIME Conference Paper</div>
+                        <div class="archive-item-description">New Interfaces for Musical Expression. Peer-reviewed.</div>
+                        <div class="archive-item-meta">2019</div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- VOCAL & CHORAL -->
+            <div class="archive-section">
+                <h2 class="archive-section-title">Vocal & Choral</h2>
+                <ul class="archive-list">
+                    <li class="archive-list-item">
+                        <a href="#">
+                            <span class="archive-list-title">Chordas Collective</span>
+                            <span class="archive-list-meta">CTO & Co-founder, 2016–2018</span>
+                        </a>
+                    </li>
+                    <li class="archive-list-item">
+                        <a href="#">
+                            <span class="archive-list-title">UC Santa Cruz Concert Choir</span>
+                            <span class="archive-list-meta">Assistant Conductor, 2014–2015</span>
+                        </a>
+                    </li>
+                    <li class="archive-list-item">
+                        <a href="#">
+                            <span class="archive-list-title">UC Santa Cruz Chamber Singers</span>
+                            <span class="archive-list-meta">Bass-Baritone, 2014–2015</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- EDUCATION -->
+            <div class="archive-section">
+                <h2 class="archive-section-title">Education</h2>
+                <ul class="archive-list">
+                    <li class="archive-list-item">
+                        <a href="#">
+                            <span class="archive-list-title">MFA Music Technology: Interaction, Intelligence, and Design</span>
+                            <span class="archive-list-meta">CalArts, 2020</span>
+                        </a>
+                    </li>
+                    <li class="archive-list-item">
+                        <a href="#">
+                            <span class="archive-list-title">BA Vocal Performance</span>
+                            <span class="archive-list-meta">UC Santa Cruz, 2015</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <nav class="project-nav">
+            <a href="pandiatonic-autoharp.html">Prev</a>
+        </nav>
+    </div>
+</body>
+</html>
