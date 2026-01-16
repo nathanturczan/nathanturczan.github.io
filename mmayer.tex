@@ -1,0 +1,168 @@
+%%%%%%%%%%%%%%%%%
+% This is an example CV created using altacv.cls (v1.1.5, 1 December 2018) written by
+% LianTze Lim (liantze@gmail.com), based on the
+% Cv created by BusinessInsider at http://www.businessinsider.my/a-sample-resume-for-marissa-mayer-2016-7/?r=US\&IR=T
+%
+%% It may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%    http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2003/12/01 or later.
+%%%%%%%%%%%%%%%%
+
+%% If you are using \orcid or academicons
+%% icons, make sure you have the academicons
+%% option here, and compile with XeLaTeX
+%% or LuaLaTeX.
+% \documentclass[10pt,a4paper,academicons]{altacv}
+
+%% Use the "normalphoto" option if you want a normal photo instead of cropped to a circle
+% \documentclass[10pt,a4paper,normalphoto]{altacv}
+
+
+\documentclass[10pt,letterpaper,ragged2e]{altacv}
+
+%% AltaCV uses the fontawesome and academicon fonts
+%% and packages.
+%% See texdoc.net/pkg/fontawecome and http://texdoc.net/pkg/academicons for full list of symbols. You MUST compile with XeLaTeX or LuaLaTeX if you want to use academicons.
+
+% Change the page layout if you need to
+\geometry{left=2cm,right=10cm,marginparwidth=6.8cm,marginparsep=1.2cm,top=1.25cm,bottom=1.25cm}
+\usepackage[hidelinks]{hyperref}
+
+% Change the font if you want to, depending on whether
+% you're using pdflatex or xelatex/lualatex
+\ifxetexorluatex
+  % If using xelatex or lualatex:
+  \setmainfont{Carlito}
+\else
+  % If using pdflatex:
+  \usepackage[utf8]{inputenc}
+  \usepackage[T1]{fontenc}
+  \usepackage[default]{lato}
+  \usepackage[none]{hyphenat}
+\fi
+
+% Change the colours if you want to
+\definecolor{VividPurple}{HTML}{000000}
+\definecolor{SlateGrey}{HTML}{2E2E2E}
+\definecolor{LightGrey}{HTML}{2E2E2E}
+\colorlet{heading}{VividPurple}
+\colorlet{accent}{VividPurple}
+\colorlet{emphasis}{SlateGrey}
+\colorlet{body}{LightGrey}
+
+% Change the bullets for itemize and rating marker
+% for \cvskill if you want to
+\renewcommand{\itemmarker}{{\footnotesize\textbullet}}
+\renewcommand{\ratingmarker}{\faCircle}
+
+%% sample.bib contains your publications
+\addbibresource{sample.bib}
+
+\begin{document}
+\name{Nathan Turczan}
+\tagline{Product Designer | Music Technologist | Composer}
+% Cropped to square from https://en.wikipedia.org/wiki/Marissa_Mayer#/media/File:Marissa_Mayer_May_2014_(cropped).jpg, CC-BY 2.0
+% \photo{3.3cm}{nathan.jpg}
+\personalinfo{%
+  % Not all of these are required!
+  % You can add your own with \printinfo{symbol}{detail}
+  \email{\scriptsize nathanturczan@gmail.com}
+\phone{\scriptsize 626-766-0002}
+%  \mailaddress{Address, Street, 00000 County}
+  \location{\scriptsize Los Angeles, California}
+%  \homepage{marissamayr.tumblr.com/}
+  \linkedin{\scriptsize linkedin.com/in/nathan-turczan/}
+   \github{\scriptsize github.com/nathanturczan}
+   %\instagram{@nathanturczan}
+   % I'm just making this up though.
+%   \orcid{orcid.org/0000-0000-0000-0000} % Obviously making this up too. If you want to use this field (and also other academicons symbols), add "academicons" option to \documentclass{altacv}
+}
+
+%% Make the header extend all the way to the right, if you want.
+\begin{fullwidth}
+\makecvheader
+\end{fullwidth}
+
+%% Depending on your tastes, you may want to make fonts of itemize environments slightly smaller
+\AtBeginEnvironment{itemize}{\footnotesize}
+
+%% Provide the file name containing the sidebar contents as an optional parameter to \cvsection.
+%% You can always just use \marginpar{...} if you do
+%% not need to align the top of the contents to any
+%% \cvsection title in the "main" bar.
+\cvsection[page1sidebar]{Experience}
+
+\cvevent{Founder \& Product Designer}{Scale Navigator, LLC}{June 2021 -- Present}{Los Angeles, CA}
+\begin{itemize}
+\item Designed and shipped a suite of music software products: web apps, mobile apps (iOS/Android), desktop apps (Mac/Windows), and DAW plugins (VST3/AU/AAX)
+\item Full-stack development: React, TypeScript, Tone.js, Web Audio API, Firebase, JUCE/C++
+\item Solely responsible for product vision, UI/UX design, user research, marketing, and release management at \href{https://www.scalenavigator.com}{Scale Navigator LLC}
+\end{itemize}
+
+\divider
+
+\cvevent{Product Manager}{FutureCare Solutions Group / Global Wave Integration}{June 2022 -- October 2025}{Remote}
+\begin{itemize}
+\item Managed product development for senior care monitoring platform and smart home integrations
+\item Led cross-functional coordination between engineering, design, and operations teams
+\item Conducted market research, user interviews, and competitive analysis to refine product strategy
+\item Established internal processes, project management systems, and quality control workflows
+\end{itemize}
+
+\divider
+
+\cvevent{Associate Product Manager}{SPG Studios (Remoto ADR Software)}{September 2020 -- April 2021}{Remote}
+\begin{itemize}
+\item Agile workflow with overseas development teams: daily stand-ups, sprint planning, backlog management, \& retrospectives
+\item Researched \& gathered feedback, iterating with designers to create UI for voice actors, directors, \& sound engineers
+\item Wrote product requirements, user stories, \& acceptance criteria
+\end{itemize}
+
+\divider
+
+\cvevent{Freelance Composer \& Sound Designer}{}{2018 -- Present}{Los Angeles, CA}
+\begin{itemize}
+\item Original music and sound design for interactive art, immersive installations, film, podcasts, and live performance
+\item Generative and algorithmic composition, procedural audio systems, live electronics
+\end{itemize}
+
+\divider
+
+\cvsection{Education}
+\cvevent{Master of Fine Arts in Music Technology: Interaction, Intelligence \& Design}{California Institute of the Arts}{September 2017 -- June 2019}{}
+%\divider
+%\cvevent{TEFL Certification}{Oxford Seminars}{May 2015 -- June 2015}{}
+% \divider
+\cvevent{Bachelor of Arts in Music: Voice}{University of California, Santa Cruz}{September 2009 -- June 2013}{}
+% \divider
+
+
+\clearpage
+
+% \cvsection[page2sidebar]{Publications}
+
+\nocite{*}
+
+% \printbibliography[heading=pubtype,title={\printinfo{\faBook}{Books}},type=book]
+
+% \divider
+
+% \printbibliography[heading=pubtype,title={\printinfo{\faFileTextO}{Journal Articles}}, type=article]
+
+% \divider
+
+% \printbibliography[heading=pubtype,title={\printinfo{\faGroup}{Conference Proceedings}},type=inproceedings]
+
+% %% If the NEXT page doesn't start with a \cvsection but you'd
+% %% still like to add a sidebar, then use this command on THIS
+% %% page to add it. The optional argument lets you pull up the
+% %% sidebar a bit so that it looks aligned with the top of the
+% %% main column.
+% % \addnextpagesidebar[-1ex]{page3sidebar}
+
+
+\end{document}
