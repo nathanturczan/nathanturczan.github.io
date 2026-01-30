@@ -15,26 +15,30 @@
             <div class="project-info">
                 <h1 class="project-title">Early Downhome Blues</h1>
                 <div class="divider-line"></div>
-                <p class="project-tagline">Interactive exploration of Jeff Todd Titon's pitch transition network.</p>
-                <p class="project-description">Walk through the melodic landscape of early blues music via an interactive pitch network from musicologist Jeff Todd Titon's seminal work <em>Early Downhome Blues: A Musical and Cultural Analysis</em> (Figure 64). Click notes on a musical staff to navigate valid note transitions, discovering how melodies move between pitches in early blues.</p>
+                <p class="project-tagline">Walking the blues scale through Titon's pitch network.</p>
+                <p class="project-description">An interactive web app for exploring the pitch transition network from Jeff Todd Titon's <em>Early Downhome Blues: A Musical and Cultural Analysis</em> (Figure 64). Click notes on the staff to walk through the network and hear how melodies move in early blues recordings.</p>
             </div>
 
             <div class="project-meta">
                 <span class="project-year">2024</span>
-                <span class="project-categories">Software<br>JavaScript / Tone.js / VexFlow / D3.js</span>
+                <span class="project-categories">Software<br>JavaScript / Tone.js / VexFlow</span>
             </div>
         </header>
 
         <div class="project-content">
+            <div class="project-images">
+                <img src="../images/early-downhome-blues-app.png" alt="Early Downhome Blues web application interface" class="project-image">
+            </div>
+
             <div class="project-text-section">
-                <p><strong>Key Features:</strong></p>
+                <p><strong>About the Network</strong></p>
                 <p>
-                    Quarter-tone blue notes (E flat, E quarter-flat, E natural)<br>
-                    Karplus-Strong plucked string synthesis<br>
-                    Inflecting drone that bends to match microtonal melody<br>
-                    MIDI output with pitch bend for external instruments<br>
-                    D3 network graph visualization<br>
-                    Firebase-powered ensemble collaboration mode
+                    Titon's pitch network maps note-to-note transitions found in early downhome blues recordings. The network has specific characteristics:
+                </p>
+                <p>
+                    <strong>Quarter-tones:</strong> The "blue third" (E quarter-flat) sits between E flat and E natural. This microtonal inflection is central to blues melody.<br><br>
+                    <strong>Sink notes:</strong> C serves as a resolution point with no outgoing paths.<br><br>
+                    <strong>Hub notes:</strong> G connects to the most destinations, making it a key pivot point in the melodic landscape.
                 </p>
             </div>
 
@@ -43,9 +47,32 @@
             </div>
 
             <div class="project-text-section">
-                <p><strong>Research Foundation:</strong></p>
+                <p><strong>Current Features</strong></p>
                 <p>
-                    Based on Jeff Todd Titon's groundbreaking musicological analysis of early blues recordings. The pitch transition network captures authentic blues characteristics including microtonal inflections, sink notes (C as resolution point), and hub notes (G connecting to multiple destinations).
+                    <strong>Interactive notation:</strong> Click notes directly on the staff to navigate. Valid next notes are shown as paths.<br><br>
+                    <strong>Pluck synth:</strong> Guitar-like sound using Karplus-Strong synthesis.<br><br>
+                    <strong>Inflecting drone:</strong> Toggle drone notes (root, 3rd, 5th, 7th) that bend to match the melody's microtonal inflections.<br><br>
+                    <strong>MIDI output:</strong> Send notes to external instruments with pitch bend for quarter-tones (requires ±2 semitone pitch bend range).<br><br>
+                    <strong>Ensemble mode:</strong> Firebase-powered rooms for collaborative playing with Scale Navigator.
+                </p>
+            </div>
+
+            <div class="project-text-section">
+                <p><strong>Planned Development</strong></p>
+                <p>
+                    <strong>Song form structure:</strong> Implement 12-bar blues and AAB lyric form patterns from Titon's analysis.<br><br>
+                    <strong>Contour patterns:</strong> Add melodic contour analysis (ascending, descending, level, undulating) as described in Titon's research.<br><br>
+                    <strong>Phrase generation:</strong> Create phrase-aware melody generation using Hidden Markov Models trained on contour states.<br><br>
+                    <strong>Auto-transposition:</strong> In ensemble mode, transpose the blues scale to fit the current chord context from Scale Navigator.<br><br>
+                    <strong>Sound design:</strong> Add slide guitar mode alongside the current picked guitar sound.<br><br>
+                    <strong>Statistics view:</strong> Visualize the transition matrix and network graph with D3.
+                </p>
+            </div>
+
+            <div class="project-text-section">
+                <p><strong>Reference</strong></p>
+                <p>
+                    Titon, Jeff Todd. <em>Early Downhome Blues: A Musical and Cultural Analysis.</em> 2nd ed., University of North Carolina Press, 1994.
                 </p>
             </div>
 
