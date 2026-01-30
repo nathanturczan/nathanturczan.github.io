@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pitch Class Router - Nathan Turczan</title>
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link rel="stylesheet" href="project.css">
+</head>
+<body>
+    <div class="project-page">
+        <header class="project-header">
+            <a href="../index.html" class="back-link">Back</a>
+
+            <div class="project-info">
+                <h1 class="project-title">Pitch Class Router</h1>
+                <div class="divider-line"></div>
+                <p class="project-tagline">MIDI bridge from Scale Navigator to pitch-class-aware plugins.</p>
+                <p class="project-description">Converts scale and chord data into MIDI Control Change messages, automatically synchronizing pitch-class-aware audio plugins with Scale Navigator. Eliminates the tedious workflow of manually updating 12 pitch-class toggles across multiple plugins during performance and composition.</p>
+            </div>
+
+            <div class="project-meta">
+                <span class="project-year">2024</span>
+                <span class="project-categories">Software<br>JUCE / C++ / WebMIDI</span>
+            </div>
+        </header>
+
+        <div class="project-content">
+            <div class="project-images">
+                <img src="../images/pitch-class-router.png" alt="Pitch Class Router plugin interface" class="project-image">
+            </div>
+
+            <div class="project-text-section">
+                <p><strong>Two Implementations:</strong></p>
+                <p>
+                    Native JUCE plugin (VST3, AU, Standalone)<br>
+                    Lightweight web browser version using WebMIDI API
+                </p>
+            </div>
+
+            <div class="project-text-section">
+                <p><strong>Compatible Plugins:</strong></p>
+                <p>
+                    Fluid Pitch (Pitch Innovations)<br>
+                    Chroma (Xynth Audio)<br>
+                    Scaler EQ (Plugin Boutique)<br>
+                    Temperance Pro (Eventide)<br>
+                    Auto-Tune (Antares)<br>
+                    Any plugin with MIDI-mappable pitch-class parameters
+                </p>
+            </div>
+
+            <div class="project-text-section">
+                <p><strong>Features:</strong></p>
+                <p>
+                    Configurable MIDI input/output ports and channels<br>
+                    12-button MIDI learn helper for each pitch class<br>
+                    Settings persistence with DAW projects<br>
+                    Universal binary for Apple Silicon and Intel<br>
+                    Real-time sync as scales and chords change
+                </p>
+            </div>
+
+            <div class="project-text-section">
+                <a href="https://github.com/nathanturczan/pitch-class-router" target="_blank" class="project-link">GitHub</a>
+            </div>
+        </div>
+
+        <nav class="project-nav">
+            <a href="archive.html">Back to Archive</a>
+        </nav>
+    </div>
+</body>
+</html>
