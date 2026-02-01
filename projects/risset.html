@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polyrhythmic Risset Rhythm MIDI Generator - Nathan Turczan</title>
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link rel="stylesheet" href="project.css">
+</head>
+<body>
+    <div class="project-page">
+        <header class="project-header">
+            <a href="../index.html" class="back-link">Back</a>
+
+            <div class="project-info">
+                <h1 class="project-title">Polyrhythmic Risset Rhythm</h1>
+                <div class="divider-line"></div>
+                <p class="project-tagline">MIDI generator for perpetually accelerating or decelerating rhythms.</p>
+                <p class="project-description">The Risset rhythm is the temporal equivalent of Shepard tones. Multiple streams play the same pattern at different tempos, with amplitude crossfades creating the perception of continuous tempo change. When looped, the rhythm appears to accelerate (or decelerate) forever. Supports arbitrary polyrhythmic ratios like 3:2, 5:4, or 3:5.</p>
+            </div>
+
+            <div class="project-meta">
+                <span class="project-year">2020-Current</span>
+                <span class="project-categories">Software<br>Python / Max for Live</span>
+            </div>
+        </header>
+
+        <div class="project-content">
+            <div class="project-images">
+                <img src="../images/risset.png" alt="Polyrhythmic Risset Rhythm MIDI Generator interface" class="project-image">
+            </div>
+
+            <div class="project-text-section">
+                <p><strong>How it works:</strong></p>
+                <p>
+                    Two layers play at different tempos with opposing velocity curves. Layer 1 fades out while its tempo changes; Layer 2 fades in at a different tempo. At the metabar boundary, the fading-in layer has reached the starting tempo of the fading-out layer, creating a seamless loop.
+                </p>
+            </div>
+
+            <div class="project-text-section">
+                <p><strong>Available as:</strong></p>
+                <p>
+                    Python script — generates MIDI files with customizable ratios and directions<br>
+                    Max for Live MIDI Tool — generate patterns directly into MIDI clips in Ableton Live 12
+                </p>
+            </div>
+
+            <div class="project-text-section">
+                <p><strong>Features:</strong></p>
+                <p>
+                    Arbitrary tempo ratios (2:1, 3:2, 5:4, etc.)<br>
+                    Acceleration or deceleration direction<br>
+                    Arc mode (full velocity arc) or Ramp mode (single crossfade)<br>
+                    Configurable BPM and output length
+                </p>
+            </div>
+
+            <div class="project-text-section">
+                <p><strong>References:</strong></p>
+                <p>
+                    Based on research by Stowell (2011) on Risset eternal accelerando rhythms and Volkov (2023) on polyrhythmic Risset rhythms.
+                </p>
+            </div>
+
+            <div class="project-text-section">
+                <a href="https://github.com/nathanturczan/risset" target="_blank" class="project-link">GitHub Repository</a>
+            </div>
+        </div>
+
+        <nav class="project-nav">
+            <a href="archive.html">Back to Archive</a>
+        </nav>
+    </div>
+</body>
+</html>
