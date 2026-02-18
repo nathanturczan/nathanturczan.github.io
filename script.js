@@ -97,9 +97,22 @@ const projectImageMap = {
     'PitchSnap': [
         'pitchsnap/Screenshot 2026-02-10 at 8.51.41 AM.png',
         'pitchsnap/Screenshot 2026-02-10 at 8.51.47 AM.png',
-        'pitchsnap/Screenshot 2026-02-10 at 8.52.08 AM.png'
+        'pitchsnap/Screenshot 2026-02-10 at 8.52.08 AM.png',
+        'pitchsnap/Screenshot 2026-02-10 at 8.52.32 AM.png',
+        'pitchsnap/Screenshot 2026-02-10 at 8.52.54 AM.png'
     ],
-    'Ensemble Jammer': 'ensemblejammer/ensemblejammer-1.png'
+    'Ensemble Jammer': [
+        'ensemblejammer/Screenshot 2026-02-17 at 6.31.45 PM.png',
+        'ensemblejammer/Screenshot 2026-02-17 at 6.31.53 PM.png',
+        'ensemblejammer/Screenshot 2026-02-17 at 6.32.10 PM.png',
+        'ensemblejammer/Screenshot 2026-02-17 at 6.32.38 PM.png',
+        'ensemblejammer/Screenshot 2026-02-17 at 6.33.04 PM.png',
+        'ensemblejammer/Screenshot 2026-02-17 at 6.33.12 PM.png',
+        'ensemblejammer/Screenshot 2026-02-17 at 6.33.20 PM.png',
+        'ensemblejammer/Screenshot 2026-02-17 at 6.33.28 PM.png',
+        'ensemblejammer/Screenshot 2026-02-17 at 6.33.44 PM.png',
+        'ensemblejammer/Screenshot 2026-02-17 at 6.35.14 PM.png'
+    ]
 };
 
 // Helper to get filename (handles arrays for random selection)
