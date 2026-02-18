@@ -1,0 +1,7 @@
+[
+  {
+    "origin": ["https://nathanturczan.com", "https://nathanturczan.github.io", "https://ensemblejammer.scalenavigator.com", "http://localhost:8000", "http://127.0.0.1:8000", "http://localhost:5173"],
+    "method": ["GET"],
+    "maxAgeSeconds": 3600
+  }
+]
