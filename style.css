@@ -417,6 +417,14 @@ footer {
         background-image: url('images/souls.svg');
     }
 
+    .project-item[href*="wild-rose"]::after {
+        background-image: url('images/wildrose.jpg');
+    }
+
+    .project-item[href*="airboat"]::after {
+        background-image: url('images/airboat.jpg');
+    }
+
     .project-item[href*="pandiatonic-autoharp"]::after {
         background-image: url('images/autoharp.jpg');
     }
