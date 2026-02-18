@@ -503,6 +503,16 @@ footer {
     display: block;
 }
 
+.annotation a {
+    color: inherit;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+.annotation a:hover {
+    opacity: 0.4;
+}
+
 /* Scale notation annotation - positioned below Navigator */
 .annotation-notation {
     position: fixed;
