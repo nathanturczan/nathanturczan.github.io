@@ -402,11 +402,11 @@ footer {
     }
 
     .project-item[href*="ensemble-jammer"]::after {
-        background-image: url('images/ensemblejammer/Screenshot 2026-02-17 at 6.31.45 PM.png');
+        background-image: url('images/ensemblejammer/Screenshot 2026-02-17 at 6.32.38 PM.png');
     }
 
     .project-item[href*="pitchsnap"]::after {
-        background-image: url('images/pitchsnap/scalenavigatormidivst.png');
+        background-image: url('images/pitchsnap/Screenshot 2026-02-10 at 8.51.41 AM.png');
     }
 
     .project-item[href*="modal-intersections"]::after {
@@ -414,7 +414,7 @@ footer {
     }
 
     .project-item[href*="souls"]::after {
-        background-image: url('images/souls.svg');
+        background-image: url('images/sia_souls.jpg');
     }
 
     .project-item[href*="wild-rose"]::after {
