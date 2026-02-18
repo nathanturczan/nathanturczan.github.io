@@ -87,7 +87,7 @@ const IMAGES_BASE = 'images/';
 // Title -> filename mapping (must match titles in index.html exactly)
 const projectImageMap = {
     'Airboat': 'airboat.jpg',
-    'Scale Navigator Dashboard': 'scalenavigatordashboard.png',
+    'Scale Navigator Dashboard': 'dashboard/scalenavigatordashboard.png',
     '(((Notes)Chords)Scales)))': 'noteschordsscales.png',
     'To A Wild Rose...': 'wildrose.jpg',
     'Lydia': 'lydianairs.jpg',
@@ -95,9 +95,9 @@ const projectImageMap = {
     'SOULS': 'sia_souls.jpg',
     'Pandiatonic Autoharp': 'autoharp.jpg',
     'PitchSnap': [
-        'pitchsnap/pitchsnap-1.png',
-        'pitchsnap/pitchsnap-2.png',
-        'pitchsnap/pitchsnap-3.png'
+        'pitchsnap/Screenshot 2026-02-10 at 8.51.41 AM.png',
+        'pitchsnap/Screenshot 2026-02-10 at 8.51.47 AM.png',
+        'pitchsnap/Screenshot 2026-02-10 at 8.52.08 AM.png'
     ],
     'Ensemble Jammer': 'ensemblejammer/ensemblejammer-1.png'
 };

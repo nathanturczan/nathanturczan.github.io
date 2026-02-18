@@ -389,7 +389,7 @@ footer {
     }
 
     .project-item[href*="scale-navigator-dashboard"]::after {
-        background-image: url('images/scalenavigatordashboard.png');
+        background-image: url('images/dashboard/scalenavigatordashboard.png');
     }
 
     .project-item[href*="notes-chords-scales"]::after {
@@ -404,8 +404,8 @@ footer {
         background-image: url('images/ensemblejammer/ensemblejammer-1.png');
     }
 
-    .project-item[href*="midi-vst"]::after {
-        background-image: url('images/scalenavigatormidivst.png');
+    .project-item[href*="pitchsnap"]::after {
+        background-image: url('images/pitchsnap/scalenavigatormidivst.png');
     }
 
     .project-item[href*="modal-intersections"]::after {
