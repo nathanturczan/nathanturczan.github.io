@@ -97,24 +97,6 @@ main {
     }
 }
 
-/* Toggle between short and long bio based on explainer state */
-.bio-short {
-    display: block;
-}
-
-.bio-long {
-    display: none;
-}
-
-/* When explainer is visible, swap bios */
-.explainer-content.visible ~ main .bio-short {
-    display: none;
-}
-
-.explainer-content.visible ~ main .bio-long {
-    display: block;
-}
-
 footer {
     display: flex;
     flex-direction: row;
@@ -611,12 +593,4 @@ footer {
         display: none;
     }
 
-    /* On mobile, always show short bio even when explainer is open */
-    .explainer-content.visible ~ main .bio-short {
-        display: block;
-    }
-
-    .explainer-content.visible ~ main .bio-long {
-        display: none;
-    }
 }
