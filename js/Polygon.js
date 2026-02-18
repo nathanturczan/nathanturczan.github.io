@@ -7,6 +7,46 @@ const NOTE_NAMES = [
 
 const FPS = 30;
 
+// Modes of limited transposition - symmetrical scales without a traditional root
+const LIMITED_TRANSPOSITION_MODES = ["whole_tone", "hexatonic", "octatonic"];
+
+// Map scale key root token to display name (matching Dashboard's mapSharp)
+function mapSharp(r) {
+    switch (r) {
+        case "as": return "B\u266D";   // Bb
+        case "bs": return "B\u266F";   // B#
+        case "cs": return "C\u266F";   // C#
+        case "ds": return "E\u266D";   // Eb
+        case "es": return "E\u266F";   // E#
+        case "fs": return "F\u266F";   // F#
+        case "gs": return "A\u266D";   // Ab
+        case "a": return "A";
+        case "b": return "B";
+        case "c": return "C";
+        case "d": return "D";
+        case "e": return "E";
+        case "f": return "F";
+        case "g": return "G";
+        default:
+            return r ? r.charAt(0).toUpperCase() + r.slice(1) : "";
+    }
+}
+
+// Get display root for a scale (pitch classes for limited transposition, formatted root for others)
+function getScaleDisplayRoot(data) {
+    if (LIMITED_TRANSPOSITION_MODES.includes(data.scale_class)) {
+        const pc = data.pitch_classes;
+        return `[${pc[0]},${pc[1]}]`;
+    }
+    return mapSharp(data.root_token || "");
+}
+
+// Pitch tokens for parsing scale keys
+const PITCH_TOKENS = new Set([
+    "a", "b", "c", "d", "e", "f", "g",
+    "as", "bs", "cs", "ds", "es", "fs", "gs",
+]);
+
 const default_animation_curve = (x) => {
     return 1 / (1 + Math.pow(x / (1 - x), -3));
 };
@@ -47,8 +87,15 @@ class Polygon {
         };
 
         this.opacity = 1;
+        this.textOpacity = 1;  // Separate opacity for text (for fade effects)
 
         this.scale = scale;
+
+        // Parse root token from scale key (e.g., "cs" from "cs_diatonic")
+        const scaleParts = scale.split("_");
+        this.root_token = PITCH_TOKENS.has(scaleParts[0]) ? scaleParts[0] : "";
+        this.data.root_token = this.root_token;
+
         this.name = `${NOTE_NAMES[this.data.root]} ${this.data.scale_class.replace("_", " ")}`;
 
         this.lastHover = false;
@@ -70,34 +117,14 @@ class Polygon {
 
             this.p5.beginShape();
 
-            // set the color
-            // we always have the color as an array of 3 numbers even if it's grey
-            // we need that cuz we also push in the opacity (alpha channel)
-            if (this.data.scale_class === "whole_tone") {
-                fontcolor = Array(3).fill(
-                    this.p5.map(this.data.root % 2, 0, 1, 200, 150)
-                );
-            } else if (this.data.scale_class === "octatonic") {
-                fontcolor = Array(3).fill(
-                    this.p5.map(this.data.root % 3, 0, 2, 200, 133)
-                );
-            } else if (this.data.scale_class === "hexatonic") {
-                fontcolor = Array(3).fill(
-                    this.p5.map(this.data.root % 4, 0, 3, 200, 100)
-                );
-            } else {
-                fontcolor = Helper.hsvToRgb(
-                    this.p5.map((this.data.root * 7) % 12, 11, 0, 0, 1),
-                    this.p5.map((this.data.root * 7) % 12, 0, 11, 0.1, 1),
-                    1
-                );
-            }
+            // set the color using Dashboard's OKLCH palette
+            fontcolor = [...Helper.getNodeColorArray(this.data.root, this.data.scale_class)];
 
             // add in the opacity
             fontcolor.push(255 * this.opacity);
             this.p5.fill(fontcolor);
             
-            this.p5.textFont("Mulish")
+            this.p5.textFont("GT Standard Mono")
 
             // draw the polygon
             // addaptation of your code to the object
@@ -148,23 +175,44 @@ class Polygon {
             }
             this.p5.endShape(this.p5.CLOSE);
 
-            // Text drawing disabled for portfolio
-            // this.p5.noStroke();
-            // this.p5.fill(isNeigh ? 255 : 0, 255 * this.opacity);
-            // var font_size_2 = this.radius / 3;
-            // var scale_class = this.data.scale_class.replace("_", "\n");
-            // this.p5.textSize(font_size_2);
-            // this.p5.textAlign(this.p5.CENTER, this.p5.CENTER);
-            // if (this.data.scale_class === "harmonic_minor" || this.data.scale_class === "harmonic_major") this.p5.translate(0, -this.radius / 5.5)
-            // if (drawText) {
-            //     this.p5.text(NOTE_NAMES[this.data.root],
-            //         neighOffset.x * this.p5.width, -font_size_2 / 2 + neighOffset.y * this.p5.height);
-            //     this.p5.text(
-            //         scale_class,
-            //         neighOffset.x * this.p5.width,
-            //         (scale_class.split("\n").length > 1 ? font_size_2 : font_size_2 / 2) + neighOffset.y * this.p5.height
-            //     );
-            // }
+            // Draw text only when explainer is open
+            // Main polygon: always show text
+            // Neighbors: show text on hover
+            const explainerOpen = typeof Explainer !== 'undefined' && Explainer.isOpen();
+            const isHovered = isNeigh && this.lastHover;
+            const shouldShowText = explainerOpen && drawText && (!isNeigh || isHovered);
+
+            if (shouldShowText) {
+                this.p5.noStroke();
+                // For hovered neighbors, override any fade (textOpacity) - show at full opacity
+                // For main polygon, use textOpacity for fade-out effect when becoming neighbor
+                const effectiveTextOpacity = isHovered ? 1 : this.textOpacity;
+                const textAlpha = 255 * this.opacity * effectiveTextOpacity;
+                this.p5.fill(0, textAlpha);  // Black text
+                var font_size_2 = this.radius / 4.5;
+                var scale_class = this.data.scale_class.replace("_", "\n").toUpperCase();
+                this.p5.textSize(font_size_2);
+                this.p5.textAlign(this.p5.CENTER, this.p5.CENTER);
+
+                // Adjust position for asymmetric shapes
+                if (this.data.scale_class === "harmonic_minor" || this.data.scale_class === "harmonic_major") {
+                    this.p5.translate(0, -this.radius / 5.5);
+                }
+
+                // Draw root name (formatted with sharps/flats)
+                this.p5.text(
+                    getScaleDisplayRoot(this.data).toUpperCase(),
+                    neighOffset.x * this.p5.width,
+                    -font_size_2 / 2 + neighOffset.y * this.p5.height
+                );
+
+                // Draw scale class
+                this.p5.text(
+                    scale_class,
+                    neighOffset.x * this.p5.width,
+                    (scale_class.split("\n").length > 1 ? font_size_2 : font_size_2 / 2) + neighOffset.y * this.p5.height
+                );
+            }
             this.p5.pop();
         };
 
@@ -268,6 +316,14 @@ class Polygon {
                     this.animation.target.opacity,
                     progress
                 );
+                // Animate text opacity if specified
+                if (this.animation.target.textOpacity !== undefined) {
+                    this.textOpacity = this.p5.lerp(
+                        this.animation.start.textOpacity,
+                        this.animation.target.textOpacity,
+                        progress
+                    );
+                }
             }
         };
 
@@ -278,7 +334,8 @@ class Polygon {
             target_size = this.radius,
             target_opacity = 1,
             callback = () => {},
-            callback_args = []
+            callback_args = [],
+            target_textOpacity = undefined  // Optional: animate text opacity separately
         ) => {
             // start the animation of an object
             var duration = FPS * duration_seconds;
@@ -296,12 +353,14 @@ class Polygon {
                     x: target_x,
                     y: target_y,
                     opacity: target_opacity,
+                    textOpacity: target_textOpacity,
                 },
                 start: {
                     size: this.radius,
                     x: this.x,
                     y: this.y,
                     opacity: this.opacity,
+                    textOpacity: this.textOpacity,
                 },
                 progress: () => {
                     return (this.p5.frameCount - this.animation.start_frame) /

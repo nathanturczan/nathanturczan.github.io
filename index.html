@@ -7,11 +7,13 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
-    <script src="ScaleData.js"></script>
-    <script src="Helper.js"></script>
-    <script src="Polygon.js"></script>
-    <script src="Navigator.js"></script>
-    <script src="SnapSequencer.js"></script>
+    <script src="https://unpkg.com/vexflow@4.2.2/build/cjs/vexflow.js"></script>
+    <script src="js/ScaleData.js"></script>
+    <script src="js/Helper.js"></script>
+    <script src="js/Polygon.js"></script>
+    <script src="js/Navigator.js"></script>
+    <script src="js/SnapSequencer.js"></script>
+    <script src="js/Explainer.js"></script>
 </head>
 <body>
     <!-- Explainer toggle button -->
@@ -40,6 +42,19 @@
             <path fill="currentColor" d="M116.286255,61.538567 C120.414490,54.693192 126.136040,51.771919 133.719666,52.879871 C140.310364,53.842751 144.645096,57.850815 146.642380,63.949692 C148.717926,70.287552 147.240799,76.158485 142.419510,80.938606 C137.100677,86.212021 128.527420,87.026085 122.157974,82.976387 C115.198524,78.551552 112.949928,70.709961 116.286255,61.538567z"/>
         </svg>
     </button>
+
+    <!-- Explainer content (hidden by default) -->
+    <div id="explainer-content" class="explainer-content">
+        <!-- Scale notation below Navigator -->
+        <div class="annotation annotation-notation">
+            <div id="scale-notation"></div>
+        </div>
+
+        <!-- Intro text -->
+        <div class="annotation annotation-intro">
+            <span class="annotation-text">Each polygon represents a scale. Turn on the audio (top left) and <span class="desktop-only">click</span><span class="mobile-only">tap</span> a polygon to change the harmony and hear the music respond in real time.</span>
+        </div>
+    </div>
 
     <main>
         <div class="column left-column">
@@ -73,8 +88,11 @@
                 </button>
 
                 <p class="greeting">Nathan Turczan</p>
-                <p class="bio">
-                    Composer, product designer, and developer building tools for exploring and performing music
+                <p class="bio bio-short">
+                    Composer, product designer, and developer building instruments for composition, improvisation, and harmonic exploration.
+                </p>
+                <p class="bio bio-long">
+                    Composer and music technologist based in Los Angeles building instruments that treat harmony as a live interactive system. His current focus Scale Navigator is harmonic middleware for composition and performance: one shared tonal context for players, plugins, and ensembles.
                 </p>
             </div>
 
@@ -89,6 +107,8 @@
             <div class="photo-stack">
                 <div id="navigator-canvas"></div>
             </div>
+            <!-- Mobile-only notation (in document flow) -->
+            <div id="scale-notation-mobile" class="mobile-notation"></div>
         </div>
 
         <div class="column right-column">
@@ -107,10 +127,10 @@
                     <span class="category">MIDI Plugin</span>
                 </a>
 
-                <a href="projects/snaps.html" class="project-item">
+                <a href="projects/ensemble-jammer.html" class="project-item">
                     <span class="number">3</span>
-                    <span class="title">SNaPS</span>
-                    <span class="category">SuperCollider</span>
+                    <span class="title">Ensemble Jammer</span>
+                    <span class="category">Web App</span>
                 </a>
 
                 <a href="projects/souls.html" class="project-item">

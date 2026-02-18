@@ -249,17 +249,21 @@ const navigatorDraw = ({ p5 }) => {
     p5.ellipseMode(p5.RADIUS);
 
     for (let h = 0; h < hover_polygons.length; h++) {
-      hover_polygons[h].draw(false);
+      hover_polygons[h].draw(false, true);  // isNeigh=true for hover polygons
     }
 
-    const allPolygons = [main_polygon]
+    // Draw neighbor polygons (isNeigh=true - no text)
+    const neighborPolygons = []
       .concat(preview_polygons || [], old_neighbors || [])
       .concat(neighbors || []);
-    allPolygons.push(old_main_polygon);
+    if (old_main_polygon) neighborPolygons.push(old_main_polygon);
 
-    for (const p of allPolygons) {
-      if (p) p.draw(true);
+    for (const p of neighborPolygons) {
+      if (p) p.draw(true, true);  // drawText=true, isNeigh=true (no text for neighbors)
     }
+
+    // Draw main polygon last (on top) with text
+    if (main_polygon) main_polygon.draw(true, false);  // drawText=true, isNeigh=false
 
     third_gen_hover(p5);
     p5.pop();
@@ -445,11 +449,16 @@ const finishChangeMainScale = ({
   if (dupIndex !== -1) neighbors[dupIndex] = old_main_polygon;
 
   main_polygon.move(0.5, 0.5, all_duration, poly_size);
+  // Reset text opacity for new main polygon (in case it was faded)
+  main_polygon.textOpacity = 1;
 
   const positions = main_polygon.getNeighborPositions(0.5, 0.5, poly_size);
   for (let i = 0; i < neighbors.length; i++) {
     try {
-      neighbors[i].move(positions[i].x, positions[i].y, all_duration, positions[i].size, 1);
+      // Fade text for the old main polygon as it becomes a neighbor
+      const isOldMain = neighbors[i] === old_main_polygon;
+      const textOpacity = isOldMain ? 0 : undefined;  // Fade text for old main
+      neighbors[i].move(positions[i].x, positions[i].y, all_duration, positions[i].size, 1, () => {}, [], textOpacity);
     } catch (e) {
       console.error(e);
     }

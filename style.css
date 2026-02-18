@@ -6,7 +6,7 @@
 
  @font-face {
    font-family: 'GT Standard Mono';
-   src: url('./GT-Standard-M-Standard-Regular-Trial.woff2') format('woff2');
+   src: url('./fonts/GT-Standard-M-Standard-Regular-Trial.woff2') format('woff2');
    font-weight: 400;
    font-style: normal;
    font-display: swap;
@@ -78,6 +78,43 @@ main {
     letter-spacing: 0.01em;
 }
 
+/* Desktop/mobile text switching */
+.desktop-only {
+    display: inline;
+}
+
+.mobile-only {
+    display: none;
+}
+
+@media (max-width: 1024px) {
+    .desktop-only {
+        display: none;
+    }
+
+    .mobile-only {
+        display: inline;
+    }
+}
+
+/* Toggle between short and long bio based on explainer state */
+.bio-short {
+    display: block;
+}
+
+.bio-long {
+    display: none;
+}
+
+/* When explainer is visible, swap bios */
+.explainer-content.visible ~ main .bio-short {
+    display: none;
+}
+
+.explainer-content.visible ~ main .bio-long {
+    display: block;
+}
+
 footer {
     display: flex;
     flex-direction: row;
@@ -107,6 +144,7 @@ footer {
     position: relative;
     width: 500px;
     height: 500px;
+    z-index: 200;  /* Above explainer annotations */
 }
 
 #navigator-canvas {
@@ -381,7 +419,7 @@ footer {
     }
 
     .project-item[href*="ensemble-jammer"]::after {
-        background-image: url('images/wildrose.jpg');
+        background-image: url('images/ensemblejammer/ensemblejammer-1.png');
     }
 
     .project-item[href*="midi-vst"]::after {
@@ -447,4 +485,138 @@ footer {
 
 .corner-btn:hover::after {
     opacity: 1;
+}
+
+/* Explainer annotations */
+.explainer-content {
+    pointer-events: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+}
+
+.explainer-content .annotation {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.explainer-content.visible .annotation {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.annotation {
+    position: fixed;
+    font-family: inherit;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    color: var(--text-color);
+}
+
+.annotation-text {
+    display: block;
+}
+
+/* Scale notation annotation - positioned below Navigator */
+.annotation-notation {
+    position: fixed;
+    bottom: 12%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    overflow: visible;
+    z-index: -1; /* Behind photo stack */
+}
+
+#scale-notation {
+    min-height: 150px;
+    overflow: visible;
+    display: flex;
+    justify-content: center;
+    /* Centering offset is calculated dynamically in Explainer.js based on actual content bounds */
+}
+
+#scale-notation svg {
+    fill: var(--text-color);
+    overflow: visible;
+}
+
+/* Make VexFlow notation lines match theme */
+#scale-notation svg path,
+#scale-notation svg line,
+#scale-notation svg rect {
+    stroke: var(--text-color) !important;
+}
+
+#scale-notation svg text {
+    fill: var(--text-color) !important;
+}
+
+
+/* Intro annotation - above the navigator */
+.annotation-intro {
+    position: fixed;
+    top: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    z-index: 101;
+    max-width: 500px;  /* Match navigator/photo-stack width */
+}
+
+/* Mobile notation (in document flow) */
+.mobile-notation {
+    display: none;
+}
+
+.mobile-notation svg {
+    fill: var(--text-color);
+    overflow: visible;
+}
+
+.mobile-notation svg path,
+.mobile-notation svg line,
+.mobile-notation svg rect {
+    stroke: var(--text-color) !important;
+}
+
+.mobile-notation svg text {
+    fill: var(--text-color) !important;
+}
+
+/* Mobile adjustments for annotations */
+@media (max-width: 1024px) {
+    /* Hide fixed notation on mobile */
+    .annotation-notation {
+        display: none;
+    }
+
+    /* Show inline mobile notation when explainer is visible */
+    .explainer-content.visible ~ main .mobile-notation {
+        display: flex;
+        justify-content: center;
+        margin-top: -90px;
+        margin-bottom: 24px;
+        max-width: 280px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* Hide intro text on mobile */
+    .annotation-intro {
+        display: none;
+    }
+
+    /* On mobile, always show short bio even when explainer is open */
+    .explainer-content.visible ~ main .bio-short {
+        display: block;
+    }
+
+    .explainer-content.visible ~ main .bio-long {
+        display: none;
+    }
 }

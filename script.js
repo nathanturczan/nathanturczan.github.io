@@ -6,24 +6,29 @@ window.__strokeOption = "3";
 
 // Stub Redux-style functions for Navigator
 var navigatorState = navigatorState || {
-    scale: 'c_diatonic',
+    scale: 'a_diatonic',
     main_polygon: null
 };
 
 const setScaleData = (payload) => {
     // Handle both formats: string or { scale: string }
     const newScale = typeof payload === 'string' ? payload : (payload && payload.scale);
-    
+
     if (newScale) {
         navigatorState.scale = newScale;
         console.log('[Portfolio] Scale changed to:', newScale);
-        
+
         // Notify SnapSequencer of scale change
         if (typeof SnapSequencer !== 'undefined') {
             console.log('[Portfolio] Notifying SnapSequencer of scale change...');
             SnapSequencer.onScaleChange(newScale);
         } else {
             console.log('[Portfolio] SnapSequencer not available for scale change');
+        }
+
+        // Notify Explainer of scale change
+        if (typeof Explainer !== 'undefined') {
+            Explainer.onScaleChange(newScale);
         }
     }
 };
@@ -94,7 +99,7 @@ const projectImageMap = {
         'pitchsnap/pitchsnap-2.png',
         'pitchsnap/pitchsnap-3.png'
     ],
-    'SNaPS': 'snaps-thumb.webp'
+    'Ensemble Jammer': 'ensemblejammer/ensemblejammer-1.png'
 };
 
 // Helper to get filename (handles arrays for random selection)
@@ -239,9 +244,48 @@ document.addEventListener('click', (e) => {
         });
     }
 
-    btn.addEventListener('click', async () => {
-        console.log('[Portfolio] Audio button clicked. Current state:', window.__audioEnabled ? 'ON' : 'OFF');
-        
+    // Pre-load Tone.js and initialize SnapSequencer in background on page load
+    // This way audio is ready when user clicks (only need to call start())
+    let sequencerReady = false;
+    let initPromise = null; // Track ongoing initialization to prevent double-init
+
+    async function ensureSequencerReady() {
+        // If already ready, return immediately
+        if (sequencerReady) return;
+
+        // If init is already in progress, wait for it
+        if (initPromise) {
+            await initPromise;
+            return;
+        }
+
+        // Start initialization
+        initPromise = (async () => {
+            if (!toneLoaded) {
+                console.log('[Portfolio] Loading Tone.js...');
+                await loadToneJS();
+            }
+
+            if (typeof SnapSequencer !== 'undefined') {
+                console.log('[Portfolio] Initializing SnapSequencer...');
+                await SnapSequencer.init();
+                sequencerReady = true;
+                console.log('[Portfolio] SnapSequencer ready');
+            }
+        })();
+
+        await initPromise;
+    }
+
+    // Pre-load in background on page load
+    ensureSequencerReady().catch(err => {
+        console.error('[Portfolio] Pre-load failed:', err);
+    });
+
+    // Shared toggle function for both click and keyboard
+    async function toggleAudio() {
+        console.log('[Portfolio] Audio toggled. Current state:', window.__audioEnabled ? 'ON' : 'OFF');
+
         window.__audioEnabled = !window.__audioEnabled;
 
         // is-on => slash hidden
@@ -254,25 +298,10 @@ document.addEventListener('click', (e) => {
         if (typeof SnapSequencer !== 'undefined') {
             if (window.__audioEnabled) {
                 console.log('[Portfolio] Enabling audio...');
-                
-                // Load Tone.js on first enable
-                if (!toneLoaded) {
-                    console.log('[Portfolio] Tone.js not loaded yet, loading now...');
-                    try {
-                        await loadToneJS();
-                        console.log('[Portfolio] Tone.js loaded successfully');
-                    } catch (err) {
-                        console.error('[Portfolio] Failed to load Tone.js:', err);
-                        return;
-                    }
-                } else {
-                    console.log('[Portfolio] Tone.js already loaded');
-                }
-                
-                // Initialize on first start (happens on user gesture)
-                console.log('[Portfolio] Initializing SnapSequencer...');
-                await SnapSequencer.init();
-                
+
+                // Wait for initialization (instant if already done, waits if in progress)
+                await ensureSequencerReady();
+
                 console.log('[Portfolio] Starting SnapSequencer...');
                 await SnapSequencer.start();
                 console.log('[Portfolio] SnapSequencer started');
@@ -283,6 +312,16 @@ document.addEventListener('click', (e) => {
             }
         } else {
             console.warn('[Portfolio] SnapSequencer not defined');
+        }
+    }
+
+    btn.addEventListener('click', toggleAudio);
+
+    // F8 keyboard shortcut to toggle audio (macOS play/stop)
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'F8') {
+            e.preventDefault();  // Prevent any default F8 behavior
+            toggleAudio();
         }
     });
 
@@ -299,9 +338,14 @@ document.addEventListener('click', (e) => {
     const btn = document.getElementById('explainer-toggle');
     if (!btn) return;
 
+    // Initialize Explainer
+    if (typeof Explainer !== 'undefined') {
+        Explainer.init();
+    }
+
     btn.addEventListener('click', () => {
-        btn.classList.toggle('is-open');
-        // TODO: Show/hide explainer content
-        console.log('[Portfolio] Explainer toggled:', btn.classList.contains('is-open') ? 'open' : 'closed');
+        const isOpen = typeof Explainer !== 'undefined' ? Explainer.toggle() : false;
+        btn.classList.toggle('is-open', isOpen);
+        console.log('[Portfolio] Explainer toggled:', isOpen ? 'open' : 'closed');
     });
 })();

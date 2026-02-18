@@ -97,7 +97,7 @@ function getScoresData()
         "img": "skincare.jpg",
         "date": "2020",
         "format": "horror film score",
-        "url": "youtube.com/shorts/MWf042Jwyes",
+        "url": "https://www.youtube.com/shorts/MWf042Jwyes",
         "desc": ""
     }
     ];
