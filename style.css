@@ -405,8 +405,8 @@ footer {
         background-image: url('images/ensemblejammer/Screenshot 2026-02-17 at 6.32.10 PM.png');
     }
 
-    .project-item[href*="pitchsnap"]::after {
-        background-image: url('images/pitchsnap/Screenshot 2026-02-10 at 8.51.41 AM.png');
+    .project-item[href*="tonalign"]::after {
+        background-image: url('images/tonalign/Screenshot 2026-02-10 at 8.51.41 AM.png');
     }
 
     .project-item[href*="modal-intersections"]::after {

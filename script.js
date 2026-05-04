@@ -94,12 +94,12 @@ const projectImageMap = {
     'Modal Intersections': 'MI-2.gif',
     'SOULS': 'sia_souls.jpg',
     'Pandiatonic Autoharp': 'autoharp.jpg',
-    'PitchSnap': [
-        'pitchsnap/Screenshot 2026-02-10 at 8.51.41 AM.png',
-        'pitchsnap/Screenshot 2026-02-10 at 8.51.47 AM.png',
-        'pitchsnap/Screenshot 2026-02-10 at 8.52.08 AM.png',
-        'pitchsnap/Screenshot 2026-02-10 at 8.52.32 AM.png',
-        'pitchsnap/Screenshot 2026-02-10 at 8.52.54 AM.png'
+    'Tonalign': [
+        'tonalign/Screenshot 2026-02-10 at 8.51.41 AM.png',
+        'tonalign/Screenshot 2026-02-10 at 8.51.47 AM.png',
+        'tonalign/Screenshot 2026-02-10 at 8.52.08 AM.png',
+        'tonalign/Screenshot 2026-02-10 at 8.52.32 AM.png',
+        'tonalign/Screenshot 2026-02-10 at 8.52.54 AM.png'
     ],
     'Ensemble Jammer': [
         'ensemblejammer/Screenshot 2026-02-17 at 6.31.53 PM.png',
