@@ -31,7 +31,7 @@ body {
     font-family: 'GT Standard Mono', monospace;
     background: var(--bg-color);
     color: var(--text-color);
-    font-size: 16px;
+    font-size: 1rem;
     line-height: 1.4;
     overflow-x: hidden;
 }
@@ -40,11 +40,17 @@ body.alt {
   font-family: monospace;
 }
 
+a,
+button {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+
 main {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     min-height: 100vh;
-    padding: 0px 40px;
+    padding: 0 2.5rem;
     gap: 0px;
 }
 
@@ -61,18 +67,19 @@ main {
 }
 
 .intro {
-    margin-bottom: 60px;
+    margin-bottom: 3.75rem;
 }
 
 .greeting {
-    font-size: 16px;
+    font-size: 1rem;
+    font-weight: 400;
     text-transform: uppercase;
-    margin-bottom: 40px;
+    margin-bottom: 2.5rem;
     letter-spacing: 0.01em;
 }
 
 .bio {
-    font-size: 16px;
+    font-size: 1rem;
     text-transform: uppercase;
     line-height: 1.65;
     letter-spacing: 0.01em;
@@ -105,7 +112,7 @@ footer {
 }
 
 .footer-link {
-    font-size: 16px;
+    font-size: 1rem;
     text-transform: uppercase;
     text-decoration: none;
     color: var(--text-color);
@@ -124,8 +131,10 @@ footer {
 
 .photo-stack {
     position: relative;
-    width: 500px;
-    height: 500px;
+    /* Stay inside the middle column so hover layers never cover the project list */
+    width: min(31.25rem, calc(33.33vw - 3.75rem));
+    aspect-ratio: 1 / 1;
+    height: auto;
     z-index: 200;  /* Above explainer annotations */
 }
 
@@ -145,9 +154,11 @@ footer {
 
 .photo-layer {
     position: absolute;
-    width: 100%;
-    height: 100%;
-    transition: all 0.3s ease;
+    /* Slightly smaller than the stack so rotated corners stay inside the column */
+    width: 94%;
+    height: 94%;
+    transform: translate(-50%, -50%) rotate(var(--rotation, 0deg)) scale(var(--scale, 1));
+    transition: opacity 0.3s ease, transform 0.3s ease;
     display: block;
     cursor: pointer;
 }
@@ -167,15 +178,30 @@ footer {
     }
 }
 
+@media (prefers-reduced-motion: reduce) {
+    .photo-layer,
+    .photo-layer.active {
+        animation: none;
+        transition: none;
+    }
+
+    .footer-link,
+    .project-item,
+    .annotation a {
+        transition: none;
+    }
+}
+
 /* Right Column */
 .right-column {
     align-items: flex-start;
 }
 
 .works-header {
-    font-size: 16px;
+    font-size: 1rem;
+    font-weight: 400;
     text-transform: uppercase;
-    margin-bottom: 20px;
+    margin-bottom: 1.25rem;
     letter-spacing: 0.01em;
 }
 
@@ -185,9 +211,9 @@ footer {
 
 .project-item {
     display: grid;
-    grid-template-columns: 30px 1fr auto;
-    gap: 30px;
-    padding: 12px 0;
+    grid-template-columns: 1.875rem 1fr auto;
+    gap: 1.875rem;
+    padding: 0.75rem 0;
     text-decoration: none;
     color: var(--text-color);
     transition: opacity 0.2s ease;
@@ -199,19 +225,19 @@ footer {
 }
 
 .number {
-    font-size: 16px;
+    font-size: 1rem;
     text-transform: uppercase;
     letter-spacing: 0.01em;
 }
 
 .title {
-    font-size: 16px;
+    font-size: 1rem;
     text-transform: uppercase;
     letter-spacing: 0.01em;
 }
 
 .category {
-    font-size: 16px;
+    font-size: 1rem;
     text-transform: uppercase;
     letter-spacing: 0.01em;
     text-align: right;
@@ -239,26 +265,34 @@ footer {
     color: var(--icon-color);
 }
 
-.corner-btn:focus {
+.corner-btn:focus:not(:focus-visible) {
     outline: none;
 }
 
-/* Audio toggle: offset for slash overhang (~6px top, ~12px left) */
-/* Target: main body 40px from edges */
-.audio-toggle {
-    top: 34px;
-    left: 28px;
+.corner-btn:focus-visible,
+.footer-link:focus-visible,
+.project-item:focus-visible,
+.annotation a:focus-visible {
+    outline: 2px solid var(--text-color);
+    outline-offset: 3px;
 }
 
-/* Explainer: bounding box matches visual, so direct 40px */
+/* Audio toggle: offset for slash overhang (~6px top, ~12px left) */
+/* Target: main body 2.5rem from edges */
+.audio-toggle {
+    top: 2.125rem;
+    left: 1.75rem;
+}
+
+/* Explainer: bounding box matches visual, so direct 2.5rem */
 .explainer-toggle {
-    top: 40px;
-    right: 40px;
+    top: 2.5rem;
+    right: 2.5rem;
 }
 
 .audio-icon {
     width: auto;
-    height: 60px;
+    height: 3.75rem;
     display: block;
 }
 
@@ -269,7 +303,7 @@ footer {
 
 /* Explainer button */
 .explainer-icon {
-    height: 28px;
+    height: 1.75rem;
     width: auto;
     display: block;
 }
@@ -397,8 +431,8 @@ footer {
         background-image: url('images/noteschordsscales.png');
     }
 
-    .project-item[href*="particle-system"]::after {
-        background-image: url('images/lydianairs.jpg');
+    .project-item[href*="early-downhome-blues"]::after {
+        background-image: url('images/early-downhome-blues-app.png');
     }
 
     .project-item[href*="ensemble-jammer"]::after {
@@ -453,7 +487,7 @@ footer {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    font-size: 16px;
+    font-size: 1rem;
     text-transform: uppercase;
     letter-spacing: 0.01em;
     font-family: inherit;
@@ -466,12 +500,12 @@ footer {
 
 .audio-toggle::after {
     left: 100%;
-    margin-left: 10px;
+    margin-left: 0.625rem;
 }
 
 .explainer-toggle::after {
     right: 100%;
-    margin-right: 10px;
+    margin-right: 0.625rem;
 }
 
 .corner-btn:hover::after {
@@ -502,7 +536,7 @@ footer {
 .annotation {
     position: fixed;
     font-family: inherit;
-    font-size: 16px;
+    font-size: 1rem;
     text-transform: uppercase;
     letter-spacing: 0.01em;
     color: var(--text-color);
@@ -566,7 +600,7 @@ footer {
     transform: translateX(-50%);
     text-align: center;
     z-index: 101;
-    max-width: 500px;  /* Match navigator/photo-stack width */
+    max-width: 31.25rem;  /* Match navigator/photo-stack width */
 }
 
 /* Mobile notation (in document flow) */

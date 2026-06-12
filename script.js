@@ -46,6 +46,8 @@ const sketch = (p) => {
     p.setup = () => {
         const canvas = p.createCanvas(400, 400);
         canvas.parent('navigator-canvas');
+        canvas.elt.setAttribute('role', 'img');
+        canvas.elt.setAttribute('aria-label', 'Interactive map of musical scales. Click a polygon to change the harmony.');
         p.frameRate(30);
 
         // Initialize Navigator with full functionality
@@ -88,9 +90,8 @@ const IMAGES_BASE = 'images/';
 const projectImageMap = {
     'Airboat': 'airboat.jpg',
     'Scale Navigator Dashboard': 'dashboard/scalenavigatordashboard.png',
-    '(((Notes)Chords)Scales)))': 'noteschordsscales.png',
-    'To A Wild Rose...': 'wildrose.jpg',
-    'Lydia': 'lydianairs.jpg',
+    'Early Downhome Blues': 'early-downhome-blues-app.png',
+    'To A Wild Rose…': 'wildrose.jpg',
     'Modal Intersections': 'MI-2.gif',
     'SOULS': 'sia_souls.jpg',
     'Pandiatonic Autoharp': 'autoharp.jpg',
@@ -131,83 +132,87 @@ function random(min, max) {
 const LAYER_LIFETIME_MS = 20000; // 20 seconds
 const MAX_LAYERS = 12;
 
+function removeLayer(layer) {
+    clearTimeout(layer._removeTimer);
+    layer.remove();
+}
+
 function trimOldLayers() {
     const layers = photoStack.querySelectorAll('.photo-layer');
     const extra = layers.length - MAX_LAYERS;
     if (extra > 0) {
         for (let i = 0; i < extra; i++) {
-            layers[i].remove();
+            removeLayer(layers[i]);
         }
     }
 }
 
+function addPhotoLayer(item) {
+    // Disable photo stacking on mobile
+    if (window.innerWidth <= 1024) return;
+
+    const titleEl = item.querySelector('.title');
+    const title = (titleEl ? titleEl.textContent : '').trim();
+    const filename = getProjectImage(title);
+    if (!filename) return;
+
+    const href = item.getAttribute('href');
+    if (!href) return;
+
+    // Use <a> so the photo itself is clickable
+    const layer = document.createElement('a');
+    layer.className = 'photo-layer active';
+    layer.href = href;
+    layer.setAttribute('aria-hidden', 'true');
+    layer.tabIndex = -1;
+
+    // Image styling (no cropping)
+    layer.style.backgroundImage = `url("${IMAGES_BASE}${filename}")`;
+    layer.style.backgroundSize = 'contain';
+    layer.style.backgroundPosition = 'center';
+    layer.style.backgroundRepeat = 'no-repeat';
+    layer.style.backgroundColor = 'transparent';
+
+    // Random transform vibe
+    const rotation = random(-8, 8);
+    const scale = random(0.95, 1.05);
+    layer.style.setProperty('--rotation', `${rotation}deg`);
+    layer.style.setProperty('--scale', scale);
+
+    // Center in the stack (matches your CSS keyframes using translate(-50%, -50%))
+    layer.style.left = '50%';
+    layer.style.top = '50%';
+    layer.style.transformOrigin = 'center center';
+
+    // Must sit above the canvas to be clickable
+    layerCount++;
+    layer.style.zIndex = layerCount;
+
+    photoStack.appendChild(layer);
+    trimOldLayers();
+
+    // Disappear after 20 seconds
+    layer._removeTimer = setTimeout(() => {
+        layer.remove();
+    }, LAYER_LIFETIME_MS);
+}
+
 projectItems.forEach(item => {
-    item.addEventListener('mouseenter', function () {
-        // Disable photo stacking on mobile
-        if (window.innerWidth <= 1024) return;
-        
-        const titleEl = this.querySelector('.title');
-        const title = (titleEl ? titleEl.textContent : '').trim();
-        const filename = getProjectImage(title);
-        if (!filename) return;
-
-        const href = this.getAttribute('href');
-        if (!href) return;
-
-        // Use <a> so the photo itself is clickable
-        const layer = document.createElement('a');
-        layer.className = 'photo-layer active';
-        layer.href = href;
-
-        // If you want new-tab behavior, uncomment:
-        // layer.target = '_blank';
-        // layer.rel = 'noopener noreferrer';
-
-        // Image styling (no cropping)
-        layer.style.backgroundImage = `url("${IMAGES_BASE}${filename}")`;
-        layer.style.backgroundSize = 'contain';
-        layer.style.backgroundPosition = 'center';
-        layer.style.backgroundRepeat = 'no-repeat';
-        layer.style.backgroundColor = 'transparent';
-
-        // Random transform vibe
-        const rotation = random(-8, 8);
-        const scale = random(0.95, 1.05);
-        layer.style.setProperty('--rotation', `${rotation}deg`);
-        layer.style.setProperty('--scale', scale);
-
-        // Center in the stack (matches your CSS keyframes using translate(-50%, -50%))
-        layer.style.left = '50%';
-        layer.style.top = '50%';
-        layer.style.transformOrigin = 'center center';
-
-        // Must sit above the canvas to be clickable
-        layerCount++;
-        layer.style.zIndex = layerCount;
-
-        photoStack.appendChild(layer);
-        trimOldLayers();
-
-        // Disappear after 20 seconds
-        const t = setTimeout(() => {
-            layer.remove();
-        }, LAYER_LIFETIME_MS);
-
-        // Clean up timer if removed early
-        layer.addEventListener('DOMNodeRemoved', () => clearTimeout(t), { once: true });
-    });
+    item.addEventListener('mouseenter', () => addPhotoLayer(item));
+    // Keyboard users get the same preview when tabbing through the list
+    item.addEventListener('focus', () => addPhotoLayer(item));
 });
 
 // Click on blank space to clear photo stack
 document.addEventListener('click', (e) => {
     // Don't clear if clicking on a photo layer, project item, or corner button
-    if (e.target.closest('.photo-layer') || 
-        e.target.closest('.project-item') || 
+    if (e.target.closest('.photo-layer') ||
+        e.target.closest('.project-item') ||
         e.target.closest('.corner-btn')) {
         return;
     }
     const layers = photoStack.querySelectorAll('.photo-layer');
-    layers.forEach(layer => layer.remove());
+    layers.forEach(layer => removeLayer(layer));
 });
 
 // Audio toggle
@@ -301,6 +306,7 @@ document.addEventListener('click', (e) => {
         // is-on => slash hidden
         btn.classList.toggle('is-on', window.__audioEnabled);
         btn.classList.toggle('is-off', !window.__audioEnabled);
+        btn.setAttribute('aria-pressed', String(window.__audioEnabled));
 
         console.log('[Portfolio] New audio state:', window.__audioEnabled ? 'ON' : 'OFF');
 
@@ -356,6 +362,7 @@ document.addEventListener('click', (e) => {
     btn.addEventListener('click', () => {
         const isOpen = typeof Explainer !== 'undefined' ? Explainer.toggle() : false;
         btn.classList.toggle('is-open', isOpen);
+        btn.setAttribute('aria-expanded', String(isOpen));
         console.log('[Portfolio] Explainer toggled:', isOpen ? 'open' : 'closed');
     });
 })();

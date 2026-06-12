@@ -2,6 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Nathan Turczan: composer, product designer, and developer building instruments for composition, improvisation, and harmonic exploration.">
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#f5f5f5" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Nathan Turczan</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://unpkg.com">
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preload" href="fonts/GT-Standard-M-Standard-Regular-Trial.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="style.css">
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-QZDPQB8062"></script>
     <script>
@@ -10,18 +22,14 @@
         gtag('js', new Date());
         gtag('config', 'G-QZDPQB8062');
     </script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nathan Turczan</title>
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
-    <script src="https://unpkg.com/vexflow@4.2.2/build/cjs/vexflow.js"></script>
-    <script src="js/ScaleData.js"></script>
-    <script src="js/Helper.js"></script>
-    <script src="js/Polygon.js"></script>
-    <script src="js/Navigator.js"></script>
-    <script src="js/SnapSequencer.js"></script>
-    <script src="js/Explainer.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
+    <script defer src="https://unpkg.com/vexflow@4.2.2/build/cjs/vexflow.js"></script>
+    <script defer src="js/ScaleData.js"></script>
+    <script defer src="js/Helper.js"></script>
+    <script defer src="js/Polygon.js"></script>
+    <script defer src="js/Navigator.js"></script>
+    <script defer src="js/SnapSequencer.js"></script>
+    <script defer src="js/Explainer.js"></script>
 </head>
 <body>
     <!-- Explainer toggle button -->
@@ -31,6 +39,8 @@
         class="corner-btn explainer-toggle"
         type="button"
         aria-label="Toggle explainer"
+        aria-expanded="false"
+        aria-controls="explainer-content"
     >
         <!-- Closed eye (default) - viewBox cropped to content -->
         <svg class="explainer-icon icon-closed" viewBox="33 15 195 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
@@ -74,6 +84,7 @@
                     class="corner-btn audio-toggle is-off"
                     type="button"
                     aria-label="Toggle audio"
+                    aria-pressed="false"
                 >
                     <svg class="audio-icon" viewBox="50 120 600 820" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
                         <g transform="matrix(-1 0 0 -1 669.57 1049.9)">
@@ -95,7 +106,7 @@
                     </svg>
                 </button>
 
-                <p class="greeting">Nathan Turczan</p>
+                <h1 class="greeting">Nathan Turczan</h1>
                 <p class="bio">
                     Composer, product designer, and developer building instruments for composition, improvisation, and harmonic exploration.
                 </p>
@@ -117,7 +128,7 @@
         </div>
 
         <div class="column right-column">
-            <div class="works-header">Selected Works:</div>
+            <h2 class="works-header">Selected Works:</h2>
             <div class="project-list">
 
                 <a href="projects/scale-navigator-dashboard.html" class="project-item">
@@ -152,7 +163,7 @@
 
                 <a href="projects/wild-rose.html" class="project-item">
                     <span class="number">6</span>
-                    <span class="title">To A Wild Rose...</span>
+                    <span class="title">To A Wild Rose…</span>
                     <span class="category">Album</span>
                 </a>
 
@@ -182,6 +193,6 @@
         </div>
     </main>
 
-    <script src="script.js"></script>
+    <script defer src="script.js"></script>
 </body>
 </html>
