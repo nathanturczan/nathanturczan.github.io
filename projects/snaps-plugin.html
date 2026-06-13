@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SNaPS Plugin - Nathan Turczan</title>
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link rel="stylesheet" href="project.css">
+</head>
+<body>
+    <div class="project-page">
+        <header class="project-header">
+            <a href="../index.html" class="back-link">Back</a>
+
+            <div class="project-info">
+                <h1 class="project-title">SNaPS Plugin</h1>
+                <div class="divider-line"></div>
+                <p class="project-tagline">Scale Navigator Particle Sampler. Harmonic-aware sample instrument.</p>
+                <p class="project-description">Samples automatically transpose to fit the current scale or chord. When harmony changes, playing samples glide smoothly to new pitch targets instead of restarting. Three playback engines (Emitter, Looper, Sequencer) share the same harmonic system, keeping everything musically coherent.</p>
+            </div>
+
+            <div class="project-meta">
+                <span class="project-year">2024-Current</span>
+                <span class="project-categories">Audio Plugin<br>VST3 / AU</span>
+            </div>
+        </header>
+
+        <div class="project-content">
+            <div class="project-images">
+                <img src="../images/snaps-thumb.webp" alt="SNaPS Plugin" class="project-image">
+            </div>
+
+            <div class="project-text-section">
+                <h3>Three Engines</h3>
+                <p><strong>Emitter</strong> generates rhythmic particle bursts of samples. <strong>Looper</strong> provides expressive sample pads with crossfades and glide. <strong>Sequencer</strong> arranges samples on a timeline.</p>
+
+                <h3>Harmonic Intelligence</h3>
+                <p>SNaPS syncs with Scale Navigator Dashboard, which broadcasts the current harmonic state to every plugin in the session. When the scale changes from C Diatonic to F# Harmonic Minor, every playing sample glides to the closest valid pitch in the new scale.</p>
+
+                <h3>Glide Curve Types</h3>
+                <p>Linear, Exponential, Logarithmic, Stepped (Chromatic or Scale-quantized), S-Curve, and Nathan Ho's expressive curve with prep dip ascending and overshoot descending.</p>
+
+                <h3>Exit Modes</h3>
+                <p>When a sample can't fit the new scale, choose how it exits: stutter decay (rapid re-triggers with shrinking loop windows), filter sweep (low-pass from 20kHz to 200Hz), or Doppler drop (turntable power-off). These can be stacked.</p>
+            </div>
+
+            <div class="project-text-section">
+                <a href="https://github.com/nathanturczan/snaps-plugin" target="_blank" class="project-link">GitHub</a>
+            </div>
+        </div>
+
+        <nav class="project-nav">
+            <a href="tonalign.html">Prev</a>
+            <span class="separator">,</span>
+            <a href="ensemble-jammer.html">Next</a>
+        </nav>
+    </div>
+</body>
+</html>
