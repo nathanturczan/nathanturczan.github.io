@@ -87,9 +87,13 @@ const projectItems = document.querySelectorAll('.project-item:not(.archive)');
 const IMAGES_BASE = 'images/';
 
 // Title -> filename mapping (must match titles in index.html exactly)
+// Use { type: 'video', src: '...' } for video files
 const projectImageMap = {
-    'Airboat': 'airboat.jpg',
     'Scale Navigator Dashboard': 'dashboard/scalenavigatordashboard.png',
+    'LA Laptop Orchestra': [
+        'lalork/poster-1.jpg',
+        'lalork/poster-2.jpg'
+    ],
     'Early Downhome Blues': 'early-downhome-blues-app.png',
     'To A Wild Rose…': 'wildrose.jpg',
     'Modal Intersections': 'MI-2.gif',
@@ -110,17 +114,22 @@ const projectImageMap = {
         'ensemblejammer/Screenshot 2026-02-17 at 6.33.12 PM.png',
         'ensemblejammer/Screenshot 2026-02-17 at 6.33.20 PM.png',
         'ensemblejammer/Screenshot 2026-02-17 at 6.33.44 PM.png'
-    ]
+    ],
+    'SNaPS': { type: 'video', src: 'snaps/snaps-demo.mp4' }
 };
 
-// Helper to get filename (handles arrays for random selection)
-function getProjectImage(title) {
+// Helper to get media info (handles arrays for random selection, and video objects)
+function getProjectMedia(title) {
     const entry = projectImageMap[title];
     if (!entry) return null;
     if (Array.isArray(entry)) {
-        return entry[Math.floor(Math.random() * entry.length)];
+        const selected = entry[Math.floor(Math.random() * entry.length)];
+        return { type: 'image', src: selected };
     }
-    return entry;
+    if (typeof entry === 'object' && entry.type === 'video') {
+        return entry;
+    }
+    return { type: 'image', src: entry };
 }
 
 let layerCount = 1;
@@ -153,8 +162,8 @@ function addPhotoLayer(item) {
 
     const titleEl = item.querySelector('.title');
     const title = (titleEl ? titleEl.textContent : '').trim();
-    const filename = getProjectImage(title);
-    if (!filename) return;
+    const media = getProjectMedia(title);
+    if (!media) return;
 
     const href = item.getAttribute('href');
     if (!href) return;
@@ -166,12 +175,27 @@ function addPhotoLayer(item) {
     layer.setAttribute('aria-hidden', 'true');
     layer.tabIndex = -1;
 
-    // Image styling (no cropping)
-    layer.style.backgroundImage = `url("${IMAGES_BASE}${filename}")`;
-    layer.style.backgroundSize = 'contain';
-    layer.style.backgroundPosition = 'center';
-    layer.style.backgroundRepeat = 'no-repeat';
-    layer.style.backgroundColor = 'transparent';
+    if (media.type === 'video') {
+        // Video layer
+        const video = document.createElement('video');
+        video.src = IMAGES_BASE + media.src;
+        video.autoplay = true;
+        video.loop = true;
+        video.muted = true;
+        video.playsInline = true;
+        video.style.width = '100%';
+        video.style.height = '100%';
+        video.style.objectFit = 'contain';
+        layer.appendChild(video);
+        layer.style.backgroundColor = 'transparent';
+    } else {
+        // Image styling (no cropping)
+        layer.style.backgroundImage = `url("${IMAGES_BASE}${media.src}")`;
+        layer.style.backgroundSize = 'contain';
+        layer.style.backgroundPosition = 'center';
+        layer.style.backgroundRepeat = 'no-repeat';
+        layer.style.backgroundColor = 'transparent';
+    }
 
     // Random transform vibe
     const rotation = random(-8, 8);
