@@ -250,16 +250,41 @@ document.addEventListener('click', (e) => {
     btn.classList.add('is-off');
 
     let toneLoaded = false;
+    let loadingInterval = null;
+    let isLoading = false;
 
     // Set tooltip based on viewport
     const updateTooltip = () => {
+        if (isLoading) return; // Don't override loading state
         if (window.innerWidth <= 1024) {
             btn.setAttribute('data-tooltip', '');
         } else {
             btn.setAttribute('data-tooltip', 'listen');
         }
     };
-    
+
+    // Animated loading dots
+    const startLoadingAnimation = () => {
+        isLoading = true;
+        let dots = 0;
+        btn.setAttribute('data-tooltip', 'Loading');
+        btn.classList.add('is-loading');
+        loadingInterval = setInterval(() => {
+            dots = (dots + 1) % 4;
+            btn.setAttribute('data-tooltip', 'Loading' + '.'.repeat(dots));
+        }, 400);
+    };
+
+    const stopLoadingAnimation = () => {
+        isLoading = false;
+        if (loadingInterval) {
+            clearInterval(loadingInterval);
+            loadingInterval = null;
+        }
+        btn.classList.remove('is-loading');
+        updateTooltip();
+    };
+
     updateTooltip();
     window.addEventListener('resize', updateTooltip);
 
@@ -339,19 +364,27 @@ document.addEventListener('click', (e) => {
             if (window.__audioEnabled) {
                 console.log('[Portfolio] Enabling audio...');
 
+                // Show loading animation
+                startLoadingAnimation();
+
                 // Wait for initialization (instant if already done, waits if in progress)
                 await ensureSequencerReady();
 
                 console.log('[Portfolio] Starting SnapSequencer...');
                 await SnapSequencer.start();
                 console.log('[Portfolio] SnapSequencer started');
+
+                // Stop loading animation once audio is playing
+                stopLoadingAnimation();
             } else {
                 console.log('[Portfolio] Disabling audio...');
+                stopLoadingAnimation();
                 SnapSequencer.stop();
                 console.log('[Portfolio] SnapSequencer stopped');
             }
         } else {
             console.warn('[Portfolio] SnapSequencer not defined');
+            stopLoadingAnimation();
         }
     }
 

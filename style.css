@@ -512,6 +512,11 @@ footer {
     opacity: 1;
 }
 
+/* Loading state - always show tooltip */
+.corner-btn.is-loading::after {
+    opacity: 1;
+}
+
 /* Explainer annotations */
 .explainer-content {
     pointer-events: none;
