@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scale Navigator Ensemble Jammer - Nathan Turczan</title>
+    <title>Ensemble Jammer - Nathan Turczan</title>
     <link rel="icon" type="image/x-icon" href="../favicon.ico">
     <link rel="stylesheet" href="project.css">
 </head>
@@ -13,21 +13,49 @@
             <a href="../index.html" class="back-link">Back</a>
 
             <div class="project-info">
-                <h1 class="project-title">Scale Navigator Ensemble Jammer (SNEJ)</h1>
+                <h1 class="project-title">Ensemble Jammer</h1>
                 <div class="divider-line"></div>
-                <p class="project-tagline">Networked ensemble instruments synchronized via Firebase.</p>
-                <p class="project-description">Multiple players share harmonic state in real-time. The host sets the scale and chord — all connected instruments follow. Built for collaborative improvisation, jam sessions, and sound bath contexts.</p>
+                <p class="project-tagline">Role: Designer & engineer (sole)</p>
+                <p class="project-description">Web, iOS · Tone.js / Web Audio / Firebase / Web Bluetooth</p>
             </div>
 
             <div class="project-meta">
-                <span class="project-year">2024-Current</span>
-                <span class="project-categories">Software<br>Tone.js / Web Audio / Firebase</span>
+                <span class="project-year">2024–present</span>
+                <span class="project-categories">Software</span>
             </div>
         </header>
 
         <div class="project-content">
-            <div class="project-images">
-                <img src="../images/ensemblejammer/Screenshot 2026-02-17 at 6.32.10 PM.png" alt="Ensemble Jammer interface" class="project-image">
+
+            <div class="project-text-section">
+                <p>
+                    Making music with other people is harder than it should be. If you don't know the key, don't know the chords, or can't keep up with the harmony, it's easy to feel like you're getting in the way instead of contributing.
+                </p>
+                <p>
+                    I wanted to remove harmony as a problem entirely — build instruments where the interface only offers notes that fit, so people can focus on listening to each other instead of worrying about whether they're allowed to play the next note.
+                </p>
+            </div>
+
+            <div class="project-text-section">
+                <h3>What I built (v1)</h3>
+                <p>
+                    Not one instrument but a suite of them — Touch Harp, X/Y Lead, Melody Maker, drones, synths, sequencers, loops — all sharing a single harmonic state. Players join from a phone or tablet. A leader runs Scale Navigator Dashboard and sets the harmony. Every connected instrument automatically retunes the instant the host changes scale or chord. Each player's screen shows only the pitches that work right now.
+                </p>
+                <p>
+                    One of the instruments is a <a href="https://nathan.ho.name/venn7/" target="_blank">symmetric 7-Venn diagram</a> designed by Nathan Ho — I wired his interface into the harmonic-state system so it retunes live as the host changes scales.
+                </p>
+            </div>
+
+            <img src="../images/ensemblejammer/Screenshot 2026-02-17 at 6.32.10 PM.png" alt="Ensemble Jammer interface" class="project-image">
+
+            <div class="project-text-section">
+                <h3>The salon test</h3>
+                <p>
+                    I tested it at a salon performance with eleven friends after dinner, most of them non-musicians. We improvised a piano concerto together (<a href="https://www.youtube.com/watch?v=lUCmZuWv9R0" target="_blank">video</a>). People who'd never performed were soloing inside a minute. A nine-year-old held an unresolved harmony until the whole room leaned in. It worked.
+                </p>
+                <p>
+                    But when I watched the video back, I noticed something: everyone was making music together with their faces buried in their phones. I'd solved "no wrong notes" and accidentally created "no eye contact." The interaction was correct and the experience was lonely.
+                </p>
             </div>
 
             <div class="image-row">
@@ -35,9 +63,32 @@
                 <img src="../images/ensemblejammer/Screenshot 2026-02-17 at 6.32.38 PM.png" alt="Ensemble Jammer scales" class="project-image">
             </div>
 
+            <div class="project-text-section">
+                <h3>The redesign (v2): make the phone the instrument</h3>
+                <p>
+                    So I redesigned the controls to get people's heads up. Instead of tapping a screen, you move the whole device:
+                </p>
+                <p>
+                    Tilt the phone to change pitch. Shake it to accent a note. But the one that worked best: turn your whole body in a circle to move through octaves. Register becomes something you walk through.
+                </p>
+                <p>
+                    Getting these to feel genuinely embodied rather than gimmicky was the hard part. It's the difference between a control and an instrument.
+                </p>
+            </div>
+
             <div class="image-row">
                 <img src="../images/ensemblejammer/Screenshot 2026-02-17 at 6.33.04 PM.png" alt="Ensemble Jammer session" class="project-image">
                 <img src="../images/ensemblejammer/Screenshot 2026-02-17 at 6.33.12 PM.png" alt="Ensemble Jammer detail" class="project-image">
+            </div>
+
+            <div class="project-text-section">
+                <h3>The campfire problem (v3)</h3>
+                <p>
+                    Before a three-day backpacking trip, my friends and I wanted to play around the campfire. Phones in everyone's pockets, no Wi-Fi for miles. The whole instrument depended on Firebase networking, so it was dead the moment we left the router behind.
+                </p>
+                <p>
+                    I rewrote the sync layer for Bluetooth Low Energy. An ensemble now works fully offline — no infrastructure required. That matters for live gigs and workshops where network reliability is the thing most likely to ruin a performance.
+                </p>
             </div>
 
             <div class="image-row">
@@ -46,14 +97,33 @@
             </div>
 
             <div class="project-text-section">
+                <h3>Where it is now</h3>
+                <p>
+                    Since the iOS launch in April 2026: 299 downloads, 16% conversion rate. The initial spike came from a coordinated Reddit rollout across r/ipadmusic, r/synthesizers, and r/musictheory.
+                </p>
+                <p>
+                    But the metrics aren't what I come back to. The salon is.
+                </p>
+            </div>
+
+            <div class="project-text-section">
                 <a href="https://ensemblejammer.scalenavigator.com/" target="_blank" class="project-link">Launch App</a>
+                <a href="https://apps.apple.com/app/ensemble-jammer/id6670175083" target="_blank" class="project-link">App Store</a>
+            </div>
+
+            <div class="project-text-section">
+                <h3>Related projects</h3>
+                <p>
+                    <a href="scale-navigator-dashboard.html">Scale Navigator Dashboard</a> — the harmonic state that Ensemble Jammer subscribes to<br>
+                    <a href="tonalign.html">Tonalign</a> — MIDI pitch correction using the same scale system
+                </p>
             </div>
         </div>
 
         <nav class="project-nav">
-            <a href="tonalign.html">Prev</a>
+            <a href="scale-navigator-dashboard.html">Prev</a>
             <span class="separator">,</span>
-            <a href="snaps-plugin.html">Next</a>
+            <a href="tonalign.html">Next</a>
         </nav>
     </div>
 </body>

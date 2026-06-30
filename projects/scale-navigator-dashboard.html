@@ -15,54 +15,113 @@
             <div class="project-info">
                 <h1 class="project-title">Scale Navigator Dashboard</h1>
                 <div class="divider-line"></div>
-                <p class="project-tagline">The flagship tool of the Scale Navigator ecosystem. A visual harmonic browser built on Tymoczko-style scale networks and Boyd harmonic position theory.</p>
-                <p class="project-description">Set the harmonic context once — every other tool in the ecosystem follows. All instances share harmonic state. Change the scale in one place, everything updates.</p>
+                <p class="project-tagline">Role: Product designer & developer (sole)</p>
+                <p class="project-description">Web, iOS, Android, macOS/Windows, VST3/AU/AAX</p>
             </div>
 
             <div class="project-meta">
-                <span class="project-year">2021-Current</span>
+                <span class="project-year">2021–present</span>
                 <span class="project-categories">Software</span>
             </div>
         </header>
 
         <div class="project-content">
+
             <div class="project-text-section">
-                <p><strong>Available as:</strong></p>
                 <p>
-                    Web app<br>
-                    iOS app<br>
-                    Android app<br>
-                    Desktop app (Mac/Windows)<br>
-                    DAW plugin (VST3/AU/AAX) with fully automatable parameters
+                    I'd be in a session, move from C major to something more interesting, and then have to manually update my synth, my sampler, my arpeggiator — each one independently. The harmony was in my head, but every tool needed to be told separately.
+                </p>
+                <p>
+                    I wanted harmony to have one place to live.
+                </p>
+                <p>
+                    The core interface is a network of scales where neighbors differ by only one note. Instead of wondering where to go next, you can see nearby possibilities. It turns harmony from guessing into navigation.
                 </p>
             </div>
 
-            <h3 style="margin: 40px 0 20px; font-size: 15px; text-transform: uppercase; letter-spacing: 0.01em;">Desktop</h3>
+            <img src="../images/dashboard/desktop/Screenshot 2026-02-17 at 9.26.07 AM.png" alt="Dashboard showing the scale network" class="project-image">
+
+            <div class="project-text-section">
+                <h3>The critique that shaped five years of work</h3>
+                <p>
+                    The first prototype was a web app where you could click through the network. It worked as a way to explore, but it had a problem.
+                </p>
+                <p>
+                    At the time I was contracting at Output, where Arthur Carabott led interface design. I cold-emailed him asking if he'd critique the prototype. He gave me two pieces of feedback that took years to fully address:
+                </p>
+                <p>
+                    <em>"Once I've found a chord I like, I want to be able to actually learn that, or save it. At the moment it is very easy to just keep clicking and lose what I had."</em>
+                </p>
+                <p>
+                    <em>"It's the difference between someone demonstrating something on stage, vs a teacher helping you learn it."</em>
+                </p>
+                <p>
+                    He was right. The tool was good for wandering but bad for composing. You'd stumble onto something beautiful and then click again and lose it.
+                </p>
+            </div>
+
+            <div class="project-text-section">
+                <h3>The sketchpad</h3>
+                <p>
+                    It took years to get right, but I eventually built a sketchpad where you can save scale/chord pairs and arrange them into progressions. You explore the network, find something you like, and drag it in.
+                </p>
+                <p>
+                    I emailed Arthur again in 2026 to tell him the feature finally existed. He'd moved to Splice by then and was writing a book on music UI. His feedback from five years earlier had become a design constraint I kept returning to.
+                </p>
+            </div>
 
             <div class="image-row">
-                <img src="../images/dashboard/desktop/Screenshot 2026-02-17 at 9.26.07 AM.png" alt="Dashboard desktop view" class="project-image">
                 <img src="../images/dashboard/desktop/Screenshot 2026-02-17 at 9.26.24 AM.png" alt="Dashboard scale selection" class="project-image">
-            </div>
-
-            <div class="image-row">
                 <img src="../images/dashboard/desktop/Screenshot 2026-02-17 at 9.26.45 AM.png" alt="Dashboard chord view" class="project-image">
-                <img src="../images/dashboard/desktop/Screenshot 2026-02-17 at 9.28.29 AM.png" alt="Dashboard navigation" class="project-image">
+            </div>
+
+            <div class="project-text-section">
+                <h3>Where harmony should live</h3>
+                <p>
+                    The web app taught me where harmony should live. Not in a browser. Not inside every plugin. At the center of the production session.
+                </p>
+                <p>
+                    So I rebuilt Dashboard as a VST3/AU/AAX plugin with automatable parameters. Change the scale on bar 32, and the automation lane remembers. Every other Scale Navigator tool — Tonalign, SNaPS, Ensemble Jammer — subscribes to that state automatically.
+                </p>
             </div>
 
             <div class="image-row">
+                <img src="../images/dashboard/desktop/Screenshot 2026-02-17 at 9.28.29 AM.png" alt="Dashboard navigation" class="project-image">
                 <img src="../images/dashboard/desktop/Screenshot 2026-02-17 at 9.29.27 AM.png" alt="Dashboard expanded view" class="project-image">
-                <img src="../images/dashboard/desktop/Screenshot 2026-02-17 at 9.29.37 AM.png" alt="Dashboard expanded view" class="project-image">
             </div>
 
-            <h3 style="margin: 40px 0 20px; font-size: 15px; text-transform: uppercase; letter-spacing: 0.01em;">Mobile</h3>
+            <div class="project-text-section">
+                <h3>Decisions I left as toggles</h3>
+                <p>
+                    I tested both a 3D layout and a flat 2D layout. Users gravitate toward 3D — you're flying through a space. But 2D reveals the circle of fifths as just one pathway through a larger network. Both stay as options.
+                </p>
+                <p>
+                    Similarly: early users expected clockwise rotation to mean flats. Dmitri Tymoczko — the music theorist whose research the whole project is based on — preferred the opposite. I added a toggle. Some disagreements don't have a right answer.
+                </p>
+            </div>
 
-            <div class="image-row" style="display: flex; gap: 8px; flex-wrap: nowrap;">
-                <img src="../images/dashboard/mobile/Simulator Screenshot - iPhone 17 - 2026-02-16 at 22.19.48.png" alt="Dashboard mobile view" class="project-image" style="flex: 1; min-width: 0; height: auto;">
-                <img src="../images/dashboard/mobile/Simulator Screenshot - iPhone 17 - 2026-02-16 at 22.19.54.png" alt="Dashboard mobile scales" class="project-image" style="flex: 1; min-width: 0; height: auto;">
-                <img src="../images/dashboard/mobile/Simulator Screenshot - iPhone 17 - 2026-02-16 at 22.20.01.png" alt="Dashboard mobile detail" class="project-image" style="flex: 1; min-width: 0; height: auto;">
-                <img src="../images/dashboard/mobile/Simulator Screenshot - iPhone 17 - 2026-02-16 at 22.20.11.png" alt="Dashboard mobile navigation" class="project-image" style="flex: 1; min-width: 0; height: auto;">
-                <img src="../images/dashboard/mobile/Simulator Screenshot - iPhone 17 - 2026-02-16 at 22.20.40.png" alt="Dashboard mobile chords" class="project-image" style="flex: 1; min-width: 0; height: auto;">
-                <img src="../images/dashboard/mobile/Simulator Screenshot - iPhone 17 - 2026-02-16 at 22.20.51.png" alt="Dashboard mobile settings" class="project-image" style="flex: 1; min-width: 0; height: auto;">
+            <img src="../images/dashboard/desktop/Screenshot 2026-02-17 at 9.29.37 AM.png" alt="Dashboard 2D layout view" class="project-image">
+
+            <div class="project-text-section">
+                <p>
+                    I also shipped iOS and Android apps for exploration away from the computer.
+                </p>
+            </div>
+
+            <div class="image-row">
+                <img src="../images/dashboard/mobile/Simulator Screenshot - iPhone 17 - 2026-02-16 at 22.19.48.png" alt="Dashboard mobile view" class="project-image">
+                <img src="../images/dashboard/mobile/Simulator Screenshot - iPhone 17 - 2026-02-16 at 22.19.54.png" alt="Dashboard mobile scales" class="project-image">
+                <img src="../images/dashboard/mobile/Simulator Screenshot - iPhone 17 - 2026-02-16 at 22.20.01.png" alt="Dashboard mobile detail" class="project-image">
+            </div>
+
+            <div class="project-text-section">
+                <h3>Where it is now</h3>
+                <p>
+                    Since launching on iOS in April 2026: 272 downloads, 12% conversion rate. A UX professional on Reddit wrote "Exploring chords feels so natural and playful" and volunteered to beta test.
+                </p>
+                <p>
+                    The thing I'm still working on is onboarding. First-time users need a guided path that teaches the network by having them use it, not read about it.
+                </p>
             </div>
 
             <div class="project-text-section">
@@ -73,10 +132,19 @@
             <div class="video-container">
                 <iframe src="https://www.youtube.com/embed/l9ZYLjaZRpw?rel=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
+
+            <div class="project-text-section">
+                <h3>Related projects</h3>
+                <p>
+                    <a href="ensemble-jammer.html">Ensemble Jammer</a> — networked instruments that follow Dashboard's harmonic state<br>
+                    <a href="tonalign.html">Tonalign</a> — MIDI pitch correction subscribing to Dashboard<br>
+                    <a href="snaps-plugin.html">SNaPS</a> — sampler plugin that glides samples to match the scale
+                </p>
+            </div>
         </div>
 
         <nav class="project-nav">
-            <a href="tonalign.html">Next</a>
+            <a href="ensemble-jammer.html">Next</a>
         </nav>
     </div>
 </body>

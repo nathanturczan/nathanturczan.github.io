@@ -15,24 +15,59 @@
             <div class="project-info">
                 <h1 class="project-title">Tonalign</h1>
                 <div class="divider-line"></div>
-                <p class="project-tagline">MIDI effect plugin. Autotune for MIDI.</p>
-                <p class="project-description">Incoming notes snap to the current scale context. Multiple instances in a session all subscribe to the master Scale Navigator Dashboard plugin via shared memory — zero configuration required. Can also be used standalone with manual scale selection.</p>
+                <p class="project-tagline">Role: Designer & developer (with Brady Boettcher)</p>
+                <p class="project-description">VST3 / AU / AAX</p>
             </div>
 
             <div class="project-meta">
-                <span class="project-year">2024-Current</span>
-                <span class="project-categories">MIDI Plugin<br>VST3 / AU / AAX</span>
+                <span class="project-year">2024–present</span>
+                <span class="project-categories">MIDI Plugin</span>
             </div>
         </header>
 
         <div class="project-content">
-            <div class="project-images">
-                <img src="../images/tonalign/Screenshot 2026-02-10 at 8.51.41 AM.png" alt="Tonalign interface" class="project-image">
+
+            <div class="project-text-section">
+                <p>
+                    Tonalign started because I wanted the MIDI equivalent of AutoTune — but it became something bigger: my first real plugin, and the project that taught me audio software.
+                </p>
+                <p>
+                    At the time I was building Scale Navigator as a web application. I knew almost nothing about JUCE or C++. I posted on the JUCE forum looking for help and met Brady Boettcher. This was mid-pandemic; he was hopping around the world, often in a completely different time zone. Over the next few months we pair-programmed the first version together — Brady brought the C++ and JUCE expertise, I brought the design and the Dashboard integration concept. Watching him work fundamentally changed how I approached audio software.
+                </p>
+            </div>
+
+            <div class="project-text-section">
+                <h3>What it does</h3>
+                <p>
+                    AutoTune corrects audio pitch. Tonalign does the same thing for MIDI. You play a note that doesn't fit the current scale, and it snaps to the nearest note that does.
+                </p>
+                <p>
+                    If Dashboard is running in the same session, Tonalign subscribes to its harmonic state via shared memory. You don't configure anything — it just knows. Change the scale in Dashboard and every instance of Tonalign updates instantly.
+                </p>
+            </div>
+
+            <img src="../images/tonalign/Screenshot 2026-02-10 at 8.51.41 AM.png" alt="Tonalign interface" class="project-image">
+
+            <div class="project-text-section">
+                <h3>The hard part</h3>
+                <p>
+                    MIDI pitch correction sounds trivial until you try to build it. The tricky cases are things like: what happens when you're holding a note and the scale changes underneath you? Do you re-pitch the held note (which sounds weird) or let it ring out of key (which also sounds weird)? I ended up implementing configurable behavior — you can choose whether held notes glide to the new pitch, cut off, or stay put.
+                </p>
             </div>
 
             <div class="image-row">
                 <img src="../images/tonalign/Screenshot 2026-02-10 at 8.51.47 AM.png" alt="Tonalign scale view" class="project-image">
                 <img src="../images/tonalign/Screenshot 2026-02-10 at 8.52.08 AM.png" alt="Tonalign settings" class="project-image">
+            </div>
+
+            <div class="project-text-section">
+                <h3>Why it matters</h3>
+                <p>
+                    The collaboration outlived the project — Brady has continued building on the ecosystem, most recently a scale-synchronized interface for the LinnStrument.
+                </p>
+                <p>
+                    But for me, Tonalign was the first project that convinced me harmonic state could become shared infrastructure rather than just a visualization. It proved that Dashboard's scale data could leave the browser and drive another tool in real time. It now ships signed and notarized on Mac, and it's the quiet backbone that keeps the other Scale Navigator tools in tune.
+                </p>
             </div>
 
             <div class="image-row">
@@ -51,12 +86,20 @@
             <div class="video-container">
                 <iframe src="https://www.youtube.com/embed/Weob2fLKfCw?rel=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
+
+            <div class="project-text-section">
+                <h3>Related projects</h3>
+                <p>
+                    <a href="scale-navigator-dashboard.html">Scale Navigator Dashboard</a> — the harmonic state that Tonalign subscribes to<br>
+                    <a href="snaps-plugin.html">SNaPS</a> — sampler with similar scale-aware pitch handling
+                </p>
+            </div>
         </div>
 
         <nav class="project-nav">
-            <a href="scale-navigator-dashboard.html">Prev</a>
+            <a href="ensemble-jammer.html">Prev</a>
             <span class="separator">,</span>
-            <a href="ensemble-jammer.html">Next</a>
+            <a href="snaps-plugin.html">Next</a>
         </nav>
     </div>
 </body>

@@ -15,30 +15,42 @@
             <div class="project-info">
                 <h1 class="project-title">Early Downhome Blues</h1>
                 <div class="divider-line"></div>
-                <p class="project-tagline">Walking the blues scale through Titon's pitch network.</p>
-                <p class="project-description">An interactive web app for exploring the pitch transition network from Jeff Todd Titon's <em>Early Downhome Blues: A Musical and Cultural Analysis</em> (Figure 64). Click notes on the staff to walk through the network and hear how melodies move in early blues recordings.</p>
+                <p class="project-tagline">Role: Designer & developer (sole)</p>
+                <p class="project-description">JavaScript / Tone.js / VexFlow</p>
             </div>
 
             <div class="project-meta">
                 <span class="project-year">2024</span>
-                <span class="project-categories">Software<br>JavaScript / Tone.js / VexFlow</span>
+                <span class="project-categories">Software</span>
             </div>
         </header>
 
         <div class="project-content">
+
+            <div class="project-text-section">
+                <p>
+                    In 1977, Jeff Todd Titon published <em>Early Downhome Blues</em>, a musicological study that included something remarkable: a generative model of blues melody. He transcribed 44 recordings from 1926–1930, analyzed note-to-note motion, and constructed a pitch transition network — a map of which notes can follow which, including the microtonal "blue third" that sits between the keys of a piano.
+                </p>
+                <p>
+                    That model had been sitting in a book for almost fifty years. I wanted to make it playable.
+                </p>
+            </div>
+
+            <div class="project-text-section">
+                <h3>The interface</h3>
+                <p>
+                    I framed the music notation itself as the interface. You click notes directly on the staff, and the app shows only the valid next notes as paths. The network teaches you its own rules as you move. A "random walk" button generates melodies by following the transitions automatically.
+                </p>
+            </div>
+
             <div class="project-images">
                 <img src="../images/early-downhome-blues-app.png" alt="Early Downhome Blues web application interface" class="project-image">
             </div>
 
             <div class="project-text-section">
-                <p><strong>About the Network</strong></p>
+                <h3>The microtonal problem</h3>
                 <p>
-                    Titon's pitch network maps note-to-note transitions found in early downhome blues recordings. The network has specific characteristics:
-                </p>
-                <p>
-                    <strong>Quarter-tones:</strong> The "blue third" (E quarter-flat) sits between E flat and E natural. This microtonal inflection is central to blues melody.<br><br>
-                    <strong>Sink notes:</strong> C serves as a resolution point with no outgoing paths.<br><br>
-                    <strong>Hub notes:</strong> G connects to the most destinations, making it a key pivot point in the melodic landscape.
+                    The blue third is a quarter-tone — a pitch that doesn't exist on a standard keyboard. I designed a drone that bends to match the melody's inflection, so you <em>hear</em> the quarter-tone rather than being told about it. MIDI output with pitch bend lets the quarter-tones survive into your DAW or hardware.
                 </p>
             </div>
 
@@ -47,33 +59,49 @@
             </div>
 
             <div class="project-text-section">
-                <p><strong>Current Features</strong></p>
+                <h3>What the internet taught me</h3>
                 <p>
-                    <strong>Interactive notation:</strong> Click notes directly on the staff to navigate. Valid next notes are shown as paths.<br><br>
-                    <strong>Pluck synth:</strong> Guitar-like sound using Karplus-Strong synthesis.<br><br>
-                    <strong>Inflecting drone:</strong> Toggle drone notes (root, 3rd, 5th, 7th) that bend to match the melody's microtonal inflections.<br><br>
-                    <strong>MIDI output:</strong> Send notes to external instruments with pitch bend for quarter-tones (requires ±2 semitone pitch bend range).<br><br>
-                    <strong>Ensemble mode:</strong> Firebase-powered rooms for collaborative playing with Scale Navigator.
+                    I posted it to r/blues. Blues musicians hated it. The output sounded nothing like blues. I was embarrassed enough to take the post down.
+                </p>
+                <p>
+                    But they were right.
+                </p>
+                <p>
+                    A faithful implementation of the pitch network wasn't producing faithful blues melodies. The model captured <em>which notes could follow which</em>, but not <em>how</em> those notes should move — the contours, the phrasing, the gravitational pull toward resolution.
                 </p>
             </div>
 
             <div class="project-text-section">
-                <p><strong>Planned Development</strong></p>
+                <h3>What Titon taught me</h3>
                 <p>
-                    <strong>Song form structure:</strong> Implement 12-bar blues and AAB lyric form patterns from Titon's analysis.<br><br>
-                    <strong>Contour patterns:</strong> Add melodic contour analysis (ascending, descending, level, undulating) as described in Titon's research.<br><br>
-                    <strong>Phrase generation:</strong> Create phrase-aware melody generation using Hidden Markov Models trained on contour states.<br><br>
-                    <strong>Auto-transposition:</strong> In ensemble mode, transpose the blues scale to fit the current chord context from Scale Navigator.<br><br>
-                    <strong>Sound design:</strong> Add slide guitar mode alongside the current picked guitar sound.<br><br>
-                    <strong>Statistics view:</strong> Visualize the transition matrix and network graph with D3.
+                    Before I launched the project, I emailed Jeff Titon asking for his blessing. He played with it and wrote back:
+                </p>
+                <p>
+                    <em>"The random function didn't generate any acceptable blues melodies."</em>
+                </p>
+                <p>
+                    That sentence changed the direction of the project. I went back to Chapter 4 of his book and implemented more of the principles he'd formalized: downward bias, leap-up / step-down motion, cadential gravity toward C at phrase endings, contour shaping based on his "rise-then-fall" classification. I added phrase structure so Line 2 would try to emulate Line 1 melodically — the AAB call-and-response form that defines blues.
+                </p>
+                <p>
+                    The random walk became a weighted walk. The output started sounding like something.
                 </p>
             </div>
 
             <div class="project-text-section">
-                <p><strong>Reference</strong></p>
+                <h3>What I learned</h3>
                 <p>
-                    Titon, Jeff Todd. <em>Early Downhome Blues: A Musical and Cultural Analysis.</em> 2nd ed., University of North Carolina Press, 1994.
+                    Getting the person who built the original model to play with my version — and push back — was the real outcome of this project.
                 </p>
+                <p>
+                    The project is nowhere close to done. Titon's book contains dozens more rules I haven't implemented — the <a href="https://github.com/nathanturczan/early-downhome-blues/issues" target="_blank">GitHub issues</a> are a roadmap of everything still missing. And honestly, it still doesn't sound like blues. But it sounds like something — an interesting abstraction of blues, a machine's interpretation of the rules without the feel. That gap turned out to be the point.
+                </p>
+                <p>
+                    I started thinking I was building an interface for a musicological model. I finished realizing that musical style lives in far more than pitch transitions. The interesting work wasn't reproducing the network — it was discovering everything the network left out.
+                </p>
+            </div>
+
+            <div class="project-text-section">
+                <p><strong>Reference:</strong> Titon, Jeff Todd. <em>Early Downhome Blues: A Musical and Cultural Analysis.</em> 2nd ed., University of North Carolina Press, 1994.</p>
             </div>
 
             <div class="project-text-section">
@@ -85,7 +113,7 @@
         <nav class="project-nav">
             <a href="souls.html">Prev</a>
             <span class="separator">,</span>
-            <a href="wild-rose.html">Next</a>
+            <a href="archive.html">Next</a>
         </nav>
     </div>
 </body>

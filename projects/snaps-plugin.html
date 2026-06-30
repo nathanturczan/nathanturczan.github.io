@@ -15,17 +15,81 @@
             <div class="project-info">
                 <h1 class="project-title">SNaPS</h1>
                 <div class="divider-line"></div>
-                <p class="project-tagline">Scale Navigator Particle Sampler. Harmonic-aware sample instrument.</p>
-                <p class="project-description">Samples automatically transpose to fit the current scale or chord. When harmony changes, playing samples glide smoothly to new pitch targets instead of restarting. Three playback engines (Emitter, Looper, Sequencer) share the same harmonic system, keeping everything musically coherent.</p>
+                <p class="project-tagline">Role: Designer & developer (with Nathan Ho)</p>
+                <p class="project-description">VST3 / AU</p>
             </div>
 
             <div class="project-meta">
-                <span class="project-year">2024-Current</span>
-                <span class="project-categories">Sampler Plugin<br>VST3 / AU</span>
+                <span class="project-year">2024–present</span>
+                <span class="project-categories">Sampler Plugin</span>
             </div>
         </header>
 
         <div class="project-content">
+
+            <div class="project-text-section">
+                <p>
+                    Most samplers assume every note begins from scratch. But harmony doesn't work that way. If a chord changes while a violin is sustaining, the violin doesn't restart — it keeps singing through the change.
+                </p>
+                <p>
+                    I wanted a sampler that behaved the same way. And I wanted it to work with recordings, not synthesized notes. Samples carry texture and memory in ways oscillators don't.
+                </p>
+            </div>
+
+            <div class="project-text-section">
+                <h3>Origin</h3>
+                <p>
+                    SNaPS began as a SuperCollider instrument that <a href="https://nathan.ho.name/" target="_blank">Nathan Ho</a> and I developed over several years. Nathan built the entire engine; I kept pushing the interaction and product. For years, the SuperCollider version was my primary live instrument. The <a href="https://github.com/nhthn/snaps" target="_blank">original repo</a> is still the foundation of my performances. The plugin version is my C++ port of everything we built together.
+                </p>
+            </div>
+
+            <div class="project-text-section">
+                <h3>The tagging problem</h3>
+                <p>
+                    For years, the system was blocked by a bottleneck: every sample had to be manually tagged with its pitch class. I had thousands of samples and no time to listen to each one.
+                </p>
+                <p>
+                    Then Nathan called me about Spotify's Basic Pitch — an open-source ML model that detects pitch in audio. I built a librarian tool around it that auto-tags entire sample libraries. The interface couldn't scale until metadata became automatic. That unblocked everything.
+                </p>
+            </div>
+
+            <div class="project-text-section">
+                <h3>From SuperCollider to plugin</h3>
+                <p>
+                    The plugin version (VST3/AU) packages everything we learned for DAW workflows: three playback engines — Emitter, Looper, Sequencer — organized around creative intent rather than technical mode. It subscribes to Dashboard's harmonic state, so it stays in sync with the rest of the session automatically.
+                </p>
+            </div>
+
+            <div class="project-text-section">
+                <h3>The behavior, not the chrome</h3>
+                <p>
+                    The interface barely changed from prototype to release. Almost all the design work happened in the behavior: how does a sound glide? How does it exit when it no longer fits?
+                </p>
+                <p>
+                    I started from a single rule: <strong>a playing sample should never restart to follow the harmony — it should glide.</strong> Everything else followed from defending that one feeling.
+                </p>
+            </div>
+
+            <div class="project-text-section">
+                <h3>Glide curves</h3>
+                <p>
+                    A pitch slide isn't one thing. Its shape carries feeling. I ended up designing a family of glide behaviors, from mechanical to expressive.
+                </p>
+                <p>
+                    The most interesting one is entirely <a href="https://nathan.ho.name/posts/oddvoices-dev-log-3/" target="_blank">Nathan Ho's idea</a> — his research on how the human voice slides into a pitch. A singer doesn't hit a note in a straight line; they anticipate and overshoot. I implemented it because it made samples glide like a voice, not a machine.
+                </p>
+            </div>
+
+            <div class="project-text-section">
+                <h3>Exit modes</h3>
+                <p>
+                    The hardest design call was the edge case: what happens when a sample simply can't fit the new scale? Instead of letting it fail silently, I designed three deliberate exit behaviors — stutter decay, filter sweep, doppler drop — that can be stacked.
+                </p>
+                <p>
+                    <strong>The failure becomes an expressive gesture you can compose with.</strong>
+                </p>
+            </div>
+
             <div class="project-images">
                 <video autoplay loop muted playsinline class="project-image">
                     <source src="../images/snaps/snaps-demo.mp4" type="video/mp4">
@@ -33,26 +97,26 @@
             </div>
 
             <div class="project-text-section">
-                <h3>Three Engines</h3>
-                <p><strong>Emitter</strong> generates rhythmic particle bursts of samples. <strong>Looper</strong> provides expressive sample pads with crossfades and glide. <strong>Sequencer</strong> arranges samples on a timeline.</p>
-
-                <h3>Harmonic Intelligence</h3>
-                <p>SNaPS syncs with Scale Navigator Dashboard, which broadcasts the current harmonic state to every plugin in the session. When the scale changes from C Diatonic to F# Harmonic Minor, every playing sample glides to the closest valid pitch in the new scale.</p>
-
-                <h3>Glide Curve Types</h3>
-                <p>Linear, Exponential, Logarithmic, Stepped (Chromatic or Scale-quantized), S-Curve, and Nathan Ho's expressive curve with prep dip ascending and overshoot descending.</p>
-
-                <h3>Exit Modes</h3>
-                <p>When a sample can't fit the new scale, choose how it exits: stutter decay (rapid re-triggers with shrinking loop windows), filter sweep (low-pass from 20kHz to 200Hz), or Doppler drop (turntable power-off). These can be stacked.</p>
+                <p>
+                    I've performed with it for years; the plugin port brings that to any DAW. SNaPS became the first instrument where I stopped thinking about harmony as notes and started thinking about harmony as behavior.
+                </p>
             </div>
 
             <div class="project-text-section">
                 <a href="https://github.com/nathanturczan/snaps-plugin" target="_blank" class="project-link">GitHub</a>
             </div>
+
+            <div class="project-text-section">
+                <h3>Related projects</h3>
+                <p>
+                    <a href="scale-navigator-dashboard.html">Scale Navigator Dashboard</a> — the harmonic state that SNaPS subscribes to<br>
+                    <a href="tonalign.html">Tonalign</a> — MIDI pitch correction with similar scale-aware logic
+                </p>
+            </div>
         </div>
 
         <nav class="project-nav">
-            <a href="ensemble-jammer.html">Prev</a>
+            <a href="tonalign.html">Prev</a>
             <span class="separator">,</span>
             <a href="souls.html">Next</a>
         </nav>
