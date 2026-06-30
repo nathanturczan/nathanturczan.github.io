@@ -374,6 +374,27 @@ document.addEventListener('click', (e) => {
                 await SnapSequencer.start();
                 console.log('[Portfolio] SnapSequencer started');
 
+                // Wait for first audio to actually play (samples are distributed across the loop)
+                // Poll until we detect the transport is running and past the first beat
+                const waitForAudio = () => {
+                    return new Promise((resolve) => {
+                        const checkInterval = setInterval(() => {
+                            if (typeof Tone !== 'undefined' &&
+                                Tone.Transport.state === 'started' &&
+                                Tone.Transport.seconds > 0.1) {
+                                clearInterval(checkInterval);
+                                resolve();
+                            }
+                        }, 50);
+                        // Fallback timeout after 3 seconds
+                        setTimeout(() => {
+                            clearInterval(checkInterval);
+                            resolve();
+                        }, 3000);
+                    });
+                };
+                await waitForAudio();
+
                 // Stop loading animation once audio is playing
                 stopLoadingAnimation();
             } else {
