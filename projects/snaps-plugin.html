@@ -44,12 +44,12 @@
             </div>
 
             <div class="project-text-section">
-                <h3>The tagging problem</h3>
+                <h3>Tagging</h3>
                 <p>
                     For years, the system was blocked by a bottleneck: every sample had to be manually tagged with its pitch class. I had thousands of samples and no time to listen to each one.
                 </p>
                 <p>
-                    Then Nathan called me about Spotify's Basic Pitch — an open-source ML model that detects pitch in audio. I built a librarian tool around it that auto-tags entire sample libraries. The interface couldn't scale until metadata became automatic. That unblocked everything.
+                    Then Nathan called me about Spotify's Basic Pitch — an open-source ML model that detects pitch in audio. I built a librarian tool around it that auto-tags entire sample libraries. The interface couldn't scale until metadata became automatic.
                 </p>
             </div>
 
@@ -61,19 +61,19 @@
             </div>
 
             <div class="project-text-section">
-                <h3>The behavior, not the chrome</h3>
+                <h3>Behavior</h3>
                 <p>
                     The interface barely changed from prototype to release. Almost all the design work happened in the behavior: how does a sound glide? How does it exit when it no longer fits?
                 </p>
                 <p>
-                    I started from a single rule: <strong>a playing sample should never restart to follow the harmony — it should glide.</strong> Everything else followed from defending that one feeling.
+                    A playing sample should never restart to follow the harmony — it should glide.
                 </p>
             </div>
 
             <div class="project-text-section">
                 <h3>Glide curves</h3>
                 <p>
-                    A pitch slide isn't one thing. Its shape carries feeling. I ended up designing a family of glide behaviors, from mechanical to expressive.
+                    A pitch slide isn't one thing. Its shape carries feeling. I designed a family of glide behaviors, from mechanical to expressive.
                 </p>
                 <p>
                     The most interesting one is entirely <a href="https://nathan.ho.name/posts/oddvoices-dev-log-3/" target="_blank">Nathan Ho's idea</a> — his research on how the human voice slides into a pitch. A singer doesn't hit a note in a straight line; they anticipate and overshoot. I implemented it.
@@ -83,12 +83,9 @@
             <div class="project-text-section">
                 <h3>Exit modes</h3>
                 <p>
-                    The hardest design call was the edge case: what happens when a sample simply can't fit the new scale? Instead of letting it fail silently, I designed three deliberate exit behaviors — stutter decay, filter sweep, doppler drop — that can be stacked.
+                    What happens when a sample can't fit the new scale? Three exit behaviors — stutter decay, filter sweep, doppler drop — that can be stacked.
                 </p>
-                <p>
-                    <strong>The failure becomes an expressive gesture you can compose with.</strong>
-                </p>
-            </div>
+                            </div>
 
             <div class="project-images">
                 <video autoplay loop muted playsinline class="project-image">
@@ -102,10 +99,7 @@
                 </p>
             </div>
 
-            <div class="project-text-section">
-                <a href="https://github.com/nathanturczan/snaps-plugin" target="_blank" class="project-link">GitHub</a>
-            </div>
-
+            
             <div class="project-text-section">
                 <h3>Related projects</h3>
                 <p>
