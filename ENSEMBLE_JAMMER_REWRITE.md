@@ -173,6 +173,20 @@ Candidate use: the strongest "how the design changed and why" beat in the EJ arc
 
 ---
 
+## 1j. Leone Ermer's single-stroke icon set (Nathan, Jul 5, 2026; image tracked)
+
+**The fact**: Leone Ermer redrew all of Ensemble Jammer's instrument-toolbar icons as a unified single-stroke set ("one stroke and super cool looking" — Nathan). This is Leone's **second** documented contribution — EVIDENCE.md's role correction stands (her Dec 2025 work was the nathanturczan.com website overhaul, *not* the Scale Navigator redesign), and this adds the EJ icon set, dated by screenshot to **Mar 6, 2026**.
+
+**The image (a natural before/after in one frame)**:
+- Source: `/Users/soney/Github/Old Scale Navigator Development/ensemble jammer ui icons LEONE ERMER CONTRIBUTION Screenshot 2026-03-06 at 11.43.37 AM.png` (part of Nathan's labeled batch)
+- Tracked copy in this repo: `images/ensemblejammer/leone_ermer_single_stroke_icons_before_after_mar2026.png`
+- Top strip: Leone's new orange single-stroke icons in progress — harp, X/Y line, sequencer grid, Venn7 circles, plus three cells still empty (the set mid-draw)
+- Bottom: the old live toolbar for contrast — mismatched emoji-style icons (harp emoji, chart emoji, refresh, speaker, pinch hand) in the shipped UI (A♭ Diatonic / E♭ 13, "Dredge" instrument, ornate SNEJ wordmark)
+
+**Candidate use in the rewrite**: an Iteration/visual-identity beat — the emoji toolbar was placeholder inventory; Leone's set gives the instrument suite one drawing hand. Credit Leone Ermer by name per guide §3 (collaborators whose contribution shaped a decision). Pairs well with the ensemble-jammer logo-ideation screenshots (Apr 9, 2026) if a visual-identity section forms.
+
+---
+
 ## 2. What the current page already has (baseline)
 
 Current structure of `projects/ensemble-jammer.html`: premise (remove harmony as a problem) → v1 suite (Touch Harp, X/Y Lead, Melody Maker, drones, synths, sequencers, loops; Nathan Ho Venn7 credit) → salon test + "no eye contact" insight → v2 motion controls (tilt/shake/pirouette) → v3 campfire problem, Firebase→BLE rewrite → iOS metrics (16% conversion, 299 downloads) → links.
