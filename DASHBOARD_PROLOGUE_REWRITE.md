@@ -128,6 +128,15 @@ Written five years before it happened — the Mar 17 follow-up in the same threa
 
 Visitors didn't just operate the interface — they *composed for it*: the etude book on the podium collected audience-written "Network Etudes," most memorably Dexter Shepherd's *ROUNDABOUT* (Network Etude no. 5), a circular score exploiting the network's cycles. "Authority over the room's harmony was not just accepted but elaborated upon." (Get Dexter's OK if naming him.)
 
+### Ben Tillotson session, Dec 30, 2025 — two shipped design decisions (EVIDENCE.md §12.17; attribution from Nathan, Jul 5, 2026)
+
+Two concrete decisions in the current product trace to one in-person session with Ben Tillotson (producer, ex-Output content team):
+
+1. **The plugin exists because Ben demanded it.** Nathan: "Ben Tillotson was the one who stubbornly demanded Dashboard as a plugin." The debate is on tape — Nathan: "this does need to not be a web app… there's shit that I'm doing that goes way beyond a normal plugin"; Ben: "you gotta just do it in the DAW… otherwise you're asking so much more of them." Ben won; the Dashboard Plugin is the result.
+2. **The saturated root-color system.** Nathan: "He recommended I switch from the washed-out root color scheme to the current saturated-to-the-max root color scheme. Based on his recommendation **I spent a full day working in color space to dial that in**." Pairs directly with the §4 color-encoding rationale (circle of fifths → color wheel, Scriabin's mapping): the *mapping* came from theory, the *saturation* came from a designer's crit and a day of color-space tuning. That's a textbook design-process beat: principle + iteration + external feedback, dated.
+
+Bonus quote from the same tape, on the network animation — Ben: "the animation over here is really beautiful… you see how they follow" → Nathan: "I spent a lot of time [on it]… **it's the thing I'm proud of the most**." Also Ben's checkbox-filter critique ("checking these boxes should filter out things in the Navigator") — the earliest voice in the three-way UI-critique triangulation with Scott Anderson (Apr 10, 2026) and the Joshua Warner call (Apr 21, 2026).
+
 ---
 
 ## 4. Design-rationale snippets worth adapting (thesis-rewrite Ch. 3)
