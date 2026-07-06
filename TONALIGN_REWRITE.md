@@ -148,6 +148,24 @@ Also anchors the **Shopify launch-announcement date: Jan 19, 2022**. Refinement 
 
 ---
 
+## 1h. "PitchSnap" alive on tape + the Chopin plunderphonics quote, Mar 3, 2026 (Brendan Rincon consult; EVIDENCE.md §12.16)
+
+The Mar 3, 2026 paid consult with producer Brendan Rincon (`business/09_Advisors/brendan_rincon/Mar 3 at 11-35 AM.txt`) catches the middle rename live: "this ancillary plug-in that I have called **pitch snap**. It's basically just **auto-tune for MIDI**" — same positioning phrase as 2022 (§1g), under the interim name, five-ish months before "Tonalign." Dates the rename window: still PitchSnap on Mar 3, 2026.
+
+Two quotes worth the rewrite:
+
+> "What I've been doing is I'll just **filter Chopin through this thing**… I'm **stealing Chopin's texture, but I'm forcing it into the harmonic box that I tell it to be in**. I find it to be a whole new level of, like, plunderphonics." — Nathan, Mar 3, 2026
+
+This is the Virtuoso marketing series (Liszt/Chopin/Paganini remixes through Tonalign) articulated as a personal compositional practice months before it became a content strategy. Supporting detail, same call: "I downloaded the entire internet library of MIDI files… I have this little program that looks for the most Roboto-e [vs.] the most clearly done by a human."
+
+And the VST3 war story, told unprompted:
+
+> "Steinberg, who owns VST3… they make it impossible for MIDI-effect plugins to exist in a way that makes sense… technically I have to make this into a synthesizer plugin in order for it to work at all. So there's a **silent, no-noise synth in here that's just always running**." (Plus: "the audio device thing — a full day that I lost.")
+
+Good texture for the constraints-of-the-medium paragraph: the invisible engineering absurdity underneath a simple-looking MIDI tool.
+
+---
+
 ## 2. What the current page already has (baseline)
 
 Current structure of `projects/tonalign.html`:
