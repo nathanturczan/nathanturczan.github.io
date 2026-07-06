@@ -204,6 +204,18 @@ body {
     object-fit: cover; /* mixed aspect ratios crop instead of distort */
 }
 
+/* Phone screenshots side by side: same height a two-up landscape row renders at */
+.image-row--phones {
+    justify-content: center;
+}
+
+.image-row--phones .project-image {
+    flex: 0 0 auto;
+    width: auto;
+    /* row width is min(100vw - page padding, 672px); landscape pair height = (row - gap) / 2 / (3456/2168) */
+    height: calc((min(100vw - 48px, 672px) - 8px) / 3.188);
+}
+
 /* Video embeds */
 .video-container {
     position: relative;
