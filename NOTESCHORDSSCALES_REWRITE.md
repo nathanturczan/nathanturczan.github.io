@@ -28,6 +28,12 @@ Nathan: "this website extremely useful to me for a long time before i subsumed i
 
 ---
 
+## 1b. The airboat story, told on tape (Apr 10, 2026 — Scott Anderson call; EVIDENCE.md §12.14)
+
+The transcript at `business/09_Advisors/scott_anderson/Apr 10 at 1-51 PM/Apr 10 at 1-51 PM.txt` has Nathan narrating the full airboat pipeline in his own spoken words, dated: "I took an airboat… the engine of this thing just sounds like a power chord going… converted that to MIDI, fed that through here [NotesChordScales], and then fed this into a piano that now is harmonizing with the airboat — and then this also integrates with all my Scale Navigator stuff, so then I'm throwing up tablature on my computer that I'm just jamming along to." One quote covers the whole chain (audio-to-MIDI → chord/scale inference → harmonizing instrument → tablature) — useful as a caption or pull-quote next to the existing airboat video embed. Also from the same call, Nathan's plain-language framing of the tool: "these three notes are a subset of all of these different chords, and then of each chord they might have multiple scalar supersets" — a clean spoken definition of the harmonic-hierarchy UI.
+
+---
+
 ## 2. What the current page already has (baseline)
 
 `projects/notes-chords-scales.html` is currently a stub-level archive page (reached via "Back to Archive," not the main nav):
