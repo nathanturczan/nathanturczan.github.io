@@ -16,61 +16,21 @@
                 <h1 class="project-title">Scale Navigator Dashboard</h1>
                 <div class="divider-line"></div>
                 <p class="project-tagline">Role · Product designer & developer</p>
-                <p class="project-tagline">Team · 1</p>
                 <p class="project-description">Platforms · Web · iOS · Android · macOS/Windows · VST3/AU/AAX</p>
             </div>
 
             <div class="project-meta">
-                <span class="project-year">2021–present</span>
+                <span class="project-year">2018–present</span>
                 <span class="project-categories">Software</span>
             </div>
         </header>
 
         <div class="project-content">
 
-            <!--
-            NOTE FOR FUTURE REVISION:
-            What's really exciting about Scale Navigator is collapsing the daylight between
-            exploring and capturing. They can be the same thing — two modes of the same interface,
-            or one feeling like the other. A composed piece can sound like exploration; exploration
-            done with foreknowledge can sound pre-composed. The most exciting thing about this
-            interface is its ability to switch between both and yet be both at the same time.
-            -->
-
-            <!--
-            ORIGIN STORY (for a section before Arthur):
-
-            It started with reading Dmitri Tymoczko's scale networks paper and the Debussy paper.
-            Here was a clear geometrical description of a really famous composer specifically famous
-            for their harmonic language — a model describing their pre-compositional approach to
-            writing and probably improvising music. These felt like design specs. I can build this
-            car. Then I'm curious: what happens if I drive it really fast? Off a cliff? To its
-            logical conclusion? What if I make it interactive? And the main thing: what happens
-            if I give other people the keys?
-
-            EXPLORE came first. It seemed like such a fun thing to explore, but it was hard to
-            keep it all in my brain — memorizing all maximally intersecting neighbor scales for
-            a given scale is a lot of dimensions to hold at once. You can write it out on paper,
-            or you can have an interface that provides the answer, something deterministic like
-            a thesaurus. That jumped out immediately from reading Dmitri's papers.
-
-            SHARE was not far behind — maybe even before this project. It came from the CalArts
-            milieu: Ajay Kapur, Perry Cook, Ge Wang, Spencer Salazar doing networked computer
-            performance with Auraglyph. Laptop orchestra people. Harmony is important, there needs
-            to be a networking protocol, some way to share, some way to get everyone on the same
-            page. That's what all my work was about. Even earlier: Charlie Carl Bergen's "Grids,
-            Beats, and Groups" class where you form bands. I started Micro Nutrients with Richard
-            Ahn — interfaces in ChucK, microtonal performance. Systems where more than one person
-            can network together, sandboxes for ensembles.
-
-            CAPTURE came years later. After graduating, pandemic hit, I reached out to Arthur.
-            He suggested capture — the empty cell suggested by the other two being filled in,
-            like Sudoku.
-            -->
-
             <div class="project-text-section">
+                <p class="section-eyebrow">Problem</p>
                 <p>
-                    When I compose, I'm weighing chord-scale relationships — what melodies fit inside what harmonies, where the bass goes, how to voice things. I can stop, try a few options, and hear where they lead.
+                    When I compose, I'm weighing chord-scale relationships: what melodies fit inside what harmonies, where the bass goes, how to voice things. I can stop, try a few options, and hear where they lead.
                 </p>
                 <p>
                     When I improvise, I have to decide in real time.
@@ -79,22 +39,83 @@
                     What if the interface where I make that decision is itself a map of where harmony can go?
                 </p>
                 <p>
-                    That's the idea behind Scale Navigator Dashboard: a network of scales where neighbors differ by only one note, so the nearby possibilities are always in view.
-                </p>
-                <p>
-                    The constraint: it had to work while someone was making music, not after.
+                    That's the idea behind Scale Navigator Dashboard: a network of 57 scales where neighbors differ by only one note, so the nearby possibilities are always in view. The constraint: it had to work while someone was making music, not after.
                 </p>
             </div>
 
-            <img src="../images/dashboard/desktop/Screenshot 2026-02-17 at 9.26.07 AM.png" alt="Dashboard showing the scale network" class="project-image">
+            <img src="../images/dashboard/desktop/Screenshot 2026-02-17 at 9.26.07 AM.png" alt="Scale Navigator Dashboard showing the current scale at the center of the network with its neighbors arranged around it" class="project-image">
+            <p class="image-caption">The Dashboard today. The center is where you are; everything touching it is one note away.</p>
 
             <div class="project-text-section">
-                <h3>Early feedback</h3>
+                <p class="section-eyebrow">Insight</p>
                 <p>
-                    The first prototype was a web app where you could click through the network. It only worked as a way to explore.
+                    It started with Dmitri Tymoczko's scale-network research, especially a figure analyzing a Debussy prelude as a walk through neighboring scales. Here was a geometrical description of a famous harmonic language, and it read to me like a design spec. I wanted to build the car, drive it fast, take it to its logical conclusion: make it interactive, and then hand other people the keys. The years since have been about exploring that network, sharing it with an ensemble, and capturing what you find inside it.
                 </p>
+            </div>
+
+            <img src="../images/dashboard/prologue/tymoczko_debussy_scale_map.png" alt="Tymoczko's diagram of a Debussy prelude moving between whole-tone, acoustic, diatonic, and harmonic scales" class="project-image">
+            <p class="image-caption">The figure that became a spec: Debussy moving scale to scale, one collection at a time. Hexagons and rectangles already encode scale type.</p>
+
+            <div class="project-text-section">
+                <p class="section-eyebrow">Prototype</p>
+                <h3>Keys 1 through 6</h3>
                 <p>
-                    At the time I was contracting at Output, where Arthur Carabott led interface design. I cold-emailed him asking if he'd critique the prototype. He gave me two pieces of feedback that took years to fully address:
+                    The first build, summer 2018, was a p5.js sketch you steered with the number keys: press 1 through 6 to move to a neighboring scale, and the whole network re-orbits around your new position. I was a composition MFA at CalArts who could barely program, so Dexter Shepherd and Colin Honigman paired with me twice a week: I drove the design decisions, they taught me to write the code underneath them.
+                </p>
+            </div>
+
+            <img src="../images/dashboard/prologue/keyboard_era_green_bg_monitor_photo.png" alt="Photo of a monitor showing the 2018 prototype: a blue hexagon at center of a green field, ringed by neighbor scales, with the instruction to type 1 through 6" class="project-image">
+            <p class="image-caption">The 2018 prototype. Bottom right, the entire interface manual: "Type on your keyboard: 1 through 6 to navigate the scale network."</p>
+
+            <img src="../images/dashboard/prologue/p5_era_orbiting_network_animation.gif" alt="Animation of the early p5.js prototype re-orbiting the scale network around each newly chosen scale" class="project-image">
+            <p class="image-caption">Navigation in motion: each keypress re-centers the network on the chosen scale.</p>
+
+            <div class="project-text-section">
+                <p>
+                    The prototype went in front of audiences almost immediately: Modal Intersections in October 2018 (<a href="modal-intersections.html">an etude book written for the system</a>, including Dexter's ROUNDABOUT), INTERSTICES that December, Thought Loops in January 2019, and a <a href="https://doi.org/10.5281/zenodo.3672882" target="_blank">paper at NIME 2019</a> in Porto Alegre.
+                </p>
+            </div>
+
+            <div class="image-row">
+                <img src="../images/dashboard/prologue/modal_intersections_podium.jpg" alt="Nathan conducting from a podium with the Scale Navigator projected behind the ensemble at Modal Intersections" class="project-image">
+                <img src="../images/dashboard/prologue/modal_intersections_audience_oct2018.jpg" alt="Audience watching the Modal Intersections performance with the scale network projected above the players" class="project-image">
+            </div>
+            <p class="image-caption">Modal Intersections, October 2018: the network projected over a live ensemble in the prototype's first year.</p>
+
+            <div class="project-text-section">
+                <p>
+                    I surveyed the INTERSTICES performers afterward. One wrote that "a highlight indicating which note has changed would be helpful," a request that grew into its own project, <a href="notation-anticipation.html">Notation Anticipation</a>. Another wrote that the music came out sounding "more like a scale exercise." That one stung because it was accurate: the system could move through harmony, but it couldn't yet make anything worth keeping.
+                </p>
+            </div>
+
+            <div class="project-text-section">
+                <p class="section-eyebrow">Iteration</p>
+                <h3>An instrument before a product</h3>
+                <p>
+                    Through 2019 and 2020 the sketch grew into an instrument. A chord generator (first commit January 15, 2019) turned each scale into playable harmony, ranked by voice-leading smoothness. The visual language settled into something I still use: shape encodes how a scale connects (hexagons, rectangles, and parallelograms for the different scale classes), and color encodes the root. Controls appeared for allowable root movement and a smoothness slider, and Web MIDI sent the output through an IAC bus into a DAW: harmony was already trying to live at the center of the session.
+                </p>
+            </div>
+
+            <div class="image-row">
+                <img src="../images/dashboard/prologue/2020_a_diatonic_pastel.png" alt="2020 pastel-toned interface centered on A diatonic, with root-movement checkboxes, a voice-leading smoothness slider, and a scalar supersets panel" class="project-image">
+                <img src="../images/dashboard/prologue/2020_c_diatonic_webmidi_iac.png" alt="2020 interface centered on C diatonic with an IAC Driver MIDI output selected" class="project-image">
+            </div>
+            <p class="image-caption">The 2020 instrument era. Notice the voice-leading smoothness slider, the root-movement checkboxes, and the IAC MIDI output at bottom: the ideas that later became the plugin.</p>
+
+            <div class="project-text-section">
+                <h3>Going all-in</h3>
+                <p>
+                    When the pandemic ended my film-scoring work, I went all-in on the tool. In July 2021 I rebuilt it as a React app (first commit July 23, 2021), with Michael Maurer shaping the early architecture and Ondřej Sedláček as the first contracted engineer. The interaction spec fit on a Post-it: your scale in the middle, its neighbors around it, and one neighbor already unfolding into its own neighborhood.
+                </p>
+            </div>
+
+            <img src="../images/dashboard/prologue/navigator_postit_spec.jpeg" alt="Pen drawing on a blue Post-it: a central node with six spokes, one spoke expanding into its own cluster of nodes" class="project-image">
+            <p class="image-caption">The interaction spec, complete: where you are, where you can go, and where you could go after that.</p>
+
+            <div class="project-text-section">
+                <h3>Two critiques, one weekend</h3>
+                <p>
+                    At the time I was contracting at Output, where Arthur Carabott led interface design. I cold-emailed him asking for a critique, and on the call (August 20, 2021) he gave me two pieces of feedback that took years to fully address:
                 </p>
                 <p>
                     <em>"Once I've found a chord I like, I want to be able to actually learn that, or save it. At the moment it is very easy to just keep clicking and lose what I had."</em>
@@ -103,74 +124,118 @@
                     <em>"It's the difference between someone demonstrating something on stage, vs a teacher helping you learn it."</em>
                 </p>
                 <p>
-                    The tool was good for wandering but bad for composing. You'd stumble onto something beautiful and then click again and lose it.
+                    The tool was good for wandering but bad for composing. The very next day, Tristan Whitehill's QA report wrote the same problem down independently. That weekend I sketched a "Notepad" workspace where discoveries could be kept and arranged.
                 </p>
             </div>
 
+            <img src="../images/dashboard/prologue/notepad_wireframe_annotated_aug2021.png" alt="Annotated wireframe of a Notepad tab: a row of saved scale polygons above a chord progression on a grand staff, with arrows marking draggable elements" class="project-image">
+            <p class="image-caption">The Notepad wireframe, drawn the weekend of Arthur's critique. It shipped as the Score workspace in February 2026, four and a half years later.</p>
+
             <div class="project-text-section">
-                <p class="section-eyebrow">Iteration</p>
-                <h3>The sketchpad</h3>
+                <h3>Visual identity</h3>
                 <p>
-                    It took years to get right, but I eventually built a sketchpad where you can save scale/chord pairs and arrange them into progressions. You explore the network, find something you like, and drag it in.
+                    That August I brought in Jono and Dylan Freeman with Jason Gardinier for a brand engagement: a pitch-class color system built on the circle of fifths, type explorations across six licensed specimens, and competing brand directions. The black-and-yellow direction won. I kept the script "Dashboard" wordmark over their objection, a call I'd reverse years later.
                 </p>
+            </div>
+
+            <img src="../images/dashboard/prologue/freeman_color_diagram_pitch_class_system_aug2021.png" alt="Freeman brothers' diagram assigning each of the twelve pitch classes a color around the circle of fifths" class="project-image">
+            <p class="image-caption">The pitch-class color system, August 2021: every root gets one color, everywhere in the product.</p>
+
+            <div class="project-text-section">
                 <p>
-                    Arthur's two questions — how do you capture what you find, and how do you learn from it — became the design thesis for everything Scale Navigator does. I emailed him in 2026 to tell him the sketchpad finally existed. He'd moved to Splice by then and was writing a book on music UI.
+                    Mobile came from pen sketches of how the network could squish onto a phone.
                 </p>
             </div>
 
             <div class="image-row">
-                <img src="../images/dashboard/desktop/Screenshot 2026-02-17 at 9.26.24 AM.png" alt="Dashboard scale selection" class="project-image">
-                <img src="../images/dashboard/desktop/Screenshot 2026-02-17 at 9.26.45 AM.png" alt="Dashboard chord view" class="project-image">
+                <img src="../images/dashboard/prologue/mobile_pen_wireframe_3_squish.jpg" alt="Pen wireframe showing the scale network compressed into a phone-width column" class="project-image">
+                <img src="../images/dashboard/prologue/midperiod_android/midperiod_android_1.png" alt="Android build of the Navigator tab: C diatonic hexagon with six neighbors above the full 57-scale network, black and yellow theme" class="project-image">
+            </div>
+            <p class="image-caption">Pen sketch to shipped Android build (October 2022): the same center-plus-neighbors layout, squished to one thumb.</p>
+
+            <div class="project-text-section">
+                <h3>Later critiques that shipped</h3>
+                <p>
+                    Ben Tillotson (December 30, 2025) gave me two things in one session: proof of demand for a DAW plugin, and the observation that the root colors had gone washed-out and illegible. I spent a full day back in color space re-saturating the palette. Lily Clark (January 2026) pushed for hard edges and a plain wordmark, which finally retired the 2021 script logo.
+                </p>
+            </div>
+
+            <div class="image-row">
+                <img src="../images/dashboard/prologue/2026_phone_mockup_plain_wordmark.png" alt="2026 phone mockup with a plain sans-serif Scale Navigator wordmark" class="project-image">
+                <img src="../images/dashboard/prologue/2026_phone_mockup_psychedelic_wordmark.png" alt="2026 phone mockup with a psychedelic decorative wordmark" class="project-image">
+            </div>
+            <p class="image-caption">Two 2026 wordmark directions. The plain one (left) won.</p>
+
+            <div class="project-text-section">
+                <p class="section-eyebrow">Failure</p>
+                <h3>The feature that took four years</h3>
+                <p>
+                    Chord MIDI routing, the ability to send the chords you click to any port, channel, and octave, was specced in November 2021. Michael Maurer shipped the routing UI within 48 hours of the wireframe; the routing behind it never worked right. Over the next four years I hired several engineers against the problem, and none of that work merged. I finally fixed it myself on November 1, 2025, right after leaving my job to build the product solo.
+                </p>
+            </div>
+
+            <img src="../images/dashboard/prologue/midi_output_wireframe_nov2021.jpg" alt="Pen wireframe of the MIDI output panel: dropdowns for source, octave, port, and channel, with a button that creates a new output row" class="project-image">
+            <p class="image-caption">The November 2021 MIDI-output wireframe. The UI shipped in 48 hours; the behavior took four years.</p>
+
+            <div class="project-text-section">
+                <p>
+                    There's a deeper criticism I still haven't fully answered. Lachlan, reviewing footage of the system in use, put it plainly: an instrument on which no wrong note can be played is an instrument with no stakes. The current work on chord voicing and onboarding is partly an attempt to give the player back some risk.
+                </p>
             </div>
 
             <div class="project-text-section">
+                <p class="section-eyebrow">Final solution</p>
                 <h3>Where harmony should live</h3>
                 <p>
-                    Harmony should live at the center of the production session, not in a browser, not inside every plugin.
+                    Harmony should live at the center of the production session, not in a browser tab and not duplicated inside every plugin. So I rebuilt Dashboard as a VST3/AU/AAX plugin with automatable parameters: change the scale at bar 32 and the automation lane remembers. Every other Scale Navigator tool subscribes to that state, which makes Dashboard one interface that tells the rest of the session what the harmony is.
                 </p>
                 <p>
-                    So I rebuilt Dashboard as a VST3/AU/AAX plugin with automatable parameters. Change the scale on bar 32, and the automation lane remembers. Every other Scale Navigator tool — Tonalign, SNaPS, Ensemble Jammer — subscribes to that state automatically.
+                    The Score and Sketchpad workspaces, shipped February and March 2026, are the long-delayed answer to Arthur's two questions: you explore the network, find something you like, and drag it into a progression you can keep, replay, and learn from. I emailed Arthur in 2026 to tell him the sketchpad finally existed. He'd moved to Splice by then and was writing a book on music UI.
                 </p>
             </div>
 
             <div class="image-row">
-                <img src="../images/dashboard/desktop/Screenshot 2026-02-17 at 9.28.29 AM.png" alt="Dashboard navigation" class="project-image">
-                <img src="../images/dashboard/desktop/Screenshot 2026-02-17 at 9.29.27 AM.png" alt="Dashboard expanded view" class="project-image">
+                <img src="../images/dashboard/desktop/Screenshot 2026-02-17 at 9.26.24 AM.png" alt="Dashboard scale selection view" class="project-image">
+                <img src="../images/dashboard/desktop/Screenshot 2026-02-17 at 9.26.45 AM.png" alt="Dashboard chord view with ranked chord suggestions" class="project-image">
+            </div>
+
+            <div class="image-row">
+                <img src="../images/dashboard/desktop/Screenshot 2026-02-17 at 9.28.29 AM.png" alt="Dashboard navigation view of the scale network" class="project-image">
+                <img src="../images/dashboard/desktop/Screenshot 2026-02-17 at 9.29.27 AM.png" alt="Dashboard expanded network view" class="project-image">
             </div>
 
             <div class="project-text-section">
-                <h3>Decisions I left as toggles</h3>
                 <p>
-                    I tested both a 3D layout and a flat 2D layout. Users gravitate toward 3D — you're flying through a space. But 2D reveals the circle of fifths as just one pathway through a larger network. Both stay as options.
+                    Some decisions stayed as toggles. Users gravitate toward the 3D layout, but the flat 2D layout reveals the circle of fifths as just one pathway through the larger network, so both remain. Early users expected clockwise rotation to mean flats; Tymoczko preferred the opposite; there's a toggle.
                 </p>
                 <p>
-                    Similarly: early users expected clockwise rotation to mean flats. Dmitri Tymoczko — the music theorist whose research the whole project is based on (<a href="https://doi.org/10.5281/zenodo.3672882" target="_blank">NIME 2019 paper</a>) — preferred the opposite. I added a toggle.
-                </p>
-            </div>
-
-            <img src="../images/dashboard/desktop/Screenshot 2026-02-17 at 9.29.37 AM.png" alt="Dashboard 2D layout view" class="project-image">
-
-            <div class="project-text-section">
-                <p>
-                    I also shipped iOS and Android apps for exploration away from the computer.
+                    iOS and Android apps carry the exploration side away from the computer.
                 </p>
             </div>
 
             <div class="image-row">
-                <img src="../images/dashboard/mobile/Simulator Screenshot - iPhone 17 - 2026-02-16 at 22.19.48.png" alt="Dashboard mobile view" class="project-image">
-                <img src="../images/dashboard/mobile/Simulator Screenshot - iPhone 17 - 2026-02-16 at 22.19.54.png" alt="Dashboard mobile scales" class="project-image">
-                <img src="../images/dashboard/mobile/Simulator Screenshot - iPhone 17 - 2026-02-16 at 22.20.01.png" alt="Dashboard mobile detail" class="project-image">
+                <img src="../images/dashboard/mobile/Simulator Screenshot - iPhone 17 - 2026-02-16 at 22.19.48.png" alt="Dashboard iOS app showing the scale network" class="project-image">
+                <img src="../images/dashboard/mobile/Simulator Screenshot - iPhone 17 - 2026-02-16 at 22.19.54.png" alt="Dashboard iOS app scale detail view" class="project-image">
+                <img src="../images/dashboard/mobile/Simulator Screenshot - iPhone 17 - 2026-02-16 at 22.20.01.png" alt="Dashboard iOS app chord view" class="project-image">
             </div>
 
             <div class="project-text-section">
-                <h3>Where it is now</h3>
+                <p class="section-eyebrow">Outcome</p>
                 <p>
-                    Since launching on iOS in April 2026: 12% conversion rate (>75th percentile for music apps), 272 downloads.
+                    I first demoed the system for Dmitri Tymoczko on February 23, 2022. Four years later to the day, February 23, 2026, I showed him the finished product. His verdict: "The implementation is faithful to the research." The next morning he emailed a feature request, which is the better compliment.
                 </p>
                 <p>
-                    The thing I'm still working on is onboarding. First-time users need a guided path that teaches the network by having them use it, not read about it.
+                    A moderated usability test with Elvis Bates (March 23, 2026) shaped the current onboarding work: the interface still assumes you already know what the shapes mean, and first-time users need a guided path that teaches the network by having them use it. That remains the open problem.
+                </p>
+                <p>
+                    Since the iOS launch in March 2026: 272 downloads and a 12% App Store conversion rate, above the 75th percentile for music apps. Composer Miša Skalskis called it "probably the first midi generator that I actually enjoyed."
                 </p>
             </div>
+
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/l9ZYLjaZRpw?rel=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <p class="image-caption">Demo: navigating the network, generating chords, and sending the harmony to the rest of the session.</p>
 
             <div class="project-text-section">
                 <a href="https://dashboard.scalenavigator.com" target="_blank" class="project-link">Launch Dashboard</a>
@@ -178,15 +243,19 @@
             </div>
 
             <div class="project-text-section">
-                <a href="https://www.youtube.com/watch?v=l9ZYLjaZRpw" target="_blank" class="project-link">Watch demo video</a>
+                <h3>Credits</h3>
+                <p>
+                    Built on Dmitri Tymoczko's research (<a href="https://doi.org/10.5281/zenodo.3672882" target="_blank">NIME 2019</a>). Dexter Shepherd and Colin Honigman mentored the first prototype; Michael Maurer shaped the early React architecture; Ondřej Sedláček, Netanel Ben, and Brady Boettcher contributed engineering; Jono Freeman, Dylan Freeman, and Jason Gardinier built the color and brand system; Lily Clark refined the 2026 identity; Arthur Carabott, Ben Tillotson, and Lachlan gave the critiques that shipped; Elvis Bates sat for usability testing. The app ships a full credits screen.
+                </p>
             </div>
 
             <div class="project-text-section">
-                <h3>Related projects</h3>
+                <h3>Related work</h3>
                 <p>
-                    <a href="ensemble-jammer.html">Ensemble Jammer</a> — networked instruments that follow Dashboard's harmonic state<br>
-                    <a href="tonalign.html">Tonalign</a> — MIDI pitch correction subscribing to Dashboard<br>
-                    <a href="snaps-plugin.html">SNaPS</a> — sampler plugin that glides samples to match the scale
+                    <a href="tonalign.html">Tonalign</a> — the same scale state, enforced on live MIDI<br>
+                    <a href="ensemble-jammer.html">Ensemble Jammer</a> — networked instruments that follow Dashboard's harmony<br>
+                    <a href="notes-chords-scales.html">NotesChordScales</a> — the inverse direction: play notes, and the system infers the scale<br>
+                    <a href="snaps-plugin.html">SNaPS</a> — a sampler that glides its samples to match the scale
                 </p>
             </div>
         </div>
