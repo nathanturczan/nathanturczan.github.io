@@ -1,6 +1,8 @@
 # Scale Navigator Evidence Database
 
-Living archive index. **Evidence only — no narrative.** Case-study docs (DASHBOARD_PROLOGUE_REWRITE.md etc.) query this instead of re-excavating. Built from git archaeology + file metadata, 2026-07-05. Standing rule: exhaust this archive before asking Nathan; questions to Nathan are "pick between candidates," not open recall.
+**🔒 ARCHIVE FROZEN 2026-07-05 (git tag: `evidence-complete-2026-07-05`).** The evidence phase is complete per Nathan's directive. **No new evidence gathering unless Nathan explicitly requests it.** The project is now editorial: query this archive, write the case studies, ship.
+
+Archive index. **Evidence only — no narrative.** Case-study docs (DASHBOARD_PROLOGUE_REWRITE.md etc.) query this instead of re-excavating. Built from git archaeology + file metadata, 2026-07-05. Standing rule: exhaust this archive before asking Nathan; questions to Nathan are "pick between candidates," not open recall.
 
 ---
 
