@@ -107,6 +107,12 @@ Source: `/Users/soney/Github/Thesis/thesis-rewrite/Chapters/Chapter7.tex`. All v
 
 ---
 
+## 1d. Recorded live demo, Mar 22, 2026 (Tristan Whitehill call — advisors archive, EVIDENCE.md §12.4)
+
+A dated, transcribed demo of Ensemble Jammer working end-to-end (`business/09_Advisors/stany_tristan_whitehill/Mar 22 at 10-04 AM/Mar 22 at 10-04 AM.txt`): harp instrument, the Venn-diagram melody pad (Nathan Ho's Venn7 lineage), and the **MusicXML score-drop feature demonstrated live — Terry Riley's "In C" dropped in and auto-retuned to the current scale on the call**, plus Beethoven. Also on the record: the C++ sampler port rationale ("JavaScript cannot handle that shit… porting everything to JUCE and C++"), the Electron wrapper + planned **Steam release** (Steam Deck), and mobile live on iOS + Google Play. Distribution beats and the score-drop demo are candidates for the rewrite's later sections.
+
+---
+
 ## 2. What the current page already has (baseline)
 
 Current structure of `projects/ensemble-jammer.html`: premise (remove harmony as a problem) → v1 suite (Touch Harp, X/Y Lead, Melody Maker, drones, synths, sequencers, loops; Nathan Ho Venn7 credit) → salon test + "no eye contact" insight → v2 motion controls (tilt/shake/pirouette) → v3 campfire problem, Firebase→BLE rewrite → iOS metrics (16% conversion, 299 downloads) → links.
