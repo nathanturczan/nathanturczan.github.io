@@ -69,7 +69,7 @@
                     Nathan built the engine, and Scale Navigator integration was there in week one ("Debounce scale changes from MIDI," March 26, 2021). I owned the sample corpus, the metadata standard, and my own performance file.
                 </p>
                 <p>
-                    The <a href="https://github.com/nhthn/snaps" target="_blank">repo lives under <code>nhthn/</code></a>, Ho's account, because we agreed from the start that it was open source. For years I performed out of an instrument hosted in my collaborator's GitHub, and contributed engine code back through reviewed PRs.
+                    The <a href="https://github.com/nhthn/snaps" target="_blank">repo lives under <code>nhthn/</code></a>, Ho's account, and it is now completely open source: all you need is an Akai MIDImix, SuperCollider, a DAW and Loopback, and a properly-tagged sample library, and you're good to go! For years I performed out of an instrument hosted in my collaborator's GitHub, and contributed engine code back through reviewed PRs.
                 </p>
             </div>
 
@@ -87,9 +87,19 @@
                     Then it hit a ceiling. By late 2025 I'd extended Ho's rhythm grid into my own polyrhythm system, with Clock Divide / Multiply and humanize-rhythm parameters. Push it hard enough and it fell over: 16th notes at 250 BPM and the whole thing would crash.
                 </p>
                 <p>
-                    On February 17, 2026, Ho and I spent two hours debugging it. Ho did the worst-case arithmetic out loud: 180 BPM × tempo factor 2 × 32nd-note subdivision = "one note every 5.2 milliseconds. So, yeah, I can see why this would cause problems." Then he couldn't reproduce the crash on his Linux desktop at all: "it doesn't look like this is caused by BPM being too high… there's a different problem going on here." His prime suspect was the humanize routine's wait-time floor I'd written myself three months earlier. Whatever the exact cause, the diagnosis was the same: the instrument had outgrown SuperCollider. The plugin's first commit is three weeks later, March 8, 2026.
+                    On February 17, 2026, Ho and I spent two hours debugging it. Ho did the worst-case arithmetic out loud: 180 BPM × tempo factor 2 × 32nd-note subdivision = "one note every 5.2 milliseconds. So, yeah, I can see why this would cause problems." The instrument had outgrown SuperCollider. The plugin's first commit is three weeks later, March 8, 2026.
                 </p>
             </div>
+
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/iSmbMYIchzw?rel=0" title="Scale Navigator Drone Jam, February 2022" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <p class="image-caption">Drone Jam, February 2022: the SuperCollider instrument performing live, steered from the Scale Navigator.</p>
+
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/_vK7BJLiBDE?rel=0" title="Livestream: Eyes/Eggs of Unstable Crystal" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <p class="image-caption">Eyes/Eggs of Unstable Crystal, livestreamed with the Dashboard and an Akai MIDImix.</p>
 
             <div class="project-text-section">
                 <p class="section-eyebrow">Iteration</p>
