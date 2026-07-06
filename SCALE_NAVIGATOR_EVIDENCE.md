@@ -283,7 +283,7 @@ Pages: `0:1` "Current" (mined), `153:1456` "Components" (unexplored — rate lim
 
 **Key findings (MCP screenshots + Nathan's full-canvas screenshot):**
 - **Two complete design rounds coexist as parallel artboard sets**: the pink/purple round and the black/yellow round — confirmed by comparing 209:909 vs 287:1460 (identical chords layout, two skins). The design *iteration* is preserved in place, not overwritten.
-- **The VST frame (505:1940) is a 2021 plugin design**: "SCALE NAVIGATOR MIDI VST" wordmark (art-deco caps + script "VST"), **Local Interface / Network Interface toggle**, navigator neighborhood (C Diatonic center; F Diatonic, F Acoustic, A Harmonic Minor, G Diatonic, G Acoustic, C Harmonic Major, pastel pink/purple), ROOT/SCALE dropdowns, an **"Enharmonic Drift" checkbox**, and the signal-flow visualization **input keyboard → "Mapping" panel (yellow keys) → output keyboard**, with "Reset Mapping" and "Launch Webapp" buttons. This is the in→out pitch-mapping visualization Tonalign/PitchSnap still uses — **designed in Figma in 2021**, contemporaneous with Nathan's Aug 11, 2021 message to Brady ("Been working with a UI designer… within the realm of possibility for juce and C++?"). Corroborates §6 Q3 (the plugin was being designed 4–5 years before it shipped).
+- **The VST frame (505:1940)** — **DATING CORRECTED (2026-07-05, dylanandjono thread; see TONALIGN_REWRITE.md §1b/§1f)**: this frame is **Dylan's Mar 7–10, 2022 Figma refinement of Nathan's own Feb 24, 2022 mockups**, not a 2021 design (the node just lives in the 2021 file). Contents: "SCALE NAVIGATOR MIDI VST" wordmark (art-deco caps + script "VST"), **Local Interface / Network Interface toggle**, navigator neighborhood (C Diatonic center; F Diatonic, F Acoustic, A Harmonic Minor, G Diatonic, G Acoustic, C Harmonic Major, pastel pink/purple), ROOT/SCALE dropdowns, an **"Enharmonic Drift" checkbox**, and the signal-flow visualization **input keyboard → "Mapping" panel (yellow keys) → output keyboard**, with "Reset Mapping" and "Launch Webapp" buttons. This is the in→out pitch-mapping visualization Tonalign/PitchSnap still uses. The rate-limit gap is also closed: the frame is recovered as an image (`images/tonalign/freeman_figma_redesign_local_interface_mar2022_node505-1940.png`). The plugin *ambition* is still 2021-contemporaneous (Nathan's Aug 11, 2021 message to Brady: "Been working with a UI designer… within the realm of possibility for juce and C++?"), but the mockup authorship is Nathan's, Feb 2022 — a stronger Apple-JD claim than "a designer drew it."
 - **mobile-home (282:1231)**: black bg, SCALE NAVIGATOR wordmark + yellow script "DASHBOARD", hamburger, pastel navigator neighborhood, ROOT C / SCALE Diatonic pills + Autopilot checkbox + slider pinned at bottom — **precisely what shipped in the Oct 2022 Android screenshots** (design→ship chain with a 13-month gap, receipts at both ends).
 - **Canvas-level process artifacts** (Nathan's screenshot): two **color-system diagrams** top-left (Main Color / Outline Color / BG Color 1 / BG Color 2 rows + "Example" strips — the node color language designed as a *system*, not per-screen); a **giant red prohibition sign drawn over a pink ensemble frame** (a rejected direction, killed in-canvas); a frame labeled **"What goes here? chat? ads?"** (open product questions living in the design file).
 - Still un-captured (rate limit): 155:824 tab-modules, 302:2085 "mobile-login $$", 302:2152 ensemble-current, Components page 153:1456.
@@ -319,14 +319,19 @@ All pasted/recovered artifacts now live in `/Users/soney/Github/nathanturczan.gi
 - `keyboard_era_green_bg_monitor_photo.png` — green-bg build photographed on a monitor (date/place unconfirmed, Nathan owes)
 - `keyboard_era_green_bg_full_network_screenshot.png` — landscape full network, `as_diatonic` center, "Type on your keyboard 1 through 6…!!!!" footer
 - `p5_era_orbiting_network_animation.gif` — **Sept 20, 2018** (FB-dated, Jeff Huang collab; the only animated 2018 artifact; originals in `Old Scale Navigator Development/41908402_*.gif`)
+- `2019_p5_children_of_children_render.png`
 - `plywood_table_build_photo.jpg`
-- `2020_a_diatonic_bm6_killmidi.png`
+- `2020_a_diatonic_bm6_killmidi.png`, `2020_a_diatonic_pastel.png`, `2020_c_diatonic_webmidi_iac.png`, `2020_c_octatonic_dodecagon.png`, `2020_c_hexatonic_chords_autopilot.png`
+- `mobile_pen_wireframe_1.jpg` / `_2.jpg` / `_3_squish.jpg` — the mobile "squish" pen-wireframe sequence
 - `midperiod_visualization_tab.jpg`, `midperiod_chords_workspace.png`
 - `2026_node_exploration_a.png` / `_b.png`
 - `2026_phone_mockup_plain_wordmark.png` / `_psychedelic_wordmark.png`
 - `network_full_graph_concentric.png`
 - `midperiod_android/midperiod_android_1..10.png` (Oct 2022 Android)
 - `vanilla_era_mobile/vanilla_mobile_1..4.png`
+- **Freeman-engagement artifacts (Aug 2021, recovered from the dylanandjono Messenger thread 2026-07-05):** `font_option_f37_wicklow_aug2021.png`, `font_option_recoleta_alt_medium_aug2021.png`, `font_option_f37_f51_orange_chosen_aug2021.png`, `font_option_glow_better_serif_chosen_aug2021.png`, `font_option_f37_drago_aug2021.png`, `font_option_f37_incise_aug2021.png` (Aug 15 font session — chosen: Glow Better + F51, "And orange"), `glow_better_font_license_purchase_aug2021.jpg` (Aug 15, 22 min later), `freeman_color_diagram_pitch_class_system_aug2021.png` (Aug 17, Main/Outline/BG1/BG2 per pitch class), `freeman_direction_1_juicy_brand_board.jpg` (Aug 11), `backend_requirements_outline_aug2021.png` (Aug 5)
+- `reddit_ambient_launch_week_support_jan2022.png` (Jan 12, 2022)
+- **Deliberately NOT saved to this public repo (privacy):** PayPal receipt screenshots for the **$1,050 payment to Dylan Freeman, Sep 7, 2021, from the Scale Navigator, LLC account, note "THANK YOU UI"** — they contain Nathan's home address; the fact is recorded here and in DASHBOARD_PROLOGUE_REWRITE.md §5, images stay in the FB export (dylanandjono thread, posted Sep 20, 2021)
 
 ### 11.2 Ensemble Jammer (`images/ensemblejammer/`)
 - `tanpura_drone_portrait.png`, `tanpura_drone_landscape_1.png`, `_2.png` (D2 root 73.42 Hz; before/after against Chromatone planned)
@@ -337,7 +342,14 @@ All pasted/recovered artifacts now live in `/Users/soney/Github/nathanturczan.gi
 - `scalenavigatormidivst_shipped_daw_v2_launch_button.png` — **Jan 7, 2022, ~9:27 am** ("NVM, I totally did it!!!!" — launch-webapp button built overnight; Brady 😮)
 - `juce_launchindefaultbrowser_research_snippet.png` — Jan 6, 2022, 10:29 pm; Nathan reading Projucer source to learn `launchInDefaultBrowser()`
 - `brady_whiteboard_interface_sketch_jan2022.jpg` — Jan 8, 2022; Brady's touch-surface concept ("main pitch selection surface… swipe to swap… octave sliding")
+- `brady_scale_weaver_concept_aug2023.png`, `brady_android_pitch_pads_aug2023.png` — Brady's Aug 2023 concept round
 - `scalenavigatormidivst.png` — **marketing composite** (MacBook mockup, file date May 29, 2022) — separate from the raw pair
+- **The Feb–Mar 2022 VST design round (dylanandjono thread, recovered + dated 2026-07-05; full arc in TONALIGN_REWRITE.md §1f):**
+  - `juce_prototype_first_screenshot_jul2021.png` — **Jul 26, 2021** (Piepenbrink thread) — earliest artifact in the whole Tonalign lineage, "Made with JUCE" badge
+  - `vst_current_state_before_redesign_feb2022.png` — Feb 23, 2022, the current-state brief Nathan sent the Freemans
+  - `nathan_vst_mockup_local_interface_feb2022.png` / `_network_interface_feb2022.png` — **Nathan's own hi-fi mockups, Feb 24, 2022, 11:46 am**
+  - `nathan_vst_mockup_v2_local_drift_toggle_feb2022.png` / `_network_drift_toggle_feb2022.png` — v2 iteration ~80 min later (1:05 pm), Enharmonic Drift toggle added; `_fullres` variants of both = the full-resolution originals found on disk (`Old Scale Navigator Development/scalenav_midivst_local/network.png`, 1783×1630)
+  - `freeman_figma_redesign_local_interface_mar2022_node505-1940.png` — **Dylan's Mar 10, 2022 Figma refinement = node 505:1940** (resolves the §10.1 rate-limit gap: the frame is recovered as an image; note §10.1's "designed in Figma in 2021" for 505:1940 is corrected to **Mar 2022, Dylan refining Nathan's Feb 2022 mockups** — see TONALIGN_REWRITE.md §1b)
 - five `Screenshot 2026-02-10*.png` (current page), `tonalign-1.png`
 
 ### 11.4 NotesChordScales (`images/noteschordsscales/`)

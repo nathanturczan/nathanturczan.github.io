@@ -38,7 +38,7 @@ Nathan (this session): "Back when Brady and I were working on this together, we 
 
 **Date reconciliation for the page header**: the page says "2024–present" and the gathering doc guessed "2024 = development start with Brady" — **git says Jun 28, 2021**. The thesis's "Tonalign shipped publicly in January 2026" maps to the PitchSnap-era installers (Jan 22–26, 2026); the Tonalign name itself arrived Apr 6, 2026. Header should probably read 2021–present.
 
-**FIGMA SOURCE FOUND (2026-07-05, EVIDENCE.md §10.1) — the mockups are a year older than their PNG dates.** The Freemans' 2021 Figma file (`FFFxYSi1sgsfta1r26o3ZB`) contains frame **505:1940 "scale navigator VST - Local Interface"** (1600×900) with exactly the `scalenav_midivst_local.png` content: art-deco wordmark + script "VST", Local/Network toggle, navigator neighborhood (C Diatonic + 6 pastel neighbors), ROOT/SCALE dropdowns, **Enharmonic Drift checkbox**, the **input keyboard → yellow "Mapping" panel → output keyboard** flow, Reset Mapping + Launch Webapp buttons. The pastel pink/purple palette places it in the *first* Freeman round (Aug–Sep 2021), and it sits contemporaneous with Nathan's Aug 11, 2021 message to Brady: "Been working with a UI designer… within the realm of possibility for juice and C++?" So the design thread is now: **Figma frame (Aug–Sep 2021) → PNG exports (Jul 2022) → PitchSnap markup (2026) → shipped Tonalign** — the three-keyboard visualization problem was posed by a professional design engagement in 2021, five years before it shipped. The Jul 22, 2022 PNGs are exports of (or derived from) this frame.
+**CORRECTED AND FULLY DATED (2026-07-05, dylanandjono thread — supersedes the earlier Figma guess):** the mockups are **Nathan's own design work, made Feb 24, 2022** — not Freeman deliverables, and not Aug–Sep 2021. The dylanandjono Messenger thread contains both mockup pairs with timestamps (see §1f for the full arc). The disk PNGs (`scalenav_midivst_local/network.png`, file-dated Jul 22, 2022) are the **full-resolution originals (1783×1630)** of the v2 pair Nathan posted to the Freemans at 1:05 pm on Feb 24, 2022 — identical aspect ratio to the Messenger copies (843×771), so Jul 2022 is just a copy date. Figma frame **505:1940 "scale navigator VST - Local Interface"** is *Dylan Freeman's Mar 7–10, 2022 refinement of Nathan's mockups* — Dylan shared the link + a canvas screenshot on Mar 10, 2022 (recovered: `images/tonalign/freeman_figma_redesign_local_interface_mar2022_node505-1940.png`), which resolves the rate-limited node without needing the API. So the corrected design thread: **Nathan's Feb 2022 mockups (in the Freeman brand system from the 2021 webapp engagement) → Dylan's Figma refinement (Mar 2022) → PitchSnap markup (2026) → shipped Tonalign.** The three-keyboard visualization problem was posed *by Nathan himself*, in high fidelity, four years before it shipped — which is a stronger authorship claim for the case study than the previous "professional design engagement posed it" framing.
 
 ---
 
@@ -108,6 +108,43 @@ Note: `images/tonalign/scalenavigatormidivst.png` (file date May 29, 2022) is a 
 - **"First real plugin" as frame?** — "You're allowed to say that it was my first plugin. That's fine, but that's really not the main star of the story. It has nothing to do with design or product design. But it's worth noting that this is the first time I seriously started working with JUCE and with C++. And it's also important to note **the beginning of my collaboration with my very good friend Brady**." → The rewrite leads with the in/out visualization design problem; "first plugin / first serious JUCE+C++ / Brady begins" is one supporting sentence, not the spine.
 - **Brady featured more prominently?** — YES.
 - **More pre-2026 artifacts?** — "Not at this time"; these screenshots are the earliest.
+
+## 1f. The Freeman VST design round, Feb 23 – Mar 10, 2022 (recovered 2026-07-05, dylanandjono thread) — a complete brief → mockup → iteration → designer-refinement arc
+
+The dylanandjono Messenger thread (Nathan + Dylan & Jono Freeman) contains the entire second Freeman engagement — the VST UI round — with every artifact and timestamp. All images SAVED to `images/tonalign/`:
+
+| Date | Beat | Artifact |
+|---|---|---|
+| **Feb 23, 2022, 5:25 pm** | Nathan: "Heyo UI geniuses! Can I throw another gig your way? Much smaller in scope?" … "**Can you help me make this look good:**" + screenshot of the shipped plugin's then-current state (gray window, scattered pastel polygons, folded keyboard, launch-webapp button) | `vst_current_state_before_redesign_feb2022.png` — the "before" frame |
+| Feb 23, 6:39 pm | Dylan: "Do you want somethnig dfiferent than just migrating the elements from the web version we developed into the vst?" (his laptop's I-key was broken — the typos are his) | — |
+| **Feb 24, 11:46 am** | Nathan: "**Here's a mockup of what I'm thinking:**" + two **high-fidelity mockups Nathan made himself** in the Freeman brand system (black/yellow, art-deco Glow Better wordmark, F51 "MIDI VST"), narrated feature-by-feature: "users can toggle between the 'local neighbor' interface, and the 'global network' interface" (11:46:46) · "dropdowns to manually select root and scale" (11:46:55) · "then, on the right, some MIDI routing to show what notes are being played, how these notes are being re-mapped, and how the notes are being outputted" (11:47:29) · "then, a link to the webapp" (11:47:34) | `nathan_vst_mockup_local_interface_feb2022.png`, `nathan_vst_mockup_network_interface_feb2022.png` |
+| **Feb 24, 1:05 pm** | Nathan: "**here's an update:**" + v2 pair — iterated ~80 minutes later, adding the Local/Network toggle control, **Enharmonic Drift checkbox**, and **Reset Mapping** button. Then: "in terms of timeline, **I'd love to get the UI finalized by April!**" | `nathan_vst_mockup_v2_local_drift_toggle_feb2022.png`, `nathan_vst_mockup_v2_network_drift_toggle_feb2022.png` (+ `_fullres` originals at 1783×1630, from `Old Scale Navigator Development/`) |
+| Mar 3, 2022 | Dylan: "Ths sounds doable!!" (apologizing for the delay — no Messenger app) | — |
+| **Mar 7–10, 2022** | Dylan puts in 2 hours, Figma share link breaks, so he sends the file link + "**and heres a screenshot**" — his refinement of Nathan's local-interface mockup as a 1600×900 Figma frame: rounded geometry, a card-styled "Mapping" module, cleaned typography and spacing. Jono ❤'d it. This is **Figma node 505:1940**, the frame the API rate-limited — now recovered as an image | `freeman_figma_redesign_local_interface_mar2022_node505-1940.png` |
+
+**Why this section matters for the Apple application:** it is the JD's exact deliverable chain with receipts — a **current-state screenshot (brief) → self-made hi-fi mockups → same-day iteration → professional designer refinement**, all inside 15 days, all timestamped, with Nathan authoring the mockups and narrating the interaction model in writing. It also proves the Freemans did **two** engagements (webapp Aug–Sep 2021, VST Feb–Mar 2022).
+
+**Bonus recovery (Andrew Piepenbrink thread, same sweep):** the **earliest known screenshot of the plugin running** — `juce_prototype_first_screenshot_jul2021.png`, posted **Jul 26, 2021, 12:57 pm** ("Cooking with gas Andrew!!!!" → Andrew: 🔥 → Nathan: "Would you be down to give it a test run? Looking for feedback"). Unbranded gray window, scattered pastel polygons, keyboard top-right, **"Made with JUCE" badge** still in the corner, window title `ScaleNavigator/3-ScaleNavigator`. Four weeks after the repo's initial commit (Jun 28, 2021) Nathan had a running UI and was already recruiting testers. This predates everything in §1e by five months and is now the earliest artifact in the whole Tonalign lineage.
+
+---
+
+## 1g. "It's basically autotune for MIDI" — the tagline, self-coined Jan 19, 2022 (Jeff Huang thread, recovered 2026-07-05)
+
+The night of the Shopify launch, Nathan sent Jeff Huang the product link with this copy:
+
+> "Drop the Scale Navigator MIDI VST into your DAW to filter / manipulate MIDI, and only ever let the right notes through. **It's basically autotune for MIDI** in the context of the scale network!" — Nathan, **Jan 19, 2022, 10:38 pm**, `scale-navigator.myshopify.com/products/scale-navigator-midi-vst`
+
+**Tonalign's locked positioning ("AutoTune for MIDI") is Nathan's own phrase from four years before the Tonalign name existed.** The positioning survived two renames (Scale Navigator MIDI VST → PitchSnap → Tonalign) unchanged — a dated receipt that the product concept was clear from the first ship.
+
+The rest of the exchange is honest launch-week texture (use sparingly, it's ribbing between friends):
+- Jeff: "It's this closed alphz" / "Closed alpha" → Nathan: "no i would disagree, i'm sending you this plugin for free but its actually for sale rn!!"
+- Jeff: "So do you mean it's finished?" → Nathan: "**Yes! It's feature complete. The only thing I would change is the UI design**" (10:43 pm)
+- Nathan: "**If I release a new version with a sexier UI, I will allow everyone who downloaded the ugly version to get the pretty one for free**" (😆 from Jeff) — a designer publicly acknowledging his UI debt at launch, five weeks before he opened the Feb 2022 VST design round with the Freemans (§1f). The self-diagnosis → engagement sequence is itself a beat: he knew the UI was the weak link, said so in writing, then hired for it.
+- Nathan: "But you're right, I did skip a ton of steps" / "Hope it doesn't bite me in the ass lol!!!!" — Jeff: "Oh shoot loll"
+
+Also anchors the **Shopify launch date: Jan 19, 2022** (the §1e dating said "Jan 2022 Shopify launch" — now pinned to the day).
+
+---
 
 ## 2. What the current page already has (baseline)
 
