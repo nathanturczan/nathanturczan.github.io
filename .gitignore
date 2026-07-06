@@ -3,3 +3,14 @@
 .DS_Store
 **/.DS_Store
 images/autoharp/VID_20210510_112401.mp4
+
+# internal working docs and archive (kept local, not published)
+_archive/
+*_REWRITE.md
+*_REWRITE_PRIORITY_LIST.md
+SCALE_NAVIGATOR_EVIDENCE.md
+LABELED_IMAGES_AUDIT.md
+PORTFOLIO_EDITORIAL_GUIDE.md
+DESIGN_PRINCIPLES.md
+THINGS_I_CHANGED_MY_MIND_ABOUT.md
+CASE_STUDY_REWRITE_PRIORITY_LIST.md
