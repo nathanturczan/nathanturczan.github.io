@@ -287,7 +287,7 @@ Searched all filenames for: Devereux, Fulcher, Selkani, Fernandes, Tariq, Seraph
 
 ### Items Requiring Attention
 
-1. **"Bender" tool** — `bender dev Screenshot 2026-04-08...` shows a "Scale Navigator Bender" product not listed in the known Scale Navigator ecosystem. Appears to be an MPE pitch-bend utility. **Confirm if this should be documented as a product.**
+1. **"Bender" tool** — `bender dev Screenshot 2026-04-08...` shows a "Scale Navigator Bender" product not listed in the known Scale Navigator ecosystem. Appears to be an MPE pitch-bend utility. ~~Confirm if this should be documented as a product~~ — **RESOLVED (Nathan, Jul 5, 2026): notes only, ignore for case studies.** "Eventually it will probably get subsumed into Tonalign" / merged. Do not build a page or beat around it; if the Tonalign case study is ever revised after a merge happens, revisit then.
 
 2. **Jason Gardinier PDFs** — `logo jason gardinier mid-period scalenav_round1.pdf` contains logo design work. **These are design artifacts that may be useful for credits/attribution documentation.**
 

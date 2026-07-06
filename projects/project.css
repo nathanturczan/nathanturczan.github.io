@@ -151,6 +151,13 @@ body {
     margin: 32px 0;
 }
 
+/* Portrait (phone) screenshots shown standalone */
+.project-image--portrait {
+    max-width: 420px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 /* Captions under images/video */
 .image-caption {
     font-size: 12px;
