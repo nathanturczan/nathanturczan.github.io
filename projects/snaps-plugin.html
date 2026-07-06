@@ -48,12 +48,15 @@
 
             <div class="project-text-section">
                 <p class="section-eyebrow">Prototype</p>
-                <h3>2021: the engine, and whose account it lives in</h3>
+                <h3>2021: the SuperCollider engine</h3>
                 <p>
                     SNaPS started as a SuperCollider instrument that <a href="https://nathan.ho.name/" target="_blank">Nathan Ho</a> and I built together, and the idea itself descends from Ho's conception of <a href="https://nathan.ho.name/posts/sound-dumplings/" target="_blank">sound dumplings</a>: hand-assembled collages of samples repitched into a common key and arranged into a single gesture. A finished dumpling is a static object, like hardened lava. The question behind SNaPS was what happens if you keep it molten: live, mobile blobs that collage themselves automatically and re-pitch as the harmony moves.
                 </p>
                 <p>
-                    Ho built the engine, and Scale Navigator integration was there in week one ("Debounce scale changes from MIDI," March 26, 2021). I owned the sample corpus, the metadata standard, and my own performance file; my first commit is "snaps.scd with all the samples!!!!"
+                    Before development began I wrote the whole system out as a design document, the "Sample Particle System": every sample is a particle born knowing its pitch classes, checked against the Current Scale when it triggers and re-checked at every scale change, transposing when it can and exiting when it can't. The spec already contained the ramped transposition that became the glide, orchestration limits drawn from FFT analysis (any number of highs, five mids, one low "to avoid bass muddiness"), panning that migrates so voices stay evenly distributed across the stereo field, and, in a closing list of ideas to explore, the BPM metadata that later grew into the polyrhythm system.
+                </p>
+                <p>
+                    Nathan built the engine, and Scale Navigator integration was there in week one ("Debounce scale changes from MIDI," March 26, 2021). I owned the sample corpus, the metadata standard, and my own performance file; my first commit is "snaps.scd with all the samples!!!!"
                 </p>
                 <p>
                     The <a href="https://github.com/nhthn/snaps" target="_blank">repo lives under <code>nhthn/</code></a>, Ho's account, because we agreed from the start that it was open source. For years I performed out of an instrument hosted in my collaborator's GitHub, and contributed engine code back through reviewed PRs.
@@ -110,9 +113,26 @@
 
             <div class="project-text-section">
                 <p class="section-eyebrow">Design decision</p>
+                <h3>Seeing the particles</h3>
+                <p>
+                    The plugin's main view makes the particle metaphor visible. Each dot is one playing sample traveling left to right across its lane: its life begins at the left edge and ends at the right, so long samples drift while short ones streak past, and the lane reads as a field of particles moving at different speeds. A sample with more than one pitch class stacks two or more dots vertically, and every dot grows and shrinks with its sample's loudness, so the density and dynamics of the texture are legible at a glance.
+                </p>
+            </div>
+
+            <img src="../images/snaps/snaps_emitter_sketch.png" alt="First sketch of the emitter view: a dense field of dots, each one a playing sample, with a red emitter line at the left edge" class="project-image">
+            <p class="image-caption">The first sketch of the emitter view: every dot is one playing sample, born at the left edge, gone at the right.</p>
+
+            <img src="../images/snaps/snaps_emitter_wireframe.png" alt="Wireframe of the plugin window with eight emitter lanes, each a dense dot field" class="project-image">
+            <p class="image-caption">The sketch dropped into a full wireframe: eight emitter lanes, each its own particle field (March 29, 2026).</p>
+
+            <img src="../images/snaps/snaps_emitter_shipped.png" alt="The shipped Emitter tab of the SNaPS plugin, showing eight lanes of moving dots with per-lane source, rate, order, glide, and voice controls" class="project-image">
+            <p class="image-caption">The working build two days later: stacked dots for multi-pitch samples, dot size following loudness.</p>
+
+            <div class="project-text-section">
+                <p class="section-eyebrow">Design decision</p>
                 <h3>The failure is the instrument</h3>
                 <p>
-                    There's a case a cost function can't rescue: a sample whose pitch content simply can't fit the new scale at any transposition. The safe move is to mute it. I refused to, because a muted voice is a hole in the texture and a silent admission that the tool broke.
+                    There's a case a cost function can't rescue: a sample whose pitch content simply can't fit the new scale at any transposition. The safe move is to mute it. I refused to, because a muted voice is a hole in the texture and a silent admission that the tool broke. That refusal is in the original spec: instead of fading out, an incompatible sample could be band-pass filtered down to whichever of its pitches survives in the new scale, sweeping back open when the harmony lets it back in. The stutters and Doppler exits are descendants of that filter sweep.
                 </p>
                 <p>
                     Instead, a sample that can't fit gets a theatrical exit: a stutter, a filter sweep, a Doppler-style pitch drop, stackable. The sound leaves on purpose, audibly, as a gesture you can score with. In SNaPS the modulation <em>is</em> the event: the moment the harmony changes is the thing you hear, a texture of dozens of voices leaning into the new chord and a few of them making a scene on the way out.
