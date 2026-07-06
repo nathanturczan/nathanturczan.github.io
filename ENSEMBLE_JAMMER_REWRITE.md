@@ -130,6 +130,18 @@ The retrospective writeup of Nathan's first Tymoczko Zoom (`business/09_Advisors
 
 ---
 
+## 1g. Recorded walkthrough, Feb 9, 2026 (Brady Boettcher call — EVIDENCE.md §12.9)
+
+An earlier transcribed EJ demo than the Mar 22 Tristan one (§1d), to an Apple Core Audio engineer, with design rationale on tape:
+- **The Venn Melody Maker explained in Nathan's own words, with credit**: "each region is a pitch… overlapping regions represent the two pitches… the thing about a seven-fold Venn diagram is you can get all seven… this is based on some work that my friend Nathan Ho did." Plus the voice-leading detail: "**I'm telling it: try to stack yourself in thirds wherever you can**" — press the center region and get "this seven-note stacked-in-thirds chord"; "as you're updating the scale, the regions are updating themselves, one at a time."
+- **Pitch-tagged samples, plainly stated**: "I'm tagging these samples in terms of what their pitch content is… this loop has C, C#, and E♭ in it, and so… the whole thing needs to be transposed down a half step" — with the engineering honesty: "I'm just using basic sample rate to change this. I'm not doing any FFT stuff."
+- **The participatory vision quotes**: the banjo scenario ("all you got to do is subscribe to the Ensemble, and then you're gonna be in the same harmony as I am"), "routing other MIDI to a player piano 50 miles away," and "an immersive jam session… in some public place, kind of like a **flash mob in Union Station**" (Brady: "that'd be a good video for it" — "It's part of the plan").
+- **The AirPods choir-piece idea** (adjacent participatory concept, pitched to a Core Audio engineer): C3LA singers wearing AirPods, phone shows pitch-up/pitch-down against a live keyboard; questions about voice-isolation DSP and bone-conduction sensing; the framing principle: "**I want to build technology for what everyone already has in their pocket.**"
+
+Candidate use: the design-rationale quotes (Venn stacking, pitch tagging) for the instrument sections; the pocket-technology principle as a thesis line.
+
+---
+
 ## 2. What the current page already has (baseline)
 
 Current structure of `projects/ensemble-jammer.html`: premise (remove harmony as a problem) → v1 suite (Touch Harp, X/Y Lead, Melody Maker, drones, synths, sequencers, loops; Nathan Ho Venn7 credit) → salon test + "no eye contact" insight → v2 motion controls (tilt/shake/pirouette) → v3 campfire problem, Firebase→BLE rewrite → iOS metrics (16% conversion, 299 downloads) → links.
