@@ -69,10 +69,10 @@
                     Before development began I wrote the whole system out as a design document, the "Sample Particle System." The triggering logic above is nearly verbatim from that spec, which already contained the ramped transposition that became the glide.
                 </p>
                 <p>
-                    Nathan built the engine, and Scale Navigator integration was there in week one ("Debounce scale changes from MIDI," March 26, 2021). I owned the sample corpus, the metadata standard, and my own performance file. As I described it to a friend once development was underway: "Snaps! Scale Navigator particle system, a super collider back end coded by Nathan ho. Basically, samples trigger at regular intervals. The script is listening for changes to scale Navigator. When the scale changes, the script will transpose the currently playing scales. So that they fit the harmonic context of the current scale. [For a] particular genre, I just have to choose samples that fit in that particular genre."
+                    Nathan built the engine, and Scale Navigator integration was there in week one ("Debounce scale changes from MIDI," March 26, 2021). I owned the sample corpus, the metadata standard, and my own performance file.
                 </p>
                 <p>
-                    The <a href="https://github.com/nhthn/snaps" target="_blank">repo lives under <code>nhthn/</code></a>, Ho's account, and it is now completely open source: all you need is an Akai MIDImix, SuperCollider, a DAW and Loopback, and a properly-tagged sample library, and you're good to go! For years I performed out of an instrument hosted in my collaborator's GitHub, and contributed engine code back through reviewed PRs.
+                    The <a href="https://github.com/nhthn/snaps" target="_blank">repo lives under <code>nhthn/</code></a>, Ho's account, and is completely open source. For years I performed out of an instrument hosted in my collaborator's GitHub, and contributed engine code back through reviewed PRs.
                 </p>
             </div>
 
@@ -168,7 +168,7 @@
                 <p class="section-eyebrow">Design decision</p>
                 <h3>Three modes, one engine</h3>
                 <p>
-                    The modes accumulated across the collaboration with Ho. The first particles were one-shots, emitted to form a cloud: a swarm of nanobots or drones that reshapes itself to fit the weather, where the weather patterns are the harmonic state. Even within the one-shots we kept exploring. Emission started random, and then I added alphanumeric ordering, which opened an isorhythmic possibility: sequence the samples alphanumerically into the order of a melody, a tone row, and you have the colore of a 14th-century isorhythm, the repeating pitch cycle, with the emission rhythm as its talea, the repeating rhythmic cycle laid against it. When the two cycles are different lengths, the same melody keeps landing on different rhythms with every pass, which is the whole medieval trick. Change the harmony and the colore is given, literally, new colors. The metaphors kept compounding as we went: swarm, drone swarm, particle cloud, colore.
+                    The modes accumulated across the collaboration with Ho. The first particles were one-shots, emitted to form a cloud: a swarm of nanobots or drones that reshapes itself to fit the weather, where the weather patterns are the harmonic state. Emission started random, and then I added alphanumeric ordering, which turned the emitter isorhythmic: a repeating pitch cycle laid against an emission rhythm of a different length, the 14th-century trick, so the same melody keeps landing on new rhythms with every pass.
                 </p>
                 <p>
                     Then came the question of particles with a different kind of life span, one whose life never ends, and that's a loop. The Sequencer, a canvas where samples are laid out in time, only arrived in the JUCE C++ era.

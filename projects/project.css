@@ -1,15 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-@font-face {
-    font-family: 'GT Standard Mono';
-    src: url('../fonts/GT-Standard-M-Standard-Regular-Trial.woff2') format('woff2');
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
 }
 
 :root {
@@ -31,7 +25,7 @@ html {
 }
 
 body {
-    font-family: 'GT Standard Mono', monospace;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 15px;
     line-height: 1.75;
     color: var(--text-color);
