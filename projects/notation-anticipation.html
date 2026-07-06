@@ -30,13 +30,13 @@
 
             <div class="project-text-section">
                 <p>
-                    <a href="https://lalaptoporchestra.com" target="_blank">LA Laptop Orchestra</a> performs from a shared screen score. Everyone in the room reads live notation on their own device — piano, fretboard, staff, harmonica — while a conductor moves the ensemble through a network of scales. When the harmony changes, every screen updates.
+                    <a href="https://lalaptoporchestra.com" target="_blank">LA Laptop Orchestra</a> performs from a shared screen score. Everyone in the room reads live notation on their own device (piano, fretboard, staff, harmonica) while a conductor moves the ensemble through a network of scales. When the harmony changes, every screen updates.
                 </p>
                 <p>
                     That update used to be instantaneous. Click, swap.
                 </p>
                 <p>
-                    Eye-tracking studies of sight-reading (Furneaux 1999, Truitt 1997) show that musicians read about one second — roughly one measure — ahead of what they're playing. That preview buffer is where sight-reading actually happens. An instant swap overwrites it without warning: the notes you'd already read are gone, and you're reacting instead of anticipating.
+                    Eye-tracking studies of sight-reading (Furneaux 1999, Truitt 1997) show that musicians read about one second ahead of what they're playing, roughly one measure. That preview buffer is where sight-reading actually happens. An instant swap overwrites it without warning: the notes you'd already read are gone, and you're reacting instead of anticipating.
                 </p>
             </div>
 
@@ -62,10 +62,10 @@
             <div class="project-text-section">
                 <h3>What I ruled out</h3>
                 <p>
-                    Before designing anything I compiled two research bibliographies — screen-score notation practice and game UX timing, 217 sources — and used them to eliminate the obvious approaches:
+                    Before designing anything I compiled two research bibliographies (screen-score notation practice and game UX timing, 217 sources) and used them to eliminate the obvious approaches:
                 </p>
                 <p>
-                    A <strong>scrolling score</strong> (Guitar Hero-style) gives spatial lookahead, but scrolling shrinks the reader's perceptual span (Harvey 2019), and harmonic navigation isn't strictly linear in time. <strong>Color-only signals</strong> fail because color changes don't capture peripheral attention — if you aren't looking directly at the changing note, you miss it (Yantis 1988). An <strong>audio countdown tick</strong> competes with the music being played. A <strong>3-2-1 overlay</strong> occludes the notation and asks the performer to read digits when the visual system judges time-to-arrival far better from motion.
+                    A <strong>scrolling score</strong> (Guitar Hero-style) gives spatial lookahead, but scrolling shrinks the reader's perceptual span (Harvey 2019), and harmonic navigation isn't strictly linear in time. <strong>Color-only signals</strong> fail because color changes don't capture peripheral attention: if you aren't looking directly at the changing note, you miss it (Yantis 1988). An <strong>audio countdown tick</strong> competes with the music being played. A <strong>3-2-1 overlay</strong> occludes the notation and asks the performer to read digits when the visual system judges time-to-arrival far better from motion.
                 </p>
             </div>
 
@@ -73,10 +73,10 @@
                 <p class="section-eyebrow">Iteration</p>
                 <h3>Four states, three phases</h3>
                 <p>
-                    The system that survived: every note on every instrument exists in one of four states — Off, On, Incoming, and Outgoing. When the next scale is queued, arriving notes pulse blue and departing notes desaturate and fade, for a configurable lookahead window, and then the score commits. Idle, preview, commit.
+                    The system that survived: every note on every instrument exists in one of four states: Off, On, Incoming, and Outgoing. When the next scale is queued, arriving notes pulse blue and departing notes desaturate and fade, for a configurable lookahead window, and then the score commits. Idle, preview, commit.
                 </p>
                 <p>
-                    Two animation styles ship side by side — Pulse and Ramp — because I couldn't resolve from research alone which reads better mid-performance. That's an A/B test to run with the ensemble, not a decision to fake.
+                    Two animation styles ship side by side (Pulse and Ramp) because I couldn't resolve from research alone which reads better mid-performance. That's an A/B test to run with the ensemble, not a decision to fake.
                 </p>
             </div>
 
@@ -91,7 +91,7 @@
                 <p class="section-eyebrow">Design decision</p>
                 <h3>Motion for arriving, fade for departing</h3>
                 <p>
-                    The asymmetry is deliberate. Motion captures peripheral attention automatically; color change alone doesn't. A performer staring at their left hand still catches a pulsing key at the edge of vision. Departing notes only fade — you don't need to react quickly to a note you were already leaving.
+                    The asymmetry is deliberate. Motion captures peripheral attention automatically; color change alone doesn't. A performer staring at their left hand still catches a pulsing key at the edge of vision. Departing notes only fade: you don't need to react quickly to a note you were already leaving.
                 </p>
             </div>
 
@@ -102,7 +102,7 @@
                 <p class="section-eyebrow">Design decision</p>
                 <h3>How much warning is enough</h3>
                 <p>
-                    It depends on the player. Rhythm games solved this years ago: osu! lets experts shrink their approach window to 300ms while beginners get nearly two seconds. I borrowed the pattern — five presets from Rehearsal (2000ms) down to Expert (300ms), plus a free slider, saved per performer. A first-time participant and a professional sight-reader share the same room and the same score with different amounts of warning.
+                    It depends on the player. Rhythm games solved this years ago: osu! lets experts shrink their approach window to 300ms while beginners get nearly two seconds. I borrowed the pattern: five presets from Rehearsal (2000ms) down to Expert (300ms), plus a free slider, saved per performer. A first-time participant and a professional sight-reader share the same room and the same score with different amounts of warning.
                 </p>
             </div>
 
@@ -113,10 +113,10 @@
                 <p class="section-eyebrow">Design decision</p>
                 <h3>Anticipation needs object constancy</h3>
                 <p>
-                    Rolling the system out across nine renderers exposed the general rule. The piano was easy: a key is a stable object that can pulse. The triad view wasn't — it regenerated its whole layout on every change, so an incoming triad had nowhere to arrive.
+                    Rolling the system out across nine renderers exposed the general rule. The piano was easy: a key is a stable object that can pulse. The triad view wasn't: it regenerated its whole layout on every change, so an incoming triad had nowhere to arrive.
                 </p>
                 <p>
-                    Good anticipation needs object constancy. Every renderer needs a stable visual object — a key, a fret location, an accidental slot, a persisted coordinate — that survives the transition and can carry the animation. I redesigned the triad view around coordinates assigned at birth that persist for the life of each triad. What started as an animation pass turned into a rule about visual identity.
+                    Good anticipation needs object constancy. Every renderer needs a stable visual object (a key, a fret location, an accidental slot, a persisted coordinate) that survives the transition and can carry the animation. I redesigned the triad view around coordinates assigned at birth that persist for the life of each triad. What started as an animation pass turned into a rule about visual identity.
                 </p>
             </div>
 
@@ -134,10 +134,10 @@
             <div class="project-text-section">
                 <h3>Where it is now</h3>
                 <p>
-                    The system shipped across all nine notation renderers in the performer app — piano, staffs, fretboards, flute, harmonica grid, and the abstract chord views — with one shared state machine underneath. The next LALORK performance, August 15 in Los Angeles, is the field test: a room full of strangers sight-reading harmonic changes they've never seen.
+                    The system shipped across all nine notation renderers in the performer app (piano, staffs, fretboards, flute, harmonica grid, and the abstract chord views) with one shared state machine underneath. The next LALORK performance, August 15 in Los Angeles, is the field test: a room full of strangers sight-reading harmonic changes they've never seen.
                 </p>
                 <p>
-                    Plenty is unfinished. A Staged mode — where a conductor holds to preview and releases to commit — is specced but unbuilt. The Pulse-versus-Ramp question stays open until performers vote with their settings. And the preset timings are educated guesses from rhythm-game data until August 15 says otherwise.
+                    Plenty is unfinished. A Staged mode, where a conductor holds to preview and releases to commit, is specced but unbuilt. The Pulse-versus-Ramp question stays open until performers vote with their settings. And the preset timings are educated guesses from rhythm-game data until August 15 says otherwise.
                 </p>
             </div>
 
