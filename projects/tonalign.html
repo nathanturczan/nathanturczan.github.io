@@ -63,22 +63,19 @@
                 <p>
                     Within a month I had a working plugin correcting notes in real time and was already handing builds to friends. The project would eventually wear three names (Scale Navigator MIDI VST, PitchSnap, and finally Tonalign), but the central idea never changed: take incoming MIDI, constrain it to the current harmonic context, and let players hear what they meant rather than what their fingers landed on.
                 </p>
-                <p>
-                    Brady Boettcher came into the project through a JUCE forum post during the pandemic. What started as getting my first plugin off the ground became an ongoing conversation that still shapes my work. He's one of the people I regularly call when I'm stuck on a problem in music technology, MIDI, harmony, or plugin architecture. The early pair-programming sessions are still preserved in the repo as branch names: <code>bboettcher3/session_1</code> and up.
-                </p>
             </div>
 
             <img src="../images/tonalign/juce_prototype_first_screenshot_jul2021.png" alt="The first running prototype, July 2021: a gray plugin window with scattered pastel scale polygons, a small keyboard in the top-right corner, and the Made with JUCE badge" class="project-image">
-            <p class="image-caption">July 26, 2021: the first playable build. It corrected notes, but couldn't yet explain itself.</p>
+            <p class="image-caption">The first playable build: it corrected notes, but couldn't yet explain itself.</p>
 
             <img src="../images/tonalign/scalenavigatormidivst_shipped_daw_v2_launch_button.png" alt="Scale Navigator MIDI VST running in a DAW, January 2022: a single folded keyboard row showing the scale mapping, with the launch-webapp button" class="project-image">
-            <p class="image-caption">Shipped, January 2022: the three-keyboard flow folded to one row. Black keys fold onto white to show the mapping.</p>
+            <p class="image-caption">Shipped, 2022: the three-keyboard flow folded to one row.</p>
 
             <div class="project-text-section">
                 <p class="section-eyebrow">Failure</p>
                 <h3>The correction was inaudible and invisible</h3>
                 <p>
-                    The first failure surfaced in week four, in a message to Brady: "when correcting notes, if 2 notes are corrected to the same midi note, how to handle that case." Two different wrong notes collapse onto the same right note: a collision the player never asked for and can't see. That exact edge case, overlapping corrections in fast passages, is still one I'm tuning in 2026.
+                    The first failure surfaced in week four, in a message to Brady: "when correcting notes, if 2 notes are corrected to the same midi note, how to handle that case." Two different wrong notes collapse onto the same right note: a collision the player never asked for and can't see. That exact edge case, overlapping corrections in fast passages, is still one I'm tuning today.
                 </p>
                 <p>
                     The second came back in writing. In week eight, <a href="https://tristanwhitehill.com/">Tristan Whitehill</a> (Euglossine) sent the first external QA report on the plugin: "the initial setup inside the users DAW was not exactly clear when approaching blind," a chord-button bug, previous-chord tones bleeding through, and "I couldn't remember the buttons I had pressed in succession." The correction was working and the player still couldn't hold onto what had happened.
@@ -92,12 +89,12 @@
                     The design question stayed the same the whole way: draw the in/out delta. The drawing kept changing.
                 </p>
                 <p>
-                    <strong>2022, the mockup.</strong> In February 2022 I produced a series of high-fidelity mockups exploring different ways to visualize the correction. It's drawn as three keyboards, input, mapping, output: a literal signal-flow diagram of the correction.
+                    <strong>2022, the mockup.</strong> I produced a series of high-fidelity mockups exploring different ways to visualize the correction. It's drawn as three keyboards, input, mapping, output: a literal signal-flow diagram of the correction.
                 </p>
             </div>
 
             <img src="../images/tonalign/nathan_vst_mockup_v2_local_drift_toggle_feb2022_fullres.png" alt="February 2022 mockup: the correction drawn as three stacked keyboards showing input notes, the re-mapping, and output notes, with Local/Network toggle and Enharmonic Drift checkbox" class="project-image">
-            <p class="image-caption">Feb 2022: my mockup drew the correction as three keyboards: in, mapping, out. Too much surface for a plugin window.</p>
+            <p class="image-caption">The mockup: in, mapping, out.</p>
 
             <div class="project-text-section">
                 <p>
@@ -106,12 +103,12 @@
 
             <div class="project-text-section">
                 <p>
-                    <strong>2026, the markup.</strong> Four years later, during the 2026 rebuild, I was still working the same delta. There's a screenshot of the running plugin with my own annotation drawn on top of it (gray dots above the keys for incoming notes, red dots below for corrected ones) spec'ing how in/out should read on the keyboard. It shipped similarly, with downward arrows marking the notes that moved.
+                    <strong>2026, the markup.</strong> Four years later, during the rebuild, I was still working the same delta: my annotation drawn over the running plugin (gray dots above the keys for incoming notes, red dots below for corrected ones) spec'ing how in/out should read. It shipped with downward arrows marking the notes that moved.
                 </p>
             </div>
 
             <img src="../images/tonalign/pitchsnap_plugin_window.png" alt="PitchSnap plugin window, 2026, annotated by hand: gray dots above the keys marking incoming notes, red dots below marking corrected notes" class="project-image">
-            <p class="image-caption">2026, still on the same problem: my markup (gray dots for incoming notes, red dots below for corrected) spec'ing the in/out delta.</p>
+            <p class="image-caption">Four years later, still marking up the same in/out delta.</p>
 
             <div class="project-text-section">
                 <p class="section-eyebrow">Final solution</p>
@@ -124,40 +121,34 @@
             <div class="project-text-section">
                 <h3>Correction style: the feature that came last</h3>
                 <p>
-                    The Correction dropdown is the newest idea in the plugin. Brady and I were catching up, and he'd been <a href="https://www.linkedin.com/posts/brady-boettcher-2166b090_niche-project-alert-a-scale-first-interface-ugcPost-7474883019816824832-3x1E/" target="_blank">mapping Scale Navigator scales onto the LinnStrument</a> (<a href="https://github.com/StrangeLoopsAudio/LinnStrument-Scale-Navigator" target="_blank">code on his Strange Loops GitHub</a>), and he felt strongly that there should be other interaction modes for how corrected notes land on the keyboard. Correction had always folded neighbors together: in C diatonic, the C and C♯ keys both come out as C. But what if C♯ came out as D? Collapsing the whole keyboard chromatically onto the scale sounded incredible, and it shipped as Stack (Chrom).
-                </p>
-                <p>
-                    The next idea followed directly from that one: ignore the black keys entirely and apply the same stack to the white notes alone. That became Stack (White). It also has a practical advantage: you never have to deal with the fingering shifts that come from mixing black keys into white. Both landed in v1.0.3, June 2026, and the dropdown now reads Corrective, Filter, Stack (Chrom), Stack (White): four answers to what a correction layer should do with a note that doesn't fit.
+                    The Correction dropdown is the newest idea in the plugin. Correction had always folded neighbors together: in C diatonic, the C and C♯ keys both come out as C. But what if C♯ came out as D? Brady argued there should be other modes for how corrected notes land, and collapsing the whole keyboard chromatically onto the scale shipped as Stack (Chrom). Applying the same stack to the white keys alone became Stack (White), which also spares you the fingering shifts of mixing black keys into white. The dropdown now reads Corrective, Filter, Stack (Chrom), Stack (White): four answers to what a correction layer should do with a note that doesn't fit.
                 </p>
             </div>
 
             <div class="project-text-section">
                 <p class="section-eyebrow">Outcome</p>
                 <p>
-                    Tonalign shipped publicly in January 2022 as Scale Navigator MIDI VST, and again, rebuilt, under its current name in 2026. Since then it has been the MIDI-correction layer in every live session I run, including every Ensemble Jammer deployment. It's the "silent" plugin the rest of the ecosystem leans on: it subscribes to Dashboard's shared harmonic state and corrects against whatever chord or scale the room is currently in, no configuration.
+                    Tonalign shipped publicly in 2022 and again, rebuilt, in 2026. Since then it has been the MIDI-correction layer in every live session I run, including every Ensemble Jammer deployment. It's the "silent" plugin the rest of the ecosystem leans on: it subscribes to Dashboard's shared harmonic state and corrects against whatever chord or scale the room is currently in, no configuration.
                 </p>
                 <p>
                     It also turned into a compositional instrument I didn't plan for. I run recorded MIDI (Chopin, Liszt, Paganini, competition-grade performances) through it, stealing Chopin's texture and forcing it into whatever harmonic box I choose: "A whole new level of plunderphonics."
-                </p>
-                <p>
-                    The plugin now announces itself as "by Scale Navigator and Strange Loops" as a shoutout to Brady who has been on this project from the very beginning.
                 </p>
             </div>
 
             <div class="video-container">
                 <iframe src="https://www.youtube.com/embed/DCnYGMm83PQ?rel=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
-            <p class="image-caption">Aphex Twin's "Avril 14th" run through Tonalign while Dashboard changes the harmonic context underneath it. The contour stays recognizably the same; each scale hands the theme a new emotional affect.</p>
+            <p class="image-caption">Aphex Twin's "Avril 14th" through Tonalign: each scale hands the theme a new affect.</p>
 
             <div class="video-container">
                 <iframe src="https://www.youtube.com/embed/lf0BpKuH3hc?rel=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
-            <p class="image-caption">The January 2022 demo. Its title ("Scale Navigator MIDI VST is like AutoTune for MIDI") is the Tonalign tagline, four years before the Tonalign name.</p>
+            <p class="image-caption">The 2022 demo: the tagline, four years before the name.</p>
 
             <div class="video-container">
                 <iframe src="https://www.youtube.com/embed/DyVP5oX4dgU?rel=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
-            <p class="image-caption">Setting up the plugin in Ableton Live, January 2022. Tonalign ships as VST3 and AU, so the same plugin loads in Logic Pro and any other host.</p>
+            <p class="image-caption">Setup in Ableton Live; the same VST3/AU loads in Logic Pro or any host.</p>
 
             <div class="project-text-section">
                 <h3>What's still unfinished</h3>
@@ -173,7 +164,7 @@
             <div class="project-text-section">
                 <h3>Credits</h3>
                 <p>
-                    Brady Boettcher, C++/JUCE engineering, from July 2021 to the present. Tristan Whitehill, the first external QA report.
+                    Brady Boettcher, C++/JUCE engineering, from a pandemic JUCE-forum post to the present; the early pair-programming sessions survive in the repo as branch names (<code>bboettcher3/session_1</code> and up), and the plugin announces itself as "by Scale Navigator and Strange Loops." Tristan Whitehill, the first external QA report.
                 </p>
             </div>
 

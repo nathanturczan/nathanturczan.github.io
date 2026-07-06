@@ -69,7 +69,7 @@
                     Before development began I wrote the whole system out as a design document, the "Sample Particle System." The triggering logic above is nearly verbatim from that spec, which already contained the ramped transposition that became the glide.
                 </p>
                 <p>
-                    Nathan built the engine, and Scale Navigator integration was there in week one ("Debounce scale changes from MIDI," March 26, 2021). I owned the sample corpus, the metadata standard, and my own performance file.
+                    Nathan built the engine, and Scale Navigator integration was there in week one. I owned the sample corpus, the metadata standard, and my own performance file.
                 </p>
                 <p>
                     The <a href="https://github.com/nhthn/snaps" target="_blank">repo lives under <code>nhthn/</code></a>, Ho's account, and is completely open source. For years I performed out of an instrument hosted in my collaborator's GitHub, and contributed engine code back through reviewed PRs.
@@ -87,17 +87,17 @@
                     For four years the SuperCollider version was my primary live instrument: pretty much everything sample-based on my YouTube and SoundCloud before 2026 is running SNaPS SuperCollider.
                 </p>
                 <p>
-                    Then it hit a ceiling. By late 2025 I'd extended Ho's rhythm grid into my own polyrhythm system, with Clock Divide / Multiply and humanize-rhythm parameters. Push it hard enough and it fell over: 16th notes at 250 BPM and the whole thing would crash.
+                    Then it hit a ceiling. I'd extended Ho's rhythm grid into my own polyrhythm system, with Clock Divide / Multiply and humanize-rhythm parameters, and pushed hard enough it fell over: 16th notes at 250 BPM and the whole thing would crash.
                 </p>
                 <p>
-                    On February 17, 2026, Ho and I spent two hours debugging it. Ho did the worst-case arithmetic out loud: 180 BPM × tempo factor 2 × 32nd-note subdivision = one note every 5.2 milliseconds. The instrument had outgrown SuperCollider. The plugin's first commit is three weeks later, March 8, 2026.
+                    Ho and I spent two hours debugging it before conceding that the worst case, one note every 5.2 milliseconds, was more than SuperCollider's timing could hold. The instrument had outgrown its language. Three weeks later I started the plugin.
                 </p>
             </div>
 
             <div class="video-container">
                 <iframe src="https://www.youtube.com/embed/iSmbMYIchzw?rel=0" title="Scale Navigator Drone Jam, February 2022" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
-            <p class="image-caption">Drone Jam, February 2022: the SuperCollider instrument performing live, steered from the Scale Navigator.</p>
+            <p class="image-caption">Drone Jam, 2022: the SuperCollider instrument live, steered from the Scale Navigator.</p>
 
             <div class="video-container">
                 <iframe src="https://www.youtube.com/embed/_vK7BJLiBDE?rel=0" title="Livestream: Eyes/Eggs of Unstable Crystal" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -116,7 +116,7 @@
             </div>
 
             <img src="../images/snaps/snaps_canvas_wireframe.png" alt="Concept-canvas sketch of the Librarian's data model: sample names paired with their pitch-class sets" class="project-image">
-            <p class="image-caption">The Librarian's data model, sketched on the concept canvas: each sample paired with its pitch-class set (holst_cello_1 [c, d, e], paolo_8 [df, f, af]…).</p>
+            <p class="image-caption">The Librarian's data model: each sample paired with its pitch-class set.</p>
 
             <div class="project-text-section">
                 <p class="section-eyebrow">Final solution</p>
@@ -131,7 +131,7 @@
                     Small moves beat large ones. Downward moves beat upward moves of equal size. The aggregate texture modulates the way an ensemble does, by the least sufficient motion.
                 </p>
                 <p>
-                    The glide itself carries the same logic, and its shape is entirely <a href="https://nathan.ho.name/posts/oddvoices-dev-log-3/" target="_blank">Ho's, from his oddvoices research</a>. He couldn't find much published data on portamento, so he collected his own: a singer performing ascending and descending two-note melodies with "natural portamento," run through a pitch tracker. Ascending glides prepare, dipping below the starting pitch before they rise, about 70 cents on a minor third. Descending glides overshoot, dropping nearly a semitone and a half past the target and settling up into it. Never the reverse, which makes sense physiologically: "you're much more likely to involuntarily relax in pitch rather than tense up." SNaPS samples glide along that measured shape, like a voice, not a machine.
+                    The glide's shape comes from <a href="https://nathan.ho.name/posts/oddvoices-dev-log-3/" target="_blank">Ho's oddvoices research</a>, measured from a real singer: ascending glides dip below the starting pitch before they rise, descending glides overshoot the target and settle up into it. SNaPS samples glide along that measured shape, like a voice, not a machine.
                 </p>
             </div>
 
@@ -139,7 +139,7 @@
                 <img src="../images/snaps/oddvoices_portamento_ascending_m3.png" alt="Pitch-tracker plot of four sung ascending minor thirds: some takes dip below the starting pitch before rising" class="project-image">
                 <img src="../images/snaps/oddvoices_portamento_descending_m3.png" alt="Pitch-tracker plot of four sung descending minor thirds: most takes overshoot below the target pitch, then settle up into it" class="project-image">
             </div>
-            <p class="image-caption">Ho's oddvoices measurements, four sung takes of a minor third each way: ascending glides dip before they rise, descending glides plunge past the target and settle up into it. OddVoices models the shape in quarter-sine-wave segments, and SNaPS glides inherit it.</p>
+            <p class="image-caption">Ho's measured portamento, four sung takes each way; SNaPS glides inherit the shape.</p>
 
             <div class="project-text-section">
                 <p>
@@ -156,10 +156,10 @@
             </div>
 
             <img src="../images/snaps/snaps_emitter_sketch.png" alt="First sketch of the emitter view: a dense field of dots, each one a playing sample, with a red emitter line at the left edge" class="project-image">
-            <p class="image-caption">The first sketch of the emitter view: every dot is one playing sample, born at the left edge, gone at the right.</p>
+            <p class="image-caption">The first sketch of the emitter view: every dot is one playing sample.</p>
 
             <img src="../images/snaps/snaps_emitter_wireframe.png" alt="Wireframe of the plugin window with eight emitter lanes, each a dense dot field" class="project-image">
-            <p class="image-caption">The sketch dropped into a full wireframe: eight emitter lanes, each its own particle field (March 29, 2026).</p>
+            <p class="image-caption">The sketch dropped into a full wireframe: eight lanes, each its own particle field.</p>
 
             <img src="../images/snaps/snaps_emitter_shipped.png" alt="The shipped Emitter tab of the SNaPS plugin, showing eight lanes of moving dots with per-lane source, rate, order, glide, and voice controls" class="project-image">
             <p class="image-caption">The working build two days later: stacked dots for multi-pitch samples, dot size following loudness.</p>
@@ -179,10 +179,10 @@
             </div>
 
             <img src="../images/snaps/snaps_looper.png" alt="The Looper tab in F harmonic minor: four pads (duduk, viola, organ, glass), each with a waveform and a transposition badge" class="project-image">
-            <p class="image-caption">Looper mode in F harmonic minor: duduk, viola, organ, and glass held as loops, each badge showing how far its sample has bent to fit (−6st, −5st, +0st).</p>
+            <p class="image-caption">Looper mode in F harmonic minor: each badge shows how far its sample bent to fit.</p>
 
             <img src="../images/snaps/snaps_sequencer.png" alt="The Sequencer tab in A-sharp harmonic major: sample lanes staggered across a timeline, with an active-samples list showing per-sample transpositions" class="project-image">
-            <p class="image-caption">Sequencer mode in A♯ harmonic major: Casio tape samples staggered across the timeline, the active-samples list tracking each one's transposition.</p>
+            <p class="image-caption">Sequencer mode in A♯ harmonic major: each sample tracks its own transposition.</p>
 
             <div class="project-text-section">
                 <p class="section-eyebrow">Design decision</p>
@@ -208,11 +208,11 @@
             </div>
 
             <iframe scrolling="no" style="width:100%;height:450px;border:0;" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/equuipment/sets/samplerate-counterpoint&color=%23ff5500&auto_play=false&show_user=true" title="Samplerate Counterpoint on SoundCloud"></iframe>
-            <p class="image-caption"><a href="https://soundcloud.com/equuipment/sets/samplerate-counterpoint" target="_blank">Samplerate Counterpoint</a>, an album made entirely with SNaPS. The samples bend and transpose across time the way voices move in counterpoint, and since the samples can themselves be recordings of counterpoint, it becomes a counterpoint of counterpoints.</p>
+            <p class="image-caption"><a href="https://soundcloud.com/equuipment/sets/samplerate-counterpoint" target="_blank">Samplerate Counterpoint</a>, an album made entirely with SNaPS: a counterpoint of counterpoints.</p>
 
             <div class="project-text-section">
                 <p>
-                    Ho, writing about <a href="https://nathan.ho.name/posts/sound-dumplings/" target="_blank">sound dumplings</a> on his own site: "If you do want to hear examples of sound dumpling music, I recommend checking out my friend Nathan Turczan's work under the name Equuipment. He took my sound dumpling idea and expanded on it by introducing key changes and automated collaging of samples in SuperCollider, and the results are very colorful and interesting."
+                    Ho, writing on <a href="https://nathan.ho.name/posts/sound-dumplings/" target="_blank">his own site</a>: "He took my sound dumpling idea and expanded on it by introducing key changes and automated collaging of samples… the results are very colorful and interesting."
                 </p>
             </div>
 
