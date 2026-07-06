@@ -41,18 +41,21 @@
             <div class="project-text-section">
                 <p class="section-eyebrow">Problem</p>
                 <p>
-                    SNaPS is a sampler that never restarts a sound to follow the harmony. When the chord changes underneath a sustaining sample, the sample doesn't retrigger; it leans into the new scale, each voice bending by the smallest interval that fits. A sampler that modulates the way a held note does, not the way a MIDI clip does.
+                    Every sampler I knew treated a sample as if it had a single pitch. Assign a recording to the keyboard and the sampler re-pitches it chromatically across the keys, a digital Mellotron. That works for a piano note or a kick drum. But the sounds I wanted to play weren't like that: they were little recordings of harmony, a cello double stop, a choir chord, several bells ringing together, fragments of counterpoint. The sampler knew where the sample began and how fast to play it. It had no idea what notes were inside it.
                 </p>
                 <p>
-                    As I mentioned to a friend after Nathan and I had begun development: "Snaps! Scale Navigator particle system, a super collider back end coded by Nathan ho. Basically, samples trigger at regular intervals. The script is listening for changes to scale Navigator. When the scale changes, the script will transpose the currently playing scales. So that they fit the harmonic context of the current scale. [For a] particular genre, I just have to choose samples that fit in that particular genre."
+                    SNaPS starts by giving it that knowledge. Every sample is born knowing its pitch classes, and once it knows them, following the harmony becomes simple arithmetic: how far does this recording have to move so that the notes inside it fit the current scale?
                 </p>
             </div>
 
             <div class="project-text-section">
                 <p class="section-eyebrow">Insight</p>
-                <h3>Why a normal sampler couldn't do this</h3>
+                <h3>A sample that knows its notes</h3>
                 <p>
-                    Every sampler assumes a note begins from scratch: you trigger a sample, it plays, it ends. Harmony doesn't respect that boundary. If the chord changes while a violin is sustaining, the violin doesn't restart; it keeps singing through the change. A conventional sampler either lets the already-sounding sample clash or cuts it and retriggers, and you can hear the retrigger. I wanted the sample to stay alive across the change, built on recordings rather than synthesized notes: a glide is trivial in the synth domain, but samples carry texture and memory in ways oscillators don't.
+                    Instead of asking what MIDI note triggered the sample, the engine checks the pitches inside the recording against the Current Scale. If they're a subset of the scale, the sample plays untransposed; if they'd be a subset after transposition, it plays at that transposition; if no transposition fits, it doesn't play.
+                </p>
+                <p>
+                    The same check runs again at every scale change, and that's where the instrument lives. A sample that's already sounding re-checks itself and bends to fit in real time, because harmony doesn't respect the boundary of a note: if the chord changes while a violin sustains, the violin doesn't restart, she keeps singing through the change. A conventional sampler either lets the sustaining sample clash or cuts and retriggers it, and you can hear the retrigger. Once a sample knows what notes it contains, the rest of SNaPS follows: the transpositions, the glides, the theatrical exits, even the Librarian.
                 </p>
             </div>
 
@@ -63,10 +66,10 @@
                     SNaPS started as a SuperCollider instrument that <a href="https://nathan.ho.name/" target="_blank">Nathan Ho</a> and I built together, and the idea itself descends from Ho's conception of <a href="https://nathan.ho.name/posts/sound-dumplings/" target="_blank">sound dumplings</a>: hand-assembled collages of samples repitched into a common key and arranged into a single gesture. A finished dumpling is a static object, like hardened lava. The question behind SNaPS was what happens if you keep it molten: live, mobile blobs that collage themselves automatically and re-pitch as the harmony moves.
                 </p>
                 <p>
-                    Before development began I wrote the whole system out as a design document, the "Sample Particle System": every sample is a particle born knowing its pitch classes, checked against the Current Scale when it triggers and re-checked at every scale change, transposing when it can and exiting when it can't. The spec already contained the ramped transposition that became the glide.
+                    Before development began I wrote the whole system out as a design document, the "Sample Particle System." The triggering logic above is nearly verbatim from that spec, which already contained the ramped transposition that became the glide.
                 </p>
                 <p>
-                    Nathan built the engine, and Scale Navigator integration was there in week one ("Debounce scale changes from MIDI," March 26, 2021). I owned the sample corpus, the metadata standard, and my own performance file.
+                    Nathan built the engine, and Scale Navigator integration was there in week one ("Debounce scale changes from MIDI," March 26, 2021). I owned the sample corpus, the metadata standard, and my own performance file. As I described it to a friend once development was underway: "Snaps! Scale Navigator particle system, a super collider back end coded by Nathan ho. Basically, samples trigger at regular intervals. The script is listening for changes to scale Navigator. When the scale changes, the script will transpose the currently playing scales. So that they fit the harmonic context of the current scale. [For a] particular genre, I just have to choose samples that fit in that particular genre."
                 </p>
                 <p>
                     The <a href="https://github.com/nhthn/snaps" target="_blank">repo lives under <code>nhthn/</code></a>, Ho's account, and it is now completely open source: all you need is an Akai MIDImix, SuperCollider, a DAW and Loopback, and a properly-tagged sample library, and you're good to go! For years I performed out of an instrument hosted in my collaborator's GitHub, and contributed engine code back through reviewed PRs.
@@ -164,6 +167,9 @@
             <div class="project-text-section">
                 <p class="section-eyebrow">Design decision</p>
                 <h3>Three modes, one engine</h3>
+                <p>
+                    The modes accumulated across the collaboration with Ho. The first particles were one-shots, emitted to form a cloud: a swarm of nanobots or drones that reshapes itself to fit the weather, where the weather patterns are the harmonic state. Then came the question of particles with a different kind of life span, one whose life never ends, and that's a loop. The Sequencer, a canvas where samples are laid out in time, only arrived in the JUCE C++ era.
+                </p>
                 <p>
                     The plugin plays the same particle engine three ways. Emitter streams samples continuously at a chosen rate, Looper holds chosen samples as sustaining loops on pads, and Sequencer lays samples out on a timeline. Whatever is sounding when the scale changes obeys the same rule in every mode: bend to fit, or make an exit. The window itself is scale-aware too: the whole interface takes on the root color of the current scale, so the three screenshots on this page are red, orange, and gold because they were taken in C, F, and A♯.
                 </p>
