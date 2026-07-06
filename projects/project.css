@@ -216,6 +216,30 @@ body {
     height: calc((min(100vw - 48px, 672px) - 8px) / 3.188);
 }
 
+/* Equal-height rows of mixed aspect ratios: each image's flex-grow is set inline to its aspect ratio */
+.image-row--fit {
+    flex-wrap: nowrap;
+}
+
+/* Small figure floated beside text */
+.project-text-section--flow {
+    display: flow-root;
+}
+
+.float-figure {
+    float: right;
+    width: 180px;
+    margin: 4px 0 16px 24px;
+}
+
+.float-figure .project-image {
+    margin: 0 0 8px;
+}
+
+.float-figure .image-caption {
+    margin: 0;
+}
+
 /* Video embeds */
 .video-container {
     position: relative;
@@ -276,5 +300,10 @@ body {
 @media (max-width: 600px) {
     .project-page {
         padding: 24px 16px;
+    }
+
+    .float-figure {
+        width: 132px;
+        margin-left: 16px;
     }
 }

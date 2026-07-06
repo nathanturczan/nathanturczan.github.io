@@ -52,12 +52,15 @@
             <div class="project-text-section">
                 <p class="section-eyebrow">Insight</p>
                 <p>
-                    It started with Dmitri Tymoczko's scale-network research, especially a figure analyzing a Debussy prelude as a walk through neighboring scales. Here was a geometrical description of a famous harmonic language, and it read to me like a design spec. I wanted to build the car, drive it fast, take it to its logical conclusion: make it interactive, and then hand other people the keys.
+                    It started with Dmitri Tymoczko's scale-network research: figures where each seven-note scale sits at the center of every scale one note away, and an analysis of a Debussy prelude as a walk through that network. Here was a geometrical description of a famous harmonic language, and it read to me like a design spec. I wanted to build the car, drive it fast, take it to its logical conclusion: make it interactive, and then hand other people the keys.
                 </p>
             </div>
 
-            <img src="../images/dashboard/prologue/tymoczko_debussy_scale_map.png" alt="Tymoczko's diagram of a Debussy prelude moving between whole-tone, acoustic, diatonic, and harmonic scales" class="project-image">
-            <p class="image-caption">The figure that became a spec: Debussy moving scale to scale, one collection at a time. Hexagons and rectangles already encode scale type.</p>
+            <div class="image-row image-row--fit">
+                <img src="../images/dashboard/prologue/seven_note_intersects.png" alt="Tymoczko's three graphs of the seven-note scales: C diatonic drawn as a hexagon with six one-note neighbors, C acoustic as a rectangle with four, and the harmonic scales as trapezoids" class="project-image" style="flex: 1.3634 1 0%">
+                <img src="../images/dashboard/mobile/Simulator Screenshot - iPhone 17 - 2026-02-16 at 22.19.48.png" alt="The mobile Navigator today: a D-flat diatonic hexagon at center, ringed by its six one-note neighbors, with scale and chord readouts below" class="project-image" style="flex: 0.46 1 0%">
+            </div>
+            <p class="image-caption">The figure I adopted almost verbatim, beside the mobile Navigator today: hexagons for diatonic, rectangles for acoustic, trapezoids for the harmonic scales, each drawn at the center of its one-note neighbors.</p>
 
             <div class="project-text-section">
                 <p class="section-eyebrow">Prototype</p>
@@ -66,9 +69,6 @@
                     The first build, summer 2018, was a p5.js sketch you steered with the number keys: press 1 through 6 to move to a neighboring scale, and the whole network re-orbits around your new position. I was a music tech MFA at CalArts who could barely program, so Dexter Shepherd and Colin Honigman paired with me twice a week.
                 </p>
             </div>
-
-            <img src="../images/dashboard/prologue/keyboard_era_green_bg_monitor_photo.png" alt="Photo of a monitor showing the 2018 prototype: a blue hexagon at center of a green field, ringed by neighbor scales, with the instruction to type 1 through 6" class="project-image">
-            <p class="image-caption">The 2018 prototype. Bottom right, the entire interface manual: "Type on your keyboard: 1 through 6 to navigate the scale network."</p>
 
             <video class="project-image" autoplay loop muted playsinline aria-label="Animation of the early p5.js prototype re-orbiting the scale network around each newly chosen scale">
                 <source src="../images/dashboard/prologue/p5_era_orbiting_network_animation.mp4" type="video/mp4">
@@ -81,10 +81,9 @@
                 </p>
             </div>
 
-            <div class="image-row">
-                <img src="../images/modal.png" alt="Nathan at the podium during Modal Intersections, 2018: player pianos, video projection, custom software" class="project-image">
-                <img src="../images/dashboard/prologue/modal_aerial.jpg" alt="Aerial view of the Modal Intersections stage: a podium holding the score and the Scale Navigator screen, pianos at either side, video projected across the walls" class="project-image">
-            </div>
+            <video class="project-image" autoplay loop muted playsinline aria-label="Nathan at the podium during Modal Intersections, silhouetted against footage of a Los Angeles freeway, running the Scale Navigator live">
+                <source src="../images/dashboard/prologue/modal_intersections_video_oct2018.mp4" type="video/mp4">
+            </video>
             <p class="image-caption">Modal Intersections, October 2018: the prototype on the podium, driving player pianos under video projection in its first year.</p>
 
             <div class="project-text-section">
@@ -101,21 +100,44 @@
                 </p>
             </div>
 
-            <div class="image-row">
-                <img src="../images/dashboard/prologue/2020_a_diatonic_pastel.png" alt="2020 pastel-toned interface centered on A diatonic, with root-movement checkboxes, a voice-leading smoothness slider, and a scalar supersets panel" class="project-image">
-                <img src="../images/dashboard/prologue/2020_c_diatonic_webmidi_iac.png" alt="2020 interface centered on C diatonic with an IAC Driver MIDI output selected" class="project-image">
-            </div>
+            <img src="../images/dashboard/prologue/keyboard_era_green_bg_monitor_photo.png" alt="Photo of a monitor showing the 2018 prototype: a blue hexagon at center of a green field, ringed by neighbor scales, with the instruction to type 1 through 6" class="project-image">
+            <p class="image-caption">The 2018 prototype. Bottom right, the entire interface manual: "Type on your keyboard: 1 through 6 to navigate the scale network."</p>
+
+            <img src="../images/dashboard/prologue/2020_c_diatonic_webmidi_iac.png" alt="2020 interface centered on C diatonic, with root-movement checkboxes, a voice-leading smoothness slider, a scalar supersets panel, and an IAC Driver MIDI output selected" class="project-image">
             <p class="image-caption">The 2020 instrument era. Notice the voice-leading smoothness slider, the root-movement checkboxes, and the IAC MIDI output at bottom: the ideas that later became the plugin.</p>
 
-            <div class="project-text-section">
+            <div class="image-row image-row--fit">
+                <img src="../images/dashboard/prologue/vanilla_mobile_network.png" alt="Vanilla JavaScript app on a phone: the full scale network as colored polygons joined by edges" class="project-image" style="flex: 0.5625 1 0%">
+                <img src="../images/dashboard/prologue/vanilla_mobile_tablature.png" alt="Vanilla JavaScript app on a phone: tablature view with a staff, piano keys, and ukulele fretboards" class="project-image" style="flex: 0.5625 1 0%">
+                <img src="../images/dashboard/prologue/vanilla_mobile_midi.png" alt="Vanilla JavaScript app on a phone: MIDI settings for mode, root, note number, port, and channel" class="project-image" style="flex: 0.5625 1 0%">
+            </div>
+            <p class="image-caption">The vanilla-JavaScript app on a phone, 2021: network visualization, tablature, and MIDI routing, all there before the rebuild.</p>
+
+            <img src="../images/dashboard/prologue/freeman_pink_desktop_ensemble.png" alt="Jono and Dylan Freeman's pink desktop UI concept: a Join an Ensemble screen with cards for shared rooms" class="project-image">
+            <p class="image-caption">Jono and Dylan's first UI direction: pink, playful, ensemble-first.</p>
+
+            <div class="image-row">
+                <img src="../images/dashboard/prologue/pink_wireframe_navigator.png" alt="Pink mobile wireframe of the Navigator: C diatonic at the center of its neighbors, with an autopilot toggle" class="project-image">
+                <img src="../images/dashboard/prologue/pink_wireframe_tablature.png" alt="Pink mobile wireframe of the Tablature view, with instrument chips for banjo, piano, triads, and flute" class="project-image">
+            </div>
+            <p class="image-caption">The pink direction on mobile, August 2021: Navigator and Tablature wireframes.</p>
+
+            <div class="image-row image-row--fit">
+                <img src="../images/dashboard/prologue/midperiod_mobile_navigator.png" alt="Mid-period mobile build: black theme with the script Dashboard wordmark, G diatonic at the center of the network" class="project-image" style="flex: 0.45 1 0%">
+                <img src="../images/dashboard/prologue/midperiod_desktop_network.png" alt="Mid-period desktop app in the browser: black and yellow theme showing E-flat hexatonic above the full scale network" class="project-image" style="flex: 1.2402 1 0%">
+            </div>
+            <p class="image-caption">The black-and-yellow direction wins: mid-period mobile (September 2021) and desktop (February 2022).</p>
+
+            <div class="project-text-section project-text-section--flow">
                 <h3>Going all-in</h3>
+                <div class="float-figure">
+                    <img src="../images/dashboard/prologue/navigator_postit_spec.jpeg" alt="Pen drawing on a blue Post-it: a central node with six spokes, one spoke expanding into its own cluster of nodes" class="project-image">
+                    <p class="image-caption">The interaction spec, complete.</p>
+                </div>
                 <p>
                     Outside my day job, I went all-in on the tool. In July 2021 I rebuilt it as a React app (first commit July 23, 2021), with Michael Maurer shaping the early architecture and Ondřej Sedláček as the first contracted engineer. The interaction spec fit on a Post-it: your scale in the middle, its neighbors around it, and one neighbor already unfolding into its own neighborhood.
                 </p>
             </div>
-
-            <img src="../images/dashboard/prologue/navigator_postit_spec.jpeg" alt="Pen drawing on a blue Post-it: a central node with six spokes, one spoke expanding into its own cluster of nodes" class="project-image">
-            <p class="image-caption">The interaction spec, complete: where you are, where you can go, and where you could go after that.</p>
 
             <div class="project-text-section">
                 <h3>Two critiques, one weekend</h3>
@@ -133,8 +155,11 @@
                 </p>
             </div>
 
-            <img src="../images/dashboard/prologue/notepad_wireframe_annotated_aug2021.png" alt="Annotated wireframe of a Notepad tab: a row of saved scale polygons above a chord progression on a grand staff, with arrows marking draggable elements" class="project-image">
-            <p class="image-caption">The Notepad wireframe, drawn the weekend of Arthur's critique. It shipped as the Score workspace in February 2026, four and a half years later.</p>
+            <div class="image-row image-row--fit">
+                <img src="../images/dashboard/sketchpad_mobile_mar2026.png" alt="The Sketchpad workspace on a phone: five saved scale-and-chord cards arranged on a freeform canvas, each keeping its scale-class shape and root color from the network" class="project-image" style="flex: 0.4937 1 0%">
+                <img src="../images/dashboard/sketchpad_dev_apr2026.png" alt="The Sketchpad as a flowchart: saved scale-and-chord cards wired together with connection lines on a phone-sized canvas" class="project-image" style="flex: 0.6843 1 0%">
+            </div>
+            <p class="image-caption">What that weekend's sketch became: the Sketchpad, shipped March 2026. Saved harmonic states live as cards on a freeform canvas and wire together into progressions.</p>
 
             <div class="project-text-section">
                 <h3>Visual identity</h3>
@@ -143,8 +168,8 @@
                 </p>
             </div>
 
-            <img src="../images/dashboard/prologue/freeman_color_diagram_pitch_class_system_aug2021.png" alt="Freeman brothers' diagram assigning each of the twelve pitch classes a color around the circle of fifths" class="project-image">
-            <p class="image-caption">The pitch-class color system, August 2021: every root gets one color, everywhere in the product.</p>
+            <img src="../images/dashboard/prologue/freeman_direction_1_juicy_brand_board.jpg" alt="Freeman brothers' brand board for the Juicy direction: color palette, scale-class shapes, UI elements, and display typography on a pink gradient" class="project-image">
+            <p class="image-caption">One of the competing brand boards, August 2021: "Direction 1 - Juicy."</p>
 
             <div class="project-text-section">
                 <p>
@@ -153,10 +178,17 @@
             </div>
 
             <div class="image-row">
+                <img src="../images/dashboard/prologue/mobile_pen_wireframe_2.jpg" alt="Pen wireframe numbered 2: the center scale and its neighbors fitted inside a phone outline, with a menu list and tablature panel sketched beside it" class="project-image">
                 <img src="../images/dashboard/prologue/mobile_pen_wireframe_3_squish.jpg" alt="Pen wireframe showing the scale network compressed into a phone-width column" class="project-image">
-                <img src="../images/dashboard/prologue/midperiod_android/midperiod_android_1.png" alt="Android build of the Navigator tab: C diatonic hexagon with six neighbors above the full 57-scale network, black and yellow theme" class="project-image">
             </div>
-            <p class="image-caption">Pen sketch to shipped Android build (October 2022): the same center-plus-neighbors layout, squished to one thumb.</p>
+            <p class="image-caption">Notebook pages working out the squish.</p>
+
+            <div class="image-row image-row--fit">
+                <img src="../images/dashboard/prologue/midperiod_android/midperiod_android_1.png" alt="Android build of the Navigator tab: C diatonic hexagon with six neighbors above the full 57-scale network, black and yellow theme" class="project-image" style="flex: 0.45 1 0%">
+                <img src="../images/dashboard/prologue/midperiod_android/midperiod_android_2.png" alt="Android build of the Chords tab: the current scale above a Play button, the current chord, and its notation on grand staves" class="project-image" style="flex: 0.45 1 0%">
+                <img src="../images/dashboard/prologue/midperiod_android/midperiod_android_3.png" alt="Android build of the Tablature tab: the current scale rendered on a ukulele fretboard and flute fingerings" class="project-image" style="flex: 0.45 1 0%">
+            </div>
+            <p class="image-caption">The shipped Android build, October 2022: the same center-plus-neighbors layout, squished to one thumb.</p>
 
             <div class="project-text-section">
                 <h3>Later critiques that shipped</h3>
@@ -164,12 +196,6 @@
                     Ben Tillotson (December 30, 2025) gave me two things in one session: proof of demand for a DAW plugin, and the observation that the root colors had gone washed-out and illegible. I spent a full day back in color space re-saturating the palette. Lily Clark (January 2026) pushed for hard edges and a plain wordmark, which finally retired the 2021 script logo.
                 </p>
             </div>
-
-            <div class="image-row">
-                <img src="../images/dashboard/prologue/2026_phone_mockup_plain_wordmark.png" alt="2026 phone mockup with a plain sans-serif Scale Navigator wordmark" class="project-image">
-                <img src="../images/dashboard/prologue/2026_phone_mockup_psychedelic_wordmark.png" alt="2026 phone mockup with a psychedelic decorative wordmark" class="project-image">
-            </div>
-            <p class="image-caption">Two 2026 wordmark directions. The plain one (left) won.</p>
 
             <div class="project-text-section">
                 <p class="section-eyebrow">Failure</p>
@@ -193,11 +219,11 @@
                 </p>
             </div>
 
-            <img src="../images/dashboard/desktop/Screenshot 2026-02-17 at 9.28.29 AM.png" alt="The Score workspace: a chord progression on grand staves with scale-labeled segments above, and Export MIDI, Export LilyPond, and Export PDF buttons below" class="project-image">
-            <p class="image-caption">The Score workspace, February 2026: the 2021 Notepad wireframe shipped. Saved scales run above the staves, and the progression exports to MIDI, LilyPond, or PDF.</p>
-
-            <img src="../images/dashboard/sketchpad_mobile_mar2026.png" alt="The Sketchpad workspace on a phone: five saved scale-and-chord cards arranged on a freeform canvas, each keeping its scale-class shape and root color from the network" class="project-image project-image--portrait">
-            <p class="image-caption">The Sketchpad, March 2026: harmonic states saved as cards on a freeform canvas. Each card keeps its scale-class shape and root color from the network.</p>
+            <div class="image-row image-row--fit">
+                <img src="../images/dashboard/prologue/notepad_wireframe_annotated_aug2021.png" alt="Annotated wireframe of a Notepad tab: a row of saved scale polygons above a chord progression on a grand staff, with arrows marking draggable elements" class="project-image" style="flex: 1.7778 1 0%">
+                <img src="../images/dashboard/desktop/Screenshot 2026-02-17 at 9.28.29 AM.png" alt="The Score workspace: a chord progression on grand staves with scale-labeled segments above, and Export MIDI, Export LilyPond, and Export PDF buttons below" class="project-image" style="flex: 1.5941 1 0%">
+            </div>
+            <p class="image-caption">The 2021 Notepad wireframe, drawn the weekend of Arthur's critique, beside the Score workspace that shipped it in February 2026. Saved scales run above the staves, and the progression exports to MIDI, LilyPond, or PDF.</p>
 
             <div class="image-row">
                 <img src="../images/dashboard/desktop/Screenshot 2026-02-17 at 9.26.24 AM.png" alt="Visualization tab showing the full 57-scale network in 3D with per-scale-class filters and a Planar Layout toggle" class="project-image">
@@ -221,7 +247,6 @@
             </div>
 
             <div class="image-row">
-                <img src="../images/dashboard/mobile/Simulator Screenshot - iPhone 17 - 2026-02-16 at 22.19.48.png" alt="Dashboard iOS app showing the scale network" class="project-image">
                 <img src="../images/dashboard/mobile/Simulator Screenshot - iPhone 17 - 2026-02-16 at 22.19.54.png" alt="Dashboard iOS app scale detail view" class="project-image">
                 <img src="../images/dashboard/mobile/Simulator Screenshot - iPhone 17 - 2026-02-16 at 22.20.01.png" alt="Dashboard iOS app chord view" class="project-image">
             </div>
