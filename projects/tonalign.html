@@ -19,7 +19,7 @@
                 </div>
                 <div class="divider-line"></div>
                 <p class="project-tagline">Role · Designer & developer</p>
-                <p class="project-tagline">With · Brady Boettcher (C++/JUCE) · Dylan & Jono Freeman (2022 UI round)</p>
+                <p class="project-tagline">With · Brady Boettcher (C++/JUCE)</p>
                 <p class="project-description">Platforms · VST3 / AU (macOS, Windows)</p>
             </div>
 
@@ -42,7 +42,7 @@
                     I am not a great pianist. My left hand is a liability, and I don't have the fluent muscle memory with chords and scales that comes from years of practice. But I know how to noodle: I know how to mash on the keyboard and hear what I meant to play, even when what came out was a half step off.
                 </p>
                 <p>
-                    There's a jazz saying that you're only ever a half step away from the right note. Tonalign is that saying turned into a plugin: AutoTune for MIDI. Play a note outside the current scale and what comes out is its nearest available neighbor, corrected in real time inside the DAW. The incoming note is kept and shown, so you can always see what you played against what the plugin let through.
+                    There's a jazz saying that you're only ever a half step away from the right note. Tonalign is that saying turned into a plugin: AutoTune for MIDI. The shortest explanation has barely changed in five years: by January 2022 I was already describing it to a friend as "basically autotune for MIDI in the context of the scale network." Play a note outside the current scale and what comes out is its nearest available neighbor, corrected in real time inside the DAW. The incoming note is kept and shown, so you can always see what you played against what the plugin let through.
                 </p>
             </div>
 
@@ -59,12 +59,12 @@
 
             <div class="project-text-section">
                 <p class="section-eyebrow">Prototype</p>
-                <h3>Four weeks in, already recruiting testers</h3>
+                <h3>Getting it under people's hands</h3>
                 <p>
-                    Four weeks after the first commit I had a running plugin and was already asking people to test it. The earliest screenshot, from July 26, 2021, went to Andrew Piepenbrink with "Cooking with gas Andrew!!!!" By January 19, 2022 I was describing it to a friend as "basically autotune for MIDI in the context of the scale network." One repo, three names, five years: Scale Navigator MIDI VST (2021), PitchSnap (2026), Tonalign (2026).
+                    Within a month I had a working plugin correcting notes in real time and was already handing builds to friends. The project would eventually wear three names (Scale Navigator MIDI VST, PitchSnap, and finally Tonalign), but the central idea never changed: take incoming MIDI, constrain it to the current harmonic context, and let players hear what they meant rather than what their fingers landed on.
                 </p>
                 <p>
-                    This was my first serious work in JUCE and C++, and the start of a five-year collaboration with Brady Boettcher, who came in via a JUCE forum post, mid-pandemic, on the other side of the world. The pair-programming sessions are literally the branch names in the repo: <code>bboettcher3/session_1</code> and up. He brought the C++ and JUCE depth; I brought the design and the connection to the wider Scale Navigator system.
+                    Brady Boettcher came into the project through a JUCE forum post during the pandemic. What started as getting my first plugin off the ground became an ongoing conversation that still shapes my work. He's one of the people I regularly call when I'm stuck on a problem in music technology, MIDI, harmony, or plugin architecture. The early pair-programming sessions are still preserved in the repo as branch names: <code>bboettcher3/session_1</code> and up.
                 </p>
             </div>
 
@@ -81,7 +81,7 @@
                     The first failure surfaced in week four, in a message to Brady: "when correcting notes, if 2 notes are corrected to the same midi note, how to handle that case." Two different wrong notes collapse onto the same right note: a collision the player never asked for and can't see. That exact edge case, overlapping corrections in fast passages, is still one I'm tuning in 2026.
                 </p>
                 <p>
-                    The second came back in writing. In week eight, Tristan Whitehill sent the first external QA report on the plugin: "the initial setup inside the users DAW was not exactly clear when approaching blind," a chord-button bug, previous-chord tones bleeding through, and "I couldn't remember the buttons I had pressed in succession." The correction was working and the player still couldn't hold onto what had happened.
+                    The second came back in writing. In week eight, <a href="https://tristanwhitehill.com/">Tristan Whitehill</a> (Euglossine) sent the first external QA report on the plugin: "the initial setup inside the users DAW was not exactly clear when approaching blind," a chord-button bug, previous-chord tones bleeding through, and "I couldn't remember the buttons I had pressed in succession." The correction was working and the player still couldn't hold onto what had happened.
                 </p>
             </div>
 
@@ -92,7 +92,7 @@
                     The design question stayed the same the whole way: draw the in/out delta. The drawing kept changing.
                 </p>
                 <p>
-                    <strong>2022, the mockup.</strong> In February 2022 I made two high-fidelity mockups myself, in the Freeman brand system, and narrated them to Dylan and Jono Freeman feature by feature: "and then, on the right, some MIDI routing to show what notes are being played, how these notes are being re-mapped, and how the notes are being outputted." It's drawn as three keyboards, input, mapping, output: a literal signal-flow diagram of the correction.
+                    <strong>2022, the mockup.</strong> In February 2022 I produced a series of high-fidelity mockups exploring different ways to visualize the correction, narrating them feature by feature: "and then, on the right, some MIDI routing to show what notes are being played, how these notes are being re-mapped, and how the notes are being outputted." It's drawn as three keyboards, input, mapping, output: a literal signal-flow diagram of the correction.
                 </p>
             </div>
 
@@ -174,7 +174,7 @@
             <div class="project-text-section">
                 <h3>Credits</h3>
                 <p>
-                    Brady Boettcher, C++/JUCE engineering, from July 2021 to the present. Dylan and Jono Freeman, the 2022 UI design round. Tristan Whitehill, the first external QA report.
+                    Brady Boettcher, C++/JUCE engineering, from July 2021 to the present. Tristan Whitehill, the first external QA report.
                 </p>
             </div>
 
