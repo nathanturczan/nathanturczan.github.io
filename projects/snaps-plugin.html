@@ -133,6 +133,20 @@
 
             <div class="project-text-section">
                 <p class="section-eyebrow">Design decision</p>
+                <h3>Three modes, one engine</h3>
+                <p>
+                    The plugin plays the same particle engine three ways. Emitter streams samples continuously at a chosen rate, Looper holds chosen samples as sustaining loops on pads, and Sequencer lays samples out on a timeline. Whatever is sounding when the scale changes obeys the same rule in every mode: bend to fit, or make an exit. The window itself is scale-aware too: the whole interface takes on the root color of the current scale, so the three screenshots on this page are red, orange, and gold because they were taken in C, F, and A♯.
+                </p>
+            </div>
+
+            <img src="../images/snaps/snaps_looper.png" alt="The Looper tab in F harmonic minor: four pads (duduk, viola, organ, glass), each with a waveform and a transposition badge" class="project-image">
+            <p class="image-caption">Looper mode in F harmonic minor: duduk, viola, organ, and glass held as loops, each badge showing how far its sample has bent to fit (−6st, −5st, +0st).</p>
+
+            <img src="../images/snaps/snaps_sequencer.png" alt="The Sequencer tab in A-sharp harmonic major: sample lanes staggered across a timeline, with an active-samples list showing per-sample transpositions" class="project-image">
+            <p class="image-caption">Sequencer mode in A♯ harmonic major: Casio tape samples staggered across the timeline, the active-samples list tracking each one's transposition.</p>
+
+            <div class="project-text-section">
+                <p class="section-eyebrow">Design decision</p>
                 <h3>The failure is the instrument</h3>
                 <p>
                     There's a case a cost function can't rescue: a sample whose pitch content simply can't fit the new scale at any transposition. The safe move is to mute it. I refused to, because a muted voice is a hole in the texture and a silent admission that the tool broke. That refusal is in the original spec: instead of fading out, an incompatible sample could be band-pass filtered down to whichever of its pitches survives in the new scale, sweeping back open when the harmony lets it back in. The stutters and Doppler exits are descendants of that filter sweep.
