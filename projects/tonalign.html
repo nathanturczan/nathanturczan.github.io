@@ -135,6 +135,16 @@
             </div>
 
             <div class="project-text-section">
+                <h3>Correction style: the feature that came last</h3>
+                <p>
+                    The Correction dropdown is the newest idea in the plugin, and it started in a car. Brady and I were catching up, and he'd been <a href="https://www.linkedin.com/posts/brady-boettcher-2166b090_niche-project-alert-a-scale-first-interface-ugcPost-7474883019816824832-3x1E/" target="_blank">mapping Scale Navigator scales onto the LinnStrument</a> (<a href="https://github.com/StrangeLoopsAudio/LinnStrument-Scale-Navigator" target="_blank">code on his Strange Loops GitHub</a>), and he felt strongly that there should be other interaction modes for how corrected notes land on the keyboard. Correction had always folded neighbors together: in C diatonic, the C and C♯ keys both come out as C. But what if C♯ came out as D? Collapsing the whole keyboard chromatically onto the scale sounded incredible, and it shipped as Stack (Chrom).
+                </p>
+                <p>
+                    The next idea followed directly from that one: ignore the black keys entirely and apply the same stack to the white notes alone. That became Stack (White), and it's fun for a practical reason too: you never have to deal with the fingering shifts that come from mixing black keys into white. Both landed in v1.0.3, June 2026, and the dropdown now reads Corrective, Filter, Stack (Chrom), Stack (White): four answers to what a correction layer should do with a note that doesn't fit, two of them from one car ride.
+                </p>
+            </div>
+
+            <div class="project-text-section">
                 <p class="section-eyebrow">Outcome</p>
                 <p>
                     Tonalign shipped publicly in January 2022 as Scale Navigator MIDI VST, and again, rebuilt, under its current name in 2026. Since then it has been the MIDI-correction layer in every live session I run, including every Ensemble Jammer deployment. It's the "silent" plugin the rest of the ecosystem leans on: it subscribes to Dashboard's shared harmonic state and corrects against whatever chord or scale the room is currently in, no configuration.
