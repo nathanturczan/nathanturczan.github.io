@@ -140,6 +140,21 @@ An earlier transcribed EJ demo than the Mar 22 Tristan one (§1d), to an Apple C
 
 Candidate use: the design-rationale quotes (Venn stacking, pitch tagging) for the instrument sections; the pocket-technology principle as a thesis line.
 
+## 1h. The music-educator field interview, Feb 15, 2026 (Tanner Pfeiffer — `business/09_Advisors/tanner_pfeiffer/Feb 15 at 4-45 PM.txt`; EVIDENCE.md §12.11)
+
+Tanner (middle/high-school music teacher; also the *earliest* ensemble-app tester — Feb 27, 2021 share) gives Nathan an in-person field interview on what a real general-music classroom looks like. This is the EJ education-market user research, on tape:
+
+- **The assumption-shattering moment, in Nathan's own words**: Tanner describes students with no music at home ("They don't know how to tap their toe to the beat… they'll be in sixth or seventh grade, I'm their first music teacher ever"). Nathan, mid-call: "I guess I have to come to grips with the fact that that's really more the reality. **So I'm operating on some bad assumptions, maybe.**" A designer revising his model of the user out loud.
+- **Why beginners quit — the retention insight**: "People are usually excited to start an instrument… and then they discover that it is difficult. **The discovery of difficulty is kind of like a dark night of the soul situation** — they kind of give up." Tanner stopped teaching guitar/piano to middle-schoolers entirely (pinky strength, collapsed hand shapes). EJ's remove-the-difficulty premise, stated by a teacher from the failure side.
+- **Deployment constraints learned**: middle-schoolers surrender phones to advisors; high-schoolers keep them all day; admin resistance ("we're really more interested in singing and the instruments, so we don't want to bring technology into this"); prior art in classrooms (Chrome Music Lab et al.); mixed-ability classes solved with self-paced units.
+- **Nathan pitches the EJ model live, against those constraints**: "Everyone's got a phone in their pocket… scan a QR code, go to a website and just start making music together. **It's like a Kalimba that's free** — already on that student's phone." Plus the equity caveat unprompted: "maybe some kids don't have a phone because they can't afford one, and then ideally [you'd have] phones to hand out… iPads or whatever."
+- **Tanner's design counter**: "Some kind of physicality, like the responsiveness, is important — that's sort of like where the Orba found its success."
+- **The strategic conclusion, dated**: "Maybe any project that we work on… people need to self-select for already being interested in music. Which makes me feel like the music education thing is just way more of an uphill battle." (EJ's later positioning follows this.)
+- **Venn7 line**: "Nathan Ho and I have been talking a lot about turning the Venn7 [transcribed 'vent 7'] interface into something real" — six days *after* the Feb 9 Brady demo of the Venn Melody Maker (§1g), so "something real" likely means a further/standalone form; quote neutrally.
+- **Live demo reactions** (tail of the transcript; speaker labels garbled — attribute cautiously): "**I feel like I'm more playing an instrument when I get to do this**"; "I'm excited to compose with this, too"; the full aggregate read as "**a seven-note pivot chord** — you have everything in there… the motion to anything else"; feature wish: "**I really want to play some Bach inventions through this to see it visualized**" (with the voices discussion: inventions are 2–3 voices, "even a fugue is only ever four… so you'd only ever get that deep"); "I love this thing. This thing's really fun. And I MIDI out, too, so we can control other instruments." And the mission line: "**I just want to bring this to people… a lot of schools, a lot of really bored people out there** who are dying [for] someone with some passion… bring it to them and have a fun hour or so."
+
+Candidate use: the field-research beat (designer interviews a teacher, revises assumptions, extracts constraints: phones-in-pockets vs. phone bans, physicality, self-selection) is exactly the research-informed-design evidence the Apple JD wants; "dark night of the soul" + "Kalimba that's free" are the quotable pair.
+
 ---
 
 ## 2. What the current page already has (baseline)
