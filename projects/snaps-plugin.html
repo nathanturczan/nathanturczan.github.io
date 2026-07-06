@@ -128,8 +128,17 @@
                     Small moves beat large ones. Downward moves beat upward moves of equal size. The aggregate texture modulates the way an ensemble does, by the least sufficient motion.
                 </p>
                 <p>
-                    The glide itself carries the same logic. The most expressive curve is entirely <a href="https://nathan.ho.name/posts/oddvoices-dev-log-3/" target="_blank">Ho's idea, from his oddvoices research</a>: a large ascending glide first dips a quarter semitone before rising, and a descending glide overshoots half a semitone below its target and settles up into it. It's how instrumentalists actually connect pitches, and it made samples glide like a voice, not a machine.
+                    The glide itself carries the same logic, and its shape is entirely <a href="https://nathan.ho.name/posts/oddvoices-dev-log-3/" target="_blank">Ho's, from his oddvoices research</a>. He couldn't find much published data on portamento, so he collected his own: a singer performing ascending and descending two-note melodies with "natural portamento," run through a pitch tracker. Ascending glides prepare, dipping below the starting pitch before they rise, about 70 cents on a minor third. Descending glides overshoot, dropping nearly a semitone and a half past the target and settling up into it. Never the reverse, which makes sense physiologically: "you're much more likely to involuntarily relax in pitch rather than tense up." SNaPS samples glide along that measured shape, like a voice, not a machine.
                 </p>
+            </div>
+
+            <div class="image-row">
+                <img src="../images/snaps/oddvoices_portamento_ascending_m3.png" alt="Pitch-tracker plot of four sung ascending minor thirds: some takes dip below the starting pitch before rising" class="project-image">
+                <img src="../images/snaps/oddvoices_portamento_descending_m3.png" alt="Pitch-tracker plot of four sung descending minor thirds: most takes overshoot below the target pitch, then settle up into it" class="project-image">
+            </div>
+            <p class="image-caption">Ho's oddvoices measurements, four sung takes of a minor third each way: ascending glides dip before they rise, descending glides plunge past the target and settle up into it. OddVoices models the shape in quarter-sine-wave segments, and SNaPS glides inherit it.</p>
+
+            <div class="project-text-section">
                 <p>
                     <strong>What I rejected:</strong> a single hard-coded glide (mechanical, wrong for half the material), and a UI-first plugin design. The interface barely changed from prototype to release. Almost all the design work happened in the behavior.
                 </p>
@@ -139,7 +148,7 @@
                 <p class="section-eyebrow">Design decision</p>
                 <h3>Seeing the particles</h3>
                 <p>
-                    The plugin's main view makes the particle metaphor visible. Each dot is one playing sample traveling left to right across its lane: its life begins at the left edge and ends at the right, so long samples drift while short ones streak past, and the lane reads as a field of particles moving at different speeds. A sample with more than one pitch class stacks two or more dots vertically, and every dot grows and shrinks with its sample's loudness, so the density and dynamics of the texture are legible at a glance.
+                    The plugin's main view makes the particle metaphor visible. Each dot is one playing sample traveling left to right across its lane: its life begins at the left edge and ends at the right, so long samples drift while short ones streak past, and the lane reads as a field of particles moving at different speeds. A sample with more than one pitch class stacks two or more dots vertically, and every dot grows and shrinks with its sample's loudness, so the density and dynamics of the texture are legible at a glance. The dots are the point: a swarm behaves like an ensemble in a way a sample list never could.
                 </p>
             </div>
 
