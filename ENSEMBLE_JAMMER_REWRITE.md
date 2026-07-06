@@ -124,6 +124,12 @@ A real, documented **design crit of an Ensemble Jammer session video** (youtu.be
 
 ---
 
+## 1f. Provenance point: a proto-Ensemble-Jammer idea in the Feb 23, 2022 Tymoczko meeting (EVIDENCE.md §12.7)
+
+The retrospective writeup of Nathan's first Tymoczko Zoom (`business/09_Advisors/dmitri_tymoczko/tymoczko-feedback-2022-02-23.md`) records, among the meeting's ideas: **"Use iPhones to jam with sax (Ensemble Jammer concept?)"** — the participatory-phones-as-instruments idea was on the table with the field's foundational researcher in **February 2022**, 3.5+ years before Ensemble Jammer development started (first commit Dec 2, 2025). The parenthetical is Nathan's own 2026 annotation connecting the dots. Candidate use: a one-line provenance beat showing the idea's long gestation — sketched in conversation 2022, shipped 2025–26.
+
+---
+
 ## 2. What the current page already has (baseline)
 
 Current structure of `projects/ensemble-jammer.html`: premise (remove harmony as a problem) → v1 suite (Touch Harp, X/Y Lead, Melody Maker, drones, synths, sequencers, loops; Nathan Ho Venn7 credit) → salon test + "no eye contact" insight → v2 motion controls (tilt/shake/pirouette) → v3 campfire problem, Firebase→BLE rewrite → iOS metrics (16% conversion, 299 downloads) → links.
