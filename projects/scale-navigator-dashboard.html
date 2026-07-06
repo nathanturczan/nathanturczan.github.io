@@ -172,7 +172,7 @@
                 <p class="section-eyebrow">Failure</p>
                 <h3>The feature that took four years</h3>
                 <p>
-                    Chord MIDI routing, the ability to send the chords you click to any port, channel, and octave, was specced in November 2021: a pen wireframe I'd sketched days earlier, photographed and handed off. Michael Maurer shipped the routing UI within 48 hours; the routing behind it never worked right. Over the next four years I hired several engineers against the problem, and none of that work merged. I finally fixed it myself on November 1, 2025, right after leaving my job to build the product solo.
+                    Chord MIDI routing, the ability to send the chords you click to any port, channel, and octave, was specced in November 2021: a pen wireframe I'd sketched days earlier, photographed and handed off. Michael Maurer shipped the routing UI within 48 hours, but only scale-note output ever worked behind it. The dropdown was supposed to offer every MIDI type the system knows (chord root, chord prime form, chord voicing, scale root), and I couldn't figure out how to get them populating in React, so for years the panel routed scale notes and nothing else. Over the next four years I hired several engineers against the problem, and none of that work merged. I finally fixed it myself on November 1, 2025, right after leaving my job to build the product solo.
                 </p>
             </div>
 
@@ -180,16 +180,10 @@
             <p class="image-caption">The November 2021 MIDI-output wireframe. The UI shipped in 48 hours; the behavior took four years.</p>
 
             <div class="project-text-section">
-                <p>
-                    There's a deeper criticism I still haven't fully answered. Lachlan, reviewing footage of the system in use, put it plainly: an instrument on which no wrong note can be played is an instrument with no stakes. The current work on chord voicing and onboarding is partly an attempt to give the player back some risk.
-                </p>
-            </div>
-
-            <div class="project-text-section">
                 <p class="section-eyebrow">Final solution</p>
                 <h3>Where harmony should live</h3>
                 <p>
-                    Harmony should live at the center of the production session, not in a browser tab and not duplicated inside every plugin. So I rebuilt Dashboard as a VST3/AU/AAX plugin with automatable parameters: change the scale at bar 32 and the automation lane remembers. Every other Scale Navigator tool subscribes to that state, which makes Dashboard one interface that tells the rest of the session what the harmony is.
+                    Harmony should live at the center of your compositional and production workflow, not in a browser tab and not duplicated inside every plugin. So I rebuilt Dashboard as a VST3/AU/AAX plugin with automatable parameters: change the scale at bar 32 and the automation lane remembers. Every other Scale Navigator tool subscribes to that state, which makes Dashboard one interface that tells the rest of the session what the harmony is.
                 </p>
                 <p>
                     The Score and Sketchpad workspaces, shipped February and March 2026, are the long-delayed answer to Arthur's two questions: you explore the network, find something you like, and drag it into a progression you can keep, replay, and learn from. I emailed Arthur in 2026 to tell him the sketchpad finally existed. He'd moved to Splice by then and was writing a book on music UI.
