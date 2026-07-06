@@ -90,7 +90,7 @@
                     Before any of the behavior mattered, there was a bottleneck that had nothing to do with sound. Every sample the engine plays has to be born knowing its own pitch content, so it can be born into the current scale. For years that meant tagging thousands of samples by hand with their pitch classes. I had the corpus and no way to listen to each one.
                 </p>
                 <p>
-                    The unblock came from Ho, in early 2026, when he pointed me at Basic Pitch, Spotify's open-source ML transcription model. What makes this a real beat instead of a tooling footnote is Ho's own stance: he's a principled AI skeptic who is fine with AI used for data purposes, and this falls squarely under that category. A skeptic recommending an ML tool precisely because it's data work, not generative work.
+                    The unblock came from Ho, in early 2026, when he pointed me at Basic Pitch, Spotify's open-source ML transcription model.
                 </p>
                 <p>
                     I built the Librarian around it: a headless tool (MVP January 31, 2026) that auto-transcribes a sample library into sample→pitch-class-set records. There is no interface here on purpose. The design work was the data model, not the chrome, and the corpus went from a manual bottleneck to an automatic input. The interface couldn't scale until metadata became free.
