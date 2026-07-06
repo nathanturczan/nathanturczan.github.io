@@ -15,7 +15,7 @@
             <div class="project-info">
                 <h1 class="project-title">SOULS</h1>
                 <div class="divider-line"></div>
-                <p class="project-tagline">Role · Generative music & sound design</p>
+                <p class="project-tagline">Role · Interactive music system: design, prototyping, composition</p>
                 <p class="project-tagline">With · Sia & David OReilly</p>
                 <p class="project-description">Platforms · Web · Interactive characters</p>
             </div>
@@ -30,7 +30,7 @@
             <div class="project-text-section">
                 <p class="section-eyebrow">Problem</p>
                 <p>
-                    SOULS is a collection of 10,000 interactive characters by Sia and David OReilly, each one alive with its own ambient music. I designed the generative music system that gives every character a distinct sonic identity. Ten thousand characters can't each get a composition, so the job was to design a small musical vocabulary whose combinations and transpositions could cover all of them.
+                    SOULS is a collection of 10,000 interactive characters by Sia and David OReilly, each one alive with its own ambient music and responsive to its own emotional states. I designed and prototyped the interactive music system that gives every character a distinct sonic identity. Ten thousand characters can't each get a composition, so the job was to design a small musical vocabulary whose combinations and transpositions could cover all of them, and a way for a character to drift through that vocabulary without the listener ever hearing a seam.
                 </p>
             </div>
 
@@ -41,6 +41,48 @@
             <div class="video-container">
                 <iframe src="https://www.youtube.com/embed/SB1XLmoLUII?rel=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
+
+            <div class="project-text-section">
+                <p class="section-eyebrow">Insight</p>
+                <h3>The crossfade is the instrument</h3>
+                <p>
+                    The system grew out of an email thread with David in December 2021 about how to blend between looped ambiences. A naive linear crossfade dips in loudness at the midpoint, so every transition announces itself. The fix is a constant-power crossfade: fade along cosine curves instead of straight lines and the combined energy stays level, so the ear hears one continuous texture changing color rather than two files trading places. I sent David the explanation as Sharpie sketches, one rectangle labeled with the linear crossfade's X, the other with the equal-power curves.
+                </p>
+            </div>
+
+            <img src="../images/souls/souls-crossfade-sketch.jpg" alt="Sharpie sketch comparing two crossfade shapes: a rectangle with straight diagonal lines crossing in an X labeled as the normal crossfade, and a rectangle with two cosine-shaped curves labeled constant power crossfade" class="project-image">
+            <p class="image-caption">The December 2021 sketch I emailed David: a linear crossfade (labeled, in my handwriting, "normal, shitty crossfade") against the "constant power" curves that keep loudness level through the transition.</p>
+
+            <img src="../images/souls/souls-crossfade-diagram.png" alt="Diagram of three overlapping volume triangles labeled sample 1, sample 2, and sample 3 above a horizontal slider with a handle, showing how one slider position mixes adjacent samples" class="project-image">
+            <p class="image-caption">The cleaned-up version: overlapping volume envelopes for adjacent samples along a single slider, so one continuous control moves through the whole set.</p>
+
+            <div class="project-text-section">
+                <p class="section-eyebrow">Prototype</p>
+                <h3>From CodePen to a single parameter</h3>
+                <p>
+                    I built the idea as a series of CodePens: first a naive two-sample crossfader, then the constant-power version, then a six-way crossfader that spreads a whole family of chords across one slider, each chord's volume rising and falling as a triangle along the control's travel. I worked the triangles out as piecewise functions on paper before writing any code. David compressed my gain math into a single line of Tone.js and wrote back: "We will plot this line on a circle and make it a dial!" The dial was step one, a concrete handle the engineers could tie their output to. In the shipped characters that knob-like parameter runs invisibly in the background, driven by the character itself rather than a control anyone turns.
+                </p>
+            </div>
+
+            <img src="../images/souls/souls-crossfader-slider-sketch.jpg" alt="Sharpie sketch of six overlapping volume triangles numbered 0 through 5 arranged along a slider from 0 to 1, with a dB scale from 0dB at full volume to -60dB at silence" class="project-image">
+            <p class="image-caption">The six-way crossfader sketch: chords 0 through 5 as overlapping volume triangles along one slider, 0 dB at each peak, silence between neighbors' peaks.</p>
+
+            <img src="../images/souls/souls-piecewise-math.jpg" alt="Handwritten math on an index card: a triangle plotted on x and y axes with apex at point (c,d), and a four-part piecewise function defining the rising edge, falling edge, and zero regions" class="project-image">
+            <p class="image-caption">The volume triangle as a piecewise function, from the same email. Design work here meant doing the math the interaction needed.</p>
+
+            <div class="project-text-section">
+                <p class="section-eyebrow">Design decision</p>
+                <h3>Closing the circle</h3>
+                <p>
+                    A parameter that wraps around needs a loop, and a slider's worth of chords leaves a gap: six diatonic triads sit on the circle as an open arc, and passing the last one would jump-cut back to the first. The way to close it comes from parsimonious voice leading. Arrange the seven diatonic triads so that every neighboring pair shares two common tones while the third voice moves by a single scale step, and the seventh chord, the diminished triad everyone else would throw away, connects the end of the chain back to the beginning. Every position on the circle is a smooth blend of two chords that are already close relatives, so the harmony never lurches no matter where the character wanders.
+                </p>
+            </div>
+
+            <img src="../images/souls/souls-six-chord-arc.png" alt="Six chord circles labeled Dm, F, Am, C, Em, G clustered along the top of a large circle, leaving most of the circle empty: an open arc that does not close the loop" class="project-image">
+            <p class="image-caption">Six chords on the circle leave an open arc: the loop doesn't close.</p>
+
+            <img src="../images/souls/souls-seven-chord-circle.png" alt="Graph of seven chords arranged evenly around a circle: em, G, b diminished, dm, F, am, C, with lines connecting each neighboring pair, captioned as opportunities for parsimonious voice leading between triads" class="project-image">
+            <p class="image-caption">The diagram I sent David on December 6, 2021: all seven diatonic triads around the circle, each line connecting two triads that share two common tones while the third moves by one scale step. The b&deg; closes the loop so the blend can wrap around with no seam.</p>
 
             <div class="project-text-section">
                 <p class="section-eyebrow">Design decision</p>
@@ -62,12 +104,15 @@
                 <p>
                     The project folders keep the revision history the notebook only hints at. The earliest tests, from November 2021, render a single flute texture across major, minor, seventh, augmented, and fully diminished variants. A family of choral textures (choral-magnetic, choral-robo) ended up in a folder named <code>rejects</code>. The full 21-loop set was recorded and then redone end to end: <code>21_soul_ambiences_OLD</code> sits next to <code>21_soul_ambiences_REVISED</code>, and the notebook's red ink tells the same kind of story, every chord renumbered against an earlier ordering. The green notes in the margin (ocean, minimal!!) are direction for the textures.
                 </p>
+                <p>
+                    The email thread carries the rest of the record. In January 2022 the delivery spec was locked: 21 loops, twenty seconds to a minute each, named by chord number, compressed for the web. Feedback came back in plain language, David flagging that chords 2, 4, and 7 were "too haunting," and my own verdict on the first full set, too bombastic and cinematic for characters meant to be lived with, which is what forced the end-to-end redo. The last fix landed in August 2022, after launch: mp3 compression had shifted the loop points and opened tiny gaps in the seamless loops, so the loops were rebuilt to survive their own compression.
+                </p>
             </div>
 
             <div class="project-text-section">
                 <p class="section-eyebrow">Outcome</p>
                 <p>
-                    The collection launched in July 2022 and reached #3 on Billboard's monthly ranking of top-selling digital collectibles in music, with coverage in Forbes and Designboom.
+                    The collection launched in July 2022, credited "music by Nathan Turczan," and reached #3 on Billboard's monthly ranking of top-selling digital collectibles in music, with coverage in Forbes and Designboom.
                 </p>
             </div>
 
