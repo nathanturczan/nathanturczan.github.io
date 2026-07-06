@@ -30,7 +30,7 @@
             <div class="project-text-section">
                 <p class="section-eyebrow">Problem</p>
                 <p>
-                    SOULS is a collection of 10,000 interactive characters by Sia and David OReilly, each one alive with its own ambient music and responsive to its own emotional states. I designed and prototyped the interactive music system that gives every character a distinct sonic identity. Ten thousand characters can't each get a composition, so the job was to design a small musical vocabulary whose combinations and transpositions could cover all of them, and a way for a character to drift through that vocabulary without the listener ever hearing a seam.
+                    SOULS is a collection of 10,000 interactive characters by Sia and David OReilly, each one alive with its own ambient music and responsive to its own emotional states. Ten thousand characters can't each get a composition, so instead of writing 10,000 soundtracks I designed the rules that generated them: a musical language of 21 recorded loops whose combinations, transpositions, and transitions give every character a distinct sonic identity.
                 </p>
             </div>
 
@@ -43,10 +43,24 @@
             </div>
 
             <div class="project-text-section">
-                <p class="section-eyebrow">Insight</p>
-                <h3>The crossfade is the instrument</h3>
+                <p class="section-eyebrow">Design decision</p>
+                <h3>A language instead of a score</h3>
                 <p>
-                    The system grew out of an email thread with David in December 2021 about how to blend between looped ambiences. A naive linear crossfade dips in loudness at the midpoint, so every transition announces itself. The fix is a constant-power crossfade: fade along cosine curves instead of straight lines and the combined energy stays level, so the ear hears one continuous texture changing color rather than two files trading places. I sent David the explanation as Sharpie sketches, one rectangle labeled with the linear crossfade's X, the other with the equal-power curves.
+                    The vocabulary started in a notebook: 21 chords, all trichords, three notes each, labeled M, m, and Q for major, minor, and quartal. Overlap the right trichords and you get seventh chords, ninth chords, four-note quartal stacks: a vocabulary small enough to record as 21 ambient loops and large enough to reach extended harmony. Those loops, transposed and combined, are the raw material every character draws its identity from.
+                </p>
+            </div>
+
+            <img src="../images/souls/souls-21-chords-notebook.jpg" alt="Notebook spread titled '21 chords for SOULS': a numbered list on the left mapping new chord numbers to old ones, and hand-drawn staff notation on the right, each trichord labeled M, m, or Q" class="project-image">
+            <p class="image-caption">The notebook page: 21 trichords for SOULS, each labeled M, m, or Q (major, minor, quartal).</p>
+
+            <div class="project-text-section">
+                <p class="section-eyebrow">Design decision</p>
+                <h3>Making transitions disappear</h3>
+                <p>
+                    The harder problem was making the transitions disappear, so a character could wander between harmonies without the listener hearing where one recording ends and another begins. The system grew out of an email thread with David in December 2021 about how to blend looped ambiences: a naive crossfade dips in loudness at the midpoint and announces every transition, so I designed a constant-power blend that keeps the combined energy level, and the ear hears one continuous texture changing color rather than two files trading places.
+                </p>
+                <p>
+                    I sent David the idea as Sharpie sketches, then built it as a series of JavaScript and Web Audio interaction tests, extending the blend from two recordings to a whole family of chords spread along a single continuous control.
                 </p>
             </div>
 
@@ -54,58 +68,32 @@
             <p class="image-caption">The December 2021 sketch I emailed David: a linear crossfade (labeled, in my handwriting, "normal, shitty crossfade") against the "constant power" curves that keep loudness level through the transition.</p>
 
             <img src="../images/souls/souls-crossfade-diagram.png" alt="Diagram of three overlapping volume triangles labeled sample 1, sample 2, and sample 3 above a horizontal slider with a handle, showing how one slider position mixes adjacent samples" class="project-image">
-            <p class="image-caption">The cleaned-up version: overlapping volume envelopes for adjacent samples along a single slider, so one continuous control moves through the whole set.</p>
+            <p class="image-caption">The cleaned-up version: overlapping volume envelopes for adjacent recordings along a single slider, so one continuous control moves through the whole set.</p>
 
-            <div class="project-text-section">
-                <p class="section-eyebrow">Prototype</p>
-                <h3>From interaction tests to a single parameter</h3>
-                <p>
-                    I built the idea as a series of JavaScript and Web Audio interaction tests: first a naive two-sample crossfader, then the constant-power version, then a six-way crossfader that spreads a whole family of chords across one slider, each chord's volume rising and falling as a triangle along the control's travel. I worked the triangles out as piecewise functions on paper before writing any code. David compressed my gain math into a single line of Tone.js and wrote back: "We will plot this line on a circle and make it a dial!" The dial was step one, a concrete handle the engineers could tie their output to.
-                </p>
-            </div>
-
-            <img src="../images/souls/souls-crossfader-slider-sketch.jpg" alt="Sharpie sketch of six overlapping volume triangles numbered 0 through 5 arranged along a slider from 0 to 1, with a dB scale from 0dB at full volume to -60dB at silence" class="project-image">
-            <p class="image-caption">The six-way crossfader sketch: chords 0 through 5 as overlapping volume triangles along one slider, 0 dB at each peak, silence between neighbors' peaks.</p>
+            <img src="../images/souls/souls-crossfader-slider-sketch.jpg" alt="Sharpie sketch of six overlapping volume triangles numbered 0 through 5 arranged along a slider from 0 to 1, with a dB scale from full volume to silence" class="project-image">
+            <p class="image-caption">The six-way version: a whole family of chords spread along one control, each rising as its neighbor falls away.</p>
 
             <img src="../images/souls/souls-piecewise-math.jpg" alt="Handwritten math on an index card: a triangle plotted on x and y axes with apex at point (c,d), and a four-part piecewise function defining the rising edge, falling edge, and zero regions" class="project-image">
-            <p class="image-caption">The volume triangle as a piecewise function, from the same email. Design work here meant doing the math the interaction needed.</p>
+            <p class="image-caption">Working the volume curves out on an index card before writing any code.</p>
 
             <div class="project-text-section">
                 <p class="section-eyebrow">Design decision</p>
                 <h3>Closing the circle</h3>
                 <p>
-                    A parameter that wraps around needs a loop, and a slider's worth of chords leaves a gap: six diatonic triads sit on the circle as an open arc, and passing the last one would jump-cut back to the first. The way to close it comes from parsimonious voice leading. Arrange the seven diatonic triads so that every neighboring pair shares two common tones while the third voice moves by a single scale step, and the seventh chord, the diminished triad everyone else would throw away, connects the end of the chain back to the beginning. Every position on the circle is a smooth blend of two chords that are already close relatives, so the harmony never lurches no matter where the character wanders.
+                    The order of the chords mattered as much as the recordings. A control that wraps around needs a loop, and six diatonic triads sit on the circle as an open arc: pass the last one and the music jump-cuts back to the first. So I arranged all seven diatonic triads so that every neighboring pair already shares two of its three notes while the third moves by a single scale step, and the seventh chord, the diminished triad everyone else throws away, connects the end of the chain back to the beginning. Every position on the circle is a blend of two close relatives, so the harmony never lurches no matter where the character wanders.
                 </p>
             </div>
 
             <img src="../images/souls/souls-six-chord-arc.png" alt="Six chord circles labeled Dm, F, Am, C, Em, G clustered along the top of a large circle, leaving most of the circle empty: an open arc that does not close the loop" class="project-image">
             <p class="image-caption">Six chords on the circle leave an open arc: the loop doesn't close.</p>
 
-            <img src="../images/souls/souls-seven-chord-circle.png" alt="Graph of seven chords arranged evenly around a circle: em, G, b diminished, dm, F, am, C, with lines connecting each neighboring pair, captioned as opportunities for parsimonious voice leading between triads" class="project-image">
-            <p class="image-caption">The diagram I sent David on December 6, 2021: all seven diatonic triads around the circle, each line connecting two triads that share two common tones while the third moves by one scale step. The b&deg; closes the loop so the blend can wrap around with no seam.</p>
-
-            <div class="project-text-section">
-                <p class="section-eyebrow">Design decision</p>
-                <h3>21 chords for SOULS</h3>
-                <p>
-                    The system started in a notebook. I wrote out a vocabulary of 21 chords, all trichords, three notes each: major, minor, and quartal, labeled M, m, and Q on the page. Then I did the math on how they could combine: overlap the right trichords and you get seventh chords, ninth chords, eleventh chords, four-note quartal stacks. A vocabulary small enough to record and large enough to reach extended harmony.
-                </p>
-                <p>
-                    Those 21 chords became the template for 21 ambient loops, one per chord. The loops were then transposed mathematically so that each of the 10,000 characters carries a unique musical identity. Honest limits of the record: I no longer remember exactly how that transposition scheme worked, and I don't have the math anymore. The notebook preserved the chord side of the system; the identity math is gone.
-                </p>
-            </div>
-
-            <img src="../images/souls/souls-21-chords-notebook.jpg" alt="Notebook spread titled '21 chords for SOULS': a numbered list on the left mapping new chord numbers to old ones, and hand-drawn staff notation on the right, each trichord labeled M, m, or Q" class="project-image">
-            <p class="image-caption">The notebook page: 21 trichords for SOULS, each labeled M, m, or Q (major, minor, quartal), with a red renumbering pass against an older ordering and a REVISED set sketched below.</p>
+            <img src="../images/souls/souls-seven-chord-circle.png" alt="Graph of seven chords arranged evenly around a circle: em, G, b diminished, dm, F, am, C, with lines connecting each neighboring pair" class="project-image">
+            <p class="image-caption">The diagram I sent David on December 6, 2021: all seven triads around the circle, each line connecting two chords that share two of their three notes. The b&deg; closes the loop so the blend can wrap around with no seam.</p>
 
             <div class="project-text-section">
                 <p class="section-eyebrow">Iteration</p>
-                <h3>Tests, rejects, and a full redo</h3>
                 <p>
-                    The project folders keep the revision history the notebook only hints at. The earliest tests, from November 2021, render a single flute texture across major, minor, seventh, augmented, and fully diminished variants. A family of choral textures (choral-magnetic, choral-robo) ended up in a folder named <code>rejects</code>. The full 21-loop set was recorded and then redone end to end: <code>21_soul_ambiences_OLD</code> sits next to <code>21_soul_ambiences_REVISED</code>, and the notebook's red ink tells the same kind of story, every chord renumbered against an earlier ordering. The green notes in the margin (ocean, minimal!!) are direction for the textures.
-                </p>
-                <p>
-                    The email thread carries the rest of the record. In January 2022 the delivery spec was locked: 21 loops, twenty seconds to a minute each, named by chord number, compressed for the web. Feedback came back in plain language, David flagging that chords 2, 4, and 7 were "too haunting," and my own verdict on the first full set, too bombastic and cinematic for characters meant to be lived with, which is what forced the end-to-end redo. The last fix landed in August 2022, after launch: mp3 compression had shifted the loop points and opened tiny gaps in the seamless loops, so the loops were rebuilt to survive their own compression.
+                    The first full set of loops didn't survive review. David flagged three chords as "too haunting," and my own verdict on the rest was that they were too bombastic and cinematic for characters meant to be lived with, so I re-recorded the entire set end to end before launch.
                 </p>
             </div>
 
