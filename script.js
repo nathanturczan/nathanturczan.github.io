@@ -78,7 +78,7 @@ new p5(sketch);
 // ------------------------------
 // Photo stack interaction (layers on top of navigator)
 // - On hover, add an image layer for the project
-// - Layer is clickable to that project's href
+// - Layers are not clickable; the top layer's project is underlined in the list
 // - Layer disappears after 20 seconds (no fade)
 // ------------------------------
 const photoStack = document.querySelector('.photo-stack');
@@ -142,9 +142,21 @@ function random(min, max) {
 const LAYER_LIFETIME_MS = 20000; // 20 seconds
 const MAX_LAYERS = 12;
 
+// Underline the project whose photo is on top of the stack
+function updateTopHighlight() {
+    const layers = photoStack.querySelectorAll('.photo-layer');
+    const topTitle = layers.length ? layers[layers.length - 1].dataset.title : null;
+    projectItems.forEach(item => {
+        const titleEl = item.querySelector('.title');
+        const title = (titleEl ? titleEl.textContent : '').trim();
+        item.classList.toggle('is-top', title === topTitle);
+    });
+}
+
 function removeLayer(layer) {
     clearTimeout(layer._removeTimer);
     layer.remove();
+    updateTopHighlight();
 }
 
 function trimOldLayers() {
@@ -166,15 +178,11 @@ function addPhotoLayer(item) {
     const media = getProjectMedia(title);
     if (!media) return;
 
-    const href = item.getAttribute('href');
-    if (!href) return;
-
-    // Use <a> so the photo itself is clickable
-    const layer = document.createElement('a');
+    // Not a link: the photo stack is a display surface, not a click target
+    const layer = document.createElement('div');
     layer.className = 'photo-layer active';
-    layer.href = href;
+    layer.dataset.title = title;
     layer.setAttribute('aria-hidden', 'true');
-    layer.tabIndex = -1;
 
     if (media.type === 'video') {
         // Video layer
@@ -215,10 +223,12 @@ function addPhotoLayer(item) {
 
     photoStack.appendChild(layer);
     trimOldLayers();
+    updateTopHighlight();
 
     // Disappear after 20 seconds
     layer._removeTimer = setTimeout(() => {
         layer.remove();
+        updateTopHighlight();
     }, LAYER_LIFETIME_MS);
 }
 
@@ -230,9 +240,8 @@ projectItems.forEach(item => {
 
 // Click on blank space to clear photo stack
 document.addEventListener('click', (e) => {
-    // Don't clear if clicking on a photo layer, project item, or corner button
-    if (e.target.closest('.photo-layer') ||
-        e.target.closest('.project-item') ||
+    // Don't clear if clicking on a project item or corner button
+    if (e.target.closest('.project-item') ||
         e.target.closest('.corner-btn')) {
         return;
     }

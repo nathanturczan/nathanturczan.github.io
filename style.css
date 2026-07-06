@@ -160,7 +160,7 @@ footer {
     transform: translate(-50%, -50%) rotate(var(--rotation, 0deg)) scale(var(--scale, 1));
     transition: opacity 0.3s ease, transform 0.3s ease;
     display: block;
-    cursor: pointer;
+    pointer-events: none;
 }
 
 .photo-layer.active {
@@ -222,6 +222,12 @@ footer {
 
 .project-item:hover {
     opacity: 0.4;
+}
+
+/* Underline the project whose photo is on top of the stack */
+.project-item.is-top .title {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
 }
 
 .number {
