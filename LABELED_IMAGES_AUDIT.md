@@ -65,12 +65,12 @@
 ## Gap Closures
 
 ### 1. Children of Children Render (2019 p5.js)
-**STATUS: NOT FOUND**
+**STATUS: NOT FOUND — RESOLVED BY NATHAN (Jul 5, 2026): stop looking.**
 
 Searched for filenames containing: "children", "2019", "p5", "thesis", "green"
 Result: No file in this archive matches the missing "Children of Children" render. The `keyboard_era_green_bg_monitor_photo.png` hash (`6d60d9...`) does NOT appear in this archive.
 
-**Recommendation**: The Children of Children render must be sourced elsewhere (Nathan's Thesis repo, old backups, or re-requested from Nathan).
+**Resolution (Nathan, Jul 5, 2026)**: "the children of children is probably best represented by the awesome orbiting gif" — i.e. the Sept 20, 2018 orbiting-network animation (deployed as `images/dashboard/prologue/p5_era_orbiting_network_animation.mp4`, already on the Dashboard page) stands in for this era/piece. Loose end closed; no further sourcing needed.
 
 ### 2. Sketchpad Screenshots
 **STATUS: CLOSED — 27 screenshots found**
