@@ -72,6 +72,26 @@ body {
     margin-bottom: 8px;
 }
 
+/* Icon + title row (product pages) */
+.project-title-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.project-title-row .project-title {
+    margin-bottom: 0;
+}
+
+.project-icon {
+    width: 32px;
+    height: 32px;
+    display: block;
+    border-radius: 20%;
+    flex-shrink: 0;
+}
+
 .divider-line {
     width: 200px;
     height: 1px;

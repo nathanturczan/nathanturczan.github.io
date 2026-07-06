@@ -1,0 +1,21 @@
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Keyboard base -->
+  <rect x="16" y="56" width="96" height="48" rx="8" fill="#111"/>
+
+  <!-- White keys -->
+  <rect x="20" y="60" width="18" height="36" fill="#eee"/>
+  <rect x="40" y="60" width="18" height="36" fill="#eee"/>
+  <rect x="60" y="60" width="18" height="36" fill="#00c2c7"/>
+  <rect x="80" y="60" width="18" height="36" fill="#eee"/>
+
+  <!-- Top arrows (input - black) -->
+  <path d="M50 12 L50 44" stroke="#fff" stroke-width="6" stroke-linecap="round"/>
+  <path d="M42 36 L50 44 L58 36" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <path d="M78 12 L78 44" stroke="#fff" stroke-width="6" stroke-linecap="round"/>
+  <path d="M70 36 L78 44 L86 36" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Bottom arrow (output - teal) -->
+  <path d="M64 104 L64 120" stroke="#00c2c7" stroke-width="6" stroke-linecap="round"/>
+  <path d="M56 112 L64 120 L72 112" stroke="#00c2c7" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

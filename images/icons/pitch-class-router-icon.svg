@@ -1,0 +1,46 @@
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="128" height="128" rx="24" fill="#111216"/>
+
+  <!-- Ring -->
+  <circle cx="64" cy="64" r="40" stroke="#2A2D36" stroke-width="10"/>
+
+  <!-- 12 segment dividers -->
+  <g stroke="#3A3E4B" stroke-width="2" stroke-linecap="round">
+    <line x1="64" y1="18" x2="64" y2="28"/>
+    <line x1="87" y1="24.2" x2="82" y2="32.8"/>
+    <line x1="103.8" y1="41" x2="95.2" y2="46"/>
+    <line x1="110" y1="64" x2="100" y2="64"/>
+    <line x1="103.8" y1="87" x2="95.2" y2="82"/>
+    <line x1="87" y1="103.8" x2="82" y2="95.2"/>
+    <line x1="64" y1="110" x2="64" y2="100"/>
+    <line x1="41" y1="103.8" x2="46" y2="95.2"/>
+    <line x1="24.2" y1="87" x2="32.8" y2="82"/>
+    <line x1="18" y1="64" x2="28" y2="64"/>
+    <line x1="24.2" y1="41" x2="32.8" y2="46"/>
+    <line x1="41" y1="24.2" x2="46" y2="32.8"/>
+  </g>
+
+  <!-- Active route nodes -->
+  <g fill="#FF8A3D">
+    <circle cx="64" cy="24" r="5"/>
+    <circle cx="98.6" cy="44" r="5"/>
+    <circle cx="64" cy="104" r="5"/>
+  </g>
+
+  <!-- Routing path -->
+  <g stroke="#FF8A3D" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M64 29 L64 44 C64 49 68 52 73 52 L87 52"/>
+    <path d="M98.6 49 L98.6 72 C98.6 79 93 84 86 84 L69 84"/>
+    <path d="M64 99 L64 84"/>
+  </g>
+
+  <!-- Arrowheads -->
+  <g fill="#FF8A3D">
+    <path d="M87 52 L79.5 47 L79.5 57 Z"/>
+    <path d="M69 84 L76.5 79 L76.5 89 Z"/>
+  </g>
+
+  <!-- Center -->
+  <circle cx="64" cy="64" r="13" fill="#1A1D26" stroke="#FF8A3D" stroke-width="3"/>
+  <path d="M58 64 H70M64 58 V70" stroke="#FF8A3D" stroke-width="2.5" stroke-linecap="round"/>
+</svg>
