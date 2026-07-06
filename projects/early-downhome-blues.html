@@ -30,7 +30,7 @@
 
             <div class="project-text-section">
                 <p>
-                    In 1977, Jeff Todd Titon published <em>Early Downhome Blues</em>, a musicological study that included something remarkable: a generative model of blues melody. He transcribed 44 recordings from 1926–1930, analyzed note-to-note motion, and constructed a pitch transition network — a map of which notes can follow which, including the microtonal "blue third" that sits between the keys of a piano.
+                    In 1977, Jeff Todd Titon published <em>Early Downhome Blues</em>, a musicological study that included something remarkable: a generative model of blues melody. He transcribed 44 recordings from 1926–1930, analyzed note-to-note motion, and constructed a pitch transition network: a map of which notes can follow which, including the microtonal "blue third" that sits between the keys of a piano.
                 </p>
                 <p>
                     That model had been sitting in a book for almost fifty years. I wanted to make it playable.
@@ -51,7 +51,7 @@
             <div class="project-text-section">
                 <h3>The microtonal problem</h3>
                 <p>
-                    The blue third is a quarter-tone — a pitch that doesn't exist on a standard keyboard. I designed a drone that bends to match the melody's inflection, so you <em>hear</em> the quarter-tone rather than being told about it. MIDI output with pitch bend lets the quarter-tones survive into your DAW or hardware.
+                    The blue third is a quarter-tone, a pitch that doesn't exist on a standard keyboard. I designed a drone that bends to match the melody's inflection, so you <em>hear</em> the quarter-tone rather than being told about it. MIDI output with pitch bend lets the quarter-tones survive into your DAW or hardware.
                 </p>
             </div>
 
@@ -60,15 +60,13 @@
             </div>
 
             <div class="project-text-section">
+                <p class="section-eyebrow">Failure</p>
                 <h3>What the internet taught me</h3>
                 <p>
                     I posted it to r/blues. Blues musicians hated it. The output sounded nothing like blues. I was embarrassed enough to take the post down.
                 </p>
                 <p>
-                    But they were right.
-                </p>
-                <p>
-                    A faithful implementation of the pitch network wasn't producing faithful blues melodies. The model captured <em>which notes could follow which</em>, but not <em>how</em> those notes should move — the contours, the phrasing, the gravitational pull toward resolution.
+                    But they were right. A faithful implementation of the pitch network wasn't producing faithful blues melodies. The model captured <em>which notes could follow which</em>, but not <em>how</em> those notes should move: the contours, the phrasing, the gravitational pull toward resolution.
                 </p>
             </div>
 
@@ -82,7 +80,7 @@
                     <em>"The random function didn't generate any acceptable blues melodies."</em>
                 </p>
                 <p>
-                    That sentence changed the direction of the project. I went back to Chapter 4 of his book and implemented more of the principles he'd formalized: downward bias, leap-up / step-down motion, cadential gravity toward C at phrase endings, contour shaping based on his "rise-then-fall" classification. I added phrase structure so Line 2 would try to emulate Line 1 melodically — the AAB call-and-response form that defines blues.
+                    That sentence changed the direction of the project. I went back to Chapter 4 of his book and implemented more of the principles he'd formalized: downward bias, leap-up / step-down motion, cadential gravity toward C at phrase endings, contour shaping based on his "rise-then-fall" classification. I added phrase structure so Line 2 would try to emulate Line 1 melodically: the AAB call-and-response form that defines blues.
                 </p>
                 <p>
                     The random walk became a weighted walk. The output started sounding like something.
@@ -92,7 +90,7 @@
             <div class="project-text-section">
                 <h3>What I learned</h3>
                 <p>
-                    The project is nowhere close to done. Titon's book contains dozens more rules I haven't implemented — the <a href="https://github.com/nathanturczan/early-downhome-blues/issues" target="_blank">GitHub issues</a> are a roadmap of everything still missing. And honestly, it still doesn't sound like blues. But it sounds like something.
+                    The project is nowhere close to done. Titon's book contains dozens more rules I haven't implemented: the <a href="https://github.com/nathanturczan/early-downhome-blues/issues" target="_blank">GitHub issues</a> are a roadmap of everything still missing. And honestly, it still doesn't sound like blues. But it sounds like something.
                 </p>
             </div>
 
