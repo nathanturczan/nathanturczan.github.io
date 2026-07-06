@@ -271,7 +271,20 @@ Marketplace thread `nathanpodium_3634724099886554`: bought **Sep 12, 2019** from
 - **Parag, earlier**: **Nov 9, 2018** — Nathan sends the YouTube "Modal Intersections" documentation (**youtu.be/dmfJexDdbV0 — still live**); Parag: "Genius… Looks so incredible." **Apr 7–8, 2019**: "Parag, I have been accepted to NIME with my scale network paper!" + the r/musictheory launch post (`reddit.com/r/musictheory/comments/balblt`, liveness unverified — Reddit blocks bots); Parag: "Congrats man!!! It's excellent work can't wait to read the paper"; Nathan: "still need to get it up and running on browsers other than Chrome 😅."
 - **Oct 6, 2021**: Parag — "wow man!… so impressive." **Jan 11, 2022** (launch week): Nathan sends the Instagram demo `instagram.com/tv/CYm6W7HMwrL`.
 
-Collaborator/advisor threads mined to date: brady, colin, dexter, dylan, jono, perry, parag, richard (8).
+### 8.7 McLean Macionis thread (`inbox/mcleanmacionis_10155167270827065`, mined 2026-07-05) — CalArts cohort peer + NIME travel companion
+
+- **Aug 3–9, 2017 — course selection, pre-CalArts**: Nathan: "Decided to take the intro to programming classes and the web dev class **even though they will be very similar in content to the coursera/kadenze online classes**" (evidence of pre-CalArts self-teaching); also eyeing "Algorithmic Practices I (ATEK-635-01)" and Composition for Robots (McLean: "I'm eager to hear how Composition for Robots goes"). **Attribution note: the "Interface Design (MTEC-630-01)" plans in this exchange are McLean's list, NOT Nathan's — do not claim Nathan took Interface Design.**
+- Nov 6, 2017: robot-jam planning ("Do you have any synths or drum machines with MIDI in?… we should bring in our own robots") — Machine-Orchestra-era color, same month as the ChucK JI instruments (§8.6).
+- Jun 25, 2018: "this chord progression is really cool… check it" + audio clips — mid-2018 chord-progression sharing.
+- **Apr 6, 2019**: Nathan sends `traveltoNIMEbudgetSheet1_811966855852040.pdf` — a **self-made NIME travel budget spreadsheet** (in thread `files/`; NOT copied to this public repo — personal finances; fact recorded here).
+- **Apr 22–23, 2019 — self-funded NIME logistics**: "my ticket was only $808!"; "i have a 12 hour layover in colombia tho :("; "i arrive in porto alegre at 5:30 am on june 3rd, so i will probably go straight to the conference that day"; McLean: "I'm honestly pumped to travel with you!" — grad students self-funding their own conference run.
+- **May 30, 2019, 10:02–10:06am — the NIME poster FedEx exchange**: McLean (who also had a NIME 2019 paper): "**NIME Poster 2019 - 24 x 36 in. I put my order in at FedEx yesterday (Wednesday) and they had it ready by 9am this morning (Thursday)**" + photo; Nathan: "You had it printed at Kinko's?" → McLean: "FedEx Office"; Nathan: "Did you leave a lot out? From your paper" → "Yeah I left out most of it. I just included the stuff I thought people might be interested in" — peer poster-production logistics + editorial philosophy, one week before flying. (Nathan's own poster files: the Dropbox placeholders he still owes hydration on.)
+- Jun 3–4, 2019: on the ground in Porto Alegre — restaurant planning around conference sessions.
+- Sep 13, 2019: "I'll see you on Friday for **Chordas**" — McLean sang in the ensemble that premiered Network Impressions (Dec 1, 2018).
+- **Apr 4, 2021, 4:41:59pm**: Nathan shares `scale-navigator-ensemble.web.app` — **the earliest known share of the ensemble web app**, 5 weeks before the Seraphina share (May 11) and 6 weeks before the Richard usability test (May 19, §8.6).
+- Thread `audio/` holds `NathanTurczanWagnerProgressionscopy_*.mid`, `Minimal_OrganProg_*.mid`, `minimalMIDI_guitProg_*.mid` — Wagner-progression / minimal-organ MIDI experiments (undated in-thread; not copied).
+
+Collaborator/advisor threads mined to date: brady, colin, dexter, dylan, jono, perry, parag, richard, mclean (9).
 
 ## 9. ChatGPT export (Dropbox/Career, exported Jun 28, 2026) — the vibecoding era, dated
 
