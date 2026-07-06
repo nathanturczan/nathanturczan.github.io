@@ -187,16 +187,32 @@ Recruiter Sherry Sharif thread Jun 15 – Jul 6, 2022: phone screen with Andy (S
 ## 8. Messenger evidence (Facebook export, `/Users/soney/Documents/Social Media Data/facebook-turczan-2025-01-10-sWSGEeM9`)
 
 ### 8.1 Seraphina Oney thread = dated design diary (2018–2024), key entries
-- Jan 23, 2019: workshopping NIME paper sentences (Network Impressions premiered Dec 1, 2018, Chordas ensemble)
-- Mar 20, 2019: NIME reviews pasted verbatim ("the system is interesting enough to be presented at NIME"; "Why not adopt Tymoczko diagrams…")
+
+> **Handling note (2026-07-05)**: this is an ex-partner thread (relationship ended 2024/2025). Use it strictly as a **dated diary source** — the timestamps and Nathan's own words are the evidence. Do not feature her as a character in any case-study narrative; no relationship color in public-facing text.
+
+**Deep scan completed 2026-07-05** (3 message files, ~75 keyword hits mined with timestamps):
+
+- **Nov 28–29, 2018 — the silent-score confusion, first recorded instance**: Nathan shares youtu.be/grc49x7XfB8; response: "I can't hear any sound? But it looks awesome and super clear and focused" → Nathan: "There is no sound, it's a score!!! For the ensemble." **Identical mental-model gap to Richard's May 2021 usability-test question ("it's not supposed to output sound, right?") — a recurring UX insight three years apart.** (→ cross-ref §8.6)
+- Nov 30, 2018: thesis plan articulated — "3 chapters… 1 influences chapter, 1 chapter that will also be a NIME paper, 1 chapter that will also be a TENOR paper."
+- **Jan 12, 2019: NIME paper DRAFT sent as PDF** (`NathanTurczanSNN_141511976736138.pdf`) — draft-in-progress with placeholder self-talk in the running text ("talk to colin and dexter about this???? maybe doesnt need to be a chapter"; "4. CONCLUSION — in which i conclude everything"; "UI design for scale nav–other thoughts?"). Contains Nathan Ho's chord-algorithm description (Bill Boyd *Jazz Chord Progressions* dataset + voice-leading fitness function), Network Impressions (premiered **Dec 1, 2018**, Chordas, 16 scales), INTERSTICES (Dec 6, 2018), and full Modal Intersections description. §3.3 Issues in the draft: "sight reading is hard. The sight-reader's attention must not be diverted." **Saved to `images/_recovered_cache/nime_paper_draft_jan12_2019.pdf`.**
+- **Jan 23, 2019, 6:24–6:42pm**: live copyediting of the paper — the sentence "The Scale Navigator has proven to aid composers during the pre-compositional phase of writing music" iterated through ~6 versions in chat; LaTeX fragments of Network Impressions pasted (SATB, premiered December 1st 2018, Chordas, "toetoba corpus of english sentences").
+- **Mar 20, 2019, 11:09pm: NIME peer reviews pasted verbatim** — positive: "All in all, I think the system is interesting enough to be presented at NIME, especially as a demo"; **usability criticism that prefigures years of design work**: "the conductor (presumably the author) repeatedly changes scales in the Navigator so quickly that no human can possibly keep up with it. If there were any trust in the system on the part of the musicians before, this is sure to greatly diminish it"; harsh reviewer: "besides a very small contribution in providing a novel visualisation for Tymoczko's key space, it does not present any added value to the existing literature"; "R4 was disappointed by the quality of the improvised musical performance." **The "too fast for humans" trust criticism connects directly forward to autopilot BPM / smoothness controls.**
+- Apr 7, 2019: r/musictheory post link shared (dates the Reddit post); Apr 10, 2019: "forgot that finalized paper was due at midnight tonight" (camera-ready deadline).
+- Jun 12, 2019: "Been working on this old clarinet orchestral sound with the scale navigator… Did you see my previous insta TV mashup?"
 - Jan 3, 2020: "Chrome removed midi functionality :("
-- Jul 21, 2020: `nathanturczan.com/apps/scale_navigator_HEPTATONIC/index` live
-- May 11, 2021: scale-navigator-ensemble.web.app deployed
+- **Jul 21, 2020 — the Figma "hobbyist" moment**: asked by a recruiter if he can use Figma → Nathan: "Ah, no… Which I can't… I guess I am more of a hobbyist :(" + links `nathanturczan.com/apps/scale_navigator_HEPTATONIC/index` ("Which was the subject of my thesis… As a means to an end to create a music education tool"). **Arc: couldn't use Figma in July 2020 → directing a Figma design team by late 2021.**
+- Mar 22, 2021: solfeg.io shared and compared ("Similar to Scale Navigator education but more basic?") — informal competitive scan.
+- **May 11, 2021, 9:35pm**: scale-navigator-ensemble.web.app shared — 8 days before the Richard usability test (§8.6).
 - **Jul 1, 2021**: "Yay! Just finished up my pair programming session with Brady, he's awesome"
-- **Jul 9, 2021**: 9:46 AM "I LOVE Ondrej"; 3:46 PM **Dashboard naming moment** — muz.li "excellent dashboards" gallery; "This is the kind of redesign I want to do for Scale Navigator Ensemble"; Seraphina: "I like the dashboard_dark… ooh and the iPad Dashboard"
+- **Jul 9, 2021**: 9:46 AM "I LOVE Ondrej"; **3:46:15 PM: "I've also been looking into UI designers to help make the Scale Navigator Ensemble workspace feel more slick"** — a month before the Freeman outreach; 3:46:40 muz.li "excellent dashboards" gallery; gallery picks in reply: "dashboard_dark… **and the pink/purple one**… and the RoboAdvisor_Dash… I also like Pastel Projects" (Nathan: "i liked the robo one too") — **the pink/purple gallery pick presages the Freemans' pink/purple design round**; 3:55:16 "ok. This is the kind of redesign I want to do for Scale Navigator Ensemble." Same day: "Once I'm finished with the projects with Brady and Ondrej, I am going to apply to ALL of these [artist residencies]."
+- Jul 12, 2021: "now im reaching out to people for help re: latest plugin hurdle… just had a quick meeting with a web student."
 - Aug 2, 2021 11:41 AM: the four vanilla screenshots sent (matches CDN download metadata exactly)
-- **Jan 7, 2022**: Shopify launch day for the MIDI VST ("My goal is to have this plugin up on the store by 3") — matches the Jan 7, 2022 Xcode archive
+- Aug 14, 2021: shares `github.com/nathanturczan/scale-navigator-dashboard/issues/14` — GitHub-issues-driven workflow visible mid-2021.
+- Sep 30 + Oct 1, 2021: shares `facebook.com/scalenavigator` — FB page live during the advice-tour week (§8.6).
+- **Jan 7, 2022**: Shopify **product page live** — `scale-navigator.myshopify.com/products/scale-navigator-midi-vst` + "My goal is to have this plugin up on the store by 3" — matches the Jan 7, 2022 Xcode archive. (The Jan 19 date elsewhere = announcement/launch push; the page itself was up Jan 7.)
 - Jan 19, 2022: "Spencer's advice gave me the idea to use scale navigator to start scoring memes!!! On tiktok"
+- Mar 4, 2022: Thor Magnusson (Sussex) profile shared — "He presented at NIME!"
+- Thread `files/` also holds `OPUS1_*.pdf`, `theotherone_*.pdf`, 3 WDI CalArts cover letters (unexamined; likely not case-study relevant).
 
 ### 8.2 Podium provenance
 Marketplace thread `nathanpodium_3634724099886554`: bought **Sep 12, 2019** from PB Swanson, Neighborhood Christian Fellowship church, 18821 E Arrow Hwy, Covina (left on porch, payment under welcome mat). Listing photo in the thread's `photos/` dir.
@@ -360,6 +376,7 @@ All pasted/recovered artifacts now live in `/Users/soney/Github/nathanturczan.gi
   - `images/_recovered_cache/chuck_19note_just_intonation_19_nov2017.ck` — simpler sibling: same 19-ratio table, SinOsc + Pan2, knob-driven subdivisions
   - `images/_recovered_cache/chuck_voicform_solo_2017.ck` — VoicForm (vocal-formant) solo instrument: 13-row 2D array of alternate JI tunings per pitch class, knob-selected phonemes — the "many tunings per note" idea in source
   - Richard's own `.ck` files from the same folder deliberately NOT copied to this public repo
+- `images/_recovered_cache/nime_paper_draft_jan12_2019.pdf` — **the NIME 2019 paper DRAFT** (sent via Messenger Jan 12, 2019; see §8.1): "Scale Navigator: a System for Networked Algorithmic Harmony," authors Turczan/Kapur/Ho/Honigman/Sheperd [sic]. A process artifact — placeholder self-talk still in the text ("talk to colin and dexter about this????", "in which i conclude everything", "UI design for scale nav–other thoughts?"), plus the Nathan Ho chord-algorithm description, the three 2018–19 deployments in contemporaneous words, and the pastel E-diatonic UI + client-page + INTERSTICES-video-score figures
 
 ### 11.2 Ensemble Jammer (`images/ensemblejammer/`)
 - `tanpura_drone_portrait.png`, `tanpura_drone_landscape_1.png`, `_2.png` (D2 root 73.42 Hz; before/after against Chromatone planned)

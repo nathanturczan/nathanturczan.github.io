@@ -142,7 +142,7 @@ The rest of the exchange is honest launch-week texture (use sparingly, it's ribb
 - Nathan: "**If I release a new version with a sexier UI, I will allow everyone who downloaded the ugly version to get the pretty one for free**" (😆 from Jeff) — a designer publicly acknowledging his UI debt at launch, five weeks before he opened the Feb 2022 VST design round with the Freemans (§1f). The self-diagnosis → engagement sequence is itself a beat: he knew the UI was the weak link, said so in writing, then hired for it.
 - Nathan: "But you're right, I did skip a ton of steps" / "Hope it doesn't bite me in the ass lol!!!!" — Jeff: "Oh shoot loll"
 
-Also anchors the **Shopify launch date: Jan 19, 2022** (the §1e dating said "Jan 2022 Shopify launch" — now pinned to the day).
+Also anchors the **Shopify launch-announcement date: Jan 19, 2022**. Refinement (2026-07-05, EVIDENCE.md §8.1): the **product page itself was live Jan 7, 2022** ("My goal is to have this plugin up on the store by 3") — matching the Jan 7 Xcode archive. Jan 7 = page up; Jan 19 = the outbound launch push (Jeff Huang message, "autotune for MIDI" line). Moot for the case study per Q5 (Shopify stays out), but the dates are now straight.
 
 ---
 
