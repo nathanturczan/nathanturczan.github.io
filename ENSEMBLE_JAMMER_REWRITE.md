@@ -113,6 +113,17 @@ A dated, transcribed demo of Ensemble Jammer working end-to-end (`business/09_Ad
 
 ---
 
+## 1e. The Dinner Party Jam crit, May 2026 (`business/09_Advisors/dinner-party-jam-feedback.md` + ADVISOR_FEEDBACK.md; EVIDENCE.md §12.6)
+
+A real, documented **design crit of an Ensemble Jammer session video** (youtu.be/lUCmZuWv9R0) — Nathan solicited critique from two advisors after a session that "still feels lackluster" despite added sound design:
+- **Nathan Ho — negative space**: "Every instrument going 100% of the time = indistinct wall… Use 10x the number of timbres/textures, but each one resting 90% of the time. It will breathe more." Plus meta-strategy (collect reference tracks, identify desirable properties), a steady-pulse alternative (Reich / Göttsching E2-E4), and participation constraints ("Can't have people looking at screens"; "Best music comes from mostly professional musicians").
+- **Ben Tillotson — the hard verdict + redo brief**: "Too many issues. Scrap it and start again with a more developed brief." Brief: ~4 players (3 phones/iPad, 1 piano), sonically distinct sounds per range, visible communication ("musicians trading solos… visibly loving it"), intentional arc. Positive: "Impressed you got all these folks together and onto the platform."
+- Reference tracks logged: Debussy, Reich, E2-E4, Kristen Roos *Universal Synthesizer Interface*, Michael Cella Wax demo, David Lang "crowd out."
+
+**Case-study value**: the honest-iteration beat — shipping the platform wasn't the end; the *musical output* got critiqued and sent back for a redo with a written brief. Pairs with the MoPhO-research design principle Nathan adopted in ADVISOR_FEEDBACK.md: **"Visible consequence within 2 seconds"** — if participants can't hear their effect immediately, they silently disengage.
+
+---
+
 ## 2. What the current page already has (baseline)
 
 Current structure of `projects/ensemble-jammer.html`: premise (remove harmony as a problem) → v1 suite (Touch Harp, X/Y Lead, Melody Maker, drones, synths, sequencers, loops; Nathan Ho Venn7 credit) → salon test + "no eye contact" insight → v2 motion controls (tilt/shake/pirouette) → v3 campfire problem, Firebase→BLE rewrite → iOS metrics (16% conversion, 299 downloads) → links.
