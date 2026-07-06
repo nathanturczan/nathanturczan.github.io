@@ -90,7 +90,7 @@
                     Then it hit a ceiling. By late 2025 I'd extended Ho's rhythm grid into my own polyrhythm system, with Clock Divide / Multiply and humanize-rhythm parameters. Push it hard enough and it fell over: 16th notes at 250 BPM and the whole thing would crash.
                 </p>
                 <p>
-                    On February 17, 2026, Ho and I spent two hours debugging it. Ho did the worst-case arithmetic out loud: 180 BPM × tempo factor 2 × 32nd-note subdivision = "one note every 5.2 milliseconds. So, yeah, I can see why this would cause problems." The instrument had outgrown SuperCollider. The plugin's first commit is three weeks later, March 8, 2026.
+                    On February 17, 2026, Ho and I spent two hours debugging it. Ho did the worst-case arithmetic out loud: 180 BPM × tempo factor 2 × 32nd-note subdivision = one note every 5.2 milliseconds. The instrument had outgrown SuperCollider. The plugin's first commit is three weeks later, March 8, 2026.
                 </p>
             </div>
 
@@ -168,7 +168,7 @@
                 <p class="section-eyebrow">Design decision</p>
                 <h3>Three modes, one engine</h3>
                 <p>
-                    The modes accumulated across the collaboration with Ho. The first particles were one-shots, emitted to form a cloud: a swarm of nanobots or drones that reshapes itself to fit the weather, where the weather patterns are the harmonic state. Even within the one-shots we kept exploring. Emission started random, and then I added alphanumeric ordering, which opened an isorhythmic possibility: sequence the samples alphanumerically into the order of a melody, a tone row, the colore of an isorhythm with the emission rhythm as its talea, and the emitter emits it as a cycle. Change the harmony and the colore is given, literally, new colors. The metaphors kept compounding as we went: swarm, drone swarm, particle cloud, colore.
+                    The modes accumulated across the collaboration with Ho. The first particles were one-shots, emitted to form a cloud: a swarm of nanobots or drones that reshapes itself to fit the weather, where the weather patterns are the harmonic state. Even within the one-shots we kept exploring. Emission started random, and then I added alphanumeric ordering, which opened an isorhythmic possibility: sequence the samples alphanumerically into the order of a melody, a tone row, and you have the colore of a 14th-century isorhythm, the repeating pitch cycle, with the emission rhythm as its talea, the repeating rhythmic cycle laid against it. When the two cycles are different lengths, the same melody keeps landing on different rhythms with every pass, which is the whole medieval trick. Change the harmony and the colore is given, literally, new colors. The metaphors kept compounding as we went: swarm, drone swarm, particle cloud, colore.
                 </p>
                 <p>
                     Then came the question of particles with a different kind of life span, one whose life never ends, and that's a loop. The Sequencer, a canvas where samples are laid out in time, only arrived in the JUCE C++ era.

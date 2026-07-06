@@ -152,6 +152,16 @@ body {
     margin-bottom: 0;
 }
 
+.project-text-section blockquote {
+    margin: 0 0 24px;
+    padding-left: 24px;
+    border-left: 1px dashed var(--text-color);
+}
+
+.project-text-section blockquote:last-child {
+    margin-bottom: 0;
+}
+
 .project-text-section a {
     color: var(--text-color);
     text-decoration: underline;
