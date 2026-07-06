@@ -16,12 +16,12 @@
                 <h1 class="project-title">Tonalign</h1>
                 <div class="divider-line"></div>
                 <p class="project-tagline">Role · Designer & developer</p>
-                <p class="project-tagline">Team · 2 (with Brady Boettcher)</p>
-                <p class="project-description">Platforms · VST3 / AU / AAX</p>
+                <p class="project-tagline">With · Brady Boettcher (C++/JUCE) · Dylan & Jono Freeman (2022 UI round)</p>
+                <p class="project-description">Platforms · VST3 / AU (macOS, Windows)</p>
             </div>
 
             <div class="project-meta">
-                <span class="project-year">2024–present</span>
+                <span class="project-year">2021–present</span>
                 <span class="project-categories">MIDI Plugin</span>
             </div>
         </header>
@@ -29,48 +29,149 @@
         <div class="project-content">
 
             <div class="project-text-section">
+                <p class="section-eyebrow">Problem</p>
                 <p>
-                    Tonalign started because I wanted the MIDI equivalent of AutoTune — my first real plugin.
+                    Tonalign is AutoTune for MIDI. A note played outside the current scale isn't muted or flagged; it's moved to its nearest available neighbor, in real time, inside the DAW. The correction is the whole product.
                 </p>
                 <p>
-                    At the time I was building Scale Navigator as a web application. I knew almost nothing about JUCE or C++. I posted on the JUCE forum looking for help and met Brady Boettcher. This was mid-pandemic; he was often in a completely different time zone. Over the next few months we pair-programmed the first version together — Brady brought the C++ and JUCE expertise, I brought the design and the Dashboard integration concept. Watching him work fundamentally changed how I approached audio software.
+                    That was the pitch from the first day it shipped. On January 19, 2022 I described it to a friend as "basically autotune for MIDI in the context of the scale network." The positioning survived two renames unchanged, which tells me the concept was clear before the interface was. One repo, three names, five years: Scale Navigator MIDI VST (2021), PitchSnap (2026), Tonalign (2026).
                 </p>
             </div>
 
             <div class="project-text-section">
-                <h3>What it does</h3>
+                <p class="section-eyebrow">Insight</p>
+                <h3>The design problem: showing the correction</h3>
                 <p>
-                    AutoTune corrects audio pitch. Tonalign does the same thing for MIDI. You play a note that doesn't fit the current scale, and it snaps to the nearest note that does.
+                    A pitch-correction layer is invisible by definition. If it works, the wrong note simply becomes a right note and nobody sees anything happen. That's fine for the listener and a real problem for the player: you send a C, you hear a D♭, and the plugin has given you no way to understand why. A correction you can't see feels like a bug.
                 </p>
                 <p>
-                    If Dashboard is running in the same session, Tonalign subscribes to its harmonic state. Change the scale in Dashboard and every instance of Tonalign updates instantly.
+                    So the design problem underneath Tonalign was never "how do I snap the note." Snapping the note is arithmetic. The problem was: how do you draw the difference between what the player sent and what the plugin let through, on a surface small enough to live in a plugin window, without turning it into a readout the player has to study mid-performance.
+                </p>
+                <p>
+                    The engineering was hard: my first serious work in JUCE and C++, and the start of a five-year collaboration with Brady Boettcher. The design story, though, is the in/out delta.
                 </p>
             </div>
 
-            <img src="../images/tonalign/Screenshot 2026-02-10 at 8.51.41 AM.png" alt="Tonalign interface" class="project-image">
+            <div class="project-text-section">
+                <p class="section-eyebrow">Prototype</p>
+                <h3>Four weeks in, already recruiting testers</h3>
+                <p>
+                    Four weeks after the first commit I had a running plugin and was already asking people to test it. The earliest screenshot, from July 26, 2021, went to Andrew Piepenbrink with "Cooking with gas Andrew!!!!": a gray window with scattered pastel polygons, a keyboard in the top-right corner, and JUCE's "Made with JUCE" badge still sitting in the corner. It corrected notes. It did not yet explain itself.
+                </p>
+                <p>
+                    Brady came in via a JUCE forum post, mid-pandemic, on the other side of the world. The pair-programming sessions are literally the branch names in the repo: <code>bboettcher3/session_1</code> and up. He brought the C++ and JUCE depth; I brought the design and the connection to the wider Scale Navigator system.
+                </p>
+            </div>
+
+            <img src="../images/tonalign/juce_prototype_first_screenshot_jul2021.png" alt="The first running prototype, July 2021: a gray plugin window with scattered pastel scale polygons, a small keyboard in the top-right corner, and the Made with JUCE badge" class="project-image">
+            <p class="image-caption">July 26, 2021: running four weeks in, already recruiting testers. It corrected notes and couldn't yet explain itself.</p>
+
+            <div class="project-text-section">
+                <p class="section-eyebrow">Failure</p>
+                <h3>The correction was inaudible and invisible</h3>
+                <p>
+                    Two failures, one root cause.
+                </p>
+                <p>
+                    The first surfaced in week four, on July 25, 2021, in a message to Brady: "when correcting notes, if 2 notes are corrected to the same midi note, how to handle that case." Two different wrong notes collapse onto the same right note: a collision the player never asked for and can't see. That exact edge case, overlapping corrections in fast passages, is still one I'm tuning in 2026. A five-year-old open problem, with receipts at both ends.
+                </p>
+                <p>
+                    The second came back in writing. On August 21, 2021, week eight, Tristan Whitehill sent the first external QA report on the plugin. Buried in it: "the initial setup inside the users DAW was not exactly clear when approaching blind," a chord-button bug, and previous-chord tones bleeding through. And this line, which is the whole capture problem in one sentence: "I couldn't remember the buttons I had pressed in succession." The correction was working and the player still couldn't hold onto what had happened.
+                </p>
+                <p>
+                    That is the failure the interface had to answer: not <em>does it snap</em>, but <em>can you follow it</em>.
+                </p>
+            </div>
 
             <div class="project-text-section">
                 <p class="section-eyebrow">Iteration</p>
-                <h3>Held notes</h3>
+                <h3>The same delta, drawn four ways</h3>
                 <p>
-                    What happens when you're holding a note and the scale changes underneath you?
+                    The answer went through four dated stages, and the interesting thing is that the design question stayed identical the whole way (draw the in/out delta) while the drawing kept changing.
                 </p>
                 <p>
-                    There isn't a universally correct answer. A pianist expects the note to stay where it is. A synth player might expect it to glide. Someone triggering orchestral samples may want the old note cut off entirely.
-                </p>
-                <p>
-                    Rather than pick one behavior, I shipped three modes — glide, stay, and cut — with glide as the default because it preserves harmonic continuity during live performance.
+                    <strong>2022, the mockup.</strong> On February 24, 2022 I made two high-fidelity mockups myself, in the Freeman brand system, and narrated them to Dylan and Jono Freeman feature by feature: a toggle between the "local neighbor" and "global network" interfaces, dropdowns for root and scale, "and then, on the right, some MIDI routing to show what notes are being played, how these notes are being re-mapped, and how the notes are being outputted." That last clause is the design thesis. It's drawn as three keyboards: input, mapping, output, a literal signal-flow diagram of the correction. Eighty minutes later I sent a v2 adding the Local/Network toggle, an Enharmonic Drift checkbox, and a Reset Mapping button, with a note: "I'd love to get the UI finalized by April!" Dylan refined the local-interface mockup in Figma over March 7 to 10, 2022.
                 </p>
             </div>
 
-            <div class="image-row">
-                <img src="../images/tonalign/Screenshot 2026-02-10 at 8.51.47 AM.png" alt="Tonalign scale view" class="project-image">
-                <img src="../images/tonalign/Screenshot 2026-02-10 at 8.52.08 AM.png" alt="Tonalign settings" class="project-image">
+            <img src="../images/tonalign/nathan_vst_mockup_v2_local_drift_toggle_feb2022_fullres.png" alt="February 2022 mockup: the correction drawn as three stacked keyboards showing input notes, the re-mapping, and output notes, with Local/Network toggle and Enharmonic Drift checkbox" class="project-image">
+            <p class="image-caption">Feb 2022: my mockup drew the correction as three keyboards — in, mapping, out. Too much surface for a plugin window.</p>
+
+            <img src="../images/tonalign/freeman_figma_redesign_local_interface_mar2022_node505-1940.png" alt="Dylan Freeman's Figma refinement of the local interface mockup, March 2022" class="project-image">
+            <p class="image-caption">Dylan Freeman's Figma refinement, March 2022.</p>
+
+            <div class="project-text-section">
+                <p>
+                    <strong>2022, what actually shipped.</strong> The three-keyboard flow was too much surface for a plugin window. It shipped as one folded keyboard: black keys folded onto white, so for C Acoustic (C D E F♯ G A B♭), F folds to E and B folds to A♯, the mapping made visible on a single row instead of three. The launch-webapp button I'd sketched shipped too, and I taught it to myself overnight from JUCE's own source code (Jan 6, 10:29 pm: "something like this I think" plus a screenshot of Projucer's <code>launchInDefaultBrowser</code>; Jan 7, ~9:27 am: "NVM, I totally did it!!!!"). Three artifacts, one problem, and it moved from open question to shipped feature in about thirteen hours.
+                </p>
             </div>
 
-            <div class="image-row">
-                <img src="../images/tonalign/Screenshot 2026-02-10 at 8.52.32 AM.png" alt="Tonalign detail" class="project-image">
-                <img src="../images/tonalign/Screenshot 2026-02-10 at 8.52.54 AM.png" alt="Tonalign options" class="project-image">
+            <img src="../images/tonalign/scalenavigatormidivst_shipped_daw_v2_launch_button.png" alt="Scale Navigator MIDI VST running in a DAW, January 2022: a single folded keyboard row showing the scale mapping, with the launch-webapp button" class="project-image">
+            <p class="image-caption">Shipped, January 2022: the three-keyboard flow folded to one row. Black keys fold onto white to show the mapping.</p>
+
+            <div class="project-text-section">
+                <p>
+                    <strong>2026, the markup.</strong> Four years later, rebuilding the plugin as PitchSnap, I was still working the same delta. There's a screenshot of the running plugin with my own annotation drawn on top of it (gray dots above the keys for incoming notes, red dots below for corrected ones) spec'ing how in/out should read on the keyboard. It shipped similarly, with downward arrows marking the notes that moved.
+                </p>
+            </div>
+
+            <img src="../images/tonalign/pitchsnap_plugin_window.png" alt="PitchSnap plugin window, 2026, annotated by hand: gray dots above the keys marking incoming notes, red dots below marking corrected notes" class="project-image">
+            <p class="image-caption">2026, still on the same problem: my markup — gray dots for incoming notes, red dots below for corrected — spec'ing the in/out delta.</p>
+
+            <img src="../images/tonalign/Screenshot 2026-02-10 at 8.51.41 AM.png" alt="Shipped PitchSnap interface, February 2026: the scale network above a folded keyboard, with small arrows above and below the keys marking incoming and corrected notes" class="project-image">
+            <p class="image-caption">Shipped: downward arrows marking the notes that moved. Mockup (2022) → markup (2026) → shipped UI — the same communication problem, drawn four ways over four years.</p>
+
+            <div class="project-text-section">
+                <p class="section-eyebrow">Final solution</p>
+                <h3>The held note, and who decides</h3>
+                <p>
+                    The deepest decision in Tonalign is what happens to a note that's already sounding when the scale changes underneath it.
+                </p>
+                <p>
+                    There is no correct answer. An organ pad should glide to the new pitch. A plucked string is probably best left alone. A synth line might want to be cut at the moment of change. I could have picked one and hard-coded it, and every player whose instrument disagreed would have felt the plugin fighting them.
+                </p>
+                <p>
+                    So I didn't decide. I made it a choice: there isn't one behavior that's correct for every instrument, so I exposed it as a choice instead of hard-coding one. Glide is the default; stay and cut are one control away.
+                </p>
+                <p>
+                    The sharper version of the same idea is the INTERRUPT toggle. With it on, held notes are re-pitched at the exact instant the scale or chord changes, so the modulation stops being a silent background shift and becomes an audible event in every sustained voice. The system saying, in the one channel no player can ignore, this is the note that moved. It's the answer, in sound, to a request I first heard in a 2018 sight-reader survey asking for "a highlight indicating which note has changed": eight years later, delivered as pitch instead of ink.
+                </p>
+            </div>
+
+            <img src="../images/tonalign/Screenshot 2026-02-10 at 8.52.08 AM.png" alt="PitchSnap interface with the Interrupt toggle checked, centered on D harmonic minor with the folded keyboard showing the mapping" class="project-image">
+            <p class="image-caption">INTERRUPT on: held notes re-pitch at the instant of modulation, so every sustained voice announces the change.</p>
+
+            <div class="project-text-section">
+                <p>
+                    <strong>What I rejected:</strong> a single hard-coded held-note behavior (fights half the instruments); a settings panel deep enough to configure everything (the player is performing, not reading); and the full navigator network inside the plugin window. It was in the 2022 mockups, and I cut it. The shipped Tonalign is the mockup with the navigator amputated, because a plugin's job is to stay out of the musical moment, and <a href="scale-navigator-dashboard.html">Dashboard</a> was already the place to explore the network.
+                </p>
+            </div>
+
+            <div class="project-text-section">
+                <p class="section-eyebrow">Outcome</p>
+                <p>
+                    Tonalign shipped publicly in January 2022 as Scale Navigator MIDI VST, and again, rebuilt, under its current name in 2026. Since then it has been the MIDI-correction layer in every live session I run, including every Ensemble Jammer deployment. It's the "silent" plugin the rest of the ecosystem leans on: it subscribes to Dashboard's shared harmonic state and corrects against whatever chord or scale the room is currently in, no configuration.
+                </p>
+                <p>
+                    It also turned into a compositional instrument I didn't plan for. I run recorded MIDI (Chopin, Liszt, Paganini, competition-grade performances) through it and force it into a harmony of my choosing: "stealing Chopin's texture, but forcing it into the harmonic box that I tell it to be in. A whole new level of plunderphonics." The correction layer became a way to remix world-class playing through my own harmony.
+                </p>
+            </div>
+
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/lf0BpKuH3hc?rel=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <p class="image-caption">The January 2022 demo. Its title — "Scale Navigator MIDI VST is like AutoTune for MIDI" — is the Tonalign tagline, four years before the Tonalign name.</p>
+
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/DyVP5oX4dgU?rel=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <p class="image-caption">Setting up the plugin in Ableton Live, January 2022.</p>
+
+            <div class="project-text-section">
+                <h3>What's still unfinished</h3>
+                <p>
+                    The collision problem from week four of 2021, two notes correcting onto the same pitch, overlapping corrections in fast passages, is still one I tune by hand. Mid-sustain scale changes still have edge cases. And underneath all of it is an absurdity I've made peace with: because Steinberg makes real MIDI-effect plugins nearly impossible in VST3, Tonalign is technically a synthesizer. There's a silent, no-noise synth always running inside it just so a pure MIDI tool is allowed to exist. The simplest-looking tool in the ecosystem has the strangest thing hiding under it.
+                </p>
             </div>
 
             <div class="project-text-section">
@@ -78,17 +179,9 @@
             </div>
 
             <div class="project-text-section">
-                <a href="https://www.youtube.com/watch?v=lf0BpKuH3hc" target="_blank" class="project-link">Watch demo video</a>
-                <a href="https://www.youtube.com/watch?v=Weob2fLKfCw" target="_blank" class="project-link">Watch walkthrough</a>
-            </div>
-
-            <div class="project-text-section">
-                <h3>Where it is now</h3>
+                <h3>Credits</h3>
                 <p>
-                    Tonalign ships as part of the Scale Navigator ecosystem and is the MIDI correction layer used in every live session I run.
-                </p>
-                <p>
-                    The three held-note modes cover most playing situations. Edge cases still come up — overlapping corrections during fast passages, or scale changes that arrive mid-sustain. Those are the things I keep tuning.
+                    Brady Boettcher, C++/JUCE engineering, from July 2021 to the present. Dylan and Jono Freeman, the 2022 UI design round. Tristan Whitehill, the first external QA report.
                 </p>
             </div>
 

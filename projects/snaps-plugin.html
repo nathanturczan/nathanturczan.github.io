@@ -15,13 +15,13 @@
             <div class="project-info">
                 <h1 class="project-title">SNaPS</h1>
                 <div class="divider-line"></div>
-                <p class="project-tagline">Role · Designer & developer</p>
-                <p class="project-tagline">Team · 2 (with Nathan Ho)</p>
-                <p class="project-description">Platforms · VST3 / AU</p>
+                <p class="project-tagline">Role · Designer & developer (interaction, product, sample corpus, plugin port)</p>
+                <p class="project-tagline">With · Nathan Ho (SuperCollider engine, glide-curve research)</p>
+                <p class="project-description">Platforms · SuperCollider instrument → VST3 / AU (macOS, Windows)</p>
             </div>
 
             <div class="project-meta">
-                <span class="project-year">2024–present</span>
+                <span class="project-year">2021–present</span>
                 <span class="project-categories">Sampler Plugin</span>
             </div>
         </header>
@@ -29,67 +29,105 @@
         <div class="project-content">
 
             <div class="project-text-section">
+                <p class="section-eyebrow">Problem</p>
                 <p>
-                    Most samplers assume every note begins from scratch. But harmony doesn't work that way. If a chord changes while a violin is sustaining, the violin doesn't restart — it keeps singing through the change.
+                    SNaPS is a sampler that never restarts a sound to follow the harmony. When the chord changes underneath a sustaining sample, the sample doesn't retrigger; it leans into the new scale, each voice bending by the smallest interval that fits. A sampler that modulates the way a held note does, not the way a MIDI clip does.
                 </p>
                 <p>
-                    I wanted a sampler that behaved the same way. And I wanted it to work with recordings, not synthesized notes. Samples carry texture and memory in ways oscillators don't.
+                    I explained it to a friend in plain language on January 22, 2022, unprompted, in six texts: "Snaps! Scale Navigator particle system, a super collider back end coded by Nathan ho." "Basically, samples trigger at regular intervals." "The script is listening for changes to scale Navigator." "When the scale changes, the script will transpose the currently playing scales." "So that they fit the harmonic context of the current scale." "[for a] particular genre, I just have to choose samples that fit in that particular genre." The credit to Nathan Ho comes first, in private, before anyone asked me to be honest about it.
                 </p>
                 <p>
-                    The interface barely changed from prototype to release. Almost all the design work happened in the behavior.
-                </p>
-            </div>
-
-            <div class="project-text-section">
-                <h3>Origin</h3>
-                <p>
-                    SNaPS began as a SuperCollider instrument that <a href="https://nathan.ho.name/" target="_blank">Nathan Ho</a> and I developed over several years. Nathan built the entire engine; I kept pushing the interaction and product. For years, the SuperCollider version was my primary live instrument. The <a href="https://github.com/nhthn/snaps" target="_blank">original repo</a> is still the foundation of my performances. The plugin version is my C++ port of everything we built together.
+                    One engine, three bodies: a SuperCollider instrument (2021), the Librarian auto-tagging tool (2026), and a VST3/AU plugin (2026). The third body exists because the first one crashed at 250 BPM.
                 </p>
             </div>
 
             <div class="project-text-section">
-                <h3>Tagging</h3>
+                <p class="section-eyebrow">Insight</p>
+                <h3>Why a normal sampler couldn't do this</h3>
                 <p>
-                    For years, the system was blocked by a bottleneck: every sample had to be manually tagged with its pitch class. I had thousands of samples and no time to listen to each one.
+                    Every sampler assumes a note begins from scratch. You trigger a sample, it plays, it ends. Harmony doesn't respect that boundary: if the chord changes while a violin is sustaining, the violin doesn't restart, it keeps singing through the change. A conventional sampler has no answer for the sample that's already sounding when the harmony moves. It either lets the sample clash or cuts it and retriggers, which is the retrigger you can hear and the reason sampled textures always sound like they're being re-launched instead of played.
                 </p>
                 <p>
-                    Then Nathan called me about Spotify's Basic Pitch — an open-source ML model that detects pitch in audio. I built a librarian tool around it that auto-tags entire sample libraries. The interface couldn't scale until metadata became automatic.
-                </p>
-            </div>
-
-            <div class="project-text-section">
-                <h3>From SuperCollider to plugin</h3>
-                <p>
-                    The plugin version (VST3/AU) packages everything we learned for DAW workflows: three playback engines — Emitter, Looper, Sequencer — organized around creative intent rather than technical mode. It subscribes to Dashboard's harmonic state, so it stays in sync with the rest of the session automatically.
+                    I wanted the sample to stay alive across the change, and I wanted it built on recordings, not synthesized notes. Samples carry texture and memory in ways oscillators don't. That's the whole reason to fight this problem in the sample domain instead of the synth domain, where a glide is trivial.
                 </p>
             </div>
 
             <div class="project-text-section">
-                <h3>Behavior</h3>
+                <p class="section-eyebrow">Prototype</p>
+                <h3>2021: the engine, and whose account it lives in</h3>
                 <p>
-                    Two questions carried almost all of the design work: how does a sound glide? And how does it exit when it no longer fits?
+                    SNaPS started as a SuperCollider instrument that <a href="https://nathan.ho.name/" target="_blank">Nathan Ho</a> and I built together, and the division of labor is legible in the git log. Ho built the engine: the particle metaphor arrives on day four ("Rename SnapsSample → SnapsParticle," March 24, 2021), then <code>maxParticles</code> and <code>particlesPerSecond</code> the same day, then "Debounce scale changes from MIDI" on March 26, so Scale Navigator integration is there in week one. I owned the sample corpus, the metadata standard, and my own performance file: my first commit is April 14, 2021, "snaps.scd with all the samples!!!!"
                 </p>
                 <p>
-                    A playing sample should never restart to follow the harmony — it should glide.
+                    The <a href="https://github.com/nhthn/snaps" target="_blank">repo lives under <code>nhthn/</code></a>, Ho's account, because we both agreed from the start that it was open source. For years I performed out of an instrument hosted in my collaborator's GitHub, and I contributed engine code back to it through reviewed PRs (srcID, PR #17, merged by Ho on December 13, 2021).
+                </p>
+            </div>
+
+            <div class="project-text-section">
+                <p class="section-eyebrow">Failure</p>
+                <h3>The instrument outgrew its own language</h3>
+                <p>
+                    For four years the SuperCollider version was my primary live instrument: pretty much everything sample-based on my YouTube and SoundCloud before 2026 is running SNaPS SuperCollider. It gigged: a pre-show improvised set as the audience seated itself for a Webb Schools dance show on February 4, 2022 (with Michael Szanyi), ten days before the "Add preliminary looping" commits, so the loop player was being built in the same season the instrument was on stage.
+                </p>
+                <p>
+                    Then it hit a ceiling. By late 2025 I'd extended Ho's 2022 rhythm grid into my own polyrhythm system, adding Clock Divide / Multiply and humanize-rhythm parameters in November 2025. Push it hard enough and it fell over: 16th notes at 250 BPM and the whole thing would crash.
+                </p>
+                <p>
+                    On February 17, 2026, Ho and I spent two hours debugging it. Ho did the worst-case arithmetic out loud: 180 BPM × tempo factor 2 × 32nd-note subdivision = "one note every 5.2 milliseconds. So, yeah, I can see why this would cause problems." But the honest part is that the bug resisted the hypothesis. Ho couldn't reproduce the crash on his Linux desktop at all: "I have it set to 180 times 2 BPM and it's fine. Wow." His read: "it doesn't look like this is caused by BPM being too high… there's a different problem going on here," and his prime suspect was the humanize routine's wait-time floor I'd written myself three months earlier. Ho's engine, self-extended, then debugged together, and still not fully solved.
+                </p>
+                <p>
+                    Whatever the exact cause, the diagnosis was the same: the instrument had outgrown SuperCollider. The plugin's first commit is three weeks later, March 8, 2026. That debugging session is the C++ port's causal trigger.
+                </p>
+            </div>
+
+            <div class="project-text-section">
+                <p class="section-eyebrow">Iteration</p>
+                <h3>The tagging bottleneck</h3>
+                <p>
+                    Before any of the behavior mattered, there was a bottleneck that had nothing to do with sound. Every sample the engine plays has to be born knowing its own pitch content, so it can be born into the current scale. For years that meant tagging thousands of samples by hand with their pitch classes. I had the corpus and no way to listen to each one.
+                </p>
+                <p>
+                    The unblock came from Ho, in early 2026, when he pointed me at Basic Pitch, Spotify's open-source ML transcription model. What makes this a real beat instead of a tooling footnote is Ho's own stance: he's a principled AI skeptic who is fine with AI used for data purposes, and this falls squarely under that category. A skeptic recommending an ML tool precisely because it's data work, not generative work.
+                </p>
+                <p>
+                    I built the Librarian around it: a headless tool (MVP January 31, 2026) that auto-transcribes a sample library into sample→pitch-class-set records. There is no interface here on purpose. The design work was the data model, not the chrome, and the corpus went from a manual bottleneck to an automatic input. The interface couldn't scale until metadata became free.
+                </p>
+            </div>
+
+            <img src="../images/snaps/snaps_canvas_wireframe.png" alt="Concept-canvas sketch of the Librarian's data model: sample names paired with their pitch-class sets" class="project-image">
+            <p class="image-caption">The Librarian's data model, sketched on the concept canvas: each sample paired with its pitch-class set (holst_cello_1 [c, d, e], paolo_8 [df, f, af]…). The only pre-final visual — the design was the data, not a UI.</p>
+
+            <div class="project-text-section">
+                <p class="section-eyebrow">Final solution</p>
+                <h3>Voice leading as arithmetic</h3>
+                <p>
+                    The deepest design decision in the whole ecosystem isn't visible in any screenshot. It's how a texture of dozens of voices decides where to move when the harmony changes.
+                </p>
+                <p>
+                    The naive rule is "transpose each sample to the nearest scale tone." That produces a wandering, arbitrary result, voices leaping in whatever direction is technically closest. Real ensembles don't sound like that. Trained voices move by the least sufficient motion, with a slight downward gravity that corpus studies find in actual voice leading. So I made the modulation a cost function instead of a rule:
+                </p>
+                <blockquote>
+                    the cost of a candidate transposition is its size in semitones plus a fixed penalty for upward motion; candidates are confined to a bounded range wider below than above; ties resolve downward.
+                </blockquote>
+                <p>
+                    Small moves beat large ones. Downward moves beat upward moves of equal size. The aggregate texture therefore modulates the way an ensemble does, by the least sufficient motion. This is the clearest example in the portfolio of a purely behavioral design spec: no UI decision at all, entirely a specification of how sound should move.
+                </p>
+                <p>
+                    The glide itself carries the same logic. The most expressive curve is entirely <a href="https://nathan.ho.name/posts/oddvoices-dev-log-3/" target="_blank">Ho's idea, from his oddvoices research</a>: a large ascending glide first dips a quarter semitone in preparation before rising, and a descending glide overshoots half a semitone below its target and settles up into it. It's how instrumentalists actually connect pitches, and I implemented it because it made samples glide like a voice, not a machine.
+                </p>
+                <p>
+                    <strong>What I rejected:</strong> suppressing samples that can't fit (the earlier Scale Rack's mistake, silence as a failure state); a single hard-coded glide (mechanical, wrong for half the material); and a UI-first plugin design. The interface barely changed from prototype to release. Almost all the design work happened in the behavior.
                 </p>
             </div>
 
             <div class="project-text-section">
                 <p class="section-eyebrow">Design decision</p>
-                <h3>Glide curves</h3>
+                <h3>The failure is the instrument</h3>
                 <p>
-                    A pitch slide isn't one thing. Its shape carries feeling. I designed a family of glide behaviors, from mechanical to expressive.
+                    There's a case a cost function can't rescue: a sample whose pitch content simply can't fit the new scale at any transposition. The safe move is to mute it. I refused to, because a muted voice is a hole in the texture and a silent admission that the tool broke.
                 </p>
                 <p>
-                    The most interesting one is entirely <a href="https://nathan.ho.name/posts/oddvoices-dev-log-3/" target="_blank">Nathan Ho's idea</a> — his research on how the human voice slides into a pitch. A singer doesn't hit a note in a straight line; they anticipate and overshoot. I implemented it.
-                </p>
-            </div>
-
-            <div class="project-text-section">
-                <p class="section-eyebrow">Design decision</p>
-                <h3>Exit modes</h3>
-                <p>
-                    What happens when a sample can't fit the new scale? Three exit behaviors — stutter decay, filter sweep, doppler drop — that can be stacked.
+                    Instead, a sample that can't fit gets a theatrical exit: a stutter, a filter sweep, a Doppler-style pitch drop, stackable. The sound leaves on purpose, audibly, as a gesture. The thesis line is the whole design philosophy of the instrument: "in SNaPS the modulation <em>is</em> the event." The moment the harmony changes is the thing you hear, a texture of dozens of voices leaning into the new chord and a few of them making a scene on the way out. The failure state became a compositional gesture you can score with.
                 </p>
             </div>
 
@@ -98,14 +136,29 @@
                     <source src="../images/snaps/snaps-demo.mp4" type="video/mp4">
                 </video>
             </div>
+            <p class="image-caption">The modulation is the event: dozens of voices leaning into the new chord, a few making a theatrical exit.</p>
 
             <div class="project-text-section">
-                <h3>Where it is now</h3>
+                <p class="section-eyebrow">Outcome</p>
                 <p>
-                    I've performed with the SuperCollider version for years — it's my primary live instrument. The plugin port packages that workflow for any DAW.
+                    SNaPS was my primary live instrument for years: every sample-based track I put out before 2026 is running it, routed multitrack through Loopback into separate Ableton channels so it functioned as a source, not just a live rig. In 2025 the engine had a third life, ported into <a href="ensemble-jammer.html">Ensemble Jammer</a> as browser instruments over Christmas week (SnapSequencer December 24, SnapsLooper December 29, 2025). And in 2026 it became a plugin, so the workflow I'd performed with for five years finally packages for any DAW and subscribes to <a href="scale-navigator-dashboard.html">Dashboard</a>'s shared harmonic state like the rest of the ecosystem.
                 </p>
                 <p>
-                    The engine works. What I'm still refining is the preset system — how to save and recall glide-curve combinations without flattening them into static snapshots.
+                    The honest measure is that SNaPS is the instrument where I stopped thinking about harmony as notes and started thinking about harmony as behavior, and that thinking is now underneath everything else I've built.
+                </p>
+            </div>
+
+            <div class="project-text-section">
+                <h3>What's still unfinished</h3>
+                <p>
+                    The crash that triggered the whole port isn't cleanly solved; it's outrun, moved into a language where the timing math doesn't fall over. The exact cause Ho suspected, the humanize wait-time floor, still lives in code I wrote and haven't fully reconciled. The plugin's preset system is an open problem. And the Librarian's transcription is only as good as Basic Pitch is: it's a data tool doing an inherently fuzzy job, and a mistagged sample is born into the wrong scale. The instrument is better than it's ever been and still carries the bug that made it move.
+                </p>
+            </div>
+
+            <div class="project-text-section">
+                <h3>Credits</h3>
+                <p>
+                    <a href="https://nathan.ho.name/" target="_blank">Nathan Ho</a>: the SuperCollider engine, the glide-curve research, the Basic Pitch pointer, and the February 2026 pair-debugging session. Michael Szanyi: the Webb Schools dance-show set. The <a href="https://github.com/nhthn/snaps" target="_blank">original repo</a> is open source under Ho's account.
                 </p>
             </div>
 
