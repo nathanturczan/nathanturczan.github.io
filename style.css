@@ -469,6 +469,18 @@ footer {
         background-image: url('images/autoharp.jpg');
     }
 
+    .project-item[href*="snaps-plugin"]::after {
+        background-image: url('images/snaps/snaps_emitter_shipped.png');
+    }
+
+    .project-item[href*="notation-anticipation"]::after {
+        background-image: url('images/anticipation/read-tab.png');
+    }
+
+    .project-item[href*="lalaptoporchestra"]::after {
+        background-image: url('images/lalork/poster-1.jpg');
+    }
+
     .project-item.archive .title {
         grid-column: 2;
     }
