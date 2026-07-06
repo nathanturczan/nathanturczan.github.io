@@ -157,6 +157,22 @@ Candidate use: the field-research beat (designer interviews a teacher, revises a
 
 ---
 
+## 1i. The footage-review call, Apr 19, 2026 (Lachlan Turczan — `business/09_Advisors/lachlan_turczan/lachlan-talk0april19-2026.txt`; EVIDENCE.md §12.12)
+
+Phone call with Lachlan (Nathan's brother; working artist). Nathan is reviewing EJ session footage on the call, and this transcript is the **dated origin of the screen-removal / motion-control design conviction** that the current page presents as v2's premise:
+
+- **The insight, in Nathan's words, while watching his own footage**: "the fact that my thumb is even on a screen is taking me out of this moment of being together with people — what if it's just the accelerometer, the screen isn't even based on anything, and everyone's moving these things around." And bluntly: "I am learning a lot. I do not want people on their fucking phones. I hate seeing everybody on their fucking phones. It looks bad."
+- **Lachlan's crit lands the same direction independently**: in the footage, "people were literally looking up at you and not looking at their finger, and the finger was able, through the simplicity of that arm thing, to just go up and down based off of your emotions… look at the conductor. What you did in that moment is break that — do as much as you can in the future to continue to remove the screen and the phone from that… like a Tai Chi exercise… this is going away from music and more towards gesture."
+- **Nathan connects it to his own performance-practice thesis** (the CalArts line): "when you're performing digital music, you need to get rid of your laptop… turning knobs is about 7,000 times better than being on your laptop… eventually it'll just be full-on dancing — **that is literally the instrument**."
+- **The roadmap statement, dated**: "I would much rather be sitting down and improving Ensemble Jammer, integrating the accelerometer, integrating tilt and yaw, integrating the cardinal points of the compass, and all of those things that the iPad can do." (This precedes the shipped v2 tilt/shake/pirouette controls — design conviction → roadmap → shipped feature.)
+- **Honest UX-failure observation from the footage**: "Zoey at one point accidentally swipes over to some other app and just kind of confused for 30 seconds" — a real field-observed failure mode of phone-based ensemble instruments (OS chrome competes with the instrument), which the motion-control direction also answers.
+- **Convergent advice pattern**: Lachlan's Apr 19 "remove the screen and the phone" is independently echoed weeks later by Nathan Ho's May crit "you can't have people looking at screens" (§1e / EVIDENCE §12.6). Two advisors, same conclusion, from different evidence (footage review vs. Dinner Party Jam) — strong case-study material for research-triangulation.
+- **2022 provenance**: the call also dates the earlier ensemble shoot — "that big scale navigator thing with all those musicians back in 2022… Fit and Bendy's studio with Giles"; footage by Lachlan, Giles, Rocco, and Zoe; Nathan reviewing it in Apr 2026: "it is really good. There is some beautiful music… incredible musicians… incredible moments."
+
+Candidate use: the strongest "how the design changed and why" beat in the EJ archive. The page currently asserts the no-eye-contact insight; this transcript is the tape of the insight being *had*, with the motion-sensor roadmap stated in the same breath.
+
+---
+
 ## 2. What the current page already has (baseline)
 
 Current structure of `projects/ensemble-jammer.html`: premise (remove harmony as a problem) → v1 suite (Touch Harp, X/Y Lead, Melody Maker, drones, synths, sequencers, loops; Nathan Ho Venn7 credit) → salon test + "no eye contact" insight → v2 motion controls (tilt/shake/pirouette) → v3 campfire problem, Firebase→BLE rewrite → iOS metrics (16% conversion, 299 downloads) → links.
