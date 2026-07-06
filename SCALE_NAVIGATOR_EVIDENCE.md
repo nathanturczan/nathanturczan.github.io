@@ -564,3 +564,40 @@ Sources: `2026-02-09_Brady_Boettcher_conversation.txt` (recorded + transcribed, 
 **May 25, 2026 — LinnStrument × Scale Navigator M4L concept** (`LinnStrument_ScaleNavigator_M4L_Project.md`): a designed hardware-integration spec — LinnStrument User Firmware Mode relights cells per current scale, remaps notes in-scale, and shows **pitch-bend direction arrows for out-of-scale notes** (↑/↓ semitone, ↑↑/↓↓ whole tone) with a color legend (pink=root, cyan=bend target, yellow=auxiliary); four worked example layouts; data-flow diagram Dashboard → MIDI/Sysex → M4L → LinnStrument. Evidence of hardware-interface design thinking with the same per-pitch-class visual language.
 
 **Case-study value**: (1) the identity quote — the cleanest self-articulation of the PM-who-prototypes stance in the whole archive, dated and on tape; (2) an end-to-end ecosystem demo transcript from the week the plugin form factor landed; (3) Nathan writing developer-experience critique of Apple's own MIDI stack — with demo video and a shipped workaround plugin — and getting it relayed toward the framework owner; (4) the Chopin-mangle demo as Virtuoso-series provenance; (5) reciprocal QA and a hardware-integration design spec.
+
+---
+
+## 13. Marketing research archive (`/Users/soney/Github/marketing/research/`) — the design-research paper trail
+
+Surveyed 2026-07-05 at Nathan's request ("is there anything to be mined for case study in this research folder?"). **Yes — this folder is the evidence that the product decisions in the case studies sit on top of documented research practice**: competitive teardowns, proxy user research, design-system reverse-engineering, and launch-strategy analysis, all dated Mar–Jun 2026. Convention as in §12: source files stay in the marketing repo; quotes + canonical paths only here.
+
+### 13.1 The proxy-user-research method (April 2026) — `ableton/scale-awareness/ANALYSIS.md`
+
+The standout artifact. Nathan downloaded **10 YouTube tutorial transcripts** about Ableton Live 12's Scale Awareness (official Ableton tutorial, Ned Rush, abletondrummer's Toby, etc. — raw DownSub .txt transcripts preserved alongside) and mined them as **proxy user interviews**, extracting pain points with attributed verbatim quotes:
+- Core finding, stated as a thesis: "**Everyone thinks Scale Awareness is global. It's not.** It's per-clip."
+- Nine numbered limitations, each with sourced quotes — e.g. Toby: "The whole scale awareness is not really made for changing stuff afterwards"; "I was expecting… 'Oh cool, I can quickly change the whole scale of my full Ableton Live set.' It's not possible"; Ned Rush on the off-by-one scale-degree UI: "One scale degree means D, but D is the second note… which confuses me."
+- Ecosystem validation logged: Toby "built an entire suite of Max for Live devices specifically because native Scale Awareness couldn't do what he wanted… He sells these as a paid product. This is direct validation that the native system is insufficient for power users."
+- Output: a 9-row differentiator table (per-clip scope vs session-wide state; "Redundant modes (C Ionian = D Dorian)" vs scale classes) **and** tone guidance for how to talk about it — "Don't say: 'Better than Scale Awareness'… Do say: 'Does this annoy anyone else?'… Position as: **Commiseration, not competition**."
+
+**Case-study value**: a cheap, repeatable user-research method (educators as proxy interviewees), executed with quote-level rigor, feeding directly into the Dashboard/Scale Awareness Bridge positioning. This is the research artifact behind the "one source of truth" framing.
+
+### 13.2 Full-market competitive analysis (Jun 24, 2026) — `COMPETITORS.md` + 10 `competitors/intel_*.md` reports
+
+A master competitor sweep ("plugins, DAWs, hardware, mobile/iOS, AI/generative, Max for Live, and academic/experimental harmony interfaces") synthesized from ten sub-reports. Method on display:
+- **A falsifiable moat framework**: "Scale Navigator's defensible moat = all four at once: DAW-agnostic; broadcasts to third-party VST3/AU; Tymoczko scale-network map; live, navigable, shared harmonic state. Every competitor below fails at least one."
+- **Three threat tiers + an academic/lineage tier** ("These are your ancestors and proof of seriousness, not rivals") — Tymoczko's ChordGeometries named as "the direct scientific precursor."
+- **White-space conclusion**: "Across plugins, DAWs, hardware, mobile, AI, and M4L, **no product does all four**."
+- **Intellectual honesty as a deliverable**: pitch-deck implication #1 is a self-correction — "Drop 'no exploration' against Scaler — Scaler 3 has an Explore Page; **the claim is now false and a credibility risk**."
+
+### 13.3 Design-system reverse-engineering (Mar 5, 2026) — `freemium-models/ffosso/DESIGN-SYSTEM.md`
+
+Nathan saved FFOSSO's (Orchestral Tools) shipped pages locally and **extracted its entire design system from the production CSS** "for reference in Scale Navigator redesign": full color-token palette (`--OBSIDIAN-BLACK: #282828`, `--INDIGO: #5a57ff`…), the Suisse Intl / Suisse Intl Mono type pairing with responsive heading scales and tracking values, the 12px/24px mobile/desktop spacing rhythm, button/chip/nav/form/lightbox component specs (including the `mix-blend-mode: difference` fixed-nav trick), breakpoints, and `prefers-reduced-motion` handling — closing with a distilled design-philosophy summary ("Minimal color… Subtle interactions — opacity changes on hover, not color changes"). **Case-study value**: token-level study of a professional design system as design-craft practice — the kind of artifact that shows *how* a designer learns from shipped work.
+
+### 13.4 Business-model + launch-strategy teardowns (Mar 5–6, 2026) — `freemium-models/ffosso/FFOSSO-ANALYSIS.md`, `freemium-models/chromola/CHROMOLA-ANALYSIS.md`, `tamber.md` (May 2026)
+
+- **FFOSSO**: freemium teardown with the transferable insight stated up front — "**They gate content, not features.** The free tier has full functionality—you just get fewer instruments" — mapped into four explicit monetization options for Scale Navigator.
+- **Chromola**: a competitor's Reddit beta launch observed in the wild (7-subreddit posting matrix with upvote counts, incentive-structure analysis: "Beta expires June 1st… lifetime access for anyone who provides constructive feedback"), ending in a concrete recommendation — "**Yes, create a Scale Navigator Discord before beta launch**" with a proposed channel list. **The Discord was subsequently created with almost exactly that channel structure** (#announcements, #general, #support, #beta-feedback, #feature-requests) — a documented research → recommendation → shipped-decision loop.
+- **Tamber** ($5M Adobe-backed launch, May 2026): threat triage (direct competition LOW, synergy HIGH) plus honest self-critique of Nathan's own naming: "Their names are warmer. Ours are more technical."
+- Also present: `REDDIT_POST_EXAMPLES.md` (annotated community-launch post patterns + a drafted Scale Navigator template) and `ffosso-intro-transcript.txt` (transcribed competitor launch video). Minor; method context only.
+
+**Section 13 case-study value**: dated proof that the 2026 beta/launch decisions were research-backed — a designer-shaped evidence trail (proxy user research → competitive white-space → design-system study → strategy recommendation that shipped) rather than post-hoc rationalization.
