@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notation Anticipation - Nathan Turczan</title>
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link rel="stylesheet" href="project.css">
+</head>
+<body>
+    <div class="project-page">
+        <header class="project-header">
+            <a href="../index.html" class="back-link">Back</a>
+
+            <div class="project-info">
+                <h1 class="project-title">Notation Anticipation</h1>
+                <div class="divider-line"></div>
+                <p class="project-tagline">Role · Designer & developer</p>
+                <p class="project-tagline">Team · 1</p>
+                <p class="project-description">Platforms · Web · React / Firebase — LA Laptop Orchestra performer app</p>
+            </div>
+
+            <div class="project-meta">
+                <span class="project-year">2026</span>
+                <span class="project-categories">Interaction Design</span>
+            </div>
+        </header>
+
+        <div class="project-content">
+
+            <div class="project-text-section">
+                <p>
+                    <a href="https://lalaptoporchestra.com" target="_blank">LA Laptop Orchestra</a> performs from a shared screen score. Everyone in the room reads live notation on their own device — piano, fretboard, staff, harmonica — while a conductor moves the ensemble through a network of scales. When the harmony changes, every screen updates.
+                </p>
+                <p>
+                    That update used to be instantaneous. Click, swap.
+                </p>
+                <p>
+                    Eye-tracking studies of sight-reading (Furneaux 1999, Truitt 1997) show that musicians read about one second — roughly one measure — ahead of what they're playing. That preview buffer is where sight-reading actually happens. An instant swap overwrites it without warning: the notes you'd already read are gone, and you're reacting instead of anticipating.
+                </p>
+            </div>
+
+            <div class="project-text-section">
+                <h3>Watching it fail</h3>
+                <p>
+                    I watched this break in person. Two pianists spent an afternoon composing and sight-reading miniatures from the system, and after the first take one of them put the problem into words:
+                </p>
+                <p>
+                    <em>"It's weird because we're holding a chord and when we move on, it immediately plays the next thing — just, immediately, flash."</em>
+                </p>
+                <p>
+                    The other proposed the fix in the same breath: you switch, we finish the chord, <em>"and then you have ten seconds… and then it's in."</em> Sitting at the piano, they had spontaneously designed a preview window. The interface had been built for solo exploration, where instant feedback is exactly right; nobody had designed it for sight-reading. The system below shipped over the following two days.
+                </p>
+            </div>
+
+            <div class="image-row">
+                <img src="../images/anticipation/rasp-session-1.jpg" alt="Two musicians sight-reading from a screen score at a grand piano" class="project-image">
+                <img src="../images/anticipation/rasp-session-2.jpg" alt="Reading session at the piano, recorded on camera" class="project-image">
+            </div>
+            <p class="image-caption">The session that started it: two pianists composing and sight-reading miniatures from a live screen score.</p>
+
+            <div class="project-text-section">
+                <h3>What I ruled out</h3>
+                <p>
+                    Before designing anything I compiled two research bibliographies — screen-score notation practice and game UX timing, 217 sources — and used them to eliminate the obvious approaches:
+                </p>
+                <p>
+                    A <strong>scrolling score</strong> (Guitar Hero-style) gives spatial lookahead, but scrolling shrinks the reader's perceptual span (Harvey 2019), and harmonic navigation isn't strictly linear in time. <strong>Color-only signals</strong> fail because color changes don't capture peripheral attention — if you aren't looking directly at the changing note, you miss it (Yantis 1988). An <strong>audio countdown tick</strong> competes with the music being played. A <strong>3-2-1 overlay</strong> occludes the notation and asks the performer to read digits when the visual system judges time-to-arrival far better from motion.
+                </p>
+            </div>
+
+            <div class="project-text-section">
+                <p class="section-eyebrow">Iteration</p>
+                <h3>Four states, three phases</h3>
+                <p>
+                    The system that survived: every note on every instrument exists in one of four states — Off, On, Incoming, and Outgoing. When the next scale is queued, arriving notes pulse blue and departing notes desaturate and fade, for a configurable lookahead window, and then the score commits. Idle, preview, commit.
+                </p>
+                <p>
+                    Two animation styles ship side by side — Pulse and Ramp — because I couldn't resolve from research alone which reads better mid-performance. That's an A/B test to run with the ensemble, not a decision to fake.
+                </p>
+            </div>
+
+            <div class="project-images">
+                <video autoplay loop muted playsinline class="project-image">
+                    <source src="../images/anticipation/anticipation-demo.mp4" type="video/mp4">
+                </video>
+            </div>
+            <p class="image-caption">A queued scale change in the performer view: incoming notes pulse blue, outgoing notes fade, and the change commits when the countdown expires.</p>
+
+            <div class="project-text-section">
+                <p class="section-eyebrow">Design decision</p>
+                <h3>Motion for arriving, fade for departing</h3>
+                <p>
+                    The asymmetry is deliberate. Motion captures peripheral attention automatically; color change alone doesn't. A performer staring at their left hand still catches a pulsing key at the edge of vision. Departing notes only fade — you don't need to react quickly to a note you were already leaving.
+                </p>
+            </div>
+
+            <img src="../images/anticipation/staff-preview.png" alt="Treble staff with incoming accidentals shown in blue" class="project-image">
+            <p class="image-caption">On the staff, only the altered accidentals animate. The rest of the notation holds still so the reader's place is never disturbed.</p>
+
+            <div class="project-text-section">
+                <p class="section-eyebrow">Design decision</p>
+                <h3>How much warning is enough</h3>
+                <p>
+                    It depends on the player. Rhythm games solved this years ago: osu! lets experts shrink their approach window to 300ms while beginners get nearly two seconds. I borrowed the pattern — five presets from Rehearsal (2000ms) down to Expert (300ms), plus a free slider, saved per performer. A first-time participant and a professional sight-reader share the same room and the same score with different amounts of warning.
+                </p>
+            </div>
+
+            <img src="../images/anticipation/read-tab.png" alt="READ tab with anticipation controls: lookahead presets, Pulse/Ramp styles, and four instrument views" class="project-image">
+            <p class="image-caption">The performer view: anticipation toggle, lookahead presets, Pulse/Ramp style, and every notation renderer sharing one state machine.</p>
+
+            <div class="project-text-section">
+                <p class="section-eyebrow">Design decision</p>
+                <h3>Anticipation needs object constancy</h3>
+                <p>
+                    Rolling the system out across nine renderers exposed the general rule. The piano was easy: a key is a stable object that can pulse. The triad view wasn't — it regenerated its whole layout on every change, so an incoming triad had nowhere to arrive.
+                </p>
+                <p>
+                    Good anticipation needs object constancy. Every renderer needs a stable visual object — a key, a fret location, an accidental slot, a persisted coordinate — that survives the transition and can carry the animation. I redesigned the triad view around coordinates assigned at birth that persist for the life of each triad. What started as an animation pass turned into a rule about visual identity.
+                </p>
+            </div>
+
+            <img src="../images/anticipation/triadfield-idle.png" alt="Triad Field renderer with triads at persistent coordinates" class="project-image">
+            <p class="image-caption">The redesigned Triad Field: each triad keeps its coordinate for its whole life, so arriving and departing triads have a place to animate from.</p>
+
+            <div class="project-text-section">
+                <p class="section-eyebrow">Design decision</p>
+                <h3>Timing lives on each device</h3>
+                <p>
+                    An ensemble is many devices with many clocks. A server-side queue with a shared commit timestamp would need clock-skew correction across every phone in the room. Instead, each device receives the new harmony immediately and delays the commit locally by its own lookahead. Per-performer timing falls out for free, and MIDI output follows the same delayed commit, so what you hear stays matched to what you read.
+                </p>
+            </div>
+
+            <div class="project-text-section">
+                <h3>Where it is now</h3>
+                <p>
+                    The system shipped across all nine notation renderers in the performer app — piano, staffs, fretboards, flute, harmonica grid, and the abstract chord views — with one shared state machine underneath. The next LALORK performance, August 15 in Los Angeles, is the field test: a room full of strangers sight-reading harmonic changes they've never seen.
+                </p>
+                <p>
+                    Plenty is unfinished. A Staged mode — where a conductor holds to preview and releases to commit — is specced but unbuilt. The Pulse-versus-Ramp question stays open until performers vote with their settings. And the preset timings are educated guesses from rhythm-game data until August 15 says otherwise.
+                </p>
+            </div>
+
+            <div class="project-text-section">
+                <a href="https://enter.lalaptoporchestra.com" target="_blank" class="project-link">Launch App</a>
+                <a href="https://lalaptoporchestra.com" target="_blank" class="project-link">LALORK</a>
+                <a href="https://github.com/nathanturczan/lalork-website" target="_blank" class="project-link">GitHub</a>
+            </div>
+
+            <div class="project-text-section">
+                <h3>Related projects</h3>
+                <p>
+                    <a href="scale-navigator-dashboard.html">Scale Navigator Dashboard</a> — the conductor's interface driving the room's harmonic state<br>
+                    <a href="ensemble-jammer.html">Ensemble Jammer</a> — the networked instruments this grew out of
+                </p>
+            </div>
+        </div>
+
+        <nav class="project-nav">
+            <a href="scale-navigator-dashboard.html">Next</a>
+        </nav>
+    </div>
+</body>
+</html>

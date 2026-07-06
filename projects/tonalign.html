@@ -15,8 +15,9 @@
             <div class="project-info">
                 <h1 class="project-title">Tonalign</h1>
                 <div class="divider-line"></div>
-                <p class="project-tagline">Role: Designer & developer (with Brady Boettcher)</p>
-                <p class="project-description">VST3 / AU / AAX</p>
+                <p class="project-tagline">Role · Designer & developer</p>
+                <p class="project-tagline">Team · 2 (with Brady Boettcher)</p>
+                <p class="project-description">Platforms · VST3 / AU / AAX</p>
             </div>
 
             <div class="project-meta">
@@ -49,9 +50,16 @@
             <img src="../images/tonalign/Screenshot 2026-02-10 at 8.51.41 AM.png" alt="Tonalign interface" class="project-image">
 
             <div class="project-text-section">
+                <p class="section-eyebrow">Iteration</p>
                 <h3>Held notes</h3>
                 <p>
-                    What happens when you're holding a note and the scale changes underneath you? You can choose whether held notes glide to the new pitch, cut off, or stay put. There isn't one behavior that's correct for every instrument, so I exposed it as a choice instead of hard-coding one.
+                    What happens when you're holding a note and the scale changes underneath you?
+                </p>
+                <p>
+                    There isn't a universally correct answer. A pianist expects the note to stay where it is. A synth player might expect it to glide. Someone triggering orchestral samples may want the old note cut off entirely.
+                </p>
+                <p>
+                    Rather than pick one behavior, I shipped three modes — glide, stay, and cut — with glide as the default because it preserves harmonic continuity during live performance.
                 </p>
             </div>
 

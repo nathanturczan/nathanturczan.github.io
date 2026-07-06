@@ -6,7 +6,7 @@
 
 @font-face {
     font-family: 'GT Standard Mono';
-    src: url('../GT-Standard-M-Standard-Regular-Trial.woff2') format('woff2');
+    src: url('../fonts/GT-Standard-M-Standard-Regular-Trial.woff2') format('woff2');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -108,6 +108,14 @@ body {
     margin-bottom: 48px;
 }
 
+.project-text-section .section-eyebrow {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+}
+
 .project-text-section h3 {
     font-size: 15px;
     font-weight: 400;
@@ -143,6 +151,14 @@ body {
     margin: 32px 0;
 }
 
+/* Captions under images/video */
+.image-caption {
+    font-size: 12px;
+    letter-spacing: 0.02em;
+    color: var(--text-muted);
+    margin: -24px 0 32px;
+}
+
 /* Side-by-side images - the only flex we need */
 .image-row {
     display: flex;
@@ -153,10 +169,12 @@ body {
 
 .image-row > * {
     flex: 1 1 300px;
+    min-width: 0; /* images have an intrinsic min-width that otherwise forces wrapping */
 }
 
 .image-row .project-image {
     margin: 0;
+    object-fit: cover; /* mixed aspect ratios crop instead of distort */
 }
 
 /* Video embeds */

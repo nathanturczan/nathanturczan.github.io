@@ -89,6 +89,7 @@ const IMAGES_BASE = 'images/';
 // Title -> filename mapping (must match titles in index.html exactly)
 // Use { type: 'video', src: '...' } for video files
 const projectImageMap = {
+    'Notation Anticipation': { type: 'video', src: 'anticipation/anticipation-demo.mp4' },
     'Scale Navigator Dashboard': 'dashboard/scalenavigatordashboard.png',
     'LA Laptop Orchestra': [
         'lalork/poster-1.jpg',
