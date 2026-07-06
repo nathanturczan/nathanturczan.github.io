@@ -16,7 +16,7 @@
                 <h1 class="project-title">Ensemble Jammer</h1>
                 <div class="divider-line"></div>
                 <p class="project-tagline">Role · Designer & engineer</p>
-                <p class="project-tagline">Team · 1</p>
+                <p class="project-tagline">With · Nathan Ho (Venn7 instrument, SNaPS engine)</p>
                 <p class="project-description">Platforms · Web · iOS · Tone.js / Web Audio / Firebase / Web Bluetooth</p>
             </div>
 
@@ -29,27 +29,30 @@
         <div class="project-content">
 
             <div class="project-text-section">
+                <p class="section-eyebrow">Problem</p>
                 <p>
                     Making music with other people is harder than it should be. If you don't know the key, don't know the chords, or can't keep up with the harmony, it's easy to feel like you're getting in the way instead of contributing.
                 </p>
                 <p>
-                    I wanted to remove harmony as a problem entirely — build instruments where the interface only offers notes that fit, so people can focus on listening to each other instead of worrying about whether they're allowed to play the next note.
+                    I wanted to remove harmony as a problem entirely: build instruments where the interface only offers notes that fit, so people can focus on listening to each other instead of worrying about whether they're allowed to play the next note.
                 </p>
             </div>
 
             <div class="project-text-section">
+                <p class="section-eyebrow">Prototype</p>
                 <h3>What I built (v1)</h3>
                 <p>
-                    Not one instrument but a suite of them — Touch Harp, X/Y Lead, Melody Maker, drones, synths, sequencers, loops — all sharing a single harmonic state. Players join from a phone or tablet. A leader runs Scale Navigator Dashboard and sets the harmony. Every connected instrument automatically retunes the instant the host changes scale or chord. Each player's screen shows only the pitches that work right now.
+                    Not one instrument but a suite of them (Touch Harp, X/Y Lead, Melody Maker, drones, synths, sequencers, loops), all sharing a single harmonic state. Players join from a phone or tablet. A leader runs Scale Navigator Dashboard and sets the harmony. Every connected instrument automatically retunes the instant the host changes scale or chord. Each player's screen shows only the pitches that work right now.
                 </p>
                 <p>
-                    One of the instruments is a <a href="https://nathan.ho.name/venn7/" target="_blank">symmetric 7-Venn diagram</a> designed by Nathan Ho — I wired his interface into the harmonic-state system so it retunes live as the host changes scales.
+                    One of the instruments is a <a href="https://nathan.ho.name/venn7/" target="_blank">symmetric 7-Venn diagram</a> designed by Nathan Ho: I wired his interface into the harmonic-state system so it retunes live as the host changes scales. The <a href="snaps-plugin.html">SNaPS</a> engine came in too, ported as browser instruments over Christmas week 2025.
                 </p>
             </div>
 
             <img src="../images/ensemblejammer/Screenshot 2026-02-17 at 6.32.10 PM.png" alt="Ensemble Jammer interface" class="project-image">
 
             <div class="project-text-section">
+                <p class="section-eyebrow">Failure</p>
                 <h3>The salon test</h3>
                 <p>
                     I tested it at a salon performance with eleven friends after dinner, most of them non-musicians. We improvised a piano concerto together (<a href="https://www.youtube.com/watch?v=lUCmZuWv9R0" target="_blank">video</a>). People who'd never performed were soloing inside a minute.
@@ -87,7 +90,7 @@
                     Before a three-day backpacking trip, my friends and I wanted to play around the campfire. Phones in everyone's pockets, no Wi-Fi for miles. The whole instrument depended on Firebase networking, so it was dead the moment we left the router behind.
                 </p>
                 <p>
-                    I rewrote the sync layer for Bluetooth Low Energy. An ensemble now works fully offline — no infrastructure required. That matters for live gigs and workshops where network reliability is the thing most likely to ruin a performance.
+                    I rewrote the sync layer for Bluetooth Low Energy. An ensemble now works fully offline, no infrastructure required. That matters for live gigs and workshops where network reliability is the thing most likely to ruin a performance.
                 </p>
             </div>
 
@@ -97,6 +100,7 @@
             </div>
 
             <div class="project-text-section">
+                <p class="section-eyebrow">Outcome</p>
                 <h3>Where it is now</h3>
                 <p>
                     Since the iOS launch in April 2026: 16% conversion rate (>75th percentile for music apps), 299 downloads. The initial spike came from a coordinated Reddit rollout across r/ipadmusic, r/synthesizers, and r/musictheory.
@@ -104,8 +108,22 @@
             </div>
 
             <div class="project-text-section">
+                <h3>What's still unfinished</h3>
+                <p>
+                    There's a criticism I still haven't fully answered. Lachlan, reviewing footage of the system in use, put it plainly: an instrument on which no wrong note can be played is an instrument with no stakes. The motion controls are partly an attempt to give the player back some risk.
+                </p>
+            </div>
+
+            <div class="project-text-section">
                 <a href="https://ensemblejammer.scalenavigator.com/" target="_blank" class="project-link">Launch App</a>
                 <a href="https://apps.apple.com/app/ensemble-jammer/id6670175083" target="_blank" class="project-link">App Store</a>
+            </div>
+
+            <div class="project-text-section">
+                <h3>Credits</h3>
+                <p>
+                    <a href="https://nathan.ho.name/" target="_blank">Nathan Ho</a>: the <a href="https://nathan.ho.name/venn7/" target="_blank">Venn7</a> instrument design and the SNaPS engine that became the browser instruments. Lachlan: the no-stakes critique.
+                </p>
             </div>
 
             <div class="project-text-section">
