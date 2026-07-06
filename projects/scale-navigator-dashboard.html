@@ -126,7 +126,13 @@
                 <img src="../images/dashboard/prologue/midperiod_mobile_navigator.png" alt="Mid-period mobile build: black theme with the script Dashboard wordmark, G diatonic at the center of the network" class="project-image" style="flex: 0.45 1 0%">
                 <img src="../images/dashboard/prologue/midperiod_desktop_network.png" alt="Mid-period desktop app in the browser: black and yellow theme showing E-flat hexatonic above the full scale network" class="project-image" style="flex: 1.2402 1 0%">
             </div>
-            <p class="image-caption">The black-and-yellow direction wins: mid-period mobile (September 2021) and desktop (February 2022).</p>
+            <p class="image-caption">The black-and-yellow direction wins: mid-period mobile (September 2021) and desktop (February 2022). Below the network, the info box tracks only the scale.</p>
+
+            <div class="project-text-section">
+                <p>
+                    Every build through this period shared a flaw I only fixed in the modern era: the info box under the navigator, the readout of the current harmonic state, reported the scale and nothing else. The whole system rests on Tymoczko's quadruple hierarchy, where individual voices move inside chords, chords move inside scales, and scales move inside the larger chromatic universe of twelve notes. Voices stay unfixed and the chromatic universe is a given, so scale and chord are the two levels the interface has to pin down, and the info box was silently dropping one of them. Today's builds show both, side by side, on every platform.
+                </p>
+            </div>
 
             <div class="project-text-section project-text-section--flow">
                 <h3>Going all-in</h3>
@@ -135,7 +141,7 @@
                     <p class="image-caption">The interaction spec, complete.</p>
                 </div>
                 <p>
-                    Outside my day job, I went all-in on the tool. In July 2021 I rebuilt it as a React app (first commit July 23, 2021), with Michael Maurer shaping the early architecture and Ondřej Sedláček as the first contracted engineer. The interaction spec fit on a Post-it: your scale in the middle, its neighbors around it, and one neighbor already unfolding into its own neighborhood.
+                    When the pandemic took my day job, I went all-in on the tool, and by July 2021 I had rebuilt it as a React app (first commit July 23, 2021), with Michael Maurer shaping the early architecture and Ondřej Sedláček as the first contracted engineer. The interaction spec fit on a Post-it: your scale in the middle, its neighbors around it, and one neighbor already unfolding into its own neighborhood.
                 </p>
             </div>
 
@@ -151,7 +157,7 @@
                     <em>"It's the difference between someone demonstrating something on stage, vs a teacher helping you learn it."</em>
                 </p>
                 <p>
-                    The tool was good for wandering but bad for composing. The very next day, Tristan Whitehill's QA report wrote the same problem down independently. That weekend I sketched a "Notepad" workspace where discoveries could be kept and arranged.
+                    The tool was good for wandering but bad for composing: you'd stumble onto something beautiful and then click again and lose it. That weekend I sketched a "Notepad" workspace where discoveries could be kept and arranged.
                 </p>
             </div>
 
@@ -215,7 +221,7 @@
                     Harmony should live at the center of your compositional and production workflow, not in a browser tab and not duplicated inside every plugin. So I rebuilt Dashboard as a VST3/AU/AAX plugin with automatable parameters: change the scale at bar 32 and the automation lane remembers. Every other Scale Navigator tool subscribes to that state, which makes Dashboard one interface that tells the rest of the session what the harmony is.
                 </p>
                 <p>
-                    The Score and Sketchpad workspaces, shipped February and March 2026, are the long-delayed answer to Arthur's two questions: you explore the network, find something you like, and drag it into a progression you can keep, replay, and learn from. I emailed Arthur in 2026 to tell him the sketchpad finally existed. He'd moved to Splice by then and was writing a book on music UI.
+                    Arthur's two questions, how do you capture what you find and how do you learn from it, became the design thesis for everything Scale Navigator does. The Score and Sketchpad workspaces, shipped February and March 2026, are the long-delayed answer: you explore the network, find something you like, and drag it into a progression you can keep, replay, and learn from. I emailed Arthur in 2026 to tell him the sketchpad finally existed. He'd moved to Splice by then and was writing a book on music UI.
                 </p>
             </div>
 
