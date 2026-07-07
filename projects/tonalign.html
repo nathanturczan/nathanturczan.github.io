@@ -33,7 +33,7 @@
 
             <p class="project-summary">AutoTune for MIDI. You're only ever a half step from the right note; Tonalign makes that correction for you and shows you how.</p>
 
-            <video class="project-image" autoplay loop muted playsinline aria-label="Tonalign correcting live MIDI on the folded keyboard as the scale changes">
+            <video class="project-image" autoplay loop muted playsinline aria-label="Tonalign correcting live MIDI on the folded keyboard as the harmony changes">
                 <source src="../images/tonalign/tonalign-demo.mp4" type="video/mp4">
             </video>
             <p class="image-caption">Shipped, 2026: downward arrows marking the notes that moved.</p>
@@ -44,7 +44,7 @@
                     I am not a great pianist. My left hand is a liability, and I don't have the fluent muscle memory with chords and scales that comes from years of practice. But I know how to noodle: I know how to mash on the keyboard and hear what I meant to play, even when what came out was a half step off.
                 </p>
                 <p>
-                    The half-step line is an old jazz saying; Tonalign turns it into a plugin. Play a note outside the current scale and what comes out is its nearest available neighbor, corrected in real time inside the DAW. The incoming note is kept and shown, so you can always see what you played against what the plugin let through.
+                    The half-step line is an old jazz saying; Tonalign turns it into a plugin. Play a note outside the current harmony and what comes out is its nearest available neighbor, corrected in real time inside the DAW. The incoming note is kept and shown, so you can always see what you played against what the plugin let through.
                 </p>
             </div>
 
@@ -142,7 +142,7 @@
                 <p class="section-eyebrow">Final solution</p>
                 <h3>The held note</h3>
                 <p>
-                    What happens to a note that's already sounding when the scale changes underneath it? That's answered by the INTERRUPT toggle. With it on, held notes are re-pitched at the exact instant the scale or chord changes, so the modulation stops being a silent background shift and becomes an audible event in every sustained voice.
+                    What happens to a note that's already sounding when the harmony changes underneath it? That's answered by the INTERRUPT toggle. With it on, held notes are re-pitched at the exact instant the scale or chord changes, so the modulation stops being a silent background shift and becomes an audible event in every sustained voice.
                 </p>
             </div>
 
@@ -153,8 +153,8 @@
                 </p>
                 <ul>
                     <li><strong>Corrective</strong>: neighbors fold together; C and C♯ both come out as C</li>
-                    <li><strong>Filter</strong>: notes outside the scale are silenced instead of corrected</li>
-                    <li><strong>Stack (Chrom)</strong>: the whole keyboard collapses chromatically onto the scale, so C♯ comes out as D</li>
+                    <li><strong>Filter</strong>: notes outside the current harmony are silenced instead of corrected</li>
+                    <li><strong>Stack (Chrom)</strong>: the whole keyboard collapses chromatically onto the current harmony, so C♯ comes out as D</li>
                     <li><strong>Stack (White)</strong>: the same stack on the white keys alone, sparing the fingering shifts of mixing black keys into white</li>
                 </ul>
             </div>
@@ -187,7 +187,7 @@
             <div class="project-text-section">
                 <h3>What's still unfinished</h3>
                 <p>
-                    The collision problem from week four of 2021 is still one I tune by hand, and mid-sustain scale changes still have edge cases. And there's an absurdity I've made peace with: because Steinberg makes real MIDI-effect plugins nearly impossible in VST3, Tonalign is technically a synthesizer, with a silent, no-noise synth always running inside it just so a pure MIDI tool is allowed to exist.
+                    The collision problem from week four of 2021 is still one I tune by hand, and mid-sustain harmony changes still have edge cases. And there's an absurdity I've made peace with: because Steinberg makes real MIDI-effect plugins nearly impossible in VST3, Tonalign is technically a synthesizer, with a silent, no-noise synth always running inside it just so a pure MIDI tool is allowed to exist.
                 </p>
             </div>
 
@@ -206,8 +206,8 @@
                 <h3>Related work</h3>
                 <p>
                     <a href="scale-navigator-dashboard.html">Scale Navigator Dashboard</a> — the harmonic state that Tonalign subscribes to<br>
-                    <a href="ensemble-jammer.html">Ensemble Jammer</a> — the same scale state, followed by networked instruments instead of MIDI<br>
-                    <a href="notes-chords-scales.html">NotesChordScales</a> — the inverse direction: play notes, and the system infers the scale<br>
+                    <a href="ensemble-jammer.html">Ensemble Jammer</a> — the same harmonic state, followed by networked instruments instead of MIDI<br>
+                    <a href="notes-chords-scales.html">NotesChordScales</a> — the inverse direction: play notes, and the system infers the harmony<br>
                     <a href="snaps-plugin.html">SNaPS</a> — a sampler with the same scale-aware pitch handling, applied to samples
                 </p>
             </div>
