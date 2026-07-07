@@ -57,7 +57,7 @@
                     Instead of asking what MIDI note triggered the sample, the engine checks the pitches inside the recording against the Current Scale. If they're a subset of the scale, the sample plays untransposed; if they'd be a subset after transposition, it plays at that transposition; if no transposition fits, it doesn't play.
                 </p>
                 <p>
-                    The same check runs again at every scale change, and that's where the instrument lives. A sample that's already sounding re-checks itself and bends to fit in real time, because harmony doesn't respect the boundary of a note: if the chord changes while a violin sustains, the violin doesn't restart, she keeps singing through the change. A conventional sampler either lets the sustaining sample clash or cuts and retriggers it, and you can hear the retrigger. Once a sample knows what notes it contains, the rest of SNaPS follows: the transpositions, the glides, the theatrical exits, even the Librarian.
+                    The same check runs again at every scale change, and that's where the instrument lives. A sample that's already sounding re-checks itself and bends to fit in real time, because harmony doesn't respect the boundary of a note: if the chord changes while a violin sustains, the violin doesn't restart, she keeps singing through the change. A conventional sampler either lets the sustaining sample clash or cuts and retriggers it, and you can hear the retrigger.
                 </p>
             </div>
 
@@ -68,13 +68,7 @@
                     SNaPS started as a SuperCollider instrument that <a href="https://nathan.ho.name/" target="_blank">Nathan Ho</a> and I built together, and the idea itself descends from Ho's conception of <a href="https://nathan.ho.name/posts/sound-dumplings/" target="_blank">sound dumplings</a>: hand-assembled collages of samples repitched into a common key and arranged into a single gesture. A finished dumpling is a static object, like hardened lava. The question behind SNaPS was what happens if you keep it molten: live, mobile blobs that collage themselves automatically and re-pitch as the harmony moves.
                 </p>
                 <p>
-                    Before development began I wrote the whole system out as a design document, the "Sample Particle System." The triggering logic above is nearly verbatim from that spec, which already contained the ramped transposition that became the glide.
-                </p>
-                <p>
-                    Nathan built the engine, and Scale Navigator integration was there in week one. I owned the sample corpus, the metadata standard, and my own performance file.
-                </p>
-                <p>
-                    The <a href="https://github.com/nhthn/snaps" target="_blank">repo lives under <code>nhthn/</code></a>, Ho's account, and is completely open source. For years I performed out of an instrument hosted in my collaborator's GitHub, and contributed engine code back through reviewed PRs.
+                    I wrote the whole system out first as a design document, the "Sample Particle System"; Ho built the engine, and Scale Navigator integration was there in week one. I owned the sample corpus, the metadata standard, and my own performance file, and contributed engine code back through reviewed PRs.
                 </p>
             </div>
 
@@ -157,7 +151,7 @@
                 <p class="section-eyebrow">Design decision</p>
                 <h3>Seeing the particles</h3>
                 <p>
-                    The plugin's main view makes the particle metaphor visible. Each dot is one playing sample traveling left to right across its lane: its life begins at the left edge and ends at the right, so long samples drift while short ones streak past, and the lane reads as a field of particles moving at different speeds. A sample with more than one pitch class stacks two or more dots vertically, and every dot grows and shrinks with its sample's loudness, so the density and dynamics of the texture are legible at a glance. I drew it as a swarm because a swarm behaves like an ensemble in a way a sample list never could.
+                    The plugin's main view makes the particle metaphor visible. Each dot is one playing sample traveling left to right across its lane, so long samples drift while short ones streak past. Multi-pitch samples stack their dots vertically, and every dot breathes with its sample's loudness, so the density and dynamics of the texture read at a glance. I drew it as a swarm because a swarm behaves like an ensemble in a way a sample list never could.
                 </p>
             </div>
 
@@ -175,9 +169,6 @@
                 <h3>Three modes, one engine</h3>
                 <p>
                     The modes accumulated across the collaboration with Ho. The first particles were one-shots, emitted to form a cloud: a swarm of nanobots or drones that reshapes itself to fit the weather, where the weather patterns are the harmonic state. Emission started random, and then I added alphanumeric ordering, which turned the emitter isorhythmic: a repeating pitch cycle laid against an emission rhythm of a different length, the 14th-century trick, so the same melody keeps landing on new rhythms with every pass.
-                </p>
-                <p>
-                    Then came the question of particles with a different kind of life span, one whose life never ends, and that's a loop. The Sequencer, a canvas where samples are laid out in time, only arrived in the JUCE C++ era.
                 </p>
                 <p>
                     The plugin plays the same particle engine three ways:
@@ -202,10 +193,7 @@
                 <p class="section-eyebrow">Design decision</p>
                 <h3>The failure is the instrument</h3>
                 <p>
-                    Sometimes a sample's pitch content no longer fits the new harmonic state. The obvious solution is to fade it out or mute it, but that throws away an opportunity. Instead, those moments can become transitions. Rather than disappearing, a sample can narrow to the notes that still fit using a band-pass filter, then open back up when the harmony allows it. The stutters and Doppler-style exits grew out of exploring those kinds of transitions.
-                </p>
-                <p>
-                    Those exits are stackable: a stutter, a filter sweep, a Doppler-style pitch drop. The sound leaves on purpose, audibly, as a gesture you can score with. In SNaPS the modulation <em>is</em> the event: the moment the harmony changes is the thing you hear, a texture of dozens of voices leaning into the new chord and a few of them making a scene on the way out.
+                    Sometimes a sample's pitch content no longer fits the new harmonic state. The obvious solution is to fade it out or mute it, but that throws away an opportunity: those moments can become transitions. A sample can narrow to the notes that still fit through a band-pass filter and open back up when the harmony allows it, or leave on purpose with a stackable exit: a stutter, a filter sweep, a Doppler-style pitch drop. In SNaPS the modulation <em>is</em> the event: the moment the harmony changes is the thing you hear, a texture of dozens of voices leaning into the new chord and a few of them making a scene on the way out.
                 </p>
             </div>
 
