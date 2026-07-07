@@ -490,11 +490,6 @@ const SnapSequencer = (() => {
             masterBus = null;
         }
 
-        if (finalReverb) {
-            finalReverb.dispose();
-            finalReverb = null;
-        }
-
         sampleManifests.clear();
         loopConfig = null;
         isInitialized = false;

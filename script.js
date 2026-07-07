@@ -96,10 +96,7 @@ const projectImageMap = {
         'lalork/poster-2.jpg'
     ],
     'Early Downhome Blues': 'early-downhome-blues-app.png',
-    'To A Wild Rose…': 'wildrose.jpg',
-    'Modal Intersections': 'MI-2.gif',
     'SOULS': 'sia_souls.jpg',
-    'Pandiatonic Autoharp': 'autoharp.jpg',
     'Tonalign': [
         'tonalign/Screenshot 2026-02-10 at 8.51.41 AM.png',
         'tonalign/Screenshot 2026-02-10 at 8.51.47 AM.png',
@@ -139,21 +136,41 @@ function random(min, max) {
 }
 
 const LAYER_LIFETIME_MS = 20000; // 20 seconds
-const MAX_LAYERS = 12;
+const MAX_LAYERS = 8;
 
-// Underline the project whose photo is on top of the stack
+// Underline the project whose photo is on top of the stack.
+// Also: only the top layer's video plays; covered videos pause and hold
+// their frame (a paused video is just a photo), so rapid hovering never
+// runs more than one video decoder at a time.
 function updateTopHighlight() {
     const layers = photoStack.querySelectorAll('.photo-layer');
-    const topTitle = layers.length ? layers[layers.length - 1].dataset.title : null;
+    const topLayer = layers.length ? layers[layers.length - 1] : null;
+    const topTitle = topLayer ? topLayer.dataset.title : null;
     projectItems.forEach(item => {
         const titleEl = item.querySelector('.title');
         const title = (titleEl ? titleEl.textContent : '').trim();
         item.classList.toggle('is-top', title === topTitle);
     });
+    layers.forEach(layer => {
+        const video = layer.querySelector('video');
+        if (!video) return;
+        if (layer === topLayer) {
+            if (video.paused) video.play().catch(() => {});
+        } else if (!video.paused) {
+            video.pause();
+        }
+    });
 }
 
 function removeLayer(layer) {
     clearTimeout(layer._removeTimer);
+    // Release the video's decoder before dropping the element
+    const video = layer.querySelector('video');
+    if (video) {
+        video.pause();
+        video.removeAttribute('src');
+        video.load();
+    }
     layer.remove();
     updateTopHighlight();
 }
@@ -174,6 +191,16 @@ function addPhotoLayer(item) {
 
     const titleEl = item.querySelector('.title');
     const title = (titleEl ? titleEl.textContent : '').trim();
+
+    // Already on top: refresh its lifetime instead of stacking a duplicate
+    const existing = photoStack.querySelectorAll('.photo-layer');
+    const topLayer = existing.length ? existing[existing.length - 1] : null;
+    if (topLayer && topLayer.dataset.title === title) {
+        clearTimeout(topLayer._removeTimer);
+        topLayer._removeTimer = setTimeout(() => removeLayer(topLayer), LAYER_LIFETIME_MS);
+        return;
+    }
+
     const media = getProjectMedia(title);
     if (!media) return;
 
@@ -225,10 +252,28 @@ function addPhotoLayer(item) {
     updateTopHighlight();
 
     // Disappear after 20 seconds
-    layer._removeTimer = setTimeout(() => {
-        layer.remove();
-        updateTopHighlight();
-    }, LAYER_LIFETIME_MS);
+    layer._removeTimer = setTimeout(() => removeLayer(layer), LAYER_LIFETIME_MS);
+}
+
+// Warm the browser cache for stack images at idle so the first hover
+// doesn't wait on the network (desktop only; the stack is off on mobile)
+if (window.innerWidth > 1024) {
+    const warmCache = () => {
+        Object.values(projectImageMap).forEach(entry => {
+            const list = Array.isArray(entry) ? entry : [entry];
+            list.forEach(src => {
+                if (typeof src === 'string') {
+                    const img = new Image();
+                    img.src = IMAGES_BASE + src;
+                }
+            });
+        });
+    };
+    if ('requestIdleCallback' in window) {
+        requestIdleCallback(warmCache, { timeout: 4000 });
+    } else {
+        setTimeout(warmCache, 2500);
+    }
 }
 
 projectItems.forEach(item => {
@@ -350,10 +395,25 @@ document.addEventListener('click', (e) => {
         await initPromise;
     }
 
-    // Pre-load in background on page load
-    ensureSequencerReady().catch(err => {
-        console.error('[Portfolio] Pre-load failed:', err);
-    });
+    // Pre-load in background, but only after the page has finished loading
+    // and the main thread is idle, so Tone.js and the Firebase samples never
+    // compete with first paint. A click still works before this fires because
+    // toggleAudio awaits ensureSequencerReady itself.
+    const schedulePreload = () => {
+        const run = () => ensureSequencerReady().catch(err => {
+            console.error('[Portfolio] Pre-load failed:', err);
+        });
+        if ('requestIdleCallback' in window) {
+            requestIdleCallback(run, { timeout: 5000 });
+        } else {
+            setTimeout(run, 2500);
+        }
+    };
+    if (document.readyState === 'complete') {
+        schedulePreload();
+    } else {
+        window.addEventListener('load', schedulePreload, { once: true });
+    }
 
     // Shared toggle function for both click and keyboard
     async function toggleAudio() {
