@@ -443,23 +443,31 @@ document.addEventListener('click', (e) => {
                 await SnapSequencer.start();
                 console.log('[Portfolio] SnapSequencer started');
 
-                // Wait for first audio to actually play (samples are distributed across the loop)
-                // Poll until we detect the transport is running and past the first beat
+                // Wait for the first sample to actually reach the speakers:
+                // poll the master-bus meter and resolve the moment real signal
+                // crosses the silence threshold. Transport time is not enough,
+                // because samples stream in progressively and are spread across
+                // a 12-second loop, so the transport can run silent for seconds.
                 const waitForAudio = () => {
                     return new Promise((resolve) => {
+                        const SILENCE_DB = -60;
                         const checkInterval = setInterval(() => {
-                            if (typeof Tone !== 'undefined' &&
-                                Tone.Transport.state === 'started' &&
-                                Tone.Transport.seconds > 0.1) {
+                            // User toggled off while we were waiting
+                            if (!window.__audioEnabled) {
+                                clearInterval(checkInterval);
+                                resolve();
+                                return;
+                            }
+                            if (SnapSequencer.getOutputLevel() > SILENCE_DB) {
                                 clearInterval(checkInterval);
                                 resolve();
                             }
                         }, 50);
-                        // Fallback timeout after 3 seconds
+                        // Fallback: by 13s every slot in the 12s loop has come around
                         setTimeout(() => {
                             clearInterval(checkInterval);
                             resolve();
-                        }, 3000);
+                        }, 13000);
                     });
                 };
                 await waitForAudio();

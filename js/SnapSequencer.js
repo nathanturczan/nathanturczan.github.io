@@ -39,6 +39,7 @@ const SnapSequencer = (() => {
     let glideIntervals = new Set();
     let loopEvent = null;
     let masterBus = null;
+    let outputMeter = null;
     let isInitialized = false;
     let currentScale = null;
 
@@ -292,6 +293,9 @@ const SnapSequencer = (() => {
         // Create master bus (same as Ensemble Jammer: gain -> limiter -> destination)
         const masterLimiter = new Tone.Limiter(-3).toDestination();
         masterBus = new Tone.Gain(0.6).connect(masterLimiter);
+        // Meter on the master bus so the UI can detect the first audible sample
+        outputMeter = new Tone.Meter({ smoothing: 0 });
+        masterBus.connect(outputMeter);
         console.log('[SnapSequencer] Created master bus');
 
         // Build default loop config (randomly selects samples like Ensemble-Jammer)
@@ -368,6 +372,12 @@ const SnapSequencer = (() => {
 
             const scalePCs = getScalePCs(currentScale);
 
+            // Convert the loop tick's AudioContext time to a transport position.
+            // scheduleOnce expects transport time; passing raw context time works
+            // only on the very first start (both clocks near zero) and schedules
+            // everything minutes into the future after a stop/restart.
+            const transportTickTime = Tone.Transport.getSecondsAtTime(time);
+
             for (const track of loopConfig.tracks) {
                 Tone.Transport.scheduleOnce((scheduledTime) => {
                     const key = `${track.folder}/${track.filename}`;
@@ -417,7 +427,7 @@ const SnapSequencer = (() => {
                         }
                         activeVoices.delete(voiceId);
                     }, duration * 1000 + 50);
-                }, time + track.startTime);
+                }, transportTickTime + track.startTime);
             }
         }, loopDuration).start(0);
 
@@ -475,6 +485,13 @@ const SnapSequencer = (() => {
         });
     }
 
+    // Current master output level in dB (-Infinity when silent or not initialized)
+    function getOutputLevel() {
+        if (!outputMeter) return -Infinity;
+        const value = outputMeter.getValue();
+        return Array.isArray(value) ? Math.max(...value) : value;
+    }
+
     // Cleanup
     function dispose() {
         stop();
@@ -484,6 +501,11 @@ const SnapSequencer = (() => {
 
         players.forEach(player => player.dispose());
         players.clear();
+
+        if (outputMeter) {
+            outputMeter.dispose();
+            outputMeter = null;
+        }
 
         if (masterBus) {
             masterBus.dispose();
@@ -502,6 +524,7 @@ const SnapSequencer = (() => {
         start,
         stop,
         onScaleChange,
+        getOutputLevel,
         dispose
     };
 })();
