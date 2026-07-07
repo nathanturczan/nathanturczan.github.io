@@ -83,10 +83,7 @@
                     For four years the SuperCollider version was my primary live instrument: pretty much everything sample-based on my YouTube and SoundCloud before 2026 is running SNaPS SuperCollider.
                 </p>
                 <p>
-                    Then it hit a ceiling. I'd extended Ho's rhythm grid into my own polyrhythm system, with Clock Divide / Multiply and humanize-rhythm parameters, and pushed hard enough it fell over: 16th notes at 250 BPM and the whole thing would crash.
-                </p>
-                <p>
-                    Ho and I spent two hours debugging it before conceding that the worst case, one note every 5.2 milliseconds, was more than SuperCollider's timing could hold. The instrument had outgrown its language. Three weeks later I started the plugin.
+                    Then it hit SuperCollider's timing limits: dense rhythmic textures crashed the engine, so I rebuilt it as a native plugin.
                 </p>
             </div>
 
@@ -118,13 +115,7 @@
                 <p class="section-eyebrow">Final solution</p>
                 <h3>Voice leading as arithmetic</h3>
                 <p>
-                    When the harmony changes, a texture of dozens of voices has to decide where each one moves. The naive rule is "transpose each sample to the nearest scale tone." That produces a wandering, arbitrary result, voices leaping in whatever direction is technically closest. Real ensembles don't sound like that. Trained voices move by the least sufficient motion, with a slight downward gravity that corpus studies find in actual voice leading. So I made the modulation a cost function instead of a rule:
-                </p>
-                <blockquote>
-                    the cost of a candidate transposition is its size in semitones plus a fixed penalty for upward motion; candidates are confined to a bounded range wider below than above; ties resolve downward.
-                </blockquote>
-                <p>
-                    Small moves beat large ones. Downward moves beat upward moves of equal size. The aggregate texture modulates the way an ensemble does, by the least sufficient motion.
+                    When the harmony changes, every sounding sample evaluates every legal transposition. Small movements cost less than large ones, downward movement is slightly preferred, and ties resolve downward. Those simple constraints produce motion that resembles ensemble voice leading rather than arbitrary pitch shifting.
                 </p>
                 <p>
                     The glide's shape comes from <a href="https://nathan.ho.name/posts/oddvoices-dev-log-3/" target="_blank">Ho's oddvoices research</a>, measured from a real singer: ascending glides dip below the starting pitch before they rise, descending glides overshoot the target and settle up into it. SNaPS samples glide along that measured shape, like a voice, not a machine.
@@ -138,20 +129,10 @@
             <p class="image-caption">Ho's measured portamento, four sung takes each way; SNaPS glides inherit the shape.</p>
 
             <div class="project-text-section">
-                <p>
-                    <strong>What I rejected:</strong>
-                </p>
-                <ul>
-                    <li>A single hard-coded glide: mechanical, wrong for half the material</li>
-                    <li>A UI-first plugin design: the interface barely changed from prototype to release, because almost all the design work happened in the behavior</li>
-                </ul>
-            </div>
-
-            <div class="project-text-section">
                 <p class="section-eyebrow">Design decision</p>
                 <h3>Seeing the particles</h3>
                 <p>
-                    The plugin's main view makes the particle metaphor visible. Each dot is one playing sample traveling left to right across its lane, so long samples drift while short ones streak past. Multi-pitch samples stack their dots vertically, and every dot breathes with its sample's loudness, so the density and dynamics of the texture read at a glance. I drew it as a swarm because a swarm behaves like an ensemble in a way a sample list never could.
+                    Every playing sample becomes a moving particle, making the texture visible instead of hiding it in a list. I drew it as a swarm because a swarm behaves like an ensemble in a way a sample list never could.
                 </p>
             </div>
 
@@ -167,9 +148,6 @@
             <div class="project-text-section">
                 <p class="section-eyebrow">Design decision</p>
                 <h3>Three modes, one engine</h3>
-                <p>
-                    The modes accumulated across the collaboration with Ho. The first particles were one-shots, emitted to form a cloud: a swarm of nanobots or drones that reshapes itself to fit the weather, where the weather patterns are the harmonic state. Emission started random, and then I added alphanumeric ordering, which turned the emitter isorhythmic: a repeating pitch cycle laid against an emission rhythm of a different length, the 14th-century trick, so the same melody keeps landing on new rhythms with every pass.
-                </p>
                 <p>
                     The plugin plays the same particle engine three ways:
                 </p>
@@ -200,7 +178,7 @@
             <div class="project-text-section">
                 <p class="section-eyebrow">Outcome</p>
                 <p>
-                    In the studio I routed SNaPS multitrack through Loopback into separate Ableton channels, so it worked as a source, not just a live rig. In 2025 the engine was ported into <a href="ensemble-jammer.html">Ensemble Jammer</a> as browser instruments, and in 2026 it became a plugin, so the workflow I'd performed with for five years finally packages for any DAW (Logic Pro, Ableton Live, anything that hosts VST3 or AU) and subscribes to <a href="scale-navigator-dashboard.html">Dashboard</a>'s shared harmonic state like the rest of the ecosystem.
+                    In the studio I routed SNaPS multitrack through Loopback into separate Ableton channels, so it worked as a source, not just a live rig. In 2025 the engine was ported into <a href="ensemble-jammer.html">Ensemble Jammer</a> as browser instruments, and in 2026 it became a plugin, so the workflow I'd performed with for five years finally packages for any DAW (Logic Pro, Ableton Live, anything that hosts VST3 or AU) and subscribes to <a href="scale-navigator-dashboard.html">Dashboard</a>'s shared harmonic state like the rest of the ecosystem. <a href="https://soundcloud.com/equuipment/sets/samplerate-counterpoint" target="_blank">Samplerate Counterpoint</a>, an album made entirely with SNaPS, is the sound of the whole system at work.
                 </p>
             </div>
 
@@ -209,28 +187,18 @@
                 <a href="https://github.com/nhthn/snaps" target="_blank" class="project-link">GitHub</a>
             </div>
 
-            <iframe scrolling="no" style="width:100%;height:450px;border:0;" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/equuipment/sets/samplerate-counterpoint&color=%23ff5500&auto_play=false&show_user=true" title="Samplerate Counterpoint on SoundCloud"></iframe>
-            <p class="image-caption"><a href="https://soundcloud.com/equuipment/sets/samplerate-counterpoint" target="_blank">Samplerate Counterpoint</a>, an album made entirely with SNaPS: a counterpoint of counterpoints.</p>
-
-            <div class="project-text-section">
+            <details class="project-notes">
+                <summary>Notes</summary>
                 <p>
                     Ho, writing on <a href="https://nathan.ho.name/posts/sound-dumplings/" target="_blank">his own site</a>: "He took my sound dumpling idea and expanded on it by introducing key changes and automated collaging of samples… the results are very colorful and interesting."
                 </p>
-            </div>
-
-            <div class="project-text-section">
-                <h3>What's still unfinished</h3>
                 <p>
-                    The crash that triggered the port isn't cleanly solved; it's outrun, moved into a language where the timing math doesn't fall over. The plugin's preset system is an open problem. And the Librarian's transcription is only as good as Basic Pitch is: a mistagged sample is born into the wrong scale.
+                    Still unfinished: the crash that triggered the port isn't cleanly solved; it's outrun, moved into a language where the timing math doesn't fall over. The plugin's preset system is an open problem. And the Librarian's transcription is only as good as Basic Pitch is: a mistagged sample is born into the wrong scale.
                 </p>
-            </div>
-
-            <div class="project-text-section">
-                <h3>Credits</h3>
                 <p>
-                    <a href="https://nathan.ho.name/" target="_blank">Nathan Ho</a>: the SuperCollider engine, the glide-curve research, the Basic Pitch pointer, and the February 2026 pair-debugging session. Michael Szanyi: the Webb Schools dance-show set. The <a href="https://github.com/nhthn/snaps" target="_blank">original repo</a> is open source under Ho's account.
+                    Credits: <a href="https://nathan.ho.name/" target="_blank">Nathan Ho</a>: the SuperCollider engine, the glide-curve research, the Basic Pitch pointer, and the February 2026 pair-debugging session. Michael Szanyi: the Webb Schools dance-show set. The <a href="https://github.com/nhthn/snaps" target="_blank">original repo</a> is open source under Ho's account.
                 </p>
-            </div>
+            </details>
 
             <div class="project-text-section">
                 <h3>Related work</h3>

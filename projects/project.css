@@ -178,6 +178,29 @@ body {
     margin-bottom: 0;
 }
 
+/* Collapsed notes */
+.project-notes {
+    margin-bottom: 48px;
+}
+
+.project-notes summary {
+    font-size: 15px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    cursor: pointer;
+    margin-bottom: 16px;
+}
+
+.project-notes p {
+    margin-bottom: 24px;
+    color: var(--text-muted);
+}
+
+.project-notes p:last-child {
+    margin-bottom: 0;
+}
+
 /* Tables */
 .project-table {
     width: 100%;
