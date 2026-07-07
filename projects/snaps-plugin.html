@@ -31,6 +31,8 @@
 
         <div class="project-content">
 
+            <p class="project-summary">A sampler where every sample knows its own pitches. Change the scale and everything sounding bends to fit or makes an exit: voice leading as arithmetic.</p>
+
             <div class="project-images">
                 <video autoplay loop muted playsinline class="project-image">
                     <source src="../images/snaps/snaps-demo.mp4" type="video/mp4">
@@ -143,8 +145,12 @@
 
             <div class="project-text-section">
                 <p>
-                    <strong>What I rejected:</strong> a single hard-coded glide (mechanical, wrong for half the material), and a UI-first plugin design. The interface barely changed from prototype to release. Almost all the design work happened in the behavior.
+                    <strong>What I rejected:</strong>
                 </p>
+                <ul>
+                    <li>A single hard-coded glide: mechanical, wrong for half the material</li>
+                    <li>A UI-first plugin design: the interface barely changed from prototype to release, because almost all the design work happened in the behavior</li>
+                </ul>
             </div>
 
             <div class="project-text-section">
@@ -174,7 +180,15 @@
                     Then came the question of particles with a different kind of life span, one whose life never ends, and that's a loop. The Sequencer, a canvas where samples are laid out in time, only arrived in the JUCE C++ era.
                 </p>
                 <p>
-                    The plugin plays the same particle engine three ways. Emitter streams samples continuously at a chosen rate, Looper holds chosen samples as sustaining loops on pads, and Sequencer lays samples out on a timeline. Whatever is sounding when the scale changes obeys the same rule in every mode: bend to fit, or make an exit. The window itself is scale-aware too: the whole interface takes on the root color of the current scale, so the three screenshots on this page are red, orange, and gold because they were taken in C, F, and A♯.
+                    The plugin plays the same particle engine three ways:
+                </p>
+                <ul>
+                    <li><strong>Emitter</strong>: streams samples continuously at a chosen rate</li>
+                    <li><strong>Looper</strong>: holds chosen samples as sustaining loops on pads</li>
+                    <li><strong>Sequencer</strong>: lays samples out on a timeline</li>
+                </ul>
+                <p>
+                    Whatever is sounding when the scale changes obeys the same rule in every mode: bend to fit, or make an exit. The window itself is scale-aware too: the whole interface takes on the root color of the current scale, so the three screenshots on this page are red, orange, and gold because they were taken in C, F, and A♯.
                 </p>
             </div>
 

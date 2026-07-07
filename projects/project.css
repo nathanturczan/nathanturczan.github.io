@@ -118,6 +118,15 @@ body {
     /* nothing needed - normal document flow */
 }
 
+/* Hero summary: the one line a skimmer reads */
+.project-summary {
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 1.6;
+    max-width: 620px;
+    margin-bottom: 40px;
+}
+
 .project-text-section {
     margin-bottom: 48px;
 }
@@ -154,6 +163,50 @@ body {
 
 .project-text-section blockquote:last-child {
     margin-bottom: 0;
+}
+
+.project-text-section ul {
+    margin: 0 0 24px;
+    padding-left: 20px;
+}
+
+.project-text-section li {
+    margin-bottom: 8px;
+}
+
+.project-text-section li:last-child {
+    margin-bottom: 0;
+}
+
+/* Tables */
+.project-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 24px;
+    text-align: left;
+}
+
+.project-table th {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    padding: 0 24px 8px 0;
+    border-bottom: 1px dashed var(--text-color);
+}
+
+.project-table td {
+    vertical-align: top;
+    font-size: 14px;
+    line-height: 1.6;
+    padding: 12px 24px 12px 0;
+    border-bottom: 1px dashed var(--text-muted);
+}
+
+.project-table th:last-child,
+.project-table td:last-child {
+    padding-right: 0;
 }
 
 .project-text-section a {

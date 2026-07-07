@@ -31,6 +31,8 @@
 
         <div class="project-content">
 
+            <p class="project-summary">AutoTune for MIDI. You're only ever a half step from the right note; Tonalign makes that correction for you and shows you how.</p>
+
             <video class="project-image" autoplay loop muted playsinline aria-label="Tonalign correcting live MIDI on the folded keyboard as the scale changes">
                 <source src="../images/tonalign/tonalign-demo.mp4" type="video/mp4">
             </video>
@@ -42,7 +44,7 @@
                     I am not a great pianist. My left hand is a liability, and I don't have the fluent muscle memory with chords and scales that comes from years of practice. But I know how to noodle: I know how to mash on the keyboard and hear what I meant to play, even when what came out was a half step off.
                 </p>
                 <p>
-                    There's a jazz saying that you're only ever a half step away from the right note. Tonalign is that saying turned into a plugin: AutoTune for MIDI. Play a note outside the current scale and what comes out is its nearest available neighbor, corrected in real time inside the DAW. The incoming note is kept and shown, so you can always see what you played against what the plugin let through.
+                    The half-step line is an old jazz saying; Tonalign turns it into a plugin. Play a note outside the current scale and what comes out is its nearest available neighbor, corrected in real time inside the DAW. The incoming note is kept and shown, so you can always see what you played against what the plugin let through.
                 </p>
             </div>
 
@@ -78,7 +80,16 @@
                     The first failure surfaced in week four, in a message to Brady: "when correcting notes, if 2 notes are corrected to the same midi note, how to handle that case." Two different wrong notes collapse onto the same right note: a collision the player never asked for and can't see. That exact edge case, overlapping corrections in fast passages, is still one I'm tuning today.
                 </p>
                 <p>
-                    The second came back in writing. In week eight, <a href="https://tristanwhitehill.com/">Tristan Whitehill</a> (Euglossine) sent the first external QA report on the plugin: "the initial setup inside the users DAW was not exactly clear when approaching blind," a chord-button bug, previous-chord tones bleeding through, and "I couldn't remember the buttons I had pressed in succession." The correction was working and the player still couldn't hold onto what had happened.
+                    The second came back in writing. In week eight, <a href="https://tristanwhitehill.com/">Tristan Whitehill</a> (Euglossine) sent the first external QA report on the plugin:
+                </p>
+                <ul>
+                    <li>"the initial setup inside the users DAW was not exactly clear when approaching blind"</li>
+                    <li>a chord-button bug</li>
+                    <li>previous-chord tones bleeding through</li>
+                    <li>"I couldn't remember the buttons I had pressed in succession"</li>
+                </ul>
+                <p>
+                    The correction was working and the player still couldn't hold onto what had happened.
                 </p>
             </div>
 
@@ -88,24 +99,41 @@
                 <p>
                     The design question stayed the same the whole way: draw the in/out delta. The drawing kept changing.
                 </p>
-                <p>
-                    <strong>2022, the mockup.</strong> I produced a series of high-fidelity mockups exploring different ways to visualize the correction. It's drawn as three keyboards, input, mapping, output: a literal signal-flow diagram of the correction.
-                </p>
+                <table class="project-table">
+                    <thead>
+                        <tr>
+                            <th>When</th>
+                            <th>The drawing</th>
+                            <th>The verdict</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>2022, mockup</td>
+                            <td>Three keyboards: input, mapping, output</td>
+                            <td>A literal signal-flow diagram; too much surface for a plugin window</td>
+                        </tr>
+                        <tr>
+                            <td>2022, shipped</td>
+                            <td>One folded keyboard: black keys fold onto white (in C Acoustic, F folds to E, B to A♯)</td>
+                            <td>The mapping visible on a single row instead of three</td>
+                        </tr>
+                        <tr>
+                            <td>2026, markup</td>
+                            <td>Gray dots above the keys for incoming notes, red dots below for corrected ones</td>
+                            <td>My annotation over the running plugin, spec'ing how in/out should read</td>
+                        </tr>
+                        <tr>
+                            <td>2026, shipped</td>
+                            <td>Downward arrows marking the notes that moved</td>
+                            <td>The delta legible mid-performance</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
 
             <img src="../images/tonalign/nathan_vst_mockup_v2_local_drift_toggle_feb2022_fullres.png" alt="February 2022 mockup: the correction drawn as three stacked keyboards showing input notes, the re-mapping, and output notes, with Local/Network toggle and Enharmonic Drift checkbox" class="project-image">
             <p class="image-caption">The mockup: in, mapping, out.</p>
-
-            <div class="project-text-section">
-                <p>
-                    <strong>2022, what actually shipped.</strong> The three-keyboard flow was too much surface for a plugin window. It shipped as one folded keyboard: black keys folded onto white, so for C Acoustic (C D E F♯ G A B♭), F folds to E and B folds to A♯, the mapping made visible on a single row instead of three.                </p>
-            </div>
-
-            <div class="project-text-section">
-                <p>
-                    <strong>2026, the markup.</strong> Four years later, during the rebuild, I was still working the same delta: my annotation drawn over the running plugin (gray dots above the keys for incoming notes, red dots below for corrected ones) spec'ing how in/out should read. It shipped with downward arrows marking the notes that moved.
-                </p>
-            </div>
 
             <img src="../images/tonalign/pitchsnap_plugin_window.png" alt="PitchSnap plugin window, 2026, annotated by hand: gray dots above the keys marking incoming notes, red dots below marking corrected notes" class="project-image">
             <p class="image-caption">Four years later, still marking up the same in/out delta.</p>
@@ -121,8 +149,14 @@
             <div class="project-text-section">
                 <h3>Correction style: the feature that came last</h3>
                 <p>
-                    The Correction dropdown is the newest idea in the plugin. Correction had always folded neighbors together: in C diatonic, the C and C♯ keys both come out as C. But what if C♯ came out as D? Brady argued there should be other modes for how corrected notes land, and collapsing the whole keyboard chromatically onto the scale shipped as Stack (Chrom). Applying the same stack to the white keys alone became Stack (White), which also spares you the fingering shifts of mixing black keys into white. The dropdown now reads Corrective, Filter, Stack (Chrom), Stack (White): four answers to what a correction layer should do with a note that doesn't fit.
+                    The Correction dropdown is the newest idea in the plugin. Correction had always folded neighbors together: in C diatonic, the C and C♯ keys both come out as C. But what if C♯ came out as D? Brady argued there should be other modes for how corrected notes land, and the dropdown now holds four answers to what a correction layer should do with a note that doesn't fit:
                 </p>
+                <ul>
+                    <li><strong>Corrective</strong>: neighbors fold together; C and C♯ both come out as C</li>
+                    <li><strong>Filter</strong>: notes outside the scale are silenced instead of corrected</li>
+                    <li><strong>Stack (Chrom)</strong>: the whole keyboard collapses chromatically onto the scale, so C♯ comes out as D</li>
+                    <li><strong>Stack (White)</strong>: the same stack on the white keys alone, sparing the fingering shifts of mixing black keys into white</li>
+                </ul>
             </div>
 
             <div class="project-text-section">
