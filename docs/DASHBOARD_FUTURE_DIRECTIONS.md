@@ -182,6 +182,46 @@ The philosophy behind *why* you keep building products around harmony is a separ
 
 ---
 
+## The Chord-Across-the-Scale-Boundary Problem (Issue #412)
+
+Anchored on GitHub issue #412. This is a live product-design thread, captured for a later case study.
+
+### The Thought That Started It
+
+> "current scale's chords are easily revealed by the chord network interface. however i cannot consciously select what the next chord is from a new scale -- That scale's chords are invisible to me Until I actually get inside the scale or select that scale, then I can see. See attachment for a stupid idea that I know is stupid, but it has to be mentioned. What if you could see the chord network of the next scale that you're about to choose by hovering over that neighbor scale? Of course, this would be impractical to do for the navigator, somewhat easier to do but still impractical and weird looking, and even more impractical to do this for the network visualization. Still, I just want to put it on the board so we can anchor around it."
+
+### Surfing the Quadruple Hierarchy
+
+The goal is not scale-first thinking. It is surfing all four levels at once.
+
+> "The thing I've been trying to completely get out of is the scale-first thinking. At the end of the day, surfing the quadruple hierarchy means surfing all four at once. It's not a problem to do voice-level surfing, moving around. That's what Ensemble Jammer does really well. Now let's talk about scale. We have the ability to surf local scales with a navigator or far-flung, distant scales with a network. Great. Now, with this chord network, all roots of the current scale are available to us to pick from visually, so we can do that. That only works within the current scale. I cannot, with the same fluency and accuracy and intention, pick the scale of a chord that I'm not in yet right now. Unless I do some really specific filtering with the allowable next chord checkboxes and stuff, but that sucks. That's been a thorn in my side, as proven by many, many people: bad design. There has to be a better way. This is the way."
+
+The four levels being surfed:
+- Voice / note level, handled well by Ensemble Jammer.
+- Chord level, the chord network, which currently shows all roots of the current scale only.
+- Scale level, surfed locally with the navigator or far-flung with the network.
+- The chromatic universe / macro level (see scope note below).
+
+### The Current Scale Acts Like a Membrane
+
+The chord network is clipped to the active scale. Inside that boundary, chord selection is fluent and visual. Outside it, the chords of a neighboring scale are opaque until you actually cross into that scale. The current scale acts like a membrane: everything within it is legible, everything past it is invisible until entered. The fluency discontinuity lives exactly at that membrane.
+
+The fix is to make the chord network continuous across the membrane, so that reaching toward a chord in a scale you have not yet entered co-moves you into that scale in a single gesture. Hovering a specific neighbor also disambiguates: a shared chord belongs to several scales, and the direction of reach picks which scale-reading you mean, moving chord and scale together rather than one and then the other.
+
+### The Membrane Is Useful and Should Stay Permeable
+
+The membrane is not a bug to delete. It is an inherent consequence of the scale being a higher level of the hierarchy, and that grouping is exactly what makes it useful. The design goal is to keep that usefulness while making the membrane permeable to information and interactivity.
+
+> "The thing is, the membrane is an unfortunate artifact of this sort of scale, a higher level of the hierarchy. By definition, it is grouping things and clustering them and siloing them off from the wider universe of all possibilities. Yet it's also important to be able to break that membrane or treat it as entirely permeable, at least as regards to information and interactivity, while still recognizing the usefulness of that membrane. Keeping that usefulness."
+
+### Scope Note: Microtonality Is Out
+
+> "In surfing the chromatic universe, changing that on the fly is microtonality, which is not in scope right now, so ... Yeah."
+
+Changing the underlying chromatic universe on the fly is the outermost level, and it is explicitly out of scope for now.
+
+---
+
 ## Summary
 
 Dashboard is a chapter. The origin story is the prologue. Don't paste the prologue into Chapter 1.
