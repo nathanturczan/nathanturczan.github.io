@@ -4,6 +4,16 @@
 **/.DS_Store
 images/autoharp/VID_20210510_112401.mp4
 
+# Old image formats replaced by WebP
+images/dashboard/scalenavigatordashboard.png
+images/lalork/poster-1.jpg
+images/lalork/poster-2.jpg
+images/early-downhome-blues-app.png
+images/sia_souls.jpg
+images/tonalign/Screenshot*.png
+images/ensemblejammer/Screenshot*.png
+*.heic
+
 # internal working docs and archive (kept local, not published)
 _archive/
 *_REWRITE.md
