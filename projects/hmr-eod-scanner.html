@@ -35,7 +35,7 @@
             <p class="project-summary">An end-of-day analytics dashboard for a family trading-research group. Each evening it scans twenty-six strategies against the market's close and lays out what matched, what the paper positions are doing, and how far to trust each line.</p>
 
             <img src="../images/hmr-scanner/scanner-desktop.svg" alt="Recreation of the scanner dashboard: dark interface with a research-view notice banner, a date picker, a three-signal summary line, signal cards with colored edge bars, status badges, and paper-tracking trust labels, a watched-tickers grid, and a strategies strip" class="project-image">
-            <p class="image-caption">The dashboard, recreated. The scanner is a private tool, so every interface image on this page is a faithful recreation of the shipped design with fictional tickers, prices, dates, and figures.</p>
+            <p class="image-caption">The dashboard, recreated. The scanner is a private tool, so every interface image on this page is a faithful recreation of the shipped design: the watched tickers are real, while every price, date, and figure is fictional.</p>
 
             <div class="project-text-section">
                 <p class="section-eyebrow">Problem</p>
@@ -51,7 +51,7 @@
                 <p class="section-eyebrow">Insight</p>
                 <h3>A prioritization surface, not a trading terminal</h3>
                 <p>
-                    The job of the page is to help someone review and rank the day's signals, not to tell them what to trade. That framing settled the information design. Every signal row has to answer three separate questions: what kind of signal is this (direction), what does it mean for a position we are tracking (lifecycle), and how much should you believe it (trust). The temptation is to collapse those into one color scheme; the discipline of the design is that no color ever answers more than one of them.
+                    The job of the page is to help someone review and rank the day's signals, not to tell them what to trade. That framing settled the information design. Every signal row has to answer three separate questions: what kind of signal is this (direction), what does it mean for a position we are tracking (lifecycle), and how much should you believe it (trust). The temptation is to collapse those into one indicator; the discipline of the design is that each question gets its own place on the card, so an answer to one never has to be inferred from an answer to another.
                 </p>
                 <p>
                     The other structural fact is that the page holds two different speeds of data: today's scan, computed minutes ago from the close, and backtest statistics computed from test windows that range from five years to more than thirty. They belong one tap apart, never visually merged, so a fresh match can't borrow authority from an old record.
@@ -70,11 +70,11 @@
                 <p class="section-eyebrow">Design decision</p>
                 <h3>Three questions, three encodings</h3>
                 <p>
-                    Direction lives in the 4px edge bar: green buy, red sell, readable from across a room. Lifecycle lives in the badge, and it earns its four states. NEW POSITION and CLOSE POSITION are the obvious two. HOLDING exists because a signal that continues yesterday's position is news you act on differently from a fresh entry. The subtle one is EXIT SIGNAL, in its own orange: a sell rule fired but no tracked position was open. Showing that as CLOSE would imply an action to take; hiding it would hide that the rule fired at all. It gets its own state because it means something the other three don't.
+                    Direction lives in the 4px edge bar: green buy, red sell, readable from across a room. Lifecycle lives in the badge, and it earns its four states. NEW POSITION and CLOSE POSITION are the obvious two. HOLDING exists because a signal that continues yesterday's position is news you act on differently from a fresh entry. The subtle one is EXIT SIGNAL, set apart in orange: a sell rule fired but no tracked position was open. Showing that as CLOSE would imply an action to take; hiding it would hide that the rule fired at all. It gets its own state because it means something the other three don't.
                 </p>
             </div>
 
-            <img src="../images/hmr-scanner/scanner-card-detail.svg" alt="Enlarged annotated recreation of a single signal card: direction edge bar, strategy chip, lifecycle badge, paper-tracking trust label, one-line reason, and closing price" class="project-image">
+            <img src="../images/hmr-scanner/scanner-card-detail.svg" alt="Enlarged annotated recreation of a single signal card: direction edge bar, strategy chip, lifecycle badge, paper-tracking trust label, and closing price" class="project-image project-image--portrait">
             <p class="image-caption">Detail: the anatomy of one signal card, enlarged so the encodings stay readable on a phone. Recreation; figures fictional.</p>
 
             <img src="../images/hmr-scanner/scanner-states.svg" alt="Diagram of the scanner's three encodings: direction as green or red edge bars, lifecycle as four status badges (new position, holding, close position, exit signal), and trust as warning labels and three levels of alert banner" class="project-image">
@@ -108,15 +108,15 @@
                 <p class="section-eyebrow">Iteration</p>
                 <h3>Degrade by removing labels, never by going down</h3>
                 <p>
-                    The fix separated what the page knows from what it believes. The research view now reads the position ledger best-effort, on a short timeout. When the ledger is healthy, signals carry their lifecycle badges plus an explicit trust label, PAPER — UNVERIFIED, because the positions are paper tracking whose rules have not yet been verified against their historical record. When the ledger is stale or unreachable, the page drops the position labels and keeps rendering the day's research. When a historical date has no archived record, the page recomputes an estimate and says exactly that: a warning banner, and POSITION STATUS UNKNOWN on the affected rows, with instructions not to treat it as the original record.
+                    The fix separated what the page knows from what it believes. The research view now reads the position ledger best-effort, on a short timeout. When the ledger is healthy, signals carry their lifecycle badges plus an explicit trust label, PAPER — UNVERIFIED, because the positions are paper tracking whose rules have not yet been verified against their historical record. Two distinct situations degrade from there, each in its own way. If the ledger is stale or unreachable, the page drops the position labels and keeps rendering the day's research, relabeling each match BUY RULE MATCH or SELL RULE MATCH so the card claims only what the scan itself knows. Separately, if a historical date has no archived record, the page recomputes an estimate and says exactly that: a warning banner, and POSITION STATUS UNKNOWN on the affected rows, with instructions not to treat it as the original record.
                 </p>
                 <p>
-                    That ladder (fully labeled, then unlabeled research, then an explicit error) is the load-bearing design decision of the project. The same honesty runs through the header: automated signal emails are switched off behind interlocks until verification completes, and rather than hide the absent feature, the page opens with a banner saying so. Uncertainty is rendered as content, in the same typography as everything else, instead of being smoothed over.
+                    That range of states (fully labeled, unlabeled research, an explicit estimate) is the load-bearing design decision of the project. The same honesty runs through the header: automated signal emails are switched off behind interlocks until verification completes, and rather than hide the absent feature, the page opens with a banner saying so. Uncertainty is rendered as content, in the same typography as everything else, instead of being smoothed over.
                 </p>
             </div>
 
-            <img src="../images/hmr-scanner/scanner-trust-ladder.svg" alt="Enlarged recreation of the degrade ladder: a fully labeled card, unlabeled research when the position ledger is unreachable, and an estimated view with a warning banner and a position-status-unknown label" class="project-image">
-            <p class="image-caption">The ladder, enlarged: fully labeled, then unlabeled research, then an explicit estimate. Recreation; figures fictional.</p>
+            <img src="../images/hmr-scanner/scanner-trust-ladder.svg" alt="Enlarged recreation of the degrade ladder: a fully labeled card, unlabeled research when the position ledger is unreachable, and an estimated view with a warning banner and a position-status-unknown label" class="project-image project-image--portrait">
+            <p class="image-caption">The three states, enlarged: fully labeled, unlabeled research when the ledger is out, and an explicit estimate for unarchived dates. Recreation; figures fictional.</p>
 
             <div class="project-text-section">
                 <p class="section-eyebrow">Final solution</p>

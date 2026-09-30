@@ -1,40 +1,41 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 580" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">
   <!-- Enlarged recreation of the degrade ladder. All figures fictional. -->
-  <rect width="800" height="560" fill="#0f1419"/>
+  <rect width="500" height="580" fill="#0f1419"/>
 
   <!-- Rung 1: ledger healthy -->
-  <text x="60" y="52" fill="#71767b" font-size="14">1 · Ledger healthy: full labels</text>
-  <rect x="60" y="66" width="680" height="88" rx="10" fill="#1a1f25" stroke="#2f3336"/>
-  <rect x="78" y="80" width="5" height="60" rx="2.5" fill="#00ba7c"/>
-  <text x="102" y="110" fill="#e7e9ea" font-size="22" font-weight="700">QQQ</text>
-  <rect x="172" y="88" width="104" height="26" rx="5" fill="#2f3336"/>
-  <text x="224" y="106" fill="#e7e9ea" font-size="14" text-anchor="middle">5-Day RSI</text>
-  <rect x="286" y="88" width="92" height="26" rx="5" fill="rgba(29,155,240,0.2)" stroke="#1d9bf0"/>
-  <text x="332" y="106" fill="#1d9bf0" font-size="13" font-weight="600" text-anchor="middle">HOLDING</text>
-  <rect x="388" y="88" width="184" height="26" rx="5" fill="rgba(255,165,0,0.2)" stroke="#ffa500"/>
-  <text x="480" y="106" fill="#ffa500" font-size="13" font-weight="600" text-anchor="middle">PAPER — UNVERIFIED</text>
-  <text x="716" y="110" fill="#e7e9ea" font-size="20" font-weight="600" text-anchor="end">$431.08</text>
+  <text x="20" y="36" fill="#71767b" font-size="14">1 · Ledger healthy: full labels</text>
+  <rect x="20" y="48" width="460" height="108" rx="10" fill="#1a1f25" stroke="#2f3336"/>
+  <rect x="36" y="64" width="5" height="76" rx="2.5" fill="#00ba7c"/>
+  <text x="60" y="96" fill="#e7e9ea" font-size="22" font-weight="700">QQQ</text>
+  <text x="464" y="96" fill="#e7e9ea" font-size="18" font-weight="600" text-anchor="end">$431.08</text>
+  <rect x="60" y="110" width="92" height="26" rx="5" fill="#2f3336"/>
+  <text x="106" y="128" fill="#e7e9ea" font-size="13" text-anchor="middle">5-Day RSI</text>
+  <rect x="160" y="110" width="88" height="26" rx="5" fill="rgba(29,155,240,0.2)" stroke="#1d9bf0"/>
+  <text x="204" y="128" fill="#1d9bf0" font-size="12" font-weight="600" text-anchor="middle">HOLDING</text>
+  <rect x="256" y="110" width="160" height="26" rx="5" fill="rgba(255,165,0,0.2)" stroke="#ffa500"/>
+  <text x="336" y="128" fill="#ffa500" font-size="12" font-weight="600" text-anchor="middle">PAPER — UNVERIFIED</text>
 
-  <!-- Rung 2: ledger stale -->
-  <text x="60" y="212" fill="#71767b" font-size="14">2 · Ledger stale or unreachable: position labels drop, the research keeps rendering</text>
-  <rect x="60" y="226" width="680" height="88" rx="10" fill="#1a1f25" stroke="#2f3336"/>
-  <rect x="78" y="240" width="5" height="60" rx="2.5" fill="#00ba7c"/>
-  <text x="102" y="270" fill="#e7e9ea" font-size="22" font-weight="700">QQQ</text>
-  <rect x="172" y="248" width="104" height="26" rx="5" fill="#2f3336"/>
-  <text x="224" y="266" fill="#e7e9ea" font-size="14" text-anchor="middle">5-Day RSI</text>
-  <text x="102" y="298" fill="#71767b" font-size="14">Buy condition met at the close</text>
-  <text x="716" y="270" fill="#e7e9ea" font-size="20" font-weight="600" text-anchor="end">$431.08</text>
+  <!-- State 2: ledger stale -->
+  <text x="20" y="204" fill="#71767b" font-size="14">2 · Ledger stale or unreachable: position labels drop,</text>
+  <text x="20" y="222" fill="#71767b" font-size="14">the research keeps rendering as a rule match</text>
+  <rect x="20" y="234" width="460" height="108" rx="10" fill="#1a1f25" stroke="#2f3336"/>
+  <rect x="36" y="250" width="5" height="76" rx="2.5" fill="#00ba7c"/>
+  <text x="60" y="282" fill="#e7e9ea" font-size="22" font-weight="700">QQQ</text>
+  <text x="464" y="278" fill="#e7e9ea" font-size="18" font-weight="600" text-anchor="end">$431.08</text>
+  <text x="464" y="298" fill="#00ba7c" font-size="12" font-weight="600" text-anchor="end">BUY RULE MATCH</text>
+  <rect x="60" y="296" width="92" height="26" rx="5" fill="#2f3336"/>
+  <text x="106" y="314" fill="#e7e9ea" font-size="13" text-anchor="middle">5-Day RSI</text>
 
-  <!-- Rung 3: no archived record -->
-  <text x="60" y="372" fill="#71767b" font-size="14">3 · No archived record for the date: an estimate that says so</text>
-  <rect x="60" y="386" width="680" height="38" rx="8" fill="rgba(255,165,0,0.12)" stroke="#ffa500"/>
-  <text x="76" y="410" fill="#ffa500" font-size="14">Estimated view: recomputed from historical data, not the original record.</text>
-  <rect x="60" y="436" width="680" height="88" rx="10" fill="#1a1f25" stroke="#2f3336"/>
-  <rect x="78" y="450" width="5" height="60" rx="2.5" fill="#00ba7c"/>
-  <text x="102" y="480" fill="#e7e9ea" font-size="22" font-weight="700">QQQ</text>
-  <rect x="172" y="458" width="104" height="26" rx="5" fill="#2f3336"/>
-  <text x="224" y="476" fill="#e7e9ea" font-size="14" text-anchor="middle">5-Day RSI</text>
-  <rect x="286" y="458" width="226" height="26" rx="5" fill="rgba(255,165,0,0.2)" stroke="#ffa500" stroke-dasharray="4 3"/>
-  <text x="399" y="476" fill="#ffa500" font-size="13" font-weight="600" text-anchor="middle">POSITION STATUS UNKNOWN</text>
-  <text x="716" y="480" fill="#e7e9ea" font-size="20" font-weight="600" text-anchor="end">$431.08</text>
+  <!-- State 3: no archived record (a separate situation) -->
+  <text x="20" y="390" fill="#71767b" font-size="14">3 · Historical date with no archived record:</text>
+  <text x="20" y="408" fill="#71767b" font-size="14">a recomputed estimate that says so</text>
+  <rect x="20" y="420" width="460" height="46" rx="8" fill="rgba(255,165,0,0.12)" stroke="#ffa500"/>
+  <text x="36" y="439" fill="#ffa500" font-size="13">Estimated view: recomputed from historical</text>
+  <text x="36" y="457" fill="#ffa500" font-size="13">data, not the original record.</text>
+  <rect x="20" y="478" width="460" height="88" rx="10" fill="#1a1f25" stroke="#2f3336"/>
+  <rect x="36" y="492" width="5" height="60" rx="2.5" fill="#00ba7c"/>
+  <text x="60" y="518" fill="#e7e9ea" font-size="22" font-weight="700">QQQ</text>
+  <text x="464" y="518" fill="#e7e9ea" font-size="18" font-weight="600" text-anchor="end">$431.08</text>
+  <rect x="60" y="530" width="220" height="26" rx="5" fill="rgba(255,165,0,0.2)" stroke="#ffa500" stroke-dasharray="4 3"/>
+  <text x="170" y="548" fill="#ffa500" font-size="12" font-weight="600" text-anchor="middle">POSITION STATUS UNKNOWN</text>
 </svg>
