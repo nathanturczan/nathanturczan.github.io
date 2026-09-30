@@ -56,6 +56,8 @@
   <text x="194" y="371" fill="#71767b" font-size="13" text-anchor="middle">Double Seven</text>
   <rect x="256" y="356" width="102" height="21" rx="4" fill="rgba(0,186,124,0.2)" stroke="#00ba7c"/>
   <text x="307" y="370.5" fill="#00ba7c" font-size="11" font-weight="600" text-anchor="middle">NEW POSITION</text>
+  <rect x="368" y="356" width="142" height="21" rx="4" fill="rgba(255,165,0,0.2)" stroke="#ffa500"/>
+  <text x="439" y="370.5" fill="#ffa500" font-size="11" font-weight="600" text-anchor="middle">PAPER — UNVERIFIED</text>
   <text x="96" y="393" fill="#71767b" font-size="14">Close at a 7-day low</text>
   <text x="1124" y="372" fill="#e7e9ea" font-size="18" font-weight="600" text-anchor="end">$512.40</text>
   <text x="1124" y="391" fill="#00ba7c" font-size="12" font-weight="600" text-anchor="end">BUY</text>
@@ -82,6 +84,8 @@
   <text x="207" y="515" fill="#71767b" font-size="13" text-anchor="middle">MACD Crossover</text>
   <rect x="280" y="500" width="92" height="21" rx="4" fill="rgba(255,165,0,0.2)" stroke="#ffa500"/>
   <text x="326" y="514.5" fill="#ffa500" font-size="11" font-weight="600" text-anchor="middle">EXIT SIGNAL</text>
+  <rect x="382" y="500" width="142" height="21" rx="4" fill="rgba(255,165,0,0.2)" stroke="#ffa500"/>
+  <text x="453" y="514.5" fill="#ffa500" font-size="11" font-weight="600" text-anchor="middle">PAPER — UNVERIFIED</text>
   <text x="96" y="537" fill="#71767b" font-size="14">Sell signal with no open position</text>
   <text x="1124" y="516" fill="#e7e9ea" font-size="18" font-weight="600" text-anchor="end">$214.55</text>
   <text x="1124" y="535" fill="#f4212e" font-size="12" font-weight="600" text-anchor="end">SELL</text>

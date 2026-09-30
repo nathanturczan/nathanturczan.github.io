@@ -34,16 +34,16 @@
 
             <p class="project-summary">An end-of-day analytics dashboard for a family trading-research group. Each evening it scans twenty-six strategies against the market's close and lays out what matched, what the paper positions are doing, and how far to trust each line.</p>
 
-            <img src="../images/hmr-scanner/scanner-desktop.svg" alt="Recreation of the scanner dashboard: dark interface with a research-view notice banner, a date picker, a three-signal summary line, signal cards with colored edge bars and status badges, a watched-tickers grid, and a strategies strip" class="project-image">
+            <img src="../images/hmr-scanner/scanner-desktop.svg" alt="Recreation of the scanner dashboard: dark interface with a research-view notice banner, a date picker, a three-signal summary line, signal cards with colored edge bars, status badges, and paper-tracking trust labels, a watched-tickers grid, and a strategies strip" class="project-image">
             <p class="image-caption">The dashboard, recreated. The scanner is a private tool, so every interface image on this page is a faithful recreation of the shipped design with fictional tickers, prices, dates, and figures.</p>
 
             <div class="project-text-section">
                 <p class="section-eyebrow">Problem</p>
                 <p>
-                    High Mountain Road is my family's trading research company. The research is systematic: a library of published mean-reversion and momentum strategies (Connors, Appel, market-internals work), each backtested in TradeStation by my collaborator Cam Lockrey. Every trading day at the close, the same question comes up: which of the twenty-six strategies matched today, and does any match deserve a closer look?
+                    High Mountain Road is my family's trading research company. The research is systematic: a library of published mean-reversion and momentum strategies (Connors, Appel, market-internals work), backtested in TradeStation by my collaborator Cam Lockrey and, for some rules, in Python scripts that test or cross-check the same conditions. Every trading day at the close, the same question comes up: which of the twenty-six strategies matched today, and does any match deserve a closer look?
                 </p>
                 <p>
-                    Before the scanner, answering that question meant TradeStation on one Windows machine and rules held in heads and spreadsheets. The people asking are not developers or full-time traders: they are family members reviewing the day from whatever screen is nearest, usually a phone. The tool had to carry the whole evening ritual: the day's matches, the state of the paper positions, and the backtest record behind each strategy, with nothing to install and nothing to remember.
+                    Before the scanner, answering that question meant TradeStation on one Windows machine and rules held in heads and spreadsheets. The people asking are not developers or full-time traders: they are family members reviewing the day from whatever screen is nearest, so the design treats the phone as a first-class surface. The tool had to carry the whole evening ritual: the day's matches, the state of the paper positions, and the backtest record behind each strategy, with nothing to install and nothing to remember.
                 </p>
             </div>
 
@@ -54,7 +54,7 @@
                     The job of the page is to help someone review and rank the day's signals, not to tell them what to trade. That framing settled the information design. Every signal row has to answer three separate questions: what kind of signal is this (direction), what does it mean for a position we are tracking (lifecycle), and how much should you believe it (trust). The temptation is to collapse those into one color scheme; the discipline of the design is that no color ever answers more than one of them.
                 </p>
                 <p>
-                    The other structural fact is that the page holds two different speeds of data: today's scan, computed minutes ago from the close, and backtest statistics computed from fifteen years of history. They belong one tap apart, never visually merged, so a fresh match can't borrow authority from an old record.
+                    The other structural fact is that the page holds two different speeds of data: today's scan, computed minutes ago from the close, and backtest statistics computed from test windows that range from five years to more than thirty. They belong one tap apart, never visually merged, so a fresh match can't borrow authority from an old record.
                 </p>
             </div>
 
@@ -62,7 +62,7 @@
                 <p class="section-eyebrow">Prototype</p>
                 <h3>From a command line to a page in two weeks</h3>
                 <p>
-                    The first version, February 2026, was a Python command-line scanner that emailed a plain list of matches. Two weeks later it became a web dashboard, deployed on Vercel behind a sign-in, because a list in an inbox answers "what matched" but not "compared to what." The card grammar arrived in that first web version and never left: a colored edge bar for direction, the ticker in bold, the strategy as a tappable chip, a status badge, a one-line reason, and the price at the right edge.
+                    The first version, February 2026, was a Python command-line scanner that emailed a plain list of matches. Two weeks later it became a web dashboard, deployed on Vercel behind a sign-in, because a list in an inbox answers "what matched" but not "compared to what." The card grammar accreted over the two weeks after that: first the historical date picker and paper-position tracking, then the strategy chips that open their record cards, then the normalized lifecycle states. What settled by early March never left: a colored edge bar for direction, the ticker in bold, the strategy as a tappable chip, a status badge, a one-line reason, and the price at the right edge.
                 </p>
             </div>
 
@@ -74,21 +74,24 @@
                 </p>
             </div>
 
+            <img src="../images/hmr-scanner/scanner-card-detail.svg" alt="Enlarged annotated recreation of a single signal card: direction edge bar, strategy chip, lifecycle badge, paper-tracking trust label, one-line reason, and closing price" class="project-image">
+            <p class="image-caption">Detail: the anatomy of one signal card, enlarged so the encodings stay readable on a phone. Recreation; figures fictional.</p>
+
             <img src="../images/hmr-scanner/scanner-states.svg" alt="Diagram of the scanner's three encodings: direction as green or red edge bars, lifecycle as four status badges (new position, holding, close position, exit signal), and trust as warning labels and three levels of alert banner" class="project-image">
             <p class="image-caption">The state system: direction, lifecycle, and trust, each with its own channel.</p>
 
             <div class="project-text-section">
                 <h3>The evidence is one tap away</h3>
                 <p>
-                    Every strategy name on the page is a chip that opens the same card: what the strategy is, its entry and exit conditions, its backtest record (trade count, win rate, per-share profit, average hold, and the test period), and who produced that record. The dashboard never argues that a signal is good. It shows the record and the source, and lets the reviewer weigh a 71% win rate over fifteen years against what the market did today.
+                    Every strategy name on the page is a chip that opens the same card: what the strategy is, its entry and exit conditions, its backtest record (trade count, win rate, per-share profit, average hold, and the test period), and who produced that record, whether a TradeStation run or a Python script. The record card itself opens with a warning that parity between the backtest and the live scanner rule has not been verified. The dashboard never argues that a signal is good. It shows the record, the source, and the caveat, and lets the reviewer weigh a high win rate over a five-year test window against what the market did today.
                 </p>
             </div>
 
             <div class="image-row">
-                <img src="../images/hmr-scanner/scanner-mobile-signals.svg" alt="Recreation of the scanner on a phone: stacked header, research-view banner, date picker, three signal cards with status badges, and a two-column watched-tickers grid" class="project-image">
-                <img src="../images/hmr-scanner/scanner-mobile-modal.svg" alt="Recreation of the strategy detail modal on a phone: description, entry and exit conditions, a two-by-two grid of backtest statistics, applicable tickers, and source" class="project-image">
+                <img src="../images/hmr-scanner/scanner-mobile-signals.svg" alt="Recreation of the scanner on a phone: stacked header, research-view banner, date picker, three signal cards with status badges and paper-tracking trust labels, and a two-column watched-tickers grid" class="project-image">
+                <img src="../images/hmr-scanner/scanner-mobile-modal.svg" alt="Recreation of the strategy detail modal on a phone: description, entry and exit conditions, a two-by-two grid of backtest statistics with a parity warning, applicable tickers, and source" class="project-image">
             </div>
-            <p class="image-caption">The phone layout, where most reviewing happens, and the strategy card with its backtest grid. Recreations; figures fictional.</p>
+            <p class="image-caption">The phone layout, designed so a full review needs nothing more than a phone, and the strategy card with its backtest grid and parity warning. Recreations; figures fictional.</p>
 
             <div class="project-text-section">
                 <p class="section-eyebrow">Failure</p>
@@ -112,6 +115,9 @@
                 </p>
             </div>
 
+            <img src="../images/hmr-scanner/scanner-trust-ladder.svg" alt="Enlarged recreation of the degrade ladder: a fully labeled card, unlabeled research when the position ledger is unreachable, and an estimated view with a warning banner and a position-status-unknown label" class="project-image">
+            <p class="image-caption">The ladder, enlarged: fully labeled, then unlabeled research, then an explicit estimate. Recreation; figures fictional.</p>
+
             <div class="project-text-section">
                 <p class="section-eyebrow">Final solution</p>
                 <p>
@@ -122,7 +128,7 @@
             <div class="project-text-section">
                 <p class="section-eyebrow">Outcome</p>
                 <p>
-                    The scanner has been in daily use by the research group since February 2026, reviewed every trading day as part of the evening routine. It is deliberately a research and paper-tracking tool: it trades nothing, moves no money, and its automated alerts stay off until the strategy rules are verified against their historical records. The design's job was to make a small research operation's evening question (what matched, what are we tracking, what does the record say) answerable in under a minute from a phone, and to keep every claim on the page exactly as strong as the data behind it, and no stronger.
+                    The scanner shipped in February 2026 and has been part of the research group's evening review since, with an exception log from those reviews driving the iterations above. It is deliberately a research and paper-tracking tool: it trades nothing, moves no money, and its automated alerts stay off until the strategy rules are verified against their historical records. The design target was to make a small research operation's evening question (what matched, what are we tracking, what does the record say) answerable in under a minute from a phone, and to keep every claim on the page exactly as strong as the data behind it, and no stronger.
                 </p>
             </div>
 
@@ -136,7 +142,7 @@
             <div class="project-text-section">
                 <h3>Credits</h3>
                 <p>
-                    Cam Lockrey, strategy research and the TradeStation backtests behind every statistics card. Nestor, strategy research. Le, the daily reviews and the exception log that surfaced the failures worth fixing. The strategy rules themselves come from published systematic-trading research, credited by name in each strategy's source line.
+                    Cam Lockrey, strategy research and the TradeStation backtests behind most of the statistics cards; the remaining records come from the group's Python backtest scripts. Nestor, strategy research. Le, the daily reviews and the exception log that surfaced the failures worth fixing. The strategy rules themselves come from published systematic-trading research, credited by name in each strategy's source line.
                 </p>
             </div>
 
