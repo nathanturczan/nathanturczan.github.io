@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">
+  <!-- Illustrative recreation of the HMR EOD Scanner dashboard. All tickers, prices, dates, and figures are fictional. -->
+  <rect width="1200" height="800" fill="#0f1419"/>
+
+  <!-- Header -->
+  <g>
+    <svg x="40" y="28" width="30" height="30" viewBox="0 0 256 256">
+      <path d="M20 180 L100 70 L150 120 L200 60 L236 180 Z" fill="white"/>
+      <path d="M150 120 C140 130 135 140 145 150 C155 160 135 170 128 180 C120 190 140 200 130 210 C120 220 128 230 128 240" stroke="#0f1419" stroke-width="4" stroke-linecap="round" stroke-dasharray="4 8" fill="none"/>
+    </svg>
+    <text x="80" y="50" fill="#ffffff" font-size="23" font-weight="700">HMR EOD Scanner</text>
+    <text x="40" y="79" fill="#71767b" font-size="13">Updated 1:02 PM PT</text>
+    <rect x="168" y="66" width="72" height="19" rx="9.5" fill="rgba(113,118,123,0.2)"/>
+    <text x="204" y="79.5" fill="#71767b" font-size="11" font-weight="600" text-anchor="middle">CLOSED</text>
+    <!-- refresh controls -->
+    <circle cx="905" cy="47" r="4" fill="#00ba7c"/>
+    <text x="916" y="51" fill="#71767b" font-size="12">auto</text>
+    <rect x="950" y="33" width="106" height="29" rx="14.5" fill="none" stroke="#536471"/>
+    <text x="965" y="52" fill="#e7e9ea" font-size="13">Auto: 5 min</text>
+    <text x="1042" y="51" fill="#71767b" font-size="10">▾</text>
+    <rect x="1066" y="33" width="94" height="29" rx="14.5" fill="#1d9bf0"/>
+    <text x="1113" y="52" fill="#ffffff" font-size="14" font-weight="600" text-anchor="middle">Refresh</text>
+    <line x1="40" y1="98" x2="1160" y2="98" stroke="#2f3336"/>
+  </g>
+
+  <!-- Info banner -->
+  <rect x="40" y="114" width="1120" height="46" rx="10" fill="rgba(29,155,240,0.10)" stroke="#1d9bf0"/>
+  <text x="58" y="142" fill="#9bd6ff" font-size="14">Research view only: automated Trade Signals are disabled while the strategy rules and historical records are being verified.</text>
+
+  <!-- Date picker bar -->
+  <rect x="40" y="174" width="1120" height="52" rx="8" fill="#1a1f25" stroke="#2f3336"/>
+  <text x="58" y="205" fill="#71767b" font-size="14">View signals for:</text>
+  <rect x="168" y="186" width="140" height="30" rx="6" fill="#0f1419" stroke="#536471"/>
+  <text x="182" y="206" fill="#e7e9ea" font-size="14">01 / 15 / 2026</text>
+  <rect x="320" y="186" width="66" height="30" rx="15" fill="none" stroke="#536471"/>
+  <text x="353" y="205" fill="#e7e9ea" font-size="12" text-anchor="middle">Today</text>
+
+  <!-- Summary line -->
+  <text x="40" y="266" fill="#71767b" font-size="15">Research matches:</text>
+  <text x="172" y="267" fill="#e7e9ea" font-size="18" font-weight="700">3</text>
+  <text x="188" y="266" fill="#71767b" font-size="15">(</text>
+  <text x="196" y="266" fill="#00ba7c" font-size="15">2 buy</text>
+  <text x="238" y="266" fill="#71767b" font-size="15">,</text>
+  <text x="248" y="266" fill="#f4212e" font-size="15">1 sell</text>
+  <text x="287" y="266" fill="#71767b" font-size="15">)</text>
+
+  <!-- Signals section -->
+  <rect x="40" y="286" width="1120" height="286" rx="12" fill="#1a1f25" stroke="#2f3336"/>
+  <text x="60" y="322" fill="#e7e9ea" font-size="18" font-weight="600">Research Matches — Jan 15, 2026</text>
+
+  <!-- Card 1: NEW POSITION -->
+  <rect x="60" y="340" width="1080" height="64" rx="8" fill="#0f1419" stroke="#2f3336"/>
+  <rect x="76" y="348" width="4" height="48" rx="2" fill="#00ba7c"/>
+  <text x="96" y="372" fill="#e7e9ea" font-size="18" font-weight="700">SPY</text>
+  <rect x="142" y="356" width="104" height="21" rx="4" fill="#2f3336"/>
+  <text x="194" y="371" fill="#71767b" font-size="13" text-anchor="middle">Double Seven</text>
+  <rect x="256" y="356" width="102" height="21" rx="4" fill="rgba(0,186,124,0.2)" stroke="#00ba7c"/>
+  <text x="307" y="370.5" fill="#00ba7c" font-size="11" font-weight="600" text-anchor="middle">NEW POSITION</text>
+  <text x="96" y="393" fill="#71767b" font-size="14">Close at a 7-day low</text>
+  <text x="1124" y="372" fill="#e7e9ea" font-size="18" font-weight="600" text-anchor="end">$512.40</text>
+  <text x="1124" y="391" fill="#00ba7c" font-size="12" font-weight="600" text-anchor="end">BUY</text>
+
+  <!-- Card 2: HOLDING + PAPER badge -->
+  <rect x="60" y="412" width="1080" height="64" rx="8" fill="#0f1419" stroke="#2f3336"/>
+  <rect x="76" y="420" width="4" height="48" rx="2" fill="#00ba7c"/>
+  <text x="96" y="444" fill="#e7e9ea" font-size="18" font-weight="700">QQQ</text>
+  <rect x="148" y="428" width="82" height="21" rx="4" fill="#2f3336"/>
+  <text x="189" y="443" fill="#71767b" font-size="13" text-anchor="middle">5-Day RSI</text>
+  <rect x="240" y="428" width="72" height="21" rx="4" fill="rgba(29,155,240,0.2)" stroke="#1d9bf0"/>
+  <text x="276" y="442.5" fill="#1d9bf0" font-size="11" font-weight="600" text-anchor="middle">HOLDING</text>
+  <rect x="322" y="428" width="142" height="21" rx="4" fill="rgba(255,165,0,0.2)" stroke="#ffa500"/>
+  <text x="393" y="442.5" fill="#ffa500" font-size="11" font-weight="600" text-anchor="middle">PAPER — UNVERIFIED</text>
+  <text x="96" y="465" fill="#71767b" font-size="14">Paper position opened 3 sessions ago</text>
+  <text x="1124" y="444" fill="#e7e9ea" font-size="18" font-weight="600" text-anchor="end">$431.08</text>
+  <text x="1124" y="463" fill="#00ba7c" font-size="12" font-weight="600" text-anchor="end">BUY</text>
+
+  <!-- Card 3: EXIT SIGNAL -->
+  <rect x="60" y="484" width="1080" height="64" rx="8" fill="#0f1419" stroke="#2f3336"/>
+  <rect x="76" y="492" width="4" height="48" rx="2" fill="#f4212e"/>
+  <text x="96" y="516" fill="#e7e9ea" font-size="18" font-weight="700">GLD</text>
+  <rect x="144" y="500" width="126" height="21" rx="4" fill="#2f3336"/>
+  <text x="207" y="515" fill="#71767b" font-size="13" text-anchor="middle">MACD Crossover</text>
+  <rect x="280" y="500" width="92" height="21" rx="4" fill="rgba(255,165,0,0.2)" stroke="#ffa500"/>
+  <text x="326" y="514.5" fill="#ffa500" font-size="11" font-weight="600" text-anchor="middle">EXIT SIGNAL</text>
+  <text x="96" y="537" fill="#71767b" font-size="14">Sell signal with no open position</text>
+  <text x="1124" y="516" fill="#e7e9ea" font-size="18" font-weight="600" text-anchor="end">$214.55</text>
+  <text x="1124" y="535" fill="#f4212e" font-size="12" font-weight="600" text-anchor="end">SELL</text>
+
+  <!-- Watched tickers -->
+  <rect x="40" y="592" width="1120" height="118" rx="12" fill="#1a1f25" stroke="#2f3336"/>
+  <text x="60" y="626" fill="#e7e9ea" font-size="18" font-weight="600">Watched Tickers</text>
+  <g>
+    <rect x="60" y="640" width="166" height="52" rx="8" fill="#0f1419" stroke="#2f3336"/>
+    <text x="74" y="660" fill="#e7e9ea" font-size="14" font-weight="700">SPY</text>
+    <text x="74" y="681" fill="#e7e9ea" font-size="16" font-weight="600">$512.40</text>
+    <text x="212" y="681" fill="#00ba7c" font-size="13" font-weight="500" text-anchor="end">+0.8%</text>
+
+    <rect x="238" y="640" width="166" height="52" rx="8" fill="#0f1419" stroke="#2f3336"/>
+    <text x="252" y="660" fill="#e7e9ea" font-size="14" font-weight="700">QQQ</text>
+    <text x="252" y="681" fill="#e7e9ea" font-size="16" font-weight="600">$431.08</text>
+    <text x="390" y="681" fill="#f4212e" font-size="13" font-weight="500" text-anchor="end">−0.3%</text>
+
+    <rect x="416" y="640" width="166" height="52" rx="8" fill="#0f1419" stroke="#2f3336"/>
+    <text x="430" y="660" fill="#e7e9ea" font-size="14" font-weight="700">GLD</text>
+    <text x="430" y="681" fill="#e7e9ea" font-size="16" font-weight="600">$214.55</text>
+    <text x="568" y="681" fill="#f4212e" font-size="13" font-weight="500" text-anchor="end">−1.1%</text>
+
+    <rect x="594" y="640" width="166" height="52" rx="8" fill="#0f1419" stroke="#2f3336"/>
+    <text x="608" y="660" fill="#e7e9ea" font-size="14" font-weight="700">SLV</text>
+    <text x="608" y="681" fill="#e7e9ea" font-size="16" font-weight="600">$28.16</text>
+    <text x="746" y="681" fill="#00ba7c" font-size="13" font-weight="500" text-anchor="end">+0.4%</text>
+
+    <rect x="772" y="640" width="166" height="52" rx="8" fill="#0f1419" stroke="#2f3336"/>
+    <text x="786" y="660" fill="#e7e9ea" font-size="14" font-weight="700">IWM</text>
+    <text x="786" y="681" fill="#e7e9ea" font-size="16" font-weight="600">$226.90</text>
+    <text x="924" y="681" fill="#00ba7c" font-size="13" font-weight="500" text-anchor="end">+1.2%</text>
+
+    <rect x="950" y="640" width="166" height="52" rx="8" fill="#0f1419" stroke="#2f3336"/>
+    <text x="964" y="660" fill="#e7e9ea" font-size="14" font-weight="700">^VIX</text>
+    <text x="964" y="681" fill="#e7e9ea" font-size="16" font-weight="600">14.82</text>
+    <text x="1102" y="681" fill="#f4212e" font-size="13" font-weight="500" text-anchor="end">−4.6%</text>
+  </g>
+
+  <!-- Strategies strip -->
+  <rect x="40" y="726" width="1120" height="52" rx="12" fill="#1a1f25" stroke="#2f3336"/>
+  <text x="60" y="758" fill="#e7e9ea" font-size="15" font-weight="600">Research Strategies (Verification Pending)</text>
+  <g font-size="13" fill="#e7e9ea">
+    <rect x="420" y="740" width="110" height="26" rx="13" fill="#2f3336"/><text x="475" y="757" text-anchor="middle">Double Seven</text>
+    <rect x="538" y="740" width="88" height="26" rx="13" fill="#2f3336"/><text x="582" y="757" text-anchor="middle">5-Day RSI</text>
+    <rect x="634" y="740" width="128" height="26" rx="13" fill="#2f3336"/><text x="698" y="757" text-anchor="middle">MACD Crossover</text>
+    <rect x="770" y="740" width="50" height="26" rx="13" fill="#2f3336"/><text x="795" y="757" text-anchor="middle">IBS</text>
+    <rect x="828" y="740" width="100" height="26" rx="13" fill="#2f3336"/><text x="878" y="757" text-anchor="middle">Connors RSI</text>
+    <rect x="936" y="740" width="94" height="26" rx="13" fill="#2f3336"/><text x="983" y="757" fill="#71767b" text-anchor="middle">+ 21 more</text>
+  </g>
+</svg>

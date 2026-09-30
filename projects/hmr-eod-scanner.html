@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HMR EOD Scanner - Nathan Turczan</title>
+    <meta name="robots" content="noindex">
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link rel="stylesheet" href="project.css">
+</head>
+<body>
+    <div class="project-page">
+        <header class="project-header">
+            <a href="../index.html" class="back-link">Back</a>
+
+            <div class="project-info">
+                <div class="project-title-row">
+                    <img src="../images/icons/hmr-scanner-icon.svg" alt="" class="project-icon">
+                    <h1 class="project-title">HMR EOD Scanner</h1>
+                </div>
+                <div class="divider-line"></div>
+                <p class="project-tagline">Role · Designer & developer</p>
+                <p class="project-tagline">With · Cam Lockrey (strategy research, TradeStation backtests)</p>
+                <p class="project-description">Platforms · Web (desktop & phone) · Vercel · vanilla HTML/CSS/JavaScript</p>
+            </div>
+
+            <div class="project-meta">
+                <span class="project-year">2026–present</span>
+                <span class="project-categories">Analytics Dashboard</span>
+            </div>
+        </header>
+
+        <div class="project-content">
+
+            <p class="project-summary">An end-of-day analytics dashboard for a family trading-research group. Each evening it scans twenty-six strategies against the market's close and lays out what matched, what the paper positions are doing, and how far to trust each line.</p>
+
+            <img src="../images/hmr-scanner/scanner-desktop.svg" alt="Recreation of the scanner dashboard: dark interface with a research-view notice banner, a date picker, a three-signal summary line, signal cards with colored edge bars and status badges, a watched-tickers grid, and a strategies strip" class="project-image">
+            <p class="image-caption">The dashboard, recreated. The scanner is a private tool, so every interface image on this page is a faithful recreation of the shipped design with fictional tickers, prices, dates, and figures.</p>
+
+            <div class="project-text-section">
+                <p class="section-eyebrow">Problem</p>
+                <p>
+                    High Mountain Road is my family's trading research company. The research is systematic: a library of published mean-reversion and momentum strategies (Connors, Appel, market-internals work), each backtested in TradeStation by my collaborator Cam Lockrey. Every trading day at the close, the same question comes up: which of the twenty-six strategies matched today, and does any match deserve a closer look?
+                </p>
+                <p>
+                    Before the scanner, answering that question meant TradeStation on one Windows machine and rules held in heads and spreadsheets. The people asking are not developers or full-time traders: they are family members reviewing the day from whatever screen is nearest, usually a phone. The tool had to carry the whole evening ritual: the day's matches, the state of the paper positions, and the backtest record behind each strategy, with nothing to install and nothing to remember.
+                </p>
+            </div>
+
+            <div class="project-text-section">
+                <p class="section-eyebrow">Insight</p>
+                <h3>A prioritization surface, not a trading terminal</h3>
+                <p>
+                    The job of the page is to help someone review and rank the day's signals, not to tell them what to trade. That framing settled the information design. Every signal row has to answer three separate questions: what kind of signal is this (direction), what does it mean for a position we are tracking (lifecycle), and how much should you believe it (trust). The temptation is to collapse those into one color scheme; the discipline of the design is that no color ever answers more than one of them.
+                </p>
+                <p>
+                    The other structural fact is that the page holds two different speeds of data: today's scan, computed minutes ago from the close, and backtest statistics computed from fifteen years of history. They belong one tap apart, never visually merged, so a fresh match can't borrow authority from an old record.
+                </p>
+            </div>
+
+            <div class="project-text-section">
+                <p class="section-eyebrow">Prototype</p>
+                <h3>From a command line to a page in two weeks</h3>
+                <p>
+                    The first version, February 2026, was a Python command-line scanner that emailed a plain list of matches. Two weeks later it became a web dashboard, deployed on Vercel behind a sign-in, because a list in an inbox answers "what matched" but not "compared to what." The card grammar arrived in that first web version and never left: a colored edge bar for direction, the ticker in bold, the strategy as a tappable chip, a status badge, a one-line reason, and the price at the right edge.
+                </p>
+            </div>
+
+            <div class="project-text-section">
+                <p class="section-eyebrow">Design decision</p>
+                <h3>Three questions, three encodings</h3>
+                <p>
+                    Direction lives in the 4px edge bar: green buy, red sell, readable from across a room. Lifecycle lives in the badge, and it earns its four states. NEW POSITION and CLOSE POSITION are the obvious two. HOLDING exists because a signal that continues yesterday's position is news you act on differently from a fresh entry. The subtle one is EXIT SIGNAL, in its own orange: a sell rule fired but no tracked position was open. Showing that as CLOSE would imply an action to take; hiding it would hide that the rule fired at all. It gets its own state because it means something the other three don't.
+                </p>
+            </div>
+
+            <img src="../images/hmr-scanner/scanner-states.svg" alt="Diagram of the scanner's three encodings: direction as green or red edge bars, lifecycle as four status badges (new position, holding, close position, exit signal), and trust as warning labels and three levels of alert banner" class="project-image">
+            <p class="image-caption">The state system: direction, lifecycle, and trust, each with its own channel.</p>
+
+            <div class="project-text-section">
+                <h3>The evidence is one tap away</h3>
+                <p>
+                    Every strategy name on the page is a chip that opens the same card: what the strategy is, its entry and exit conditions, its backtest record (trade count, win rate, per-share profit, average hold, and the test period), and who produced that record. The dashboard never argues that a signal is good. It shows the record and the source, and lets the reviewer weigh a 71% win rate over fifteen years against what the market did today.
+                </p>
+            </div>
+
+            <div class="image-row">
+                <img src="../images/hmr-scanner/scanner-mobile-signals.svg" alt="Recreation of the scanner on a phone: stacked header, research-view banner, date picker, three signal cards with status badges, and a two-column watched-tickers grid" class="project-image">
+                <img src="../images/hmr-scanner/scanner-mobile-modal.svg" alt="Recreation of the strategy detail modal on a phone: description, entry and exit conditions, a two-by-two grid of backtest statistics, applicable tickers, and source" class="project-image">
+            </div>
+            <p class="image-caption">The phone layout, where most reviewing happens, and the strategy card with its backtest grid. Recreations; figures fictional.</p>
+
+            <div class="project-text-section">
+                <p class="section-eyebrow">Failure</p>
+                <h3>The page inherited a dependency it never asked for</h3>
+                <p>
+                    In September 2026 the dashboard started failing for its reviewers. The position labels were read from a ledger that a background job kept current; the job missed, the ledger went stale, and the whole page went down with it. The person opening the dashboard saw an outage caused by a system they had no way to know existed. That is the classic analytics-dashboard failure: the display is only as honest as its least reliable feed, and it had been presenting a fragile dependency as a solid fact.
+                </p>
+                <p>
+                    A second failure is quieter and still open: on weekends the page reports that today's data is unavailable, which is true and reads like a malfunction. A correct message that feels broken is a design bug, not a data bug.
+                </p>
+            </div>
+
+            <div class="project-text-section">
+                <p class="section-eyebrow">Iteration</p>
+                <h3>Degrade by removing labels, never by going down</h3>
+                <p>
+                    The fix separated what the page knows from what it believes. The research view now reads the position ledger best-effort, on a short timeout. When the ledger is healthy, signals carry their lifecycle badges plus an explicit trust label, PAPER — UNVERIFIED, because the positions are paper tracking whose rules have not yet been verified against their historical record. When the ledger is stale or unreachable, the page drops the position labels and keeps rendering the day's research. When a historical date has no archived record, the page recomputes an estimate and says exactly that: a warning banner, and POSITION STATUS UNKNOWN on the affected rows, with instructions not to treat it as the original record.
+                </p>
+                <p>
+                    That ladder (fully labeled, then unlabeled research, then an explicit error) is the load-bearing design decision of the project. The same honesty runs through the header: automated signal emails are switched off behind interlocks until verification completes, and rather than hide the absent feature, the page opens with a banner saying so. Uncertainty is rendered as content, in the same typography as everything else, instead of being smoothed over.
+                </p>
+            </div>
+
+            <div class="project-text-section">
+                <p class="section-eyebrow">Final solution</p>
+                <p>
+                    The shipped page reads top to bottom in the order a reviewer thinks: how fresh is this and is the market open (header), what should I know before trusting anything (banners), which day am I looking at (date picker), how big was the day (one summary sentence: three matches, two buy, one sell), then the matches themselves, the watched tickers, and the strategy library. On a phone everything folds to one column and the tap targets grow; the date picker turns the same page into the archive, one day at a time.
+                </p>
+            </div>
+
+            <div class="project-text-section">
+                <p class="section-eyebrow">Outcome</p>
+                <p>
+                    The scanner has been in daily use by the research group since February 2026, reviewed every trading day as part of the evening routine. It is deliberately a research and paper-tracking tool: it trades nothing, moves no money, and its automated alerts stay off until the strategy rules are verified against their historical records. The design's job was to make a small research operation's evening question (what matched, what are we tracking, what does the record say) answerable in under a minute from a phone, and to keep every claim on the page exactly as strong as the data behind it, and no stronger.
+                </p>
+            </div>
+
+            <div class="project-text-section">
+                <h3>What's still unfinished</h3>
+                <p>
+                    The weekend message still reads like a failure instead of saying "market closed, showing the last session." The pre-close alert email was retired during the verification effort and awaits a decision on whether it returns. And the verification itself (replaying every strategy against its historical record before automated delivery switches back on) is the current work: the dashboard's banner will say so until it's done.
+                </p>
+            </div>
+
+            <div class="project-text-section">
+                <h3>Credits</h3>
+                <p>
+                    Cam Lockrey, strategy research and the TradeStation backtests behind every statistics card. Nestor, strategy research. Le, the daily reviews and the exception log that surfaced the failures worth fixing. The strategy rules themselves come from published systematic-trading research, credited by name in each strategy's source line.
+                </p>
+            </div>
+
+            <div class="project-text-section">
+                <h3>Related work</h3>
+                <p>
+                    <a href="notes-chords-scales.html">NotesChordScales</a> — the same design job in music: dense live data, named and ranked in real time<br>
+                    <a href="scale-navigator-dashboard.html">Scale Navigator Dashboard</a> — one surface holding a shared state that everything else reads
+                </p>
+            </div>
+        </div>
+
+        <nav class="project-nav">
+            <a href="notes-chords-scales.html">Prev</a>
+            <span class="separator">,</span>
+            <a href="scale-navigator-dashboard.html">Next</a>
+        </nav>
+    </div>
+</body>
+</html>

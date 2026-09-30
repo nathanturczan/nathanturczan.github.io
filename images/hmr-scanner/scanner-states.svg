@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">
+  <!-- The scanner's three separate encodings: direction, lifecycle, trust. -->
+  <rect width="1200" height="420" fill="#0f1419"/>
+
+  <!-- Column 1: Direction -->
+  <text x="60" y="56" fill="#71767b" font-size="13" letter-spacing="1.5">DIRECTION</text>
+  <text x="60" y="80" fill="#71767b" font-size="12" font-style="italic">the edge bar: what kind of signal</text>
+  <rect x="60" y="108" width="4" height="48" rx="2" fill="#00ba7c"/>
+  <text x="82" y="137" fill="#e7e9ea" font-size="15">Buy</text>
+  <rect x="60" y="176" width="4" height="48" rx="2" fill="#f4212e"/>
+  <text x="82" y="205" fill="#e7e9ea" font-size="15">Sell</text>
+
+  <!-- Column 2: Lifecycle -->
+  <text x="330" y="56" fill="#71767b" font-size="13" letter-spacing="1.5">LIFECYCLE</text>
+  <text x="330" y="80" fill="#71767b" font-size="12" font-style="italic">the badge: what it means for a position</text>
+  <rect x="330" y="102" width="118" height="26" rx="4" fill="rgba(0,186,124,0.2)" stroke="#00ba7c"/>
+  <text x="389" y="120" fill="#00ba7c" font-size="12" font-weight="600" text-anchor="middle">NEW POSITION</text>
+  <text x="470" y="120" fill="#71767b" font-size="13">a trade would open today</text>
+
+  <rect x="330" y="146" width="118" height="26" rx="4" fill="rgba(29,155,240,0.2)" stroke="#1d9bf0"/>
+  <text x="389" y="164" fill="#1d9bf0" font-size="12" font-weight="600" text-anchor="middle">HOLDING</text>
+  <text x="470" y="164" fill="#71767b" font-size="13">an open paper position continues</text>
+
+  <rect x="330" y="190" width="118" height="26" rx="4" fill="rgba(244,33,46,0.2)" stroke="#f4212e"/>
+  <text x="389" y="208" fill="#f4212e" font-size="12" font-weight="600" text-anchor="middle">CLOSE POSITION</text>
+  <text x="470" y="208" fill="#71767b" font-size="13">an open paper position would exit</text>
+
+  <rect x="330" y="234" width="118" height="26" rx="4" fill="rgba(255,165,0,0.2)" stroke="#ffa500"/>
+  <text x="389" y="252" fill="#ffa500" font-size="12" font-weight="600" text-anchor="middle">EXIT SIGNAL</text>
+  <text x="470" y="252" fill="#71767b" font-size="13">a sell rule fired, but nothing was open</text>
+
+  <!-- Column 3: Trust -->
+  <text x="760" y="56" fill="#71767b" font-size="13" letter-spacing="1.5">TRUST</text>
+  <text x="760" y="80" fill="#71767b" font-size="12" font-style="italic">the labels: how much to believe it</text>
+
+  <rect x="760" y="102" width="158" height="26" rx="4" fill="rgba(255,165,0,0.2)" stroke="#ffa500"/>
+  <text x="839" y="120" fill="#ffa500" font-size="12" font-weight="600" text-anchor="middle">PAPER — UNVERIFIED</text>
+  <text x="936" y="120" fill="#71767b" font-size="13">position labels await rule verification</text>
+
+  <rect x="760" y="146" width="198" height="26" rx="4" fill="rgba(255,165,0,0.2)" stroke="#ffa500"/>
+  <text x="859" y="164" fill="#ffa500" font-size="12" font-weight="600" text-anchor="middle">POSITION STATUS UNKNOWN</text>
+  <text x="976" y="164" fill="#71767b" font-size="13">recomputed history, not the record</text>
+
+  <rect x="760" y="196" width="380" height="40" rx="8" fill="rgba(29,155,240,0.10)" stroke="#1d9bf0"/>
+  <text x="776" y="220" fill="#9bd6ff" font-size="12.5">Info: research view only, alerts disabled during verification</text>
+
+  <rect x="760" y="248" width="380" height="40" rx="8" fill="rgba(255,165,0,0.10)" stroke="#ffa500"/>
+  <text x="776" y="272" fill="#ffd28a" font-size="12.5">Warning: recomputed estimate, not the original record</text>
+
+  <rect x="760" y="300" width="380" height="40" rx="8" fill="rgba(244,33,46,0.10)" stroke="#f4212e"/>
+  <text x="776" y="324" fill="#ffb3b8" font-size="12.5">Error: data could not be validated, nothing is shown</text>
+
+  <!-- caption strip -->
+  <line x1="60" y1="366" x2="1140" y2="366" stroke="#2f3336"/>
+  <text x="60" y="394" fill="#71767b" font-size="13">Three questions, three separate encodings: no color ever answers more than one of them.</text>
+</svg>
