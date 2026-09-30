@@ -25,3 +25,7 @@ DESIGN_PRINCIPLES.md
 THINGS_I_CHANGED_MY_MIND_ABOUT.md
 CASE_STUDY_REWRITE_PRIORITY_LIST.md
 .playwright-mcp/
+
+# Local-only: FutureCare material stays on the futurecare-local branch until sharing is approved
+projects/futurecare-wave-of-wellness.html
+images/wow/

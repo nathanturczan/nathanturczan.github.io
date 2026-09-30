@@ -78,7 +78,7 @@
                     The system that survived: every note on every instrument exists in one of four states: Off, On, Incoming, and Outgoing. When the next scale is queued, arriving notes pulse blue and departing notes desaturate and fade, for a configurable lookahead window, and then the score commits. Idle, preview, commit.
                 </p>
                 <p>
-                    Two animation styles ship side by side (Pulse and Ramp) because I couldn't resolve from research alone which reads better mid-performance. That's an A/B test to run with the ensemble, not a decision to fake.
+                    Two animation styles shipped side by side (Pulse and Ramp) because I couldn't resolve from research alone which reads better mid-performance. After testing the alternatives in use, Pulse was selected and Ramp was dropped.
                 </p>
             </div>
 
@@ -108,14 +108,14 @@
                 </p>
             </div>
 
-            <img src="../images/anticipation/read-tab.png" alt="READ tab with anticipation controls: lookahead presets, Pulse/Ramp styles, and four instrument views" class="project-image">
-            <p class="image-caption">The performer view: anticipation toggle, lookahead presets, Pulse/Ramp style, and every notation renderer sharing one state machine.</p>
+            <img src="../images/anticipation/read-tab.png" alt="READ tab with anticipation controls: lookahead presets and four instrument views" class="project-image">
+            <p class="image-caption">The performer view: anticipation toggle, lookahead presets, and every notation renderer sharing one state machine.</p>
 
             <div class="project-text-section">
                 <p class="section-eyebrow">Design decision</p>
                 <h3>Anticipation needs object constancy</h3>
                 <p>
-                    Rolling the system out across nine renderers exposed the general rule. The piano was easy: a key is a stable object that can pulse. The triad view wasn't: it regenerated its whole layout on every change, so an incoming triad had nowhere to arrive.
+                    Rolling the system out across the notation renderers exposed the general rule. The piano was easy: a key is a stable object that can pulse. The triad view wasn't: it regenerated its whole layout on every change, so an incoming triad had nowhere to arrive.
                 </p>
                 <p>
                     Good anticipation needs object constancy. Every renderer needs a stable visual object (a key, a fret location, an accidental slot, a persisted coordinate) that survives the transition and can carry the animation. I redesigned the triad view around coordinates assigned at birth that persist for the life of each triad. What started as an animation pass turned into a rule about visual identity.
@@ -136,10 +136,10 @@
             <div class="project-text-section">
                 <h3>Where it is now</h3>
                 <p>
-                    The system shipped across all nine notation renderers in the performer app (piano, staffs, fretboards, flute, harmonica grid, and the abstract chord views) with one shared state machine underneath. The next LALORK performance, August 15 in Los Angeles, is the field test: a room full of strangers sight-reading harmonic changes they've never seen.
+                    The system shipped across the performer app's notation renderers (piano, staffs, fretboards, flute, harmonica grid, and the abstract chord views — the menu has since grown to 25 instrument and notation options) with one shared state machine underneath. The LALORK performance on August 15 in Los Angeles was the field test: a room full of strangers sight-reading harmonic changes they'd never seen.
                 </p>
                 <p>
-                    Plenty is unfinished. A Staged mode, where a conductor holds to preview and releases to commit, is specced but unbuilt. The Pulse-versus-Ramp question stays open until performers vote with their settings. And the preset timings are educated guesses from rhythm-game data until August 15 says otherwise.
+                    Plenty is unfinished. A Staged mode, where a conductor holds to preview and releases to commit, is specced but unbuilt. The Pulse-versus-Ramp question has since been settled (Pulse shipped; Ramp was dropped after testing the alternatives). And the preset timings rest on rhythm-game data and two recorded reading sessions with one expert reader; they deserve testing across more players.
                 </p>
             </div>
 
