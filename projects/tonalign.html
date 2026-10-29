@@ -18,9 +18,9 @@
                     <h1 class="project-title">Tonalign</h1>
                 </div>
                 <div class="divider-line"></div>
-                <p class="project-tagline">Role · Designer & developer</p>
-                <p class="project-tagline">With · Brady Boettcher (C++/JUCE)</p>
-                <p class="project-description">Platforms · VST3 / AU (macOS, Windows) · Logic Pro, Ableton Live, any host</p>
+                <p class="project-tagline">Role · Product, design, and the 2026 rebuild</p>
+                <p class="project-tagline">With · Brady Boettcher (2021 C++/JUCE core)</p>
+                <p class="project-description">Platforms · VST3 / AU (macOS, Windows) · Logic Pro, Ableton Live, any host · Max for Live</p>
             </div>
 
             <div class="project-meta">
@@ -31,174 +31,155 @@
 
         <div class="project-content">
 
-            <p class="project-summary">AutoTune for MIDI. You're only ever a half step from the right note; Tonalign makes that correction for you and shows you how.</p>
+            <p class="project-summary">AutoTune for MIDI: you're only ever a half step away from the right note.</p>
 
-            <video class="project-image" autoplay loop muted playsinline aria-label="Tonalign correcting live MIDI on the folded keyboard as the harmony changes">
+            <video class="project-image" autoplay loop muted playsinline aria-label="Tonalign correcting live MIDI on the keyboard as the harmony changes">
                 <source src="../images/tonalign/tonalign-demo.mp4" type="video/mp4">
             </video>
-            <p class="image-caption">Shipped, 2026: downward arrows marking the notes that moved.</p>
+            <p class="image-caption">Shipped, 2026: gray markers above the keys I pressed, colored markers below the keys that sounded.</p>
 
             <div class="project-text-section">
                 <p class="section-eyebrow">Problem</p>
+                <h3>Noodling</h3>
                 <p>
-                    I am not a great pianist. My left hand is a liability, and I don't have the fluent muscle memory with chords and scales that comes from years of practice. But I know how to noodle: I know how to mash on the keyboard and hear what I meant to play, even when what came out was a half step off.
-                </p>
-                <p>
-                    The half-step line is an old jazz saying; Tonalign turns it into a plugin. Play a note outside the current harmony and what comes out is its nearest available neighbor, corrected in real time inside the DAW. The incoming note is kept and shown, so you can always see what you played against what the plugin let through.
-                </p>
-            </div>
-
-            <div class="project-text-section">
-                <p class="section-eyebrow">Insight</p>
-                <h3>The design problem: showing the correction</h3>
-                <p>
-                    A pitch-correction layer is invisible by definition. If it works, the wrong note simply becomes a right note and nobody sees anything happen. That's fine for the listener and a real problem for the player: you send a C, you hear a D♭, and the plugin has given you no way to understand why. A correction you can't see feels like a bug. And if the promise is that players who never got the scales under their hands can play without fear of wrong notes, the plugin has to show its work.
-                </p>
-                <p>
-                    Snapping the note is arithmetic. The design problem was drawing the difference between what the player sent and what the plugin let through, on a surface small enough to live in a plugin window, without turning it into a readout the player has to study mid-performance.
+                    I'm not a great pianist. I'm a terrible sight reader. My left hand is a liability and I don't have the muscle memory that I would like for chords and scales. It still doesn't change the fact that noodling on the piano is my favorite thing to do. One thing that I keep in mind as I play is the jazz saying that you're only ever a half step away from the right note. Tonalign is that saying made software: it's the "AutoTune for MIDI" plugin that gives the incorrect notes in my noodling the smallest possible nudge so that they fit the current harmony, while still preserving the intention and shape of the original musical gesture.
                 </p>
             </div>
 
             <div class="project-text-section">
                 <p class="section-eyebrow">Prototype</p>
-                <h3>Getting it under people's hands</h3>
+                <h3>Summer 2021</h3>
                 <p>
-                    Within a month I had a working plugin correcting notes in real time and was already handing builds to friends. The project would eventually wear three names (Scale Navigator MIDI VST, PitchSnap, and finally Tonalign), but the central idea never changed: take incoming MIDI, constrain it to the current harmonic context, and let players hear what they meant rather than what their fingers landed on.
+                    I've been wanting to build this plugin since forever. I took a class on JUCE and C++ during my master's at CalArts, taught by the excellent Jordan Hochenbaum, and got what might as well have been a C+ (CalArts doesn't give letter grades, but it would have). So in summer 2021, during deep pandemic, I finally decided to reach out on the JUCE forum and find someone who could help me.
+                </p>
+                <blockquote>
+                    <p><strong>Developer Needed for MIDI effect VST - pair programming / lessons</strong></p>
+                    <p>I am working on a MIDI effect VST, but I have hit a wall. I think the best way forward is to contract an expert to help me push through, preferably in 1-on-1 pair programming sessions via zoom. I am willing to spend time and money I need to in order to get this project done, but I can't afford you if you charge more than $110 per hour.</p>
+                </blockquote>
+                <p>
+                    I was incredibly lucky to find Brady Boettcher, who was about to start his master's in music technology at McGill. My first email to him described my "kindergarten-level understanding of JUCE and C++," and by that afternoon he had the empty project building on his fork. We began working together in pair-programming video calls, a dozen or so hour-long sessions over the summer. We talked about building it as a Max for Live device and chose JUCE because it was cross-platform. Little did we know we'd run into Steinberg not really supporting MIDI-effect VST3s, but more on that later. I had the game plan and a to-do list per session: load the scale data from my master scale dataset JSON; root and scale-class dropdowns that could also be set by clicking the polygonal navigator; a one-octave keyboard labeled with where each key lands; then MIDI filtering; port the navigator's polygon shapes and colors from my p5.js sketch; and parameter automation so the DAW can automate root and scale, which was super important to me. Here's how I pitched the first session to him:
+                </p>
+                <blockquote>
+                    <p>"Basically, I'd like to avoid MIDI processing for now and just spin up a decent jumping off point that will provide visual feedback. That way, when we start to conceive of design patterns for processing MIDI, we can use our eyes and not just our ears to see if what we've designed / implemented is working."</p>
+                </blockquote>
+                <p>
+                    We were using the JUCE framework, Brady wrote the code and I merged each session's PR. Within a month we had a working MVP called Scale Navigator MIDI VST, and Brady and I have been friends since then.
                 </p>
             </div>
 
             <img src="../images/tonalign/juce_prototype_first_screenshot_jul2021.png" alt="The first running prototype, July 2021: a gray plugin window with scattered pastel scale polygons, a small keyboard in the top-right corner, and the Made with JUCE badge" class="project-image">
-            <p class="image-caption">The first playable build: it corrected notes, but couldn't yet explain itself.</p>
+            <p class="image-caption">The first playable build, July 2021.</p>
 
-            <img src="../images/tonalign/scalenavigatormidivst_shipped_daw_v2_launch_button.png" alt="Scale Navigator MIDI VST running in a DAW, January 2022: a single folded keyboard row showing the scale mapping, with the launch-webapp button" class="project-image">
-            <p class="image-caption">Shipped, 2022: the three-keyboard flow folded to one row.</p>
+            <div class="project-text-section">
+                <p class="section-eyebrow">Insight</p>
+                <h3>The keyboard</h3>
+                <p>
+                    Tonalign, or Scale Navigator MIDI VST as it was called at this early stage, was always meant to be a corrective tool, which meant that it needed the user to define the current harmonic context for it, so that it knew which notes were right or wrong based on that context. Ableton's Scale MIDI device was already there, but that device doesn't account for changing harmonic contexts, unless you want to start to get fancy with racks and macros, and even when you do that, there's no accounting for notes that are held across multiple changing contexts. And with a bunch of racked-up Scale devices, it's impossible to see how the notes are being corrected. A correction that doesn't inform you how or why it's happening feels like a bug, but a correction with an explanation is education!!!
+                </p>
+                <p>
+                    The early build of Scale Navigator MIDI VST had a very simple way of showing how notes were corrected: the notes of the octave, laid out on a keyboard diagram, were each labelled with their sounding pitches, which could change depending on what scale was selected. So if the scale was B diatonic, the C key would be labelled as a C♯. That was good enough for an MVP, but it still didn't show what you were actually playing, or how it was being corrected. This is the design problem that we only just solved in spring 2026: how to draw the in/out difference on the plugin's much smaller UI in a way that's immediately apparent mid-performance.
+                </p>
+            </div>
+
+            <img src="../images/tonalign/scalenavigatormidivst_shipped_daw_v2_launch_button.png" alt="Scale Navigator MIDI VST running in a DAW, January 2022: a single keyboard row with each key labelled with the pitch it will sound, and the launch-webapp button" class="project-image">
+            <p class="image-caption">Shipped, 2022: each key labelled with the pitch it will actually sound.</p>
+
+            <img src="../images/tonalign/nathan_vst_mockup_v2_local_drift_toggle_feb2022_fullres.png" alt="February 2022 mockup: the correction drawn as three stacked keyboards showing input notes, the re-mapping, and output notes" class="project-image">
+            <p class="image-caption">The 2022 mockup: input, mapping, and output as three keyboards. Too much surface for a plugin window.</p>
+
+            <img src="../images/tonalign/pitchsnap_plugin_window.png" alt="PitchSnap plugin window, 2026, annotated by hand: gray dots above the keys marking incoming notes, red dots below marking corrected notes" class="project-image">
+            <p class="image-caption">2026, my markup over the running plugin: gray dots above for what came in, red dots below for what came out. This led to the real design.</p>
+
+            <div class="project-text-section">
+                <p>
+                    What shipped: the keys in the current scale are colored and the keys outside it are white. When you play, a gray marker appears above the key you pressed and a colored marker appears below the key that actually sounded. For a note that's in the scale, the two line up. For a note that got corrected, the bottom marker sits one key over, so you see the nudge as it happens.
+                </p>
+            </div>
 
             <div class="project-text-section">
                 <p class="section-eyebrow">Failure</p>
-                <h3>The correction was inaudible and invisible</h3>
+                <h3>Tristan's notes</h3>
                 <p>
-                    The first failure surfaced in week four, in a message to Brady: "when correcting notes, if 2 notes are corrected to the same midi note, how to handle that case." Two different wrong notes collapse onto the same right note: a collision the player never asked for and can't see. That exact edge case, overlapping corrections in fast passages, is still one I'm tuning today.
+                    Summer 2021 I also started chatting with <a href="https://tristanwhitehill.com/">Tristan Whitehill</a>, who is the producer Euglossine (new album just came out!). I sent him the early version of Tonalign in August, and he tested it out on a 2015 MacBook Pro in Ableton and gave me some feedback.
                 </p>
+                <ol>
+                    <li><strong>Setup.</strong> The routing issue that still haunts Tonalign to this day was immediately apparent. To use a MIDI-effect plugin in Ableton you need two tracks: one holding Scale Navigator with a MIDI clip feeding into it, and a second track with the instrument that receives the corrected MIDI. (That's Steinberg's doing; more on that at the end.) In his words, "This product will require some supplemental training or previous knowledge," and that remains true.</li>
+                    <li><strong>A previous scale's note bleeding into the next scale.</strong> Back then it only knew scales; chords came in 2026. A note that was held and never got re-corrected, which is the held-note problem the INTERRUPT toggle answers in 2026: with it on, a held note re-pitches the instant the harmony changes underneath it.</li>
+                </ol>
                 <p>
-                    The second came back in writing. In week eight, <a href="https://tristanwhitehill.com/">Tristan Whitehill</a> (Euglossine) sent the first external QA report on the plugin:
-                </p>
-                <ul>
-                    <li>"the initial setup inside the users DAW was not exactly clear when approaching blind"</li>
-                    <li>a chord-button bug</li>
-                    <li>previous-chord tones bleeding through</li>
-                    <li>"I couldn't remember the buttons I had pressed in succession"</li>
-                </ul>
-                <p>
-                    The correction was working and the player still couldn't hold onto what had happened.
+                    Very lucky to get Tristan's thoughts on this, and he remains a music tech North Star!
                 </p>
             </div>
 
             <div class="project-text-section">
-                <p class="section-eyebrow">Iteration</p>
-                <h3>The same delta, drawn four ways</h3>
+                <p class="section-eyebrow">Design decision</p>
+                <h3>Four years later</h3>
                 <p>
-                    The design question stayed the same the whole way: draw the in/out delta. The drawing kept changing.
+                    Scale Navigator MIDI VST shipped in January 2022 and then sat untouched in a drawer for four years. It was a part of my production workflow, but no one else used it.
                 </p>
-                <table class="project-table">
-                    <thead>
-                        <tr>
-                            <th>When</th>
-                            <th>The drawing</th>
-                            <th>The verdict</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>2022, mockup</td>
-                            <td>Three keyboards: input, mapping, output</td>
-                            <td>A literal signal-flow diagram; too much surface for a plugin window</td>
-                        </tr>
-                        <tr>
-                            <td>2022, shipped</td>
-                            <td>One folded keyboard: black keys fold onto white (in C Acoustic, F folds to E, B to A♯)</td>
-                            <td>The mapping visible on a single row instead of three</td>
-                        </tr>
-                        <tr>
-                            <td>2026, markup</td>
-                            <td>Gray dots above the keys for incoming notes, red dots below for corrected ones</td>
-                            <td>My annotation over the running plugin, spec'ing how in/out should read</td>
-                        </tr>
-                        <tr>
-                            <td>2026, shipped</td>
-                            <td>Downward arrows marking the notes that moved</td>
-                            <td>The delta legible mid-performance</td>
-                        </tr>
-                    </tbody>
-                </table>
             </div>
 
-            <img src="../images/tonalign/nathan_vst_mockup_v2_local_drift_toggle_feb2022_fullres.png" alt="February 2022 mockup: the correction drawn as three stacked keyboards showing input notes, the re-mapping, and output notes, with Local/Network toggle and Enharmonic Drift checkbox" class="project-image">
-            <p class="image-caption">The mockup: in, mapping, out.</p>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/lf0BpKuH3hc?rel=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <p class="image-caption">The 2022 demo.</p>
 
-            <img src="../images/tonalign/pitchsnap_plugin_window.png" alt="PitchSnap plugin window, 2026, annotated by hand: gray dots above the keys marking incoming notes, red dots below marking corrected notes" class="project-image">
-            <p class="image-caption">Four years later, still marking up the same in/out delta.</p>
+            <div class="project-text-section">
+                <p>
+                    2026 is when I picked the project back up (renaming it PitchSnap, then Tonalign), and Brady, who was still a contributor on the repo, texted me: "I see some github issues popping up for scalenav 😉 What are you up to my man." And so we started bouncing ideas off each other. I'd been overhauling the UI (more compact, more fun colors, better visual feedback for note correction), but Brady had been mulling over how the scale network might map to the LinnStrument (the LinnStrument and some other grid controllers don't have black keys). It was in these conversations surrounding Brady's port of Scale Navigator to the LinnStrument that he mentioned the idea of a different model for correction: the stack. Rather than trying to maintain any semblance of piano keys sounding as close as possible to their corrected pitches, why not just stack the correct pitches from low to high on the piano keys? Or maybe just completely ignore the black keys and stack them on the white keys only, like a LinnStrument!
+                </p>
+                <blockquote>
+                    <p>"Niche project alert 🚨 : A scale-first interface for the LinnStrument that uses the Scale Navigator Dashboard for scale synchronization. Shout-out to Nathan Turczan for the help connecting the Scale Navigator to this!"</p>
+                    <p>Brady's <a href="https://strangeloopsaudio.gumroad.com/l/uygit">Max patch</a> and <a href="https://github.com/StrangeLoopsAudio/LinnStrument-Scale-Navigator">code</a>.</p>
+                </blockquote>
+                <p>
+                    So the Correction dropdown now holds four answers to what should happen to a note that doesn't fit:
+                </p>
+                <ul>
+                    <li><strong>Corrective</strong>: nudge it to the nearest note that fits. Two wrong keys can land on the same note.</li>
+                    <li><strong>Filter</strong>: mute it.</li>
+                    <li><strong>Stack (Chrom)</strong>: re-stack the whole keyboard onto the harmony in order, so C♯ comes out D and nothing doubles up; keys that were already right can move.</li>
+                    <li><strong>Stack (White)</strong>: the same stack on the white keys only.</li>
+                </ul>
+            </div>
 
             <div class="project-text-section">
                 <p class="section-eyebrow">Final solution</p>
-                <h3>The held note</h3>
+                <h3>Chords</h3>
                 <p>
-                    What happens to a note that's already sounding when the harmony changes underneath it? That's answered by the INTERRUPT toggle. With it on, held notes are re-pitched at the exact instant the scale or chord changes, so the modulation stops being a silent background shift and becomes an audible event in every sustained voice.
+                    The other big change that arrived in Tonalign in 2026 was chords, so that instead of scales being the only harmonic context we can map to, we can also think about smaller collections of pitches. And shared-memory sync with the Dashboard, so that Dashboard can serve as the session's conductor and control multiple instances of Tonalign on multiple tracks. Today Tonalign is an incredibly important layer for composing and production: not so much for correcting, but for testing out melodic, chordal, or textural ideas in different modes. My composition teacher <a href="https://www.daniellevinmusic.com/Site/Welcome.html">Daniel Levin</a> used to compare thematic transformation to the way a movie might take a main character and put them in different situations: Luke Skywalker wistful on Tatooine, frustrated and covered in mud on Dagobah, or wearing all black with his hand cut off screaming "NO!!" in Cloud City at the end of Empire. It's stuck with me because you really do want to retain the essence or character of a musical gesture while still giving it the flexibility to change and grow. Inflecting various notes according to different scalar / chordal contexts is a fun way to do that, and Tonalign makes it easy.
                 </p>
-            </div>
-
-            <div class="project-text-section">
-                <h3>Correction style: the feature that came last</h3>
-                <p>
-                    The Correction dropdown is the newest idea in the plugin. Correction had always folded neighbors together: in C diatonic, the C and C♯ keys both come out as C. But what if C♯ came out as D? Brady argued there should be other modes for how corrected notes land, and the dropdown now holds four answers to what a correction layer should do with a note that doesn't fit:
-                </p>
-                <ul>
-                    <li><strong>Corrective</strong>: notes already in the harmony pass through untouched; a note outside it is nudged to its nearest in-harmony neighbor, so C and C♯ both come out as C</li>
-                    <li><strong>Filter</strong>: notes outside the current harmony are silenced instead of corrected</li>
-                    <li><strong>Stack (Chrom)</strong>: the whole keyboard restacks in order onto the current harmony, so C♯ comes out as D, and the stacking rule can move even notes that were already right</li>
-                    <li><strong>Stack (White)</strong>: the same stack on the white keys alone, sparing the fingering shifts of mixing black keys into white</li>
-                </ul>
             </div>
 
             <div class="project-text-section">
                 <p class="section-eyebrow">Outcome</p>
+                <h3>Plunderphonics</h3>
                 <p>
-                    Tonalign shipped publicly in 2022 and again, rebuilt, in 2026. Since then it has been the MIDI-correction layer in every live session I run, including every Ensemble Jammer deployment. It's the "silent" plugin the rest of the ecosystem leans on: it subscribes to Dashboard's shared harmonic state and corrects against whatever chord or scale the room is currently in, no configuration.
-                </p>
-                <p>
-                    It also turned into a compositional instrument I didn't plan for. I run recorded MIDI (Chopin, Liszt, Paganini, competition-grade performances) through it, stealing Chopin's texture and forcing it into whatever harmonic box I choose: "A whole new level of plunderphonics."
+                    Recently I've discovered a new use for Tonalign that's a fun take on plunderphonics: finding recorded MIDI of great performances (the Chopin competition, Liszt, Paganini) and then filtering that MIDI through Tonalign to force it into whatever harmony I choose. Here's an example of that with Aphex Twin's "Avril 14th."
                 </p>
             </div>
 
             <div class="video-container">
                 <iframe src="https://www.youtube.com/embed/DCnYGMm83PQ?rel=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
-            <p class="image-caption">Aphex Twin's "Avril 14th" through Tonalign: each scale hands the theme a new affect.</p>
-
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/lf0BpKuH3hc?rel=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-            <p class="image-caption">The 2022 demo: the tagline, four years before the name.</p>
-
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/DyVP5oX4dgU?rel=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-            <p class="image-caption">Setup in Ableton Live; the same VST3/AU loads in Logic Pro or any host.</p>
+            <p class="image-caption">"Avril 14th" through Tonalign: each scale hands the theme a new affect.</p>
 
             <div class="project-text-section">
-                <h3>What's still unfinished</h3>
+                <h3>The silent synth</h3>
                 <p>
-                    The collision problem from week four of 2021 is still one I tune by hand, and mid-sustain harmony changes still have edge cases. And there's an absurdity I've made peace with: because Steinberg makes real MIDI-effect plugins nearly impossible in VST3, Tonalign is technically a synthesizer, with a silent, no-noise synth always running inside it just so a pure MIDI tool is allowed to exist.
+                    As mentioned before, Steinberg makes a pure MIDI-effect plugin nearly impossible in VST3. So Tonalign is technically a synthesizer, with a silent synth running inside it so a MIDI tool is allowed to exist. This is really annoying. So I made a Max for Live version of it for LA Laptop Orchestra that makes routing so much easier. It doesn't have the same UI that Tonalign does (it runs Tonalign's Stack (White) mapping), but you only need one track.
                 </p>
             </div>
 
             <div class="project-text-section">
-                <a href="https://scalenavigator.com/download/tonalign-beta/" target="_blank" class="project-link">Download</a>
+                <a href="https://scalenavigator.com/download/tonalign-beta/" target="_blank" class="project-link">Download Tonalign</a>
+                <a href="https://github.com/nathanturczan/lalork-bridge" target="_blank" class="project-link">Max for Live version</a>
             </div>
 
             <div class="project-text-section">
                 <h3>Credits</h3>
                 <p>
-                    Brady Boettcher, C++/JUCE engineering, from a pandemic JUCE-forum post to the present; the early pair-programming sessions survive in the repo as branch names (<code>bboettcher3/session_1</code> and up), and the plugin announces itself as "by Scale Navigator and Strange Loops." Tristan Whitehill, the first external QA report.
+                    Brady Boettcher, the 2021 C++/JUCE core in a dozen or so pair sessions; in 2026 the Stack suggestion and beta testing. The plugin says "by Scale Navigator and Strange Loops": Strange Loops is Brady. And Tristan Whitehill for his feedback!
                 </p>
             </div>
 
