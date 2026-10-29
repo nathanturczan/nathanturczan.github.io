@@ -31,12 +31,12 @@
 
         <div class="project-content">
 
-            <p class="project-summary">AutoTune for MIDI: you're only ever a half step away from the right note.</p>
+            <p class="project-summary">Tonalign maps the notes I play into a chosen scale or chord, even as that harmony changes. I want to be able to choose how that mapping works and see what it does while I'm playing.</p>
 
             <video class="project-image" autoplay loop muted playsinline aria-label="Tonalign correcting live MIDI on the keyboard as the harmony changes">
                 <source src="../images/tonalign/tonalign-demo.mp4" type="video/mp4">
             </video>
-            <p class="image-caption">Shipped, 2026: gray markers above the keys I pressed, colored markers below the keys that sounded.</p>
+            <p class="image-caption">Rebuilt in 2026: a keyboard that shows incoming and outgoing notes, four correction modes for different ways of playing, and synchronization with the Scale Navigator Dashboard.</p>
 
             <div class="project-text-section">
                 <p class="section-eyebrow">Problem</p>
@@ -50,7 +50,7 @@
                 <p class="section-eyebrow">Prototype</p>
                 <h3>Summer 2021</h3>
                 <p>
-                    I've been wanting to build this plugin since forever. I took a class on JUCE and C++ during my master's at CalArts and got what might as well have been a C+ (CalArts doesn't give letter grades, but it would have). So in summer 2021, during deep pandemic, I finally decided to reach out on the JUCE forum and find someone who could help me.
+                    I've been wanting to build this plugin since forever. I took a JUCE and C++ class during my master's at CalArts, but needed help turning the idea into a working MIDI effect. In summer 2021, I posted on the JUCE forum looking for someone to work with through pair-programming sessions.
                 </p>
                 <blockquote>
                     <p><strong>Developer Needed for MIDI effect VST - pair programming / lessons</strong></p>
@@ -123,7 +123,7 @@
 
             <div class="project-text-section">
                 <p>
-                    What changed in 2026 was that the Dashboard became a plugin living inside the DAW, so a correction layer that follows it finally had something to follow. 2026 is when I picked the project back up (renaming it PitchSnap, then Tonalign), and Brady, who was still a contributor on the repo, texted me: "I see some github issues popping up for scalenav 😉 What are you up to my man." And so we started bouncing ideas off each other. I'd been overhauling the UI (more compact, more fun colors, better visual feedback for note correction), but Brady had been mulling over how the scale network might map to the LinnStrument (the LinnStrument and some other grid controllers don't have black keys). It was in these conversations surrounding Brady's port of Scale Navigator to the LinnStrument that he mentioned the idea of a different model for correction: the stack. Rather than trying to maintain any semblance of piano keys sounding as close as possible to their corrected pitches, why not just stack the correct pitches from low to high on the piano keys? Or maybe just completely ignore the black keys and stack them on the white keys only, like a LinnStrument!
+                    In 2026, the Scale Navigator Dashboard became a plugin that could set the harmony from inside the DAW. That gave me a reason to return to Tonalign: with synchronization between them, multiple instances could follow the same changing scales and chords, letting me reshape MIDI parts across the session from one place. I renamed the project PitchSnap, then Tonalign, and Brady, who was still a contributor on the repo, texted me: "I see some github issues popping up for scalenav 😉 What are you up to my man." And so we started bouncing ideas off each other. I'd been overhauling the UI (more compact, more fun colors, better visual feedback for note correction), but Brady had been mulling over how the scale network might map to the LinnStrument (the LinnStrument and some other grid controllers don't have black keys). It was in these conversations surrounding Brady's port of Scale Navigator to the LinnStrument that he mentioned the idea of a different model for correction: the stack. Rather than trying to maintain any semblance of piano keys sounding as close as possible to their corrected pitches, why not just stack the correct pitches from low to high on the piano keys? Or maybe just completely ignore the black keys and stack them on the white keys only, like a LinnStrument!
                 </p>
                 <p>
                     That port is a free Max patch Brady built and released in June 2026. It relights the LinnStrument's grid to whatever scale the Dashboard is on, so every lit cell is a note that fits, and it follows along as the scale changes. Here's how he announced it:
@@ -158,12 +158,12 @@
 
             <div class="project-text-section">
                 <p class="section-eyebrow">Outcome</p>
-                <h3>Plunderphonics</h3>
+                <h3>In performance and in the studio</h3>
                 <p>
-                    Recently I've discovered a new use for Tonalign that's a fun take on plunderphonics: finding recorded MIDI of great performances (the Chopin competition, Liszt, Paganini) and then filtering that MIDI through Tonalign to force it into whatever harmony I choose. Here's an example of that with Aphex Twin's "Avril 14th."
+                    At LA Laptop Orchestra's first show in August 2026, every Ableton user ran the Max for Live version of Tonalign. That version puts the Stack (White) mapping on a single track, so the ensemble used it without the plugin's two-track setup.
                 </p>
                 <p>
-                    The Max for Live version is also what every Ableton user in LA Laptop Orchestra ran at our first show in August 2026, which is the routing problem solved for a whole ensemble at once.
+                    Recently I've discovered a new use for Tonalign that's a fun take on plunderphonics: finding recorded MIDI of great performances (the Chopin competition, Liszt, Paganini) and then filtering that MIDI through Tonalign to force it into whatever harmony I choose. Here's an example of that with Aphex Twin's "Avril 14th."
                 </p>
             </div>
 
