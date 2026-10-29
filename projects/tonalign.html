@@ -31,7 +31,7 @@
 
         <div class="project-content">
 
-            <p class="project-summary">A correction that doesn't tell you how or why it's happening feels like a bug. A correction with an explanation is education.</p>
+            <p class="project-summary">A correction that doesn't tell you how or why it's happening feels like a bug, but a correction with an explanation is education.</p>
 
             <video class="project-image" autoplay loop muted playsinline aria-label="Tonalign correcting live MIDI on the keyboard as the harmony changes">
                 <source src="../images/tonalign/tonalign-demo.mp4" type="video/mp4">
@@ -123,7 +123,7 @@
 
             <div class="project-text-section">
                 <p>
-                    2026 is when I picked the project back up (renaming it PitchSnap, then Tonalign), and Brady, who was still a contributor on the repo, texted me: "I see some github issues popping up for scalenav 😉 What are you up to my man." And so we started bouncing ideas off each other. I'd been overhauling the UI (more compact, more fun colors, better visual feedback for note correction), but Brady had been mulling over how the scale network might map to the LinnStrument (the LinnStrument and some other grid controllers don't have black keys). It was in these conversations surrounding Brady's port of Scale Navigator to the LinnStrument that he mentioned the idea of a different model for correction: the stack. Rather than trying to maintain any semblance of piano keys sounding as close as possible to their corrected pitches, why not just stack the correct pitches from low to high on the piano keys? Or maybe just completely ignore the black keys and stack them on the white keys only, like a LinnStrument!
+                    What changed in 2026 was that the Dashboard became a plugin living inside the DAW, so a correction layer that follows it finally had something to follow. 2026 is when I picked the project back up (renaming it PitchSnap, then Tonalign), and Brady, who was still a contributor on the repo, texted me: "I see some github issues popping up for scalenav 😉 What are you up to my man." And so we started bouncing ideas off each other. I'd been overhauling the UI (more compact, more fun colors, better visual feedback for note correction), but Brady had been mulling over how the scale network might map to the LinnStrument (the LinnStrument and some other grid controllers don't have black keys). It was in these conversations surrounding Brady's port of Scale Navigator to the LinnStrument that he mentioned the idea of a different model for correction: the stack. Rather than trying to maintain any semblance of piano keys sounding as close as possible to their corrected pitches, why not just stack the correct pitches from low to high on the piano keys? Or maybe just completely ignore the black keys and stack them on the white keys only, like a LinnStrument!
                 </p>
                 <p>
                     That port is a free Max patch Brady built and released in June 2026. It relights the LinnStrument's grid to whatever scale the Dashboard is on, so every lit cell is a note that fits, and it follows along as the scale changes. Here's how he announced it:
@@ -143,13 +143,16 @@
                     <li><strong>Stack (Chrom)</strong>: re-stack the whole keyboard onto the harmony in order, so C♯ comes out D and nothing doubles up; keys that were already right can move.</li>
                     <li><strong>Stack (White)</strong>: the same stack on the white keys only.</li>
                 </ul>
+                <p>
+                    Corrective keeps your piano fingering intact, so a line you already know still works; Stack gives every key its own note, which is what you want on a grid, or when you're hunting for something you don't know yet.
+                </p>
             </div>
 
             <div class="project-text-section">
                 <p class="section-eyebrow">The 2026 solution</p>
                 <h3>Chords</h3>
                 <p>
-                    The other big change that arrived in Tonalign in 2026 was chords, so that instead of scales being the only harmonic context we can map to, we can also think about smaller collections of pitches. And shared-memory sync with the Dashboard, so that Dashboard can serve as the session's conductor and control multiple instances of Tonalign on multiple tracks. Today Tonalign is less a corrective tool than a composition layer, for testing out melodic, chordal, or textural ideas in different modes. My composition teacher <a href="https://www.daniellevinmusic.com/Site/Welcome.html">Daniel Levin</a> used to compare thematic transformation to the way a movie might take a main character and put them in different situations: Luke Skywalker wistful on Tatooine, frustrated and covered in mud on Dagobah, or wearing all black with his hand cut off screaming "NO!!" in Cloud City at the end of Empire. It's stuck with me because you really do want to retain the essence or character of a musical gesture while still giving it the flexibility to change and grow. Inflecting various notes according to different scalar / chordal contexts is a fun way to do that, and Tonalign makes it easy.
+                    The other big change that arrived in Tonalign in 2026 was chords, so that instead of scales being the only harmonic context we can map to, we can also think about smaller collections of pitches. And shared-memory sync with the Dashboard, so that Dashboard can serve as the session's conductor and control multiple instances of Tonalign on multiple tracks. Today Tonalign is not only a corrective tool but a composition layer, for testing out melodic, chordal, or textural ideas in different modes. The corrective side of it is still alive and well, though: sometimes I'll just mash my head against the keyboard, and I'm always surprised at how much more musical it sounds when filtered through Tonalign. My composition teacher <a href="https://www.daniellevinmusic.com/Site/Welcome.html">Daniel Levin</a> used to compare thematic transformation to the way a movie might take a main character and put them in different situations: Luke Skywalker wistful on Tatooine, frustrated and covered in mud on Dagobah, or wearing all black with his hand cut off screaming "NO!!" in Cloud City at the end of Empire. It's stuck with me because you really do want to retain the essence or character of a musical gesture while still giving it the flexibility to change and grow. Inflecting various notes according to different scalar / chordal contexts is a fun way to do that, and Tonalign makes it easy.
                 </p>
             </div>
 
@@ -158,6 +161,9 @@
                 <h3>Plunderphonics</h3>
                 <p>
                     Recently I've discovered a new use for Tonalign that's a fun take on plunderphonics: finding recorded MIDI of great performances (the Chopin competition, Liszt, Paganini) and then filtering that MIDI through Tonalign to force it into whatever harmony I choose. Here's an example of that with Aphex Twin's "Avril 14th."
+                </p>
+                <p>
+                    The Max for Live version is also what every Ableton user in LA Laptop Orchestra ran at our first show in August 2026, which is the routing problem solved for a whole ensemble at once.
                 </p>
             </div>
 
@@ -169,7 +175,7 @@
             <div class="project-text-section">
                 <h3>The silent synth</h3>
                 <p>
-                    As mentioned before, Steinberg makes a pure MIDI-effect plugin nearly impossible in VST3. So Tonalign is technically a synthesizer, with a silent synth running inside it so a MIDI tool is allowed to exist. This is really annoying. So I made a Max for Live version of it for LA Laptop Orchestra that makes routing so much easier. It doesn't have the same UI that Tonalign does (it runs Tonalign's Stack (White) mapping), but you only need one track.
+                    As mentioned before, Steinberg makes a pure MIDI-effect plugin nearly impossible in VST3. So Tonalign is technically a synthesizer, with a silent synth running inside it so a MIDI tool is allowed to exist. This is really annoying. So I made a Max for Live version of it for LA Laptop Orchestra that makes routing so much easier. It doesn't have the same UI that Tonalign does (it runs Tonalign's Stack (White) mapping), but you only need one track. If you're in Ableton and just want it working, use the Max for Live device. If you need the four correction modes or the keyboard visualizer, use the plugin and budget for two tracks.
                 </p>
             </div>
 
