@@ -125,9 +125,12 @@
                 <p>
                     2026 is when I picked the project back up (renaming it PitchSnap, then Tonalign), and Brady, who was still a contributor on the repo, texted me: "I see some github issues popping up for scalenav 😉 What are you up to my man." And so we started bouncing ideas off each other. I'd been overhauling the UI (more compact, more fun colors, better visual feedback for note correction), but Brady had been mulling over how the scale network might map to the LinnStrument (the LinnStrument and some other grid controllers don't have black keys). It was in these conversations surrounding Brady's port of Scale Navigator to the LinnStrument that he mentioned the idea of a different model for correction: the stack. Rather than trying to maintain any semblance of piano keys sounding as close as possible to their corrected pitches, why not just stack the correct pitches from low to high on the piano keys? Or maybe just completely ignore the black keys and stack them on the white keys only, like a LinnStrument!
                 </p>
+                <p>
+                    That port is a free Max patch Brady built and released in June 2026. It relights the LinnStrument's grid to whatever scale the Dashboard is on, so every lit cell is a note that fits, and it follows along as the scale changes. Here's how he announced it:
+                </p>
                 <blockquote>
                     <p>"Niche project alert 🚨 : A scale-first interface for the LinnStrument that uses the Scale Navigator Dashboard for scale synchronization. Shout-out to Nathan Turczan for the help connecting the Scale Navigator to this!"</p>
-                    <p>Brady's <a href="https://strangeloopsaudio.gumroad.com/l/uygit">Max patch</a> and <a href="https://github.com/StrangeLoopsAudio/LinnStrument-Scale-Navigator">code</a>.</p>
+                    <p>The <a href="https://strangeloopsaudio.gumroad.com/l/uygit">Max patch</a> and the <a href="https://github.com/StrangeLoopsAudio/LinnStrument-Scale-Navigator">code</a>.</p>
                 </blockquote>
                 <p>
                     So the Correction dropdown now holds four answers to what should happen to a note that doesn't fit:
