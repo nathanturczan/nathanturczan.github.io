@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KingDubby - Nathan Turczan</title>
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link rel="stylesheet" href="project.css">
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QZDPQB8062"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-QZDPQB8062');
+    </script>
+</head>
+<body>
+    <div class="project-page">
+        <header class="project-header">
+            <a href="../index.html" class="back-link">Back</a>
+
+            <div class="project-info">
+                <div class="project-title-row">
+                    <img src="../images/icons/kingdubby-icon.png" alt="" class="project-icon">
+                    <h1 class="project-title">KingDubby</h1>
+                </div>
+                <div class="divider-line"></div>
+                <p class="project-tagline">A rebuild of the classic Lowcoders dub delay for modern macOS.</p>
+                <p class="project-description">KingDubby was a free dub delay plugin by Franck Stauffer (Lowcoders), with an interface by Thomas and Wolfgang Merkle (Bitplant), released between 2004 and 2008. It stopped loading when macOS dropped 32-bit plugins. I rebuilt it as a universal AU and VST3, keeping the original interface.</p>
+            </div>
+
+            <div class="project-meta">
+                <span class="project-year">2026</span>
+                <span class="project-categories">Software<br>C++ / JUCE</span>
+            </div>
+        </header>
+
+        <div class="project-content">
+            <div class="project-images">
+                <img src="../images/kingdubby/kingdubby-ui.png" alt="KingDubby plugin interface" class="project-image">
+            </div>
+
+            <div class="project-text-section">
+                <p><strong>How it was rebuilt:</strong></p>
+                <p>
+                    My first version ran away into piercing tones at moderate feedback, because I had used a resonant bandpass filter whose gain rises as the band narrows. Franck found his original source and sent it to me, and it showed a constant 0 dB peak bandpass, which holds unity gain at the center frequency at any bandwidth, so the feedback loop can't run away. I rebuilt the delay around his signal flow: Degradation blends the repeats between clean and filtered, the two pans act on the wet output, and feedback at 100 holds just under self-oscillation.
+                </p>
+            </div>
+
+            <div class="project-text-section">
+                <p><strong>Features:</strong></p>
+                <p>
+                    Bandpass filter inside the feedback loop, once or twice<br>
+                    Degradation between clean and filtered repeats<br>
+                    Separate pans for the left and right repeats<br>
+                    Delay time synced to the host tempo<br>
+                    AU and VST3, macOS (Universal)
+                </p>
+            </div>
+
+            <div class="project-text-section">
+                <p><strong>Credits:</strong></p>
+                <p>
+                    Original plugin: Franck Stauffer / Lowcoders (code), Thomas and Wolfgang Merkle / Bitplant (interface). The original interface assets belong to Lowcoders and Bitplant.
+                </p>
+            </div>
+
+            <div class="project-text-section">
+                <a href="https://scalenavigator.com/download/kingdubby/" target="_blank" class="project-link">Download</a>
+                <a href="https://github.com/nathanturczan/kingdubby" target="_blank" class="project-link">GitHub Repository</a>
+            </div>
+        </div>
+
+        <nav class="project-nav">
+            <a href="archive.html">Back to Archive</a>
+        </nav>
+    </div>
+</body>
+</html>
